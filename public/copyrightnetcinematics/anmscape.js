@@ -431,7 +431,7 @@ var loadBabylon = function() {
             // load.js('./copyrightnetcinematics/modPyramidz1.js') //to nxv4DONE (unnecessary)
             load.js('./copyrightnetcinematics/modPyramidz1.js') 
             // load.js('./copyrightnetcinematics/modHalfpipe.js') //to nxv4DONE (unnecessary)
-            load.js('./copyrightnetcinematics/modHalfpipe.js') 
+            load.js('./copyrightnetcinematics/modHalfPipe.js') 
             // load.js('./copyrightnetcinematics/modKeyCtrlz.js') //to nxv4DONE
             load.js('./copyrightnetcinematics/nxv4/modKeyCtrlz3.js') 
             // load.js('./copyrightnetcinematics/modZapBot.js')  // to nxv4DONE (unnecessary)
