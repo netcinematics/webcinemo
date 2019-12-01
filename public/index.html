@@ -1,0 +1,2454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!--***********************************************-APP-SHELL-************************************-->
+<title>ANIMOTOONZ!</title>
+<link rel="manifest" href="./manifest.json">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"">
+<meta name="HandheldFriendly" content="true" /> <!--fix rwd sizing bug-->
+  <!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"> -->
+
+
+
+
+<meta name="Description" content="Help Orby Orbot Save Marz in this thrilling cyber adventure saga!">
+<meta name="theme-color" content="#ccc"/>
+<!-- **********************************-VENDOR-PREFIXES-**************************************-->
+<!-- Safari on iOS --> <!-- vendor-app-prefixes -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- <meta name="apple-mobile-web-app-capable" content="yes"> --> <!-- deprecated, fix above -->
+<meta name="apple-mobile-web-app-title" content="ANIMOTOONZ!">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="img/logos/logo1_152x15~2.png">
+<!-- Windows -->
+<meta name="msapplication-TileImage" content="img/logos/logo1_144x144.png">
+<meta name="msapplication-TileColor" content="#2F3BA2">
+<link rel="icon" type="image/png" href="img/logos/logo1_144x144.png">
+<!-- ***************************************-TEMPLATE-APP-**************************************** -->
+<script type="text/javascript" src="../../lib/interact.js"></script>
+<script type="text/javascript" src="../../lib/jquery/jquery-3.2.1.min.js"></script>
+
+<style>
+html, body {
+    overflow: hidden;
+    width   : 100%;
+    height  : 100%;
+    margin  : 0;
+    padding : 0;
+    background-color:#000;
+    user-select: none;
+}
+/*    #renderCanvas {
+    width   : 100%;
+    height  : 100%;
+    touch-action: none;
+}*/
+
+*{
+    -webkit-overflow-scrolling: touch; /*FIX ios?*/
+}
+
+button:focus {outline:0;}
+
+/* **********************************************************triple-door with bottom-drawer layout rendering ***************************** */
+#renderCanvas {
+    /*width   : 100%;*/
+    max-width : 800px;
+    border-radius: 6px;
+    /*max-width : 830px;*/ /*landscape PIXEL 2*/
+    /*max-width : 910px;*/ /*landscape ipad pro*/
+    /*height  : 100%;*/
+    touch-action: none;
+
+      height: 100%;
+      width:80%;
+      max-width: 600px;
+      background: black;
+      margin: 0 auto;
+      cursor: all-scroll;
+
+    /* animate this */
+    border: 1px solid steelblue;
+    /*border: 1px solid yellow;*/
+    /*border: 1px solid purple;*/
+    /*border: 1px solid red;*/
+    /*border: 1px solid green;*/
+    /*border: 1px solid orange;*/
+
+
+
+
+}
+
+p {
+    margin-block-start: 0; 
+}
+
+
+:root{
+  /* COLORS */
+  --neonblue: #29b6f6; 
+  --neongreen: #66b708; 
+  --neonyellow: #fde93c; 
+  --flatgrey: #9e9e9e; 
+  --neonteal: #009688; 
+  --neonred: #ff5722; 
+  --neonpurple: #b611b7; 
+  --neonnavy: #607d8b;
+  --drkblue: #535192;
+  --drkslate: #011017;
+  --drknavy: #000c17;
+  --drkpurple: #100000;
+  --drkgreen: #051009;
+  --bluetxt:#0012ff;
+  --purpleborder:#50155a;
+}
+
+</style>
+
+<style>
+  /*************************************-2Dtxt UI-*************************/
+
+      .anmSection {
+        flex: 2;  
+        height:100%;
+      }  
+
+.steelNeonBtn {
+      font-family: verdana;
+font-size: 0.9em;
+border: #748696 solid 1px;
+    background-color: black;
+    border-radius: 20px;
+    height: 32px;
+    width: 64px;
+    cursor: default;
+    user-select: none;
+    outline: none;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,.8);
+    line-height: 30px;
+    color: orange;
+    border: 1px solid steelblue;
+    cursor: pointer;
+    z-index:100;
+  }
+
+.steelNeonIconBtn {
+      font-family: verdana;
+font-size: 1.3em;
+border: #748696 solid 1px;
+    background-color: black;
+    border-radius: 20px;
+    /* height: 32px; */
+    /* width: 64px; */
+    cursor: default;
+    user-select: none;
+    outline: none;
+    text-align: center;
+    text-shadow: 0 1px 0 purple;
+    line-height: 30px;
+        color: steelblue;
+    border: 1px solid steelblue;
+    cursor: pointer;
+  }
+
+.blackNeonIconBtn {
+    /*margin: 0 0.5em;*/
+    margin: 1px 0.5em;
+    font-family: verdana;
+    font-size: 1.1em;
+    background-color: black;
+    border-radius: 20px;
+    /*height: 32px;*/
+    height: 20px;
+    width: 64px;
+    cursor: default;
+    user-select: none;
+    outline: none;
+    text-align: center;
+    text-shadow: 0 1px 0 purple;
+    /*line-height: 30px;*/
+    line-height: 23px;
+    color: steelblue;
+    cursor: pointer;
+    margin-top: 0.2em;
+}
+
+
+.disabledBtn{
+    background-color: grey !important;
+    color: #333 !important;
+    border: 1px solid #999 !important;
+    cursor: default !important;
+
+}
+
+
+</style>
+
+
+
+
+
+
+<style> /*----------------------------------------------------------Mobile-FIRST-RWD--*/
+    @media only screen and (max-width: 350px) { /*mobile styles*/
+       /*#mainTitle { font-size:1.0rem; }*/
+      .mediaBtn  { font-size:0.6em; }
+      .txtBitz { font-size:0.6em; }
+      .bitTXT {margin:0 0.2em;}
+      #canvasFooter{font-size:1em;}
+      #minMenuView{font-size:0.6em;}
+      #navBar{font-size:0.8em;bottom:0.8em}
+      .steelNeonIconBtn{width:1em}
+    }
+    @media only screen and (min-width: 350px) { /*above 350 mobile styles*/
+       /*#mainTitle { font-size:1.2rem; }*/
+      .mediaBtn  { font-size:0.9em; }
+      .txtBitz { font-size:0.8em; }
+      .bitTXT {margin:0 0.5em;}
+      #canvasFooter{font-size:1.1em;}
+      #minMenuView{font-size:0.8em;}
+      #navBar{font-size:0.8em;}
+      .steelNeonIconBtn{width:2em}
+    }
+    @media only screen and (min-width: 650px) { /*above 650tablet styles*/
+       /*#mainTitle { font-size:1.8rem; }*/
+      .mediaBtn  { font-size:1em; }
+      .txtBitz { font-size:1em; }
+      .bitTXT {margin:0 0.8em;}
+      #canvasFooter{font-size:1.4em;}
+      #minMenuView{font-size:1em;}
+      #navBar{font-size:0.8em;}
+      .steelNeonIconBtn{width:2em}
+    }
+    @media only screen and (min-width: 800px) { /*above 800 desktop styles*/
+       /*#mainTitle { font-size:2.1rem; }*/
+      .mediaBtn  { font-size:1em; }
+      .txtBitz { font-size:1.4em; }
+      .bitTXT {margin:0 1em;}
+      #canvasFooter{font-size:1.5em;}
+      #navBar{font-size:0.8em;}
+      .steelNeonIconBtn{width:2em}
+    }
+</style>
+</head>
+<body>
+  
+  
+  
+  <script type="text/javascript">
+
+// // <!--**************************-NX-NETCINEMATIX-APPSHELL-****************************************-->
+// debugger;
+var nx = {}; //NetcinematiX NameSpace-.
+
+// // <!--**************************-END-NX-****************************************-->
+
+</script>
+<!--***********************************************-END-APP-SHELL-************************************-->
+<!--***********************************************-COMPONENT-SHELL-************************************-->
+
+
+<!--*********************************-APP-LOGO-COMPONENT-********************************-->
+<!-- <section style="width:10%;z-index:100;"> -->
+<aside id=topLogo style="position: absolute;top: -0.5em;left: 0;z-index: 1;">
+    <style>#domainTxt{position:absolute;top:3em;left:0;}</style>
+    <style>.domainTxt{font-size:0.8em;color:steelblue;border:1px solid purple;background:black;border-radius:22px;padding:0.3em;}</style>
+    <style>#versionTxt{position:absolute;top:4.5em;left:0.5em;}</style>
+    <style>.versionTxt{font-size:0.8em;color:silver;text-shadow: 1px 1px 1px black, -1px -1px 1px blue;}</style>
+    <style>.logo1Style{ position: absolute; top:0.1em; left:0.5em; width:3em; }</style>
+    <a href="https://www.anmscape.com/" target="_blank"><img class="logo1Style" src="./img/logos/logo1_128x128.png" alt="logo" aria-label="logo"/></a>
+    <div id=domainTxt ><a href="https://www.anmscape.com/" target="_blank" style="text-decoration:none;"><span class="domainTxt">ACOZMO.net</span></a></div>
+    <div id=versionTxt ><a href="https://www.anmscape.com/" target="_blank"><span class="versionTxt">e0.s0.c0.p0</span></a></div>
+</aside>
+<!--********************************-APP-LOGO-COMPONENT-********************************-->
+<!--*************************************SONICCOMPONENT*******************************-->
+<!-- <aside> -->
+    <!-- <style>#sonicBtn { position: absolute; top: 55px; right: 2px; border-radius: 10px; cursor:pointer; } </style> -->
+    <!-- <button id=sonicBtn>sonic test</button> -->
+<!--     <script async type="text/javascript">
+        window.addEventListener('DOMContentLoaded', function(){
+            var sonicBtn = $("#sonicBtn");
+            var playSounds = function(){
+                nx.sonic.soundObjTrack1.play();
+                nx.sonic.soundObjBlip2.play();
+                sonicBtn.html('sound on')
+            }
+            sonicBtn.on({ 
+                click: function (e) {
+                    if(!nx.sonic.toggle){
+                        playSounds();
+                    } else {
+                        nx.sonic.soundObjTrack1.stop();
+                        sonicBtn.html('sound off')
+                    }
+                    nx.sonic.toggle = !nx.sonic.toggle;
+                }
+            });
+        });
+    </script> -->
+<!-- </aside> -->
+<!--********************************SONICCOMPONENT*******************************-->
+
+
+
+<!--***********************************************-TITLE-COMPONENT-************************************-->
+<style>#nav1{position:absolute; width:100%; height:50px; /*background:black;*/z-index:100;}
+       .centerTitle{display:block; width:35%; margin:0 auto; padding-top:5px; font-family:fantasy; text-align:center; color:#bed9f1;}
+       #subTitle1{display:block; width:35%; margin: 0 auto; padding-top:5px; font-family:fantasy; text-align:center; color:#bed9f1;}</style>
+<nav id=nav1>
+  <div>
+    <style>
+        .fancy{text-shadow: 2px 3px 1px #57025f, 2px 0px 2px #b10606, 0px -2px 2px #0dd411, 4px 4px 4px blue;}
+        .elegant{font-family:cursive;text-shadow: 1px 1px 2px blue;}
+    </style>
+    <a id="mainTitle" class="centerTitle fancy" href="#">ANIMOTOONZ!</a>
+    <!-- <a id="subTitle1" class="centerTitle elegant" href="#">~acosmozaga - a cosmic saga in Z-Dimension cyber-space!</a> -->
+    <!-- <a id="subTitle1" class="centerTitle elegant" href="#">~a cosmic saga in cyber-space!</a> -->
+    <!-- <a id="subTitle1" class="centerTitle elegant" href="#">~acosmic! Like never before...</a> -->
+    <!-- <a id="subTitle1" class="centerTitle elegant" href="#">~A-COZ-MO-ZAGA-!~</a> -->
+    <!-- <a id="subTitle1" class="centerTitle elegant" href="#">~a cosmic saga in 3D[acy:DZ]! 3D-alternate-cyber-space~Dimension-Z!</a> -->
+  </div>
+</nav>
+<!--********************************-GET-APP-BTN-********************************-->
+<aside>
+  <style>.add-button {position:absolute;top:55px;right:2px;border-radius:10px;cursor:pointer;z-index:100;} </style>
+  <button class="add-button center">Get App!</button>
+  <script async type="text/javascript">//App install banners/Add to Home Screen by Pete LaPage.
+    var deferredPrompt; //https://developers.google.com/web/fundamentals/app-install-banners/
+    var addBtn = document.querySelector('.add-button');
+    addBtn.style.display = 'none'; //hide-A2HS-initially-.
+    window.addEventListener('beforeinstallprompt', function (e) {
+      e.preventDefault(); // Prevent Chrome 67 and earlier from automatically showing the prompt
+      deferredPrompt = e; // Stash the event so it can be triggered later.
+      addBtn.style.display = 'block';  // Update UI to notify the user they can add to home screen
+      addBtn.addEventListener('click', function (e) {
+        addBtn.style.display = 'none';// hide our ui A2HS button
+        deferredPrompt.prompt(); // Show the prompt
+        deferredPrompt.userChoice.then((choiceResult) => { // Wait for the user to respond to the prompt
+            if (choiceResult.outcome === 'accepted') { console.log('User accepts A2HS.');
+            } else { console.log('User dismissed A2HS.'); }
+            deferredPrompt = null;
+          });
+      });
+    });
+  </script>
+</aside>
+<!--***************************-END-GET-APP-BTN-********************************-->
+    <!--********************************-NEXT-CAM-BTN-********************************-->
+<!--     <aside>
+      <style>
+        #nextCamBtn {position:absolute;top:95px;left:2px;border-radius:10px;cursor:pointer;display:none;z-index:100; user-select:none;} 
+        #camTxt {position:absolute;top:85px;left:2px;border-radius:10px;cursor:pointer;display:none;z-index:100; user-select:none;} 
+        #tenKeyTxt {position:absolute;top:115px;left:2px;border-radius:10px;cursor:pointer;display:none;z-index:100; user-select:none;} 
+      </style>
+      <button id=nextCamBtn>CAM</button> 
+      <span id=camTxt></span> 
+      <span id=tenKeyTxt>10KeyMode</span> 
+      <script async type="text/javascript">//Next-Scene-UI-.
+        var nextCamBtn = document.getElementById('nextCamBtn')
+        nextCamBtn.addEventListener('click', function(e){
+            if(nx && nx.nextCamSeq) { nx.nextCamSeq(); }
+        });
+      </script>
+    </aside> -->
+    <!--***************************-END-NEXT-CAM-BTN-********************************-->
+    <!--********************************-NEXT-SCENE-BTN-********************************-->
+    <!--TODO EXPLORE!-->
+<!--     <aside>
+      <style>.next-button {position:absolute;top:55px;left:2px;border-radius:10px;cursor:pointer;display:none;z-index:100;} </style>
+      <button id=nextBtn class="next-button center">NEXT!</button> 
+      <script async type="text/javascript">//Next-Scene-UI-.
+        var nextBtn = document.querySelector('.next-button')
+        nextBtn.addEventListener('click', function(e){
+            if(nx && nx.nextSceneSeq) { nx.nextSceneSeq(); }
+        });
+      </script>
+    </aside> -->
+    <!--***************************-END-NEXT-SCENE-BTN-********************************-->
+    <!--*********************************-APP-LOGO-COMPONENT-********************************-->
+    <section style="width:100%;z-index:100;">
+        <!-- <aside id=leftCmp>
+            <style>.logo1Txt{position:absolute;top:0px;left:13px;font-size:0.6em;color:silver;}</style>
+            <style>.logo1Style{ position: absolute; top: 5px; left: 8px; width: 44px; }</style>
+            <a href="https://www.anmscape.com/" target="_blank"><img class="logo1Style" src="./img/logos/logo1_128x128.png" alt="logo" aria-label="logo"/></a>
+            <a href="https://www.anmscape.com/" target="_blank"><span class="logo1Txt">anmscape</span></a>
+        </aside> -->
+        <!--********************************-APP-LOGO-COMPONENT-********************************-->
+        <!--*********************************-ENGINE-LOGO-COMPONENT-********************************-->
+        <aside id=rightCmp>
+            <style>.logo2Txt{position:absolute;top:0;right:8px;font-size:0.6em;color:silver;}</style>
+            <style>.logo2Style{ position: absolute; top: 10px; right: 8px; width: 34px; }</style>
+            <a href="https://www.babylonjs.com/" rel="noopener" target="_blank"><img class="logo2Style" src="./img/logos/bjslogo1.png" alt="logo" aria-label="logo"/></a>
+            <!-- <a href="https://www.babylonjs.com/" rel="noopener" target="_blank"><span class="logo2Txt">powered by</span></a> -->
+            <span class="logo2Txt">powered by</span>
+        </aside>
+    </section>
+    <!--********************************-ENGINE-LOGO-COMPONENT-********************************-->
+<!--**************************************************-BUTTON-COMPONENT-*****************************************-->
+<style>
+    .anmBtn{ font-family:fantasy; text-shadow: 2px 2px 3px steelblue;}
+    .steelBlueBtnDlg { background-color: rgba(150,180,200,0.95); color:#222; border:  #748696 solid 2px; font-size: 22px; border: 4px solid #71abdc;
+        border-radius: 100%; height: 45px; width: 45px; cursor: pointer; user-select: none; text-shadow: 0 1px 0 rgba(255,255,255,.8); outline: none; }
+    #titleViewFrame{ height:100%; width:100%; background:black; z-index:1000; }
+    #titleViewFrame{display:flex;color:yellow;align-items:center;justify-content:center;}
+    .lblItem{max-width:50%; background:steelblue; opacity: 0.2}
+    .enterBtn{position:absolute;top:50%;width:100%;z-index:100; }
+    .enterBtn section{ width:100px; margin:0 auto; }
+    .enterBtn button{ width:100px;height: 50px; box-shadow: 0px -1px 13px steelblue; cursor:hand; }
+
+</style>
+
+<section id=titleViewFrame>
+  <article class="enterBtn">
+      <section>
+          <button id=beginBtn aria-label="begin" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>~ENTER!~</span></button>
+      </section>
+  </article>
+  <!--********************************-->
+  <section id=mainTitleView style='display:none;'>
+    <article id=centeredSuperTitle>
+        <section aria-label="supertitle">
+          ~Dr.ACOZMOS~
+        </section>
+    </article>
+    <article id=centeredTitle>
+      <section aria-label="title">
+        ACTIONWEBZ!
+      </section>
+    </article>
+    <article id=centeredHeroIntro style='align-self:flex-start' aria-label="hero">
+          OrbyOrby in his 1st SPACE~QUEST!
+    </article>
+    <article id=centeredSubTitle aria-label="subtitle">
+          ZapBotz on AlphaMoon?!?
+    </article>
+    <article id=subTopic1 aria-label="subtopic">
+          Will he complete the Quest?
+    </article>
+    <article id=subTopic2 aria-label="subtopic">
+          Or be frozen forever<br> in Drak's Cavern!?!
+    </article>
+    <article class="actionBtns">
+      <button id=actionBtn1 aria-label="try" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>~TRY-</span></button>
+      <button id=actionBtn2 aria-label="subscribe" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>-SUB-</span></button>
+      <button id=actionBtn3 aria-label="buy" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>-BUY!~</span></button>
+    </article>
+   
+  </section> <!--end app title view-->
+  <section id=lvlTitleView style='display:none !important;width:88%;height:100%;margin-top:20%;margin-bottom:10%;
+    display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;'> 
+    <header style='display:flex;flex-direction:row;font-size:2em;margin-top:1%; margin-bottom:2%'>
+      <article id=lvlTypeICONFrame>
+
+        <!--TERNARY-HIDE-SHOW-->
+        <!-- <section style="display:none;justify-content:center;flex:1">
+          <span id="lvlMovieBtn1" class="minMenuIcon btnSelector" 
+          style="padding:0 0.5em 0.2em;color:royalblue;">
+          <i class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span></span></section> -->
+        <section style="display:flex;justify-content:center;flex:1">
+          <span id="lvlTypeICON" class="minMenuIcon" 
+          style="padding:0 0.5em 0.2em;color:darkviolet;">
+          <i id=lvlMission class="fa fa-map"></i><span style="margin-left: 0.5em;">MISSION</span>
+          <!-- <i id=lvlGAM class="fa fa-gamepad"></i><span style="margin-left: 0.5em;">GAME</span> -->
+          <!-- <i id=lvlMOV class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span> -->
+          <!-- <i id=lvlTXT class="fa fa-book-open"></i><span style="margin-left: 0.5em;">BOOK</span> -->
+          <span id=lvlNUM>1</span></span>
+        </section>
+        <!-- <section style="display:none;justify-content:center;flex:1">
+          <span id="lvlBookBtn1" class="minMenuIcon" 
+          style="padding:0 0.5em 0.2em;color:forestgreen;">
+          <i class="fa fa-book-open"></i><span style="margin-left: 0.5em;">BOOK</span></span></section>
+ -->
+
+      </article>
+      <!-- <article id=lvlTypeNUMFrame>
+         1:
+      </article> -->
+    </header>
+
+
+    <style>
+        /* anmmethodology preferred-media-query-format */
+        @media screen and (min-width: 350px){ #lvlTitleTXT {font-size: 1.5em; }  }
+        @media screen and (min-width: 550px){ #lvlTitleTXT {font-size: 2.2em; }  }
+        @media screen and (min-width: 800px){ #lvlTitleTXT {font-size: 3.3em; }  }
+        @media screen and (min-width: 1000px){ #lvlTitleTXT {font-size: 4.4em; }  }
+      </style>
+    <article id=lvlTitleTXT style='display:flex;flex-direction:row;justify-content:center;'>
+      COLLECT~ENERGEMZ!
+    </article>
+    <article id=lvlIMG>
+      <img style='width:4.44em;border-radius:13px;border:solid 1px yellow;' src="./copyrightnetcinematics/img/energem2.png">
+    </article>
+    <article id=lvlSubTXT style='display:flex;flex-direction:row;justify-content:center;'>
+      Find the SpaceTrain Wreck!
+    </article>
+    <article id=lvlActionBtnsFrame style='margin-top:3%;display:flex;margin-bottom:3%;width:70%;justify-content:space-evenly;'>
+        <button id=lvlGameBtn1 style='flex:1;max-width:5.55em;min-width:4.44em;' aria-label="play" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>GAME</span></button>
+        <button id=lvlMovieBtn2 style='flex:1;max-width:5.55em;min-width:4.44em;' aria-label="skip" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>MOVIE</span></button>
+        <button id=lvlBookBtn3 style='flex:1;max-width:5.55em;min-width:4.44em;' aria-label="epic" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>BOOK</span></button>
+    </article>
+    <style>#lvlTIPS ul{margin:0;}
+     @media screen and (max-width: 350px){ #lvlTIPS {font-size:0.8em !important; line-height:1.44em !important; }  }
+    </style>
+    <article id=lvlTIPS style='margin-bottom:1%;color:steelblue;line-height:2.44em;'>
+      <ul>
+        <li>GAME: use WASD or TOUCH controls: <img style='width:1.11em' src="./img/dragCtrl1.png">  </li>
+        <li>MOVIE: PLAYONE scene or PLAYALL MOVIE. </li>
+        <li>BOOK: follow the EPIC~ADVENTURE! </li>
+      </ul>
+    </article>
+    
+    <style>
+        @media screen and (max-width: 350px){ #lvlFooter {font-size:0.8em !important; }  }
+    </style>
+    <section id=lvlFooter style='display:flex;width:100%;justify-content:space-between;margin-bottom:2.44%;font-size:1.22em;'>
+      <article id=lvlSubMSG1 style='position:absolute;bottom:5.5%;'>
+        SUBSCRIBE <br>for UPDATES <br>and EPISODES! 
+      </article>
+      <article id=lvlSubMSG2 style='padding-top:2%;min-width:2em;margin:0 auto;'>
+        ~
+      </article>
+      <article id=lvlSubMSG3 style='line-height:1.88em;padding-top:1%;position:absolute;bottom:6.5%;right:4%'>
+        JOIN&nbsp;&nbsp;|&nbsp;&nbsp;LOGIN&nbsp;&nbsp;|&nbsp;&nbsp;APP
+      </article>
+    </section>
+
+
+  </section> <!--end app title view-->
+  <!--section id=levelTitleView> 
+      <article id=version>
+        VERSION:
+      </article>
+      <article id=goHome>
+        HOME
+      </article>
+      <article id=getApp>
+        APP
+      </article>
+      <article id=episode>
+        EPISODE:
+      </article>
+      <article id=price>
+        ~FREE~
+      </article>
+    </section--> <!--end app title view-->
+   
+  
+</section>
+  
+  
+<!-- <script async type="text/javascript"> -->
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function(){
+        // debugger;
+        'use strict';
+        if(!nx){nx={}}
+        if(!nx.ui){nx.ui={}}
+        nx.ui.nav1 = $('#nav1');
+        nx.ui.leftCmp = $('#leftCmp');
+        nx.ui.rightCmp = $('#rightCmp');
+        nx.ui.beginBtn = $('#beginBtn');
+        nx.ui.nextBtn = $('#nextBtn')
+        // nx.ui.nextCamBtn = $('#nextCamBtn')
+        // nx.ui.camTxt = $('#camTxt')
+        // nx.ui.tenKeyTxt = $('#tenKeyTxt')
+        nx.ui.titleViewFrame = $('#titleViewFrame');
+        nx.ui.mainTitleView = $('#mainTitleView');
+        nx.ui.lvlTitleView = $('#lvlTitleView');
+        // var sonicBtn = $('#sonicBtn');
+        nx.ui.beginBtn.on("click" , function(e){ 
+            loadAnmscape(); 
+            setTimeout(function(){
+                // sonicBtn.show(1000)
+                nx.ui.nav1.hide(1000)
+                nx.ui.leftCmp.hide(1000)
+                nx.ui.rightCmp.hide(1000)
+                nx.ui.beginBtn.fadeOut(1000)
+                nx.ui.nextBtn.hide(1000) //hidden
+                // nx.ui.nextCamBtn.show(1000)
+                // nx.ui.camTxt.show(1000)
+                // nx.ui.tenKeyTxt.show(1000)
+                nx.ui.titleViewFrame.fadeOut(1000)
+            },1)
+        });
+
+
+
+      // var loadAnmscape;
+      // window.addEventListener('DOMContentLoaded', function(){
+        var loadAnmscape = function(){
+              import('./copyrightnetcinematics/anmscape.js')
+                .then(function(anmscape) {
+                  anmscape.initAnmscape();
+              })// .catch(function(e){console.log('error loading anmscape: '+e)});
+          } //END-loadAnmscape-.
+      // });
+
+
+        //TODO BEGIN BUTTON. - LOOK BTN - ENTER BTN on return user
+    });
+</script>
+<!--**************************************************-END-BUTTON-COMPONENT-*****************************************-->
+
+<!--**************************************************-2DTXT - TRIFOLD - LAYOUT -COMPONENT-*****************************************-->
+<style>
+#trifoldDrawerView {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  height: 100%;
+}
+  #viewRow1 {
+    background-color: red;
+    height:1px;
+  }
+  #viewRow2 {
+    background-color: #02020a;
+    flex: 3 1 auto;
+    display: flex;
+    height:0;/*fix for min max view*/
+    flex-direction: column;
+    position:relative; /*allows fixed position on bottom of flex container*/
+  }
+  #viewRow3 {
+    display: flex;
+            /*flex: 3;*/
+            /*flex: 0;*/
+             /*min-height: 180px;*/
+             min-height: 3.7em;
+    margin: 0.5em;
+    margin-top: 0.2em;
+     border:solid 1px steelblue;
+     border-radius:13px;
+
+
+         max-height: 12em; /*minmax max setting*/
+         /*max-height: 28%;*/
+             /*min-height: 140px;*/
+         flex-direction:column;
+  }
+    #ctrlcol1 {
+      flex: 1;
+      display:flex;
+      border-radius:13px;
+      border:1px solid purple; 
+      margin: 0.5em;
+      margin-right:0;
+      max-width: 6em;
+
+      flex-direction:column;
+    }
+    #ctrlcol2 {
+      flex: 4;
+      border-radius:13px;
+    border: 1px solid steelblue;
+    border-radius: 13px;
+    margin: 0.5em 0;
+
+    margin-left:0.5em;
+    margin-right:0.5em;
+    }
+    #ctrlcol3 {
+      flex: 1;
+      border-radius:13px;
+    border: 1px solid purple;
+    margin: 0.5em;
+    margin-left:0;
+        max-width: 6em;
+display: flex;
+      flex-direction:column;
+    }
+   /*
+    canvas {
+      height: 100%;
+      width:80%;
+      max-width: 600px;
+      background: black;
+      margin: 0 auto;
+      cursor: all-scroll;
+
+    border: 1px solid steelblue;
+    }*/
+    /*border: 1px solid yellow;*/
+    /*border: 1px solid purple;*/
+    /*border: 1px solid red;*/
+    /*border: 1px solid green;*/
+    /*border: 1px solid orange;*/
+
+
+</style>
+<style>
+
+
+.txtBitz {
+    border: 1px solid steelblue;
+    border-radius: 13px;
+    padding: 0.5em;
+    box-shadow: 1px 1px 3px blue;
+    text-shadow: 1px 1px 8px yellow;
+    color: #BBB;
+}
+
+
+
+.heroLogo{ float:left;width:2em;margin:0.3em;border-radius:13px }
+
+.hero0{ border-radius:13px; /*default - no override*/ }
+.hero1{ /*purple*/
+    color: #d408cd;
+    border: #bf06bf 1px solid;
+    text-shadow: 1px 1px 10px #707af1;
+    box-shadow: 1px 1px 8px #8a038a;
+}
+.hero2{ /*green*/
+color: #24d605;
+    border: 1px solid #1a9c02;
+    text-shadow: 1px 1px 11px #05a232;
+    box-shadow: 1px 1px 5px #02bb02;
+}
+.hero3{ /*yellow*/
+color: #d0d004;
+    border: #ec8d15 solid 1px;
+    text-shadow: 1px 1px 12px #f78b05;
+    box-shadow: 1px 1px 4px #e0e003;
+}
+.hero4{ /*grey*/
+font-weight:bold;
+color: black;
+border: 1px solid darkviolet  ;
+    /* text-shadow: 1px 1px 8px #9082e4, -1px -1px 1px #ff0026; */
+    text-shadow: 0px 0px 12px #9082e4, -1px -1px 1px #ff0026, 1px 1px 3px steelblue;
+    box-shadow: 0px -1px 15px #bc062a;
+
+    font-variant: petite-caps;
+}
+.hero5{ /*aqua*/
+color: #069ff9;
+    border: #068bfb 1px solid;
+    text-shadow: 1px 1px 8px #068cfb;
+    box-shadow: 1px 1px 4px #0addf3;
+}
+.hero6{ /*red*/
+  /* border: 1px solid red;
+    color: red;
+    text-shadow: 1px 1px 1px #fafa05;
+    box-shadow: 1px 1px 6px #fb0505; */
+    color: black;
+    border: #e57b18;
+    text-shadow: 1px 1px 7px #fafa05, 0px -2px 2px red;
+    box-shadow: 1px 1px 6px #fb052a;
+
+}
+.hero7{ /*hotpink  DR.BECKY*/
+    color: #fc46ff;
+    border: 1px solid #fb037f;
+    text-shadow: 1px 1px 8px #d7066f, -1px 0px 1px #868686;
+    box-shadow: 1px 1px 4px blue;
+}
+.hero8{ /*neon orange*/
+color: darkorange;
+    text-shadow: 1px 1px 10px #d01919;
+    border: #ce6204 1px solid;
+    box-shadow: 1px 1px 4px #f78a05;
+}
+.hero9{ /*blue*/
+color: #4e4efb;
+text-shadow: 1px 1px 10px #a20358;
+    border: 1px solid #1608f9;
+    box-shadow: 1px 1px 6px blue;
+}
+
+.hero10{ /*plain orange*/
+    color: orange !important;
+    border-color: orange;
+    box-shadow: 1px 1px 3px red;
+    text-shadow: 1px 1px 3px red;
+}
+
+/********************************************TXT-BOXES*********************/
+.txtBoxNarrator1{
+  color: black;
+    box-shadow: 1px 1px 3px red;
+    text-shadow: 1px 1px 3px red;
+    background: yellow;
+    border: 3px black solid;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.txtBoxBluePurple{
+  color: #10020e;
+    box-shadow: 1px 1px 8px #00ffda;
+    text-shadow: 1px 1px 3px #fc06fc;
+    background: #00c6ff;
+    border: 1px black solid;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.txtBoxOrangeBlack{
+  color: orange;
+    box-shadow: 1px 1px 8px orange;
+    text-shadow: 1px 1px 3px red;
+    background: black;
+    border: 1px solid red;
+    font-weight: bold;
+    font-family: cursive;  
+}
+
+.txtBoxRedBlack{
+  color: red;
+    box-shadow: 0px 0px 10px red;
+    text-shadow: 1px 1px 3px darkslategrey, -1px 0px 1px #888686;
+    background: black;
+    border: 1px solid darkslategrey;
+    font-weight: bold;
+    font-family: cursive;
+    font-variant: petite-caps;
+}
+
+.txtBoxDarkPurple{
+  color: darkviolet;
+    box-shadow: 1px 1px 8px magenta;
+    text-shadow: 1px 1px 3px darkmagenta;
+    background: black;
+    border: 1px solid darkviolet;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.txtBoxBlueGreen{
+  cursor: progress;
+  color: #14df06;
+  box-shadow: 1px 1px 8px #0f8c05;
+  text-shadow: 1px 1px 3px darkblue;
+  background: black;
+  border: 1px solid darkblue;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+.txtBoxComic{
+  -webkit-text-stroke: 1px black;
+   color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+</style>
+
+<div id=trifoldDrawerView>
+  <section id=viewRow1 class='topFrameThinView' style="width:100%;height:0;z-index:100;text-align:center;font-family: verdana;">
+    <section class='franchiseTitleFrame'>
+      <section id=superTitleTxt style='font-size:0.7em; margin-top:0.1em; width:100%'>Dr~ACOZMO's</section>
+      <section id='seriesTitleTxt' style='display: flex; justify-content: center; font-size: 1.6em;text-shadow: 1px 1px 4px yellow, -1px -1px 4px #ec89f3;'>
+<style>
+        #anmTxtM1{ margin-top:0.8em; }
+        #anmTxtM2{ margin-top:0.7em;  }
+        #anmTxtM3{ margin-top:0.5em;  }
+        #anmTxtM4{ margin-top:0.4em; }
+        #anmTxtM5{ margin-top:0.35em;  }
+        #anmTxtM6{ margin-top:0.3em;  }
+        #anmTxtM7{ margin-top:0.2em;  } /*O*/
+        #anmTxtM8{ margin-top:0.3em;  }
+        #anmTxtM9{ margin-top:0.4em;  }
+        #anmTxtM10{ margin-top:0.5em; }
+        #anmTxtM11{ margin-top:0.6em; }
+        #anmTxtM12{ margin-top:0.7em; }
+        #anmTxtM13{ margin-top:0.8em; }
+</style>
+<span id=anmTxtM1></span><span id=anmTxtM2>A</span><span id=anmTxtM3>C</span><span id=anmTxtM4>O</span><span id=anmTxtM5>Z</span><span id=anmTxtM6>M</span><span id=anmTxtM7>O</span><span id=anmTxtM8>S</span><span id=anmTxtM9>T</span><span id=anmTxtM10>O</span><span id=anmTxtM11>R</span><span id=anmTxtM12>Y</span><span id=anmTxtM13>!</span>
+      </section>
+    </section>
+  </section>
+
+  <div id="viewRow2">
+          <canvas id=renderCanvas style='height:100%'></canvas>
+          <style>.mainSpan{margin:0 0.5em;display:flex;align-self: center; flex: 4;  }</style>
+          <style>.frameSpan{position:relative;display:flex;height:2em;line-height:1em;border-radius:10px;padding:0.2em;background:black;width:100%;}</style>
+          <footer id=canvasFooter style='width:80%;/*margin:-3em auto 0;*/z-index:100;font-family:verdana;display:none;/*background: black;border: 1px solid orange;border-radius:13px;*/height:2em;position:absolute;bottom:1em;width: 100%;'>
+          
+            <span id="backingSpan" style="position:relative;display:flex;height:2.4em;border-radius:12px;background:black;width:82%;max-width:612px;margin:0 auto;border: 1px solid steelblue;"></span>
+          
+          </footer>
+          <!-- <footer id=canvasFooter style='background:#252425;width:60%;margin:0 auto;border:1px solid orange;color: orange;border-radius: 13px;padding: 0.5em;padding-left: 1em; margin-top: -2.5em; z-index: 100; text-align: center;height: 1.4em; line-height: 1.4em;'><span>Dr~Acozmo!</span></footer> -->
+
+    <!-- <section id="playBtn1" class="steelNeonIconBtn" style='display:none;position:absolute;top:3.4em;right:0.1em;z-index:111'><i class="fa fa-play-circle"></i></section> -->
+    <section id="pauseBtn2" class="steelNeonIconBtn" style='display:none;position:absolute;top:1.8em;right:0.1em;z-index:111'><i class="fa fa-pause-circle"></i></section>
+
+
+  </div>
+  <div id="viewRow3">
+
+<section id=minMenuView style='display:flex;max-height:2em;flex:1;line-height:2em;align-content:space-between;margin:0 0.5em;padding-top:0.3em'>
+  <!-- <nav style="color: rgb(0, 0, 255); display: flex; max-height: 2em; flex: 1 1 0%;"> -->
+<style>
+.minMenuIcon{
+  color:steelblue; 
+    font-family: verdana;
+    font-size: 1em;
+    background-color: black;
+    border-radius: 20px;
+    /* height: 32px; */
+    height: 20px;
+    /*width: 10px;*/
+    cursor: default;
+    user-select: none;
+    outline: none;
+    text-align: center;
+    text-shadow: 0 1px 0 purple;
+    /* line-height: 30px; */
+    line-height: 23px;
+    color: steelblue;
+    cursor: pointer;
+    /* margin: 0 3em; */
+    padding-bottom: 0.3em;
+/*    margin: 1px 0.5em;
+    margin-top: 0.2em;*/
+}
+</style>
+    <section style="display:flex;justify-content:center;flex:1"><span id="navMovieBtn1" class="minMenuIcon btnSelector" 
+      style="padding:0 0.5em 0.2em;color:royalblue;"><i class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span></span></section>
+  <!-- <span style="display:flexbox; flex:1">MOVIE</span> -->
+    <section style="display:flex;justify-content:center;flex:1"><span id="navGameBtn1" class="minMenuIcon" 
+      style="padding:0 0.5em 0.2em;color:darkviolet;"><i class="fa fa-gamepad"></i><span style="margin-left: 0.5em;">GAME</span></span></section>
+  <!-- <span style="display:flexbox; flex:1">GAME</span> -->
+    <section style="display:flex;justify-content:center;flex:1"><span id="navBookBtn1" class="minMenuIcon" 
+      style="padding:0 0.5em 0.2em;color:forestgreen;"><i class="fa fa-book-open"></i><span style="margin-left: 0.5em;">BOOK</span></span></section>
+  <!-- <span style="display:flexbox; flex:1">BOOK</span> -->
+    <section style="display:flex;justify-content:center;flex:0.7"><span id="navAppBtn1" class="minMenuIcon" 
+      style="padding:0 0.5em 0.2em;color:#d26505;"><i class="fa fa-mobile"></i><span style="margin-left: 0.5em;">APP</span></span></section>
+    <section id="minMaxBtn1" class="minMenuIcon" style=" flex:0.2;z-index:100;"><i class="fa fa-window-maximize"></i></section>
+    <section id="minMaxBtn2" class="minMenuIcon" style=" flex:0.2;z-index:100; display:none; margin-top:-0.3em;"><i class="fa fa-window-minimize"></i></section>
+  <!-- <span style="display:flexbox; flex:1">APP</span> -->
+</section><!-- end minimized menu -->
+<!-- <section id=txtModeView style=' width: 100%;display: flex;flex-direction: column; height:100%;'> --> <!-- begin TXTMODEVIEW -->
+<!-- <section id=txtModeView style=' width: 100%; display:none; flex-direction: column; height:100%;'>  -->
+  <!-- begin TXTMODEVIEW -->
+     <!-- txtmode content -->
+<!-- ************************************************************************viewCTRLUI********************************** -->
+<style>
+/* #viewCtrl1{width:100%; border-radius: 13px;} */
+.txtWrapper{display:flex;height:100%;width:100%;flex-direction:column;}
+.txtHeader{display:flex;margin-top: 0.5em;}
+/* .gearBtn{flex:1;padding-left:0.8em;font-size:1.1em;color: var(--drkblue);cursor:pointer;z-index:100;} */
+.inlineTitle{display:flex; flex:20; justify-content:center;align-items: center;}
+.inlineTxtTtl1{font-size:1em; font-size:0.8em; font-family:verdana; color:var(--neonpurple);}
+.inlineTxtTtl2{float:right; font-size:0.8em; margin-top:0.1em; font-family:verdana; color:var(--neonpurple);}
+/* .minMaxBtn{flex:1;padding-right:0.8em;font-size:1.1em;text-align:right;color:var(--drkblue);cursor:pointer;z-index:100;} */
+/* .uiCtrlD{display:flex;} */
+/* .uiCtrlM{display:none;} */
+</style>
+<section id="viewCtrl1" class='typeTxt1' style='display:none'>
+  <section class=txtWrapper>
+    <header class=txtHeader>
+        <!-- <section class=gearBtn><span><i class="fa fa-film"></i></span></section> -->
+        <!-- <section class=gearBtn><span><i class="fa fa-cog"></i></span></section> -->
+        <section class=inlineTitle>
+            <span class=inlineTxtTtl1>~ Chapter 4 - Western Canyons</span>&nbsp;
+            <span class=inlineTxtTtl2>- 28 of 140 ~</span>
+        </section>
+        <!-- <section class=minMaxBtn><span><i class="fa fa-book"></i></span></section> -->
+        <!-- <section class=minMaxBtn><span><i class="fa fa-window-maximize"></i></span></section> -->
+    </header>
+    <article class=uiCtrlD style='border-top: solid 1px steelblue;padding:1em; flex-direction: column;'>
+     <!--******************************************************************DESKTOP-CTRLS*********************************************-->
+      <style>
+        .keyGrid{display:flex;}
+        .keyGrid p{flex:1; border-radius:13px;border:solid 1px steelblue;padding:0.1em 1em;margin:0.1em 0.2em;text-align:center;}
+        .keyGrid span{font-family:verdana;font-size:0.6em;}
+      </style>
+      <section class=keyGrid><p>Q<br><span>lookleft</span></p><p>W<br><span>fast</span></p><p>E<br><span>lookright</span></p></section>
+      <section class=keyGrid><p>A<br><span>left</span></p><p>S<br><span>slow</span></p><p>D<br><span>right</span></p></section>
+      <section class=keyGrid><p>Z<br><span>lookup</span></p><p>X<br><span>stop</span></p><p>C<br><span>lookdown</span></p></section>
+      <section class=keyGrid style="margin-top: 0.3em;padding: 0.3em 0; margin-bottom: 0.5em;"><p>space <span>trick!</span></p></section>
+    </article>
+    <article class=uiCtrlM style='height: 100%; user-select: none !important; touch-action: none !important;'>
+     <!--******************************************************************MOBILECTRLS*********************************************-->
+                <!--*********************** - DRAG-CONTROLLER -*************************************-->
+            <style>
+              /*#draggable, #draggable2 { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 0 10px 10px 0; }*/
+              #dragCtrl { 
+                width: 32px; height: 32px; 
+                position: absolute; 
+                top: 30px; left: 19px;
+            }
+              #dragCtrl img { width: 32px; height: 32px;     border-radius: 6px;}
+              #dragCtrl p { margin: 0; }
+              #dragCtrlFrame {
+                position: absolute;
+                background-color: rgba(119, 136, 153, 0.4);
+                border: steelblue 1px solid;
+                height: 88px;
+                border-top-right-radius: 22px;
+                border-top-left-radius: 22px;
+                border-bottom-left-radius: 22px;
+                border-bottom-right-radius: 22px;
+                width: 70px;
+              }
+              #camCtrl { 
+                width: 32px; height: 32px; 
+                position: absolute; 
+                top: 30px; left: 19px;
+            }
+              #camCtrl img { width: 32px; height: 32px;     border-radius: 6px;}
+              #camCtrl p { margin: 0; }
+              #camCtrlFrame {
+                position: absolute;
+                background-color: rgba(119, 136, 153, 0.4);
+                border: steelblue 1px solid;
+                height: 88px;
+                border-top-right-radius: 22px;
+                border-top-left-radius: 22px;
+                border-bottom-left-radius: 22px;
+                border-bottom-right-radius: 22px;
+                width: 70px;
+              }
+              </style>
+
+<style>
+.ctrlBtn{
+
+    font-family: cursive;
+    border-radius: 6px;
+    width: 100%;
+    background: #00111f;
+    text-shadow: 1px 1px 2px #b50303, 1px 1px 1px #dff905, -3px -3px 5px black;
+    font-weight: bold;
+    opacity: 0.9;
+    color: blue;
+    border-top: solid 1px steelblue;
+    border-left: solid 1px steelblue;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid #014a01;
+}
+</style>
+
+<section style='display:flex;width:100%;'>
+  <div style='flex:5;border:solid 1px steelblue;border-radius:13px;margin: 0 0.2em;height:8.5em'>
+
+
+<style>
+
+ #superTitleTxt{position:absolute; font-family:georgia; color:var(--drkblue); font-size: 0.3em; color: #030215; text-shadow: 1px 1px 1px steelblue, -1px -1px 1px white; }
+  .typeURLTXT{ font-family: impact, fantasy; color: var(--drkblue); font-style: normal; font-size: 1em; }
+  .typeMSGTXT{ font-family: impact, fantasy; color: var(--neongreen); font-style: normal; font-size: 1em; display:none;}
+  .typeSubTxt{ font-family: impact, fantasy; color: var(--neongreen); font-style: normal; font-size: 1em; }
+  .typeMission{ font-family: impact, fantasy; color: var(--neongreen); font-style: normal; font-size: 1em; }
+  .typeAction{ font-family: impact, fantasy; color: var(--neongreen); font-style: normal; font-size: 1em; }
+  .typeCinemo{ font-family: impact, fantasy; color: var(--neongreen); font-style: normal; font-size: 1em; }
+  .typeBio{ font-family: impact, fantasy; color: var(--neongreen); font-style: normal; font-size: 1em; }
+  .typeWarn{ font-family: impact, fantasy; color: var(--neongreen); font-style: normal; font-size: 1em; }
+  .typeMysteryTxt{ font-family: impact, fantasy; color: var(--neongreen); font-style: normal; font-size: 1em; }
+  .typeMsg{ font-family: impact, fantasy; color: var(--neongreen); font-style: normal; font-size: 1em; }
+
+  /*rename top and low to lft and rgt nav*/
+  #topNav{
+   z-index: 102;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 0.9em;
+    font-family: verdana;
+    font-size: 0.8em;
+ }
+  #lowNav{
+   z-index: 101;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 0.9em;
+    font-family: verdana;
+    font-size: 0.8em;
+ }
+#topNav a {
+  margin: 0px 0.5em;
+  cursor:pointer;
+  border-radius: 1em;
+  padding: 0.2em;
+}
+#lowNav a {
+  margin: 0px 0.5em;
+  cursor:pointer;
+}
+      .txtItem{
+        float: right;
+      }
+      .txtLink{
+        float: right;
+        text-decoration:underline;
+        cursor:pointer;
+      }
+
+</style>
+
+<style>
+
+#scrollDoc1 { min-height: 450px; line-height: 1.8;}
+.scrollBar1 {height:97%; overflow-y:scroll; background:#010111; border: 1px steelblue solid; border-radius:13px; padding:0.5em; }
+.scrollBar1::-webkit-scrollbar-track { background-color: #010213;  border-radius: 13px; }
+.scrollBar1::-webkit-scrollbar { width: 1.3em; }
+.scrollBar1::-webkit-scrollbar-thumb { background-color: #04223c; border-radius: 13px;
+  background-image: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0.6) 26%, transparent 26%, transparent 51%, rgba(255, 255, 255, -0.4) 51%, rgba(255, 255, 255, 0.6) 74%, transparent 74%, transparent);
+}
+#scrollDoc2 { min-height: 450px; }
+.scrollBar2 {height:97%; overflow-x:hidden; background:#010111; border: 1px steelblue solid; border-radius:13px; padding:0.5em; }
+/*.scrollBar2 {height:97%; overflow-x:scroll; background:#010111; border: 1px steelblue solid; border-radius:13px; padding:0.5em; }*/
+.scrollBar2::-webkit-scrollbar-track { background-color: #010213;  border-radius: 13px; }
+.scrollBar2::-webkit-scrollbar { width: 1.3em; }
+.scrollBar2::-webkit-scrollbar-thumb { background-color: #04223c; border-radius: 13px;
+  background-image: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0.6) 26%, transparent 26%, transparent 51%, rgba(255, 255, 255, -0.4) 51%, rgba(255, 255, 255, 0.6) 74%, transparent 74%, transparent);
+}
+
+
+/*#scrollMovieDoc1 { min-height: 450px; }*/
+.scrollMovieBar1 {height:97%; overflow-x:scroll; background:#010111; border: 1px steelblue solid; border-radius:13px; padding:0.5em; }
+.scrollMovieBar1::-webkit-scrollbar-track { background-color: #010213;  border-radius: 13px; }
+.scrollMovieBar1::-webkit-scrollbar { width: 1.3em; }
+.scrollMovieBar1::-webkit-scrollbar-thumb { background-color: #04223c; border-radius: 13px;
+  background-image: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0.6) 26%, transparent 26%, transparent 51%, rgba(255, 255, 255, -0.4) 51%, rgba(255, 255, 255, 0.6) 74%, transparent 74%, transparent);
+}
+
+
+
+.txtPicture{
+  width: 100%;
+  border-radius: 13px;
+  margin: 0.5em 0;
+}
+.typeTxt1{
+  font-family:verdana;
+  color:var(--bluetxt);
+}
+.btnSelector{ /* highlight menu btn selection*/
+box-shadow: 1px 1px 4px steelblue;
+}
+
+.playModeSelector{ /* highlight play btn selections: all, one, pause*/
+box-shadow: 0px 0px 6px lime ;
+}
+
+
+.sceneSelector{ /* highlight  scene txt selection */
+    box-shadow: 0px 0px 5px yellow !important;
+}
+
+</style>
+
+<!-- </style>
+ -->
+<!-- 
+<section id="mainTxt2" >
+    <header id="header">HEADERTXT</header>
+    <article id="gameTXTBox" class='mainScrollBox'> 
+
+   <p id="txtBit0" class="txtBubble txtBitz hero0" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+   <span>a1 1 one ahone en on.</span></p>
+   <p id="txtBit1" class="txtBubble txtBitz hero1" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+   <span class='rightAlignSpan'>b2 two too deaux 2</span></p>
+   <p id="txtBit2" class="txtBubble txtBitz hero2" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+   <span>c3 tres three tree 3</span></p>
+   <p id="txtBit3" class="txtBubble txtBitz hero3" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+   <span class='rightAlignSpan'>d4 four for flower 4</span></p>
+   <p id="txtBit4" class="txtBubble txtBitz hero4" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+   <span>5 five funf fiver 5</span></p>
+   <p id="txtBit5" class="txtBubble txtBitz hero5" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+   <span class='rightAlignSpan'>6 six sax swiss 6</span></p>
+   <p id="txtBit6" class="txtBubble txtBitz hero6" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+   <span>7 sebon seven sev 9</span></p>
+   <p id="txtBit7" class="txtBubble txtBitz hero7" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+   <span class='rightAlignSpan'>8 eight ate oats 8</span></p>
+   <p id="txtBit8" class="txtBubble txtBitz hero8" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+   <span>9 nine none nun 9</span></p>
+   <p id="txtBit9" class="txtBubble txtBitz hero9" style="">
+   <img class="bubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+   <span class='rightAlignSpan'>10 ten ten din den 10 double</span></p>
+
+    </article>
+    <footer id="userMSGCtrl2">~ double</footer>
+</section> -->
+
+  </div>
+  <div style='flex:1;min-width:4.5em;'>
+
+    <section style='display:flex;flex-direction:column;width:100%;height:100%;'>
+
+      <div style='flex:1;'>
+        <button id=ctrlBtn3 class='ctrlBtn'>JUMP!</button>
+      </div>
+
+      <div style='flex:4;border:solid 1px steelblue;border-radius:13px;margin: 0.1em 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;'>
+      
+
+        <div style='border:solid 1px steelblue;background:steelblue;opacity:0.9;border-radius:13px;height:50px;width:50px;
+          display:flex;
+          justify-content: center;
+          align-content: center;
+          align-items: center;'>
+
+                 <article id=camCtrlFrame>
+                    <div id=camCtrl class="ui-widget-content">
+                      <p><img src="./img/dragCtrl1.png"> </p>
+                    </div>
+                 </article>
+
+        </div>
+
+      </div>
+
+      <div style='flex:1;'>
+        <button id=ctrlBtn4 class='ctrlBtn'>FAST!</button>
+      </div>
+
+    </section>
+
+  </div>
+</section>
+
+    </article>
+  </section>
+</section> 
+<!-- ************************************************************************viewCTRLUI********************************** -->
+
+        <section id="idxView" class='scrollBar1 typeTxt1' style='display:none;width: 95%;margin: 0.8em auto;'> 
+
+            <article id="scrollDoc1">
+              <hr>
+                <span style='font-size:1em; font-family:verdana;'>~Series, epic: scene</span>
+                <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> supercozms </span>
+              <hr>
+
+              
+                <p id=epicMENUapp class='typeAction'><span><i class="fa fa-mobile"></i></span>&nbsp;&nbsp;<span>ACOSMICAPP:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUtitlescreenSEQ class='typeAction'><span><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;OrbyOrbot in</span><span class='txtLink'>ACOZMOBOTZ!</span></p>
+                <p id=epicMENUchapter1 class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>CHAPTER 1:&nbsp;&nbsp;</span><span class='txtLink'>Land on AlphaMoon!</span></p>
+                <p id=epicMENUacozmoscopeSEQ class='typeAction'><span><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;Enter the Acozmoscope</span><span class='txtLink'>ACOZMOSCOPE</span></p>
+                <p id=epicMENUvortexSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>SPACEVORTEX&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUorionSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Left of Orion&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUnebulaSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Purple Nebula&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUorbyIntroSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>OrbyOrbot!?!&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUspaceIonzGAM class='typeAction'><span><i class="fa fa-gamepad"></i></span>&nbsp;&nbsp;<span>SPACE~IONZ!&nbsp;&nbsp;</span><span class='txtLink'>COLLECT!</span></p>
+                <p id=epicMENUshowdownSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Showdown&nbsp;&nbsp;</span><span class='txtLink'>ZAPBOTZ!</span></p>
+                <p id=epicMENUpipeRideGAM class='typeAction'><span><i class="fa fa-gamepad"></i></span>&nbsp;&nbsp;<span>Surf Cosmos&nbsp;&nbsp;</span><span class='txtLink'>SPACEPIPE!</span></p>
+                <p id=epicMENUdrakbotSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Warning!&nbsp;&nbsp;</span><span class='txtLink'>DRAKBOT
+                  !</span></p>
+                <p id=epicMENUcrashSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUspacejunkSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUorbyriseupSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUchapter2 class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUscantrainSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUexploreGAM class='typeAction'><span><i class="fa fa-gamepad"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUchapter3 class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUconfront class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUarrest class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUescape class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUsunset class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUfinale class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUendchapter class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <p id=epicMENUcreditroll class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+              <hr>
+
+
+              <hr>
+                <span style='font-size:1em; font-family:verdana;'>~Series, epic: scene</span>
+                <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> supercozms </span>
+                <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> minicozms </span>
+                <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> neitherwurldz </span>
+              <hr>
+              <p id=playNowBtn1 class='typeAction'><span>GAME: &nbsp;&nbsp;<span><i class="fa fa-book-open"></i></span></span><span class='txtLink'>LEGEND!</span></p>
+              <p id=playNowBtn2 class='typeAction'><span>GAME: &nbsp;&nbsp;<span><i class="fa fa-gamepad"></i></span></span><span class='txtLink'>EXPLORE!</span></p>
+              <p id=movieNowBtn class='typeAction'><span>MOVIE: &nbsp;&nbsp;<span><i class="fa fa-video"></i></span></span><span class='txtLink'>WATCH MOVIE!</span></p>
+              <p id=adventureNowBtn class='typeAction'><span>ADVENTURE:&nbsp;&nbsp;<span><i class="fa fa-book-open"></i></span></span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+              <hr>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMO's</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOQUEST</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOBOTZ</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>on ACOZMO.net</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOCOZM</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>Cyber ACOZMOCOZM</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOCOA</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOGON</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOZON</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOZOA</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ANEOCOZMO</span></p>
+              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMONOVA</span></p>
+              <p class='typeAction'><span>SERIES:</span><span class='txtLink'>digital-cyber-cozm's</span></p>
+              <p class='typeAction'><span>ISSUE:</span><span class='txtLink'>ANOTHERCOZMO</span></p>
+              <p class='typeAction'><span>EPIC:</span><span class='txtLink'>ACOZMO.net!</span></p>
+              <p class='typeAction'><span>AGE:</span><span class='txtLink'>Age of Zawd.</span></p>
+              <p class='typeCinemo'><span>SECTOR:</span><span class='txtLink'>Zeta Oort Clouds</span></p>
+              <p><img class='txtPicture' src='./copyrightnetcinematics/img/hero/orbycover2.png'/></p>
+              <p class='typeAction'><span>EPISODE:</span><span class='txtLink'>SAVE~BETA~MOON!</span></p>
+              <p class='typeMission'><span>MISSION:</span><span class='txtLink'>...save BetaMoon</span></p>
+              <p class='typeAction'><span>ACTION:</span><span class='txtLink'>...land on BetaMoon</span></p>
+              <p class='typeCinemo'><span>STORY:</span><span class='txtLink'>BetaMoon Landing!</span></p>
+              <p class='typeAction'><span>QUEST:</span><span class='txtLink'>Find the lost ENERGEM!</span></p>
+              <p class='typeAction'><span>SCENE:</span><span class='txtLink'>Land on BETA~MOON!</span></p>
+              <p class='typeAction'><span>HERO:</span><span class='txtLink'>TXTLINK</span></p>
+              <i class='typeSubTxt'>Follow online in Zeta~OortCloud!</i>
+              <hr style='box-shadow: 1px 1px 5px steelblue;'>
+              <i class='typeSubTxt'>Origin!Story</i>
+              <p>1960's Earth - Alpha~OortCloud. <hr style='box-shadow: 1px 1px 3px yellow;'>Dr. Acozmo connects to a far-distant-world using quantum enganglement of photons. "We entagled Alpha to Zeta~OortCloud"-DR.ACOZMO.  Then is kids digitize them to the web 50 years later! <hr style='box-shadow: 1px 1px 3px  #f307f3;;'> "No one believes it is an actual far-distant-world." the twinz. <br>"We made contact on the very first signal..."<br>"... it was OrbyOrbot!" - DR.ACOZMO
+              </p>  
+              <p><hr style='box-shadow: 1px 1px 3px  #f307f3;;'>Enter ANIMOTOONZ!</p>
+              <hr style='box-shadow: 1px 1px 15px white;'>
+              <p>Everything in existance vibrates. Dr. Acozmo digitizes vibrations from photons and gravity waves and puts them on the internet.</p>
+              <p>Using 1960's Television Antenna and a rotary phone he dials up a distant Acosmocozm and renders it to the 3DWeb.</p>
+              <p>A kagillion to discover.</p> 
+              <p class='typeBio'>
+                <article>
+                    <header>
+                        <i>~BIO:</i>
+                        <span>Orby Or Bot<span>
+                        <i> - The Ordinary Robot</i>
+                    </header>  
+                        <section>
+                            <hr>
+                            <span>~ Orby Learns to Fly ~</span>
+                            <hr>
+                            Orby practices surfing on his mothers ironing board in the garage. 
+                            He falls and bumps his head, and the metal board crashes into a stack of microwave ovens his dad used for melting elements. Technicolor stars shoot out! Blue and gold electro-chemical-bursts through broken glass!
+                            The ironing board is ionized, and gold positronz stream in, as it glows with a hum! 
+                            The electric plug explodes!  With quick thinking, Orby punches the "Cancel" button. 
+                            And the positively ionized ironing board drops to a charred smoldering lump.
+                            Weeks later, Orby is looking for a science-fair project.
+                            He makes a space-kite because he wants to fly like his dad, who flies in space.
+                            Orby sneaks into the garage late at night. In the dark, he summons the courage to press the "quick cook button". The microwave springs to life. But without the golden positronz as before, the SpaceBoard hovers for the first time!
+                            <hr>
+                            <TXT Dr.Acozmo> 
+                            Free of negatronz, the explosion reversed the microwave-field and will only push out positronz! 
+                            Which is how the SpaceBoard floats. With different energem SpaceDust (positronz, negatronz) - the board rides differently. Faster or higher with different colors and particle waves.
+                            <hr>
+                            DO NOT TRY THIS AT HOME. IT WONT WORK. AND ALSO BECAUSE... like the ironing board - Orby is made of aminium.
+                            Which the inverted microwave only works to lighten the weight of aminium, not a hooman! 
+                            <hr>
+                            Orby takes one step onto the SpaceBoard. His foot touches, and in a glow of positronz - he is slowly ionized!
+                            Orby might be electrocuted! But, he scans his clampy and glowing robot hands. 
+                            He is ok! So, with his second flat foot, he steps up onto the SpaceBoard! 
+                            <AUD tada></AUD>
+                            <PIC Orby strikes a pose>
+                            <AUD adventure music>
+                              He opens the garage with a green laser. Then slowly down the driveway he hovers. Until he loses his balance and crashes into the garbage cans.
+                            <hr>
+                            <i>~Orby Learns to Fly...</i>
+                            <hr>
+                        </section>
+                    </article>
+              </p>
+              <p class='typeWarn'>WARN! Avoid ZapBotz!</p>
+              <p class='typeBio'><header><span>BIO!</span><i>ZapBotz!</i></header>
+                <section class='typeMysteryTxt'>- Where do they come from?</section>
+                <section class='typeMysteryTxt'>- What are they doing?</section>
+              </p>
+            </article>
+        </section><!-- end idxView -->
+
+
+        <section id=heroView class="typeTxt1" style='display:none'> <!-- begin heroView -->
+
+          <section id=txtFlexFrame> <!-- begin txtFlexFrame ... -->
+
+            <article id=sectionScrollBoxFrame>
+
+<style>
+#horizontalScrollBox {
+  /* center in parent*/
+/*  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);*/
+      border-radius: 13px;
+  
+  display: flex;
+  align-items:center;
+      overflow-x: scroll;
+    overflow-y: hidden;
+  height:100%;
+  -webkit-overflow-scrolling: touch; /*FIX ios?*/
+}
+#horizontalScrollBox::-webkit-scrollbar { height: 1em; }
+#horizontalScrollBox::-webkit-scrollbar-track {
+ background-color: #010213;  border-radius: 13px; 
+}
+#horizontalScrollBox::-webkit-scrollbar-thumb {
+  background: #2aa3d2 ;
+  background: -moz-linear-gradient(top, #2aa3d2  0%, #3a0a3e  50%, #445156 100%);
+  background: -webkit-gradient(linear, top, bottom, color-stop(0%, #445156 ), color-stop(50%, #3a0a3e ), color-stop(100%, #445156));
+  background: -webkit-linear-gradient(top, #2aa3d2  0%, #3a0a3e  50%, #445156 100%);
+  background: -o-linear-gradient(top, #2aa3d2  0%, #3a0a3e  50%, #445156 100%);
+  background: -ms-linear-gradient(top, #2aa3d2  0%, #3a0a3e  50%, #445156 100%);
+  background: linear-gradient(to bottom, #2aa3d2 0%, #3a0a3e 50%, #445156 100%);
+  border-radius: 5px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2aa3d2 ', endColorstr='#445156', GradientType=1);
+}
+#horizontalScrollBox:hover{
+  cursor: w-resize;
+}
+#horizontalScrollFrame {
+      padding-left:0.5em;
+      padding-right:0.5em;
+    border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  /*-webkit-overflow-scrolling: touch;*/ /*FIX ios?*/
+}
+.verticalScrollBox {
+      width: 15.5em;
+border: 1px solid var(--purpleborder);
+    border-radius: 13px;
+    padding: 0.8em; 
+    overflow-y: scroll;
+    align-self: stretch;
+margin-right: 0.5em;
+    height: 20em;
+    line-height:2; 
+}
+.verticalScrollBox:hover{  cursor: all-scroll; }
+.verticalScrollBox::-webkit-scrollbar { width: 0.4em; } /*0.6em*/
+.verticalScrollBox::-webkit-scrollbar-track {
+ background-color: #010213;  border-radius: 13px; 
+}
+.verticalScrollBox::-webkit-scrollbar-thumb {
+  background: #2a7998 ;
+  background: -moz-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: -webkit-gradient(linear, left, right, color-stop(0%, #445156 ), color-stop(50%, #3a0a3e ), color-stop(100%, #445156));
+  background: -webkit-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: -o-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: -ms-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: linear-gradient(to right, #2a7998 0%, #3a0a3e 50%, #445156 100%);
+  border-radius: 5px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a7998 ', endColorstr='#445156', GradientType=1);
+}
+.verticalScrollBox::-webkit-scrollbar-thumb:hover {
+  cursor:n-resize; 
+}
+.verticalScrollBox:nth-child(4n-3) { background-color:var(--drkslate); }
+.verticalScrollBox:nth-child(4n-2) { background-color:var(--drknavy); }
+.verticalScrollBox:nth-child(4n-1) { background-color:var(--drkpurple); }
+.verticalScrollBox:nth-child(4n) { background-color:var(--drkgreen); }
+.verticalScrollBox:last-of-type {
+  margin-right: 0;
+}
+
+
+</style>
+
+<section id=txtWrapper style='display:flex;height:100%;flex-direction:column;'>
+  <header id=txtHeader style='display:flex;margin-top: 0.5em;'>
+      <!-- <style>#gearCtrlBtnD{flex:1;padding-left:0.8em;font-size:1.1em;color: var(--drkblue);cursor:pointer;z-index:100;}</style> -->
+      <!-- <section id=gearCtrlBtnD class="gearBtn"><span><i class="fa fa-cog"></i></span></section> -->
+
+      <section id=inlineTitle style='display:flex; flex:1; justify-content:center; margin: 0.5em;'>
+        <span id=viewTxtTitle1 style='font-size:1em; font-size:0.8em; font-family:verdana; color:var(--neonpurple);'>Chapter 1</span>
+        <span id=viewTxtTitle2 style='float:right; font-size:0.8em; margin-top:0.1em; font-family:verdana; color:var(--neonpurple);'>~ZapBotz on AlphaMoon!?!</span>
+        <!-- <span id=viewTxtTitle1 style='font-size:1em; font-size:0.8em; font-family:verdana; color:var(--neonpurple);'>Chapter 2</span> -->
+          <!-- <span id=viewTxtTitle2 style='float:right; font-size:0.8em; margin-top:0.1em; font-family:verdana; color:var(--neonpurple);'>~SouthernDunes</span> -->
+      </section>
+
+      <!-- <style>#minMaxBtnD{flex:1;padding-right:0.8em;font-size:1.1em;text-align:right;color:var(--drkblue);cursor:pointer;z-index:100;}</style> -->
+      <!-- <section id=minMaxBtnD class=minMaxBtn><span><i class="fa fa-window-maximize"></i></span></section> -->
+  </header>
+
+<div id="horizontalScrollBox">
+
+  <div id="horizontalScrollFrame" class=precisionScrollFrame>
+    <div class="verticalScrollBox precisionScrollItem">
+      <div class="verticalScrollFrame">
+                <section id=txtBox1 class=txtBox style='background:var(--drkslate);'>
+                    <p>OrbyOrBot<br><img class='txtPicture' src='./copyrightnetcinematics/img/orby1.png'/>Orby the "Ordinary" Robot.</p>
+                    <p>Orby is busted for free-surfing inner-space.</p><p> During trial, in an catacysmic emergency, he is asked by Judge-Zawd, to investigate a tragic spacetrain crash. In preparation for the death of his brother, and the soon to be Emperor~Zawd.
+                    </p>
+                    <p><img class='txtPicture' src='./copyrightnetcinematics/img/hero/orbywish2.png'/>Orby makes a wish to fly~free,<br>...like his dad.</p>
+                    <p><img class='txtPicture' src='./copyrightnetcinematics/img/dracozmo3.png' style="height: 18em;"/>Dr.Acozmo invents ways to see far off exo-planets by entangled photons, and then renders them to his AcozmoSpace as Video, Game, or Book, Apps.<br></p>
+                    <p><img class='txtPicture' src='./copyrightnetcinematics/img/drbecky3.png'/>Dr.Becky assists Dr.Acozmo in exploring distant exo-planets.<br>Her precision in recording entangled electrons is a gift and a great benefit to the entertainment of all humanity.</p>
+                </section>
+      </div>
+    </div>
+    <div class="verticalScrollBox precisionScrollItem">
+      <div class="verticalScrollFrame">
+                <section id=txtBox2 class=txtBox style='background:var(--drknavy);'>
+                    <p>QUEST:<br><img class='txtPicture' src='./copyrightnetcinematics/img/hero/orbycover2.png'/>SpaceTrain Crash!</p>
+                    <p>Find SpaceTrain crash. Where is Zawd? Did Zawd survive? ZapBotz on AlphaMoon?!? Who controls the ZapBotz? 
+                      Is it Zawd? Is it DarkBot? Who is PrinzDark? 
+                    </p>
+                </section>
+      </div>
+    </div>
+    <div class="verticalScrollBox precisionScrollItem">
+      <div class="verticalScrollFrame">
+                <section id=txtBox3 class=txtBox style='background:var(--drkpurple);'></section>
+      </div>
+    </div>
+    <div class="verticalScrollBox precisionScrollItem">
+      <div class="verticalScrollFrame">
+                <section id=txtBox4 class=txtBox style='background:var(--drkgreen);'></section>
+      </div>
+    </div>
+    <div class="verticalScrollBox precisionScrollItem">
+      <div class="verticalScrollFrame">
+        <p>Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit amet leo consequat posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vel ante a orci tempus eleifend ut et magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim. Morbi a enim in magna semper bibendum. Etiam scelerisque, nunc ac egestas consequat, odio nibh euismod nulla, eget auctor orci nibh vel nisi. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis consequat. Vivamus id mollis quam. Morbi ac commodo nulla. In condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam.</p>
+        <p>Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis consequat. Vivamus id mollis quam. Morbi ac commodo nulla. In condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam.</p>
+        <p>Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam.</p>
+      </div>
+    </div>
+    <div class="verticalScrollBox precisionScrollItem">
+      <div class="verticalScrollFrame">
+        <p>Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis consequat. Vivamus id mollis quam. Morbi ac commodo nulla. In condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam.</p>
+                <p>Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam.</p>
+      </div>
+    </div>
+    <div class="verticalScrollBox precisionScrollItem">
+      <div class="verticalScrollFrame">
+      <p>Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien ut nibh. Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam.</p>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <footer style='display:flex;width:100%;'>
+      <style>#leftTxtBtn{display:flex;flex:1;padding-left:0.8em; font-size:1.5em;color: var(--drkblue);cursor:pointer;z-index:110;}</style>
+      <section id=leftTxtBtn><span><i class="fa fa-caret-left"></i></span></section>
+
+      <section id=inlineSubTitle style='display:flex; flex:20; justify-content:space-evenly; align-self: center;'>
+          <span id=viewTxtSubTitle1 style='font-size:0.8em; font-family:verdana; color:var(--neonpurple);'>OrbyOrbot ~ </span>
+          <span id=viewTxtSubTitle2 style='float:right; font-size:0.8em; margin-top:0.1em; font-family:verdana; color:var(--neonpurple);'>4 of 14, 1 of 10</span>
+      </section>
+
+      <style>#rightTxtBtn{flex:1;padding-right:0.8em;font-size:1.5em;text-align:right;color:var(--drkblue);cursor:pointer;z-index:110;}</style>
+      <section id=rightTxtBtn><span><i class="fa fa-caret-right"></i></span></section>
+  </footer>
+
+</section>
+
+            </article> <!-- not end-->
+
+          </section>  <!-- not end -->
+
+        </section> <!-- end heroView --> 
+
+        <section id=questView class="scrollBar2 typeTxt1" style='display:none;margin:1em;'>
+          <article id="scrollDoc2">
+            <hr>
+              <span style='font-size:1em; font-family:verdana;'>~quest</span>
+              <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'>spacetrain crash</span>
+            <hr>
+
+            Purpose: Take a look through the Acozmoscope!
+
+
+            Welcome to the worlds first: movie, game, book, app. mogo  Acozmogambo!
+
+            NetCinematics first production. 
+
+            We wanted to tell a story that all readers would want to read. Telling it in a way that every human can access, and thats why we created a platform for
+
+            every person to be able to make their own adventures. 
+
+            <i class='typeSubTxt'>Follow online in ~ZetaOortCloud!</i>
+            <p class='typeAction'><span>EPIC:</span><span class='txtItem'>ACOZMO.net!</span></p>
+            <p class='typeAction'><span>SERIES:</span><span class='txtItem'>ACOZMOBOTZ!</span></p>
+            <p class='typeAction'><span>AGE:</span><span class='txtItem'>Age of Zawd.</span></p>
+            <p class='typeAction'><span>EPISODE:</span><span class='txtItem'>SAVE~BETA~MOON!</span></p>
+            <p class='typeMission'><span>MISSION:</span><span class='txtItem'>...save BetaMoon</span></p>
+            <p class='typeAction'><span>ACTION:</span><span class='txtItem'>...land on BetaMoon</span></p>
+            <p class='typeCinemo'><span>STORY:</span><span class='txtItem'>BetaMoon Landing!</span></p>
+            <p class='typeAction'><span>QUEST:</span><span class='txtItem'>Find the lost ENERGEM!</span></p>
+            <p class='typeAction'><span>SCENE:</span><span class='txtItem'>Land on BETA~MOON!</span></p>
+
+
+
+
+
+
+
+          </article>
+        </section>
+
+        <section id="bookModeView" class=typeTxt1 style='display:none'>
+          <article>
+            <hr>
+              <span style='font-size:1em; font-family:verdana;'>~adventure</span>
+              <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'>Save BetaMoon!</span>
+            <hr>
+
+            <p class='typeWarn'>WARN! Avoid ZapBotz!</p>
+            <p class='typeBio'><header><span>BIO!</span><i>ZapBotz!</i></header>
+              <section class='typeMysteryTxt'>- Where do they come from?</section>
+              <section class='typeMysteryTxt'>- What are they doing?</section>
+            </p>
+        </section> 
+
+      </section> <!-- end epicview content -->
+
+<!-- </section>  -->
+<!-- end TXTMODEVIEW -->
+<!-- <section id=gameModeView style='display:flex; width: 100%;height: 71%;flex:2'> -->
+<section id=gameModeView style='display:none; width: 100%;height: 71%;flex:2'>
+    <div id="ctrlcol1">
+
+<!--*********************************--DRAGCTRL-********************************-->
+<style>
+/* todo */
+#dragLftCtrl, #dragRgtCtrl {
+    height: 1em;
+    width: 1em;
+  border-radius: 13px;
+  touch-action: none;
+  user-select: none;
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+#dragLftCtrl img, #dragRgtCtrl img{
+  width: 2em; height: 2em;     border-radius: 6px;
+}
+
+</style>
+
+    <section id=dragFrame1 style="display:flex;flex-direction:column;width:100%;height:100%;background-color: #022b4c; border-radius: 13px;">
+      <div style="flex:4;margin: 0.1em 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;">
+        <div id=dragPad1 style="border:solid 1px steelblue;background:rgba(119, 136, 153, 0.4);opacity:0.9;border-radius:13px;height:50px;width:50px;margin:1.5em 0; box-shadow: 1px 1px 15px #010d17;
+          display:flex;
+          justify-content: center;
+          align-content: center;
+          align-items: center;">
+                 <article class="dragCtrlFrame">
+                    <div id="dragLftCtrl" class="draggable" data-x="-7" data-y="-7" style="transform: translate(-7px, -7px);">
+                       <p><img src="./img/dragCtrl1.png"> </p>
+                    </div>
+                 </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id=lftGameLabel style='color:steelblue; font-size: 0.8em;  margin-top: -1.6em;  text-align: center;'><i class="fa fa-arrows-alt"></i></section>
+
+
+    </div> <!--end ctrlcol1-->
+
+    <div id="ctrlcol2">
+
+      <!-- start *************************************** TXT MAIN -->
+<style>
+
+
+#mainTxt {
+    display: flex;
+    flex-direction: column;
+    height: 100%;    
+    width: 100%;
+}
+#mainTxtHeader {
+    display:none;
+    /*font-family: arial;*/
+/*background: steelblue;*/
+    /*z-index: 100;*/
+    /*font-size: 0.8em;*/
+    /*padding: 0.3em;*/
+    /*border: 1px solid purple;*/
+    /*padding-left: 1em;*/
+    /*color: #271438;*/
+
+
+    font-family: arial; 
+    background-color: #191818;
+    color: orange;
+    font-size: 0.8em;
+    /*padding-left: 0.5em;*/
+    padding: 0.3em;
+    padding-left: 1em;
+    border-radius: 10px;
+    /*border-radius: 13px;*/
+    margin: 0.3em 0.5em;
+    margin-bottom: -2em;
+    /*margin: 0 0.6em;*/
+
+    /*margin-top: -1em;*/
+    /*margin-bottom: 0.3em;*/
+    border: 1px solid orange;
+    
+    z-index: 100;
+
+
+
+
+}
+#mainTxt article {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    min-height: 0px;
+}
+
+#mainTxtFooter {
+/*.showUserMSG {*/
+    display:none;
+    /*opacity:0;*/
+    /*display: flex;*/ 
+    font-family: arial; 
+    background-color: #191818;
+    color: orange;
+    font-size: 0.8em;
+    /*padding-left: 0.5em;*/
+    padding: 0.3em;
+    padding-left: 1em;
+    border-radius: 10px;
+    margin: 0 0.6em;
+
+    margin-top: -1em;
+    margin-bottom: 0.3em;
+    border: 1px solid orange;
+    
+    z-index: 100;
+
+
+/*background: steelblue;*/
+    /*border-radius: 10px;*/
+    /*margin: 0.3em 0.5em;*/
+    /*margin-bottom: -2em;*/
+
+    /*z-index: 100;*/
+    /*font-size: 0.8em;*/
+    /*border: 1px solid purple;*/
+    /*color: #271438;*/
+
+
+
+
+}
+/*.hideUserMSG{
+  display: none !important;
+
+}*/
+#gameTXTBox{
+      font-family: cursive;
+    padding: 0.2em 0.5em;
+    height: 26.1034em;
+    width: 88%;
+    overflow-x: hidden;
+    /*overflow-x: auto;*/
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0.2em auto;
+}
+.txtBubble{
+  display: flex;
+  align-items: center;
+  padding:0.1em;
+  margin-bottom:0.5em;
+}
+.txtBubble span{
+  margin-left:1em; /*0.3em;*/
+}
+.bubbleLogo{
+  width: 2em;
+  border-radius: 13px;
+}
+.rightAlignSpan{
+  width:100%; text-align:right; margin-right: 1em;
+}
+.mainScrollBox {
+      width: 15.5em;
+border: 1px solid var(--purpleborder);
+    border-radius: 13px;
+    padding: 0.8em; 
+    overflow-y: scroll;
+    overflow-x: hidden;
+    align-self: stretch;
+margin-right: 0.5em;
+    height: 20em;
+}
+.mainScrollBox:hover{  cursor: all-scroll; }
+.mainScrollBox::-webkit-scrollbar { width: 0.8em; } /*0.6em*/
+.mainScrollBox::-webkit-scrollbar-track {
+ background-color: #010213;  border-radius: 13px; 
+}
+.mainScrollBox::-webkit-scrollbar-thumb {
+  background: #2a7998 ;
+  background: -moz-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: -webkit-gradient(linear, left, right, color-stop(0%, #445156 ), color-stop(50%, #3a0a3e ), color-stop(100%, #445156));
+  background: -webkit-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: -o-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: -ms-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: linear-gradient(to right, #2a7998 0%, #3a0a3e 50%, #445156 100%);
+  border-radius: 5px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a7998 ', endColorstr='#445156', GradientType=1);
+}
+.mainScrollBox::-webkit-scrollbar-thumb:hover {
+  cursor:n-resize; 
+}
+.mainScrollBox:nth-child(4n-3) { background-color:var(--drkslate); }
+.mainScrollBox:nth-child(4n-2) { background-color:var(--drknavy); }
+.mainScrollBox:nth-child(4n-1) { background-color:var(--drkpurple); }
+.mainScrollBox:nth-child(4n) { background-color:var(--drkgreen); }
+.mainScrollBox:last-of-type {  margin-right: 0; }
+
+</style>
+
+<section id="mainTxt" style='border: 1px solid purple; border-radius: 13px;' >
+    <!-- <header id="mainTxtHeader">HEADERTXT</header> -->
+    <article id="gameTXTBox" class='mainScrollBox'>
+
+
+        <!--dynamic-content-->
+
+    </article>
+    <!-- <section id=mainTxtFooter>~</section> -->
+</section><!-- end TXT MAIN -->
+
+    </div><!--END ctrl col 2-->
+    <div id="ctrlcol3">
+
+
+    <style>.camSelector{ /* highlight  scene txt selection */
+        box-shadow: 0px 0px 5px yellow !important;
+    }
+    </style>
+
+<!--     <nav style='display: flex; margin-bottom: -32px; z-index: 100;'>
+      <button id='camBtn1' class='camSelector' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-user"></i></button>
+      <button id='camBtn2' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-eye"></i></button>
+      <button id='camBtn3' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-asterisk"></i></button>
+    </nav>  
+ -->
+    <section id=dragFrame2 style="display:flex;flex-direction:column;width:100%;height:100%;background-color: #022b4c; border-radius: 13px;
+    align-self: center;">
+      <div id=dragCore2 style="flex:4;margin: 0.1em 0; display: flex; align-items: center; justify-content: center;">
+        <div id=dragPad2 style="border:solid 1px steelblue;background:rgba(119, 136, 153, 0.4);opacity:0.9;border-radius:13px;height:50px;width:50px;margin:1.5em 0;box-shadow: 1px 1px 15px #010d17;
+          display:flex; justify-content: center; align-content: center; align-items: center;">
+                 <article class="dragCtrlFrame">
+                    <div id="dragRgtCtrl" class="draggableCam" data-x="-7" data-y="-7" style="transform: translate(-7px, -7px);">
+                       <p><img src="./img/dragCtrl1.png"> </p>
+                    </div>
+                 </article>
+        </div>
+      </div> <!-- end drag core -->
+    </section><!-- end drag ctrl -->
+    <!--END ctrl col 3--> 
+    <nav style='display: flex; margin-bottom:-2em; z-index: 100;'>
+      <button id='camBtn1' class='camSelector' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-user"></i></button>
+      <button id='camBtn2' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-eye"></i></button>
+      <button id='camBtn3' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-asterisk"></i></button>
+    </nav>  
+
+    <!-- <section id=rgtGameLabel style='color:steelblue; font-size: 1em;  margin-top: -1.5em;  text-align: center;'><i class="fa fa-eye"></i></section> -->
+</div>
+</section> <!-- end gameModeView -->
+
+<!-- *************************************************-MOVIE-MODE-VIEW-******************************************************* -->
+
+<!-- <section id=gameModeView style='display:flex; width: 100%;height: 71%;flex:2'> -->
+<section id=movieModeView style='display:none; width:97%;height:66%;flex:2;margin:0 auto;'>
+    <div id="movieModeLft" style="flex-direction:column;display:flex;justify-content:center;flex: 1;max-width: 2.3em;margin-right: 0.2em;">
+        <button id="playAllBtn1" style="width:100%" class="steelNeonIconBtn"><i class="fa fa-play-circle"></i></button>
+        <span style="color:white;font-size:0.5em;text-shadow:1px 1px 1px steelblue;font-family:verdana;margin:0.3em auto;text-align:center;
+          width: 50%;">PLAY ALL</span>
+    </div>  <!--end movieModeLft-->
+<!-- 
+    <nav style='display: flex; height:100%; z-index: 100; flex-direction: column;'>
+      <button id='camBtn1' class='camSelector' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;    padding: 0 0.8em;
+    font-size: 0.7em;'><i class="fa fa-play"></i></button>
+      <button id='camBtn2' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;    padding: 0 0.8em;
+    font-size: 0.7em;'><i class="fa fa-pause"></i></button>
+      <button id='camBtn3' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;    padding: 0 0.8em;
+    font-size: 0.7em;'><i class="fa fa-stop"></i></button> -->
+    <!-- </nav>   -->
+    <div id="movieModeCenter" style="width:100%">
+
+      <!-- start *************************************** TXT MAIN -->
+<style>
+/* TODO DUPLICATED CSS #2 */
+#movieMode {
+    display: flex;
+    flex-direction: column;
+    height: 100%;    
+    width: 100%;
+}
+#movieModeHeader {
+    /*display:none;*/
+    /*font-family: arial;*/
+/*background: steelblue;*/
+    /*z-index: 100;*/
+    /*font-size: 0.8em;*/
+    /*padding: 0.3em;*/
+    /*border: 1px solid purple;*/
+    /*padding-left: 1em;*/
+    /*color: #271438;*/
+
+
+    font-family: arial; 
+    background-color: #191818;
+    color: orange;
+    /*font-size: 0.8em;*/
+    /*padding-left: 0.5em;*/
+    padding: 0.3em;
+    padding-left: 1em;
+    border-radius: 10px;
+    /*border-radius: 13px;*/
+    margin: 0.3em 0.5em;
+    margin-bottom: -2em;
+    /*margin: 0 0.6em;*/
+
+    /*margin-top: -1em;*/
+    /*margin-bottom: 0.3em;*/
+    border: 1px solid orange;
+    
+    z-index: 100;
+
+    font-size: 2em;
+    text-align: center;
+
+
+}
+#movieMode article {
+    flex: 1 1 auto;
+    /*overflow-y: auto;*/
+    overflow-y: scroll;
+    min-height: 0px;
+}
+
+#movieModeFooter {
+/*.showUserMSG {*/
+    /*display:none;*/
+    /*opacity:0;*/
+    /*display: flex;*/ 
+    font-family: arial; 
+    background-color: #191818;
+    color: orange;
+    font-size: 0.8em;
+    /*padding-left: 0.5em;*/
+    padding: 0.3em;
+    padding-left: 1em;
+    border-radius: 10px;
+    margin: 0 0.6em;
+
+    margin-top: -1em;
+    margin-bottom: 0.3em;
+    border: 1px solid orange;
+    
+    z-index: 100;
+
+    font-size: 2em;
+    text-align: center;
+
+/*background: steelblue;*/
+    /*border-radius: 10px;*/
+    /*margin: 0.3em 0.5em;*/
+    /*margin-bottom: -2em;*/
+
+    /*z-index: 100;*/
+    /*font-size: 0.8em;*/
+    /*border: 1px solid purple;*/
+    /*color: #271438;*/
+
+
+
+
+}
+/*.hideUserMSG{
+  display: none !important;
+
+}*/
+#movieModeDoc{
+      font-family: cursive;
+    padding: 0.2em 0.5em;
+    height: 26.1034em;
+    /*width: 88%;*/
+    width: 95%;
+    overflow-x: auto;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0.2em auto;
+    /*margin-top: 0.3em; no good causes lines to not show*/
+}
+.movieModeBubble{
+  display: flex;
+  align-items: center;
+  padding:0.1em;
+  /*margin-bottom:0.5em;*/
+  margin-bottom:0.2em;
+}
+/*.movieModeBubble span{
+  margin-left:1em;
+}*/
+.heroBubbleLogo{
+  width: 2em;
+  border-radius: 22px; /*round*/
+  /*border-radius: 13px;*/
+}
+.heroRightAlignSpan{
+  width:100%; 
+  text-align:right;  
+  /*margin-right: 0.5em; */
+  /*margin-right: 1em;*/
+}
+.heroScrollBox {
+      width: 15.5em;
+border: 1px solid var(--purpleborder);
+    border-radius: 13px;
+    padding: 0.8em; 
+    overflow-y: scroll;
+    align-self: stretch;
+margin-right: 0.5em;
+    height: 20em;
+}
+.heroScrollBox:hover{  cursor: all-scroll; }
+.heroScrollBox::-webkit-scrollbar { width: 0.8em; } /*0.6em*/
+.heroScrollBox::-webkit-scrollbar-track {
+ background-color: #010213;  border-radius: 13px; 
+}
+.heroScrollBox::-webkit-scrollbar-thumb {
+  background: #2a7998 ;
+  background: -moz-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: -webkit-gradient(linear, left, right, color-stop(0%, #445156 ), color-stop(50%, #3a0a3e ), color-stop(100%, #445156));
+  background: -webkit-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: -o-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: -ms-linear-gradient(left, #2a7998  0%, #3a0a3e  50%, #445156 100%);
+  background: linear-gradient(to right, #2a7998 0%, #3a0a3e 50%, #445156 100%);
+  border-radius: 5px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a7998 ', endColorstr='#445156', GradientType=1);
+}
+.heroScrollBox::-webkit-scrollbar-thumb:hover {
+  cursor:n-resize; 
+}
+.heroScrollBox:nth-child(4n-3) { background-color:var(--drkslate); }
+.heroScrollBox:nth-child(4n-2) { background-color:var(--drknavy); }
+.heroScrollBox:nth-child(4n-1) { background-color:var(--drkpurple); }
+.heroScrollBox:nth-child(4n) { background-color:var(--drkgreen); }
+.heroScrollBox:last-of-type {  margin-right: 0; }
+
+</style>
+<!-- TODO change movieMode to movieModeScrollFrame -->
+<section id="movieMode" style='border: 1px solid purple; border-radius: 13px;' >
+  <!-- <header id="movieModeHeader" style='display:none;'>HEADERTXT</header> -->
+  <article id="movieModeDoc" class='heroScrollBox'> <!-- class='scrollBar1' > -->
+
+
+        <!--dynamic-content-->
+
+
+<!-- 
+    <p id="txtBit00x" class="movieModeBubble txtBitz hero0" style="">
+      <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/azod1.png" alt="logo" aria-label="logo" style="">
+      <span>a1 1 one ahone en on.</span>
+    </p>
+    <p id="txtBit0x" class="movieModeBubble txtBitz hero0" style="">
+      <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+      <span>a1 1 one ahone en on.</span>
+    </p>
+     <p id="txtBit1x" class="movieModeBubble txtBitz hero1" style="">
+      <span class='heroRightAlignSpan'>b2 two too deaux 2</span>
+      <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+    </p>
+     <p id="txtBit2x" class="movieModeBubble txtBitz hero1" style="">
+      <span class='heroRightAlignSpan'>b2 two too deaux 2</span>
+      <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/dracozmo3.png" alt="logo" aria-label="logo" style="">
+    </p>
+     <p id="txtBit3x" class="movieModeBubble txtBitz hero1" style="">
+      <span class='heroRightAlignSpan'>b2 two too deaux 2</span>
+      <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/drbecky3.png" alt="logo" aria-label="logo" style="">
+    </p> -->
+
+
+<!--    <p id="txtBit2" class="movieModeBubble txtBitz hero2" style="">
+    <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+   <span>c3 tres three tree 3</span></p>
+   <p id="txtBit3" class="movieModeBubble txtBitz hero3" style="">
+   <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+   <span class='heroRightAlignSpan'>d4 four for flower 4</span><img class="heroBubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style=""></p>
+   <p id="txtBit4" class="movieModeBubble txtBitz hero4" style="">
+   <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+   <span>5 five funf fiver 5</span></p>
+   <p id="txtBit5" class="movieModeBubble txtBitz hero5" style="">
+   <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+   <span class='heroRightAlignSpan'>6 six sax swiss 6</span><img class="heroBubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style=""></p>
+   <p id="txtBit6" class="movieModeBubble txtBitz hero6" style="">
+   <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+   <span>7 sebon seven sev 9</span></p>
+   <p id="txtBit7" class="movieModeBubble txtBitz hero7" style="">
+   <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+   <span class='heroRightAlignSpan'>8 eight ate oats 8</span><img class="heroBubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style=""></p>
+   <p id="txtBit8" class="movieModeBubble txtBitz hero8" style="">
+   <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/jaxxLogo1.png" alt="logo" aria-label="logo" style="">
+   <span>9 nine none nun 9</span></p>
+   <p id="txtBit9" class="movieModeBubble txtBitz hero9" style="">
+   <img class="heroBubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style="">
+   <span class='heroRightAlignSpan'>10 ten ten din den 10</span><img class="heroBubbleLogo" src="./copyrightnetcinematics/img/orby1.png" alt="logo" aria-label="logo" style=""></p> -->
+
+    </article>
+    <!-- <section id=movieModeFooter style='display:none;'>~</section> -->
+    <!-- $('#movieModeHeader').fadeIn(3000);$('#movieModeFooter').fadeIn(3000); -->
+    <!-- $('#movieModeHeader').fadeOut(3000);$('#movieModeFooter').fadeOut(3000); -->
+    
+  </section><!-- end TXT MAIN -->
+  
+</div><!--END middle-->
+<div id="movieModeRgt" style="flex-direction:column;display:flex;justify-content:center;flex: 1;max-width: 2.3em;margin-left: 0.8em;">
+    <button id="playOneBtn2" class="steelNeonIconBtn" style="width:100%">
+    <div style="border-radius: 100%;background: steelblue;font-size: 0.5em;color: black;height: 2em;margin: 5px auto;width: 2em;display: flex;"><i class="fa fa-step-forward" style="
+    margin: 0 auto; align-self: center;
+"></i></div>
+</button> 
+        <span style="color:white;font-size:0.5em;text-shadow:1px 1px 1px steelblue;font-family:verdana;margin:0.3em auto;text-align: center;
+         width: 100%;">PLAY ONE</span>
+</div> <!-- end movieModeRGT -->
+<!-- 
+    <style>.camSelector{ /* highlight  scene txt selection */
+        box-shadow: 0px 0px 5px yellow !important;
+    }
+    </style> -->
+
+<!--     <nav style='display: flex; margin-bottom: -32px; z-index: 100;'>
+      <button id='camBtn1' class='camSelector' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-user"></i></button>
+      <button id='camBtn2' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-eye"></i></button>
+      <button id='camBtn3' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-asterisk"></i></button>
+    </nav>  
+ -->
+<!--     <section id=dragFrame2 style="display:flex;flex-direction:column;width:100%;height:100%;background-color: #022b4c; border-radius: 13px;
+    align-self: center;">
+      <div id=dragCore2 style="flex:4;margin: 0.1em 0; display: flex; align-items: center; justify-content: center;">
+        <div id=dragPad2 style="border:solid 1px steelblue;background:rgba(119, 136, 153, 0.4);opacity:0.9;border-radius:13px;height:50px;width:50px;margin:1.5em 0;box-shadow: 1px 1px 15px #010d17;
+          display:flex; justify-content: center; align-content: center; align-items: center;">
+                 <article class="dragCtrlFrame">
+                    <div id="dragRgtCtrl" class="draggableCam" data-x="-7" data-y="-7" style="transform: translate(-7px, -7px);">
+                       <p><img src="./img/dragCtrl1.png"> </p>
+                    </div>
+                 </article>
+        </div>
+      </div> --> <!-- end drag core -->
+    <!-- </section> --><!-- end drag ctrl -->
+<!--     <nav style='display: flex; height:100%;/*margin-top:-2em;*/ z-index: 100; flex-direction: column;'>
+      <button id='camBtn1' class='camSelector' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-play"></i></button>
+      <button id='camBtn2' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-comment"></i></button>
+      <button id='camBtn3' style='flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-pause"></i></button>
+    </nav>   -->
+
+
+<!-- <nav style='display: flex; height:100%; z-index: 100; flex-direction: column;'>
+  <button id='lftHeroBtn1' style='display:flex;flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;font-size:1.2em;'>
+    <i class="fa fa-caret-up" style='margin:0 auto;'></i></button>
+  <button id='lftHeroBtn2' style='display:flex;flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;font-size:1.2em;'>
+    <i class="fa fa-pause" style='margin:0 auto;'></i></button>
+  <button id='lftHeroBtn3' style='display:flex;flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;font-size:1.2em;'>
+    <i class="fa fa-caret-down" style='margin:0 auto;'></i></button>
+</nav>  
+ -->
+    <!-- <i class="fa fa-bars" style='margin:0 auto;'></i></button> -->
+  <!-- <button id='lftHeroBtn2' style='display:flex;flex:1;background:steelblue;border-radius:13px;height:27px;cursor:pointer;margin:0.2em;'><i class="fa fa-comment"></i></button> -->
+
+    <!-- <section id=rgtGameLabel style='color:steelblue; font-size: 1em;  margin-top: -1.5em;  text-align: center;'><i class="fa fa-eye"></i></section> -->
+    <!--END ctrl col 3--> 
+</section> <!-- end movieModeView -->
+
+<!-- *************************************************-END HERO-TXT-VIEW-******************************************************* -->
+
+
+<!-- 
+<section id=movieModeFrame style='display:flex; width: 100%;height: 71%;flex:2'> -->
+<style>
+    .mediaBtn{
+
+max-height: 40px;
+    height: 25%;
+min-height: 30px;
+
+
+        background: steelblue;
+        box-shadow: inset 1px 1px 25px black;
+        margin: 0.3em;
+        font-family: arial;
+
+    font-family: verdana;
+    text-shadow: 2px 1px 3px white;
+    color:black;
+
+
+        cursor: pointer;
+
+        width: 100%;
+        border-radius: 8px;
+/*font-size: 1em;*/
+
+    }
+
+    .mediaBtn i {
+        font-size: 1.4em;
+    }
+
+
+/* todo possibly deprecated */
+    .movieStyle{background: steelblue;font-weight:bold;color:royalblue} /* light blue */
+    .gameStyle{background: #a946b4;font-weight:bold;color:darkviolet} /* light magenta */
+    .bookStyle{background: #5cc742;font-weight:bold;color:forestgreen} /*light neon green #5fde40*/
+    .questStyle{background: #e8a257;font-weight:bold;color:darkorange} /* light orange */
+    .chapterStyle{background: #e8a257;font-weight:bold;color:darkorange} /* light orange */
+
+.movieStyleBtn{
+    background: #252b51;
+    font-weight: bold;
+    color: royalblue;
+    box-shadow: 0px 0px 5px steelblue;
+    text-shadow: 2px 1px 3px black;
+    padding-top: 0.1em;
+}
+
+.gameStyleBtn{
+  background: #3a013a;
+    font-weight: bold;
+    color: darkviolet;
+    box-shadow: 0px 0px 8px purple;
+    text-shadow: 2px 1px 3px black;
+    padding-top: 0.1em;
+}
+
+.bookStyleBtn{
+  background: #01320c;
+    font-weight: bold;
+    color: forestgreen;
+    text-shadow: 2px 1px 3px black;
+    box-shadow: 0 0 5px limegreen;
+}
+
+.chapterStyleBtn{
+  background: #01320c;
+    font-weight: bold;
+    color: forestgreen;
+    text-shadow: 2px 1px 3px black;
+    box-shadow: 0 0 5px limegreen;
+}
+
+.questStyleBtn{
+  background: #01320c;
+    font-weight: bold;
+    color: forestgreen;
+    text-shadow: 2px 1px 3px black;
+    box-shadow: 0 0 5px limegreen;
+}
+
+.heroStyleBtn{
+  background: #01320c;
+    font-weight: bold;
+    color: forestgreen;
+    text-shadow: 2px 1px 3px black;
+    box-shadow: 0 0 5px limegreen;
+}
+
+    #movieModeView{
+        /* overflow-y: hidden; */
+        /* overflow-x: scroll; */
+            width: 100%;
+            height: 90%; 
+    }
+
+    #movieModeView section{
+        display: flex;
+        flex-direction: column;
+        min-width: 10em;
+        /* max-width: 10em; */
+        margin: 0.2em;
+    }
+
+
+
+
+
+.movieModeHorizontalScrollBox {
+      border-radius: 13px;
+  
+  display: flex;
+  align-items:center;
+      overflow-x: scroll;
+    overflow-y: hidden;
+  height:100%;
+  -webkit-overflow-scrolling: touch; 
+}
+.movieModeHorizontalScrollBox::-webkit-scrollbar { height: 1em; }
+.movieModeHorizontalScrollBox::-webkit-scrollbar-track {
+ background-color: #010213;  border-radius: 13px; 
+}
+.movieModeHorizontalScrollBox::-webkit-scrollbar-thumb {
+  background: #2aa3d2 ;
+  background: -moz-linear-gradient(top, #2aa3d2  0%, #3a0a3e  50%, #445156 100%);
+  background: -webkit-gradient(linear, top, bottom, color-stop(0%, #445156 ), color-stop(50%, #3a0a3e ), color-stop(100%, #445156));
+  background: -webkit-linear-gradient(top, #2aa3d2  0%, #3a0a3e  50%, #445156 100%);
+  background: -o-linear-gradient(top, #2aa3d2  0%, #3a0a3e  50%, #445156 100%);
+  background: -ms-linear-gradient(top, #2aa3d2  0%, #3a0a3e  50%, #445156 100%);
+  background: linear-gradient(to bottom, #2aa3d2 0%, #3a0a3e 50%, #445156 100%);
+  border-radius: 5px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2aa3d2 ', endColorstr='#445156', GradientType=1);
+}
+.movieModeHorizontalScrollBox:hover{
+  cursor: w-resize;
+}
+
+
+
+</style>
+
+
+<!--
+    <article id=movieModeView class='movieModeHorizontalScrollBox' style='display:flex; padding:0.2em; padding-left: 0.4em; padding-right: 0.4em;'>
+
+      <div>dynamic content here</div>
+
+    </article>
+
+
+
+</section> --> <!-- end movieModeFrame -->
+
+<section id=invisibleSpace style='display:flex;max-height:2em;flex:1;margin:0.4em 0;width:100%;'>&nbsp;</section>
+    <!-- bottom bar navBar --> <!--     margin-top: 0.4em; ALIGNS VERTICAL ON MOVIE VIEW -->
+    <section id=navBar style='color:yellow;display:flex;display:none;max-height:2em;flex:1;margin:0.4em 0;position:absolute;bottom:0.5em;width:100%;'>
+    <!-- <section id=navBar style='color:yellow;display:flex;max-height:2em;flex:1;margin:0.4em 0;width:100%;'> -->
+<!-- <section id="bookBtn1" class="blackNeonIconBtn" style=''><i class="fa fa-book"></i></section> -->
+<!-- <section id="gameBtn1" class="blackNeonIconBtn" style='display:none'><i class="fa fa-gamepad"></i></section> -->
+      <nav id=topNav><hr style='margin-left: auto; margin-right: 0;'>
+        <a id=lowNavBtn1>epic</a><a id=lowNavBtn2 class=''>hero</a>
+         <a id=lowNavBtn3>quest</a>
+        <hr style='margin-left: 0; margin-right: auto;'>
+      </nav>
+      <nav id=lowNav><hr style='margin-left: auto; margin-right: 0;'>
+        <a id=ctaBtn1>try</a><a id=ctaBtn2>like</a>
+        <a id=ctaBtn4>buy</a><!-- buy -->
+        <hr style='margin-left: 0; margin-right: auto;'>
+      </nav>
+<!-- <section id="gameBtn2" class="blackNeonIconBtn" style='display:none'><i class="fa fa-gamepad"></i></section> -->
+<!-- <section id="movieBtn1" class="blackNeonIconBtn" style=''><i class="fa fa-film"></i></section> -->
+    </section>
+
+
+    <!-- low hover footer nav bar on ENTIRE CAME CTRL -->
+    <!-- <section id=rgtGameLabel style='color:steelblue; font-size: 0.5em;  margin-top: -1.5em;  text-align: center;'>DRAG CAM</section> -->
+   
+
+
+    </div><!-- end game frame? -->
+
+  </div>
+</div><!-- END trifoldDrawerView -->
+
+<!--**************************************************-END 2DTXT - TRIFOLD - LAYOUT -COMPONENT-*****************************************-->
+
+<!--**************************************************-FLOATING-BTNS-*****************************************-->
+<!-- <section id="playBtn1" class="steelNeonIconBtn" style='display:none;position:absolute;bottom:50%;left:0.3em;z-index:111'><i class="fa fa-play-circle"></i></section>
+<section id="pauseBtn2" class="steelNeonIconBtn" style='display:none;position:absolute;bottom:36%;left:0.3em;z-index:111'><i class="fa fa-pause-circle"></i></section> -->
+<section id="zoomBtn1" class="steelNeonIconBtn" style='display:none; position:absolute; bottom:50%; left: 0.3em;'><i class="fa fa-expand"></i></section>
+<section id="zoomBtn2" class="steelNeonIconBtn" style='display:none; position:absolute; bottom:36%; left: 0.3em'><i class="fa fa-compress"></i></section>
+<section id="trickBtn1" class="steelNeonBtn" style='display:none; position:absolute; bottom:50%; right: 0.3em;border:solid 1px purple;'><span>TRICK!</span></section>
+<section id="jumpBtn1" class="steelNeonBtn" style='display:none; position:absolute; bottom:40%; right: 0.3em;border:solid 1px purple;'><span>JUMP!</span></section>
+<!--*******************************************************************************************-->
+
+<!--*****************************-END-COMPONENT-SHELL-************************************-->
+
+
+
+
+<!--****************************************************************************************************************-->
+<!--***********************************************-NETCINEMTATICS-NX-CONTENT-LOADER-************************************-->
+<!-- <canvas id="renderCanvas" style="width:100%;display:inline; position:absolute;top:0;left:0;"></canvas> -->
+<!-- <canvas id="renderCanvas"></canvas> -->
+<!-- <style>#uiFrame {width:100%;height:100%;touch-action:none;}</style> -->
+
+
+
+<!-- <canvas id="renderCanvas" style="max-width:800px;display:inline; position:absolute;top:0;left:0;"></canvas> -->
+
+
+
+
+<!-- <style>#uiFrame{
+    color:yellow; width:100px; height:40%; border-radius:13px; position:absolute; top:100px; right:3px; border:solid 1px steelblue;
+    padding: 10px;}</style>
+<section id=uiFrame><article>~ACOSMOSCAPES~</article></section>  -->
+
+
+
+<!-- <section id=adFrame style="width:0;display:inline;position:absolute;top:0;right:0;background:black;height:100%;box-sizing:border-box;font-family:cursive;"> 
+    brought to you by:
+</section> -->
+<script async type="text/javascript">'use strict';
+// var loadAnmscape;
+// window.addEventListener('DOMContentLoaded', function(){
+//     loadAnmscape = function(){
+//         import('./copyrightnetcinematics/anmscape.js')
+//           .then(function(anmscape) {
+//             anmscape.initAnmscape();
+//         })// .catch(function(e){console.log('error loading anmscape: '+e)});
+//     } //END-loadAnmscape-.
+// });
+</script>
+<!--******************************************-END-CONTENT-**************************************-->
+<script async type="text/javascript">'use strict'; //STATE-PRESISTENCE-MACHINE-.
+window.addEventListener('DOMContentLoaded', function(){ //TODO move to anmscape-.
+    // localStorage.setItem("appData", {appName:nx.meta.appName});
+    // localStorage.setItem("gameData", {games:[{}]});
+    // var gameData = localStorage.getItem("gameData") || {};
+    // nx.meta.returnVisitIdx = localStorage.getItem("returnVisit");
+    // if(!nx.meta.returnVisitIdx){ localStorage.setItem("returnVisit", 0) }
+    // nx.meta.returnVisitIdx++;
+    // localStorage.setItem("returnVisit", nx.meta.returnVisitIdx)
+});
+window.onload = function() { //Standard-ServiceWorker-Registration-.
+    if ('serviceWorker' in navigator) { 
+        navigator.serviceWorker.register('./sw.js')
+        .then(function() { console.log('[App] Service Worker Registered'); });
+    }
+}
+</script>
+
+
+
+
+<!--**************************************************-LIBS-*****************************************-->
+<!-- <script async type="text/javascript" src="./lib/babylon/hand.min-1.2.js"></script>
+<script type="text/javascript" src="./lib/babylon/babylon.3.0.min.js" ></script> 
+<script type="text/javascript" src="./lib/babylon/materials/babylon.gridMaterial.min.js"></script>  -->
+<!-- <script async type="text/javascript" src="./app.js"></script> -->
+<!--**************************************************-END-LIBS-*****************************************-->
+</body>
+<!--GoogleAnalytics-->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-91079342-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+<!--GoogleAnalytics-->
+</html>
