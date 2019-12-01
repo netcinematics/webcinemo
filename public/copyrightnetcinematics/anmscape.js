@@ -402,22 +402,22 @@ var loadBabylon = function() {
       return { js: _load('script'), css: _load('link')/*, img: _load('img')*/ }
     })();
     Promise.all([
-        load.js('../../lib/babylon/babylon.3.0.2-alpha.max.js'), /*working bjs from sps scene 8 */
-        // load.js('../../lib/babylon/babylon3.2-min.js'), /*working bjs from sps scene 8 */
-        // load.js('../../lib/babylon/babylon.3.0-min.js'),      /*error in jitter and particles??? contains MORPHTARGET*/
-        load.js('../../lib/babylon/hand.min-1.2.js') ,
+        load.js('../libs/babylon/babylon.3.0.2-alpha.max.js'), /*working bjs from sps scene 8 */
+        // load.js('../libs/babylon/babylon3.2-min.js'), /*working bjs from sps scene 8 */
+        // load.js('../libs/babylon/babylon.3.0-min.js'),      /*error in jitter and particles??? contains MORPHTARGET*/
+        load.js('../libs/babylon/hand.min-1.2.js') ,
         // load.js('./lib/babylon/hand.min-1.2.js') ,
         // load.js('./copyrightnetcinematics/templateModule1.js') 
         // load.css('lib/.css'),// load.img('images/logo.png')
-        // load.css('../../lib/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css')
-        load.css('../../lib/font-awesome/fontawesome-free-5.10.2/css/all.min.css')
+        // load.css('../libs/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css')
+        load.css('../libs/font-awesome/fontawesome-free-5.10.2/css/all.min.css')
       ]).then(function() {
         // debugger;
         console.log('MODULE-LOADING: one time.');
         // try{
             // load.js('./copyrightnetcinematics/templateModule1.js') 
             //NOTE: disable caching and reenable in Network tab of dev tools.
-            load.js('../../lib/babylon/materials/babylon.gridMaterial.min.js')
+            // load.js('../libs/babylon/materials/babylon.gridMaterial.min.js')
             // load.js('./copyrightnetcinematics/modOrbyOrbot.js') //to nxv4
             load.js('./copyrightnetcinematics/nxv4/modOrbyOrbot16.js') 
             load.js('./copyrightnetcinematics/modGroundz.js') 

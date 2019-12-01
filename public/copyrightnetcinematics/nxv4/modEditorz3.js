@@ -1211,7 +1211,7 @@ nx.debounceRender = 0;
         nx.editNodes.push(editNode);
     }
 
-    console.log('PUBLISH: nx.spacepipe = '+nx.editNodes)
+    // console.log('PUBLISH: nx.spacepipe = '+nx.editNodes)
     return nx.editPath = aPath;
 }
 
