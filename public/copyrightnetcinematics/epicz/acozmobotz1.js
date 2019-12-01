@@ -235,7 +235,7 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
     'sneakSEQ':{seqID:'sneakSEQ',name:'sneakSEQ',initfn:function(){
 
 
-        debugger;
+        // debugger;
         //MOVIE SNEAK INIT-------------------------------------------------------------------
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
         nx.sneakSeqIdx[0] = {on:1}; 
