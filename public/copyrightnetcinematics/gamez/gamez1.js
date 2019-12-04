@@ -50,7 +50,7 @@ nx.GAMEZ = {
 
 		//TODO maybe wrap this in if NOT PLAYALL else (idk)?
 		// if(nx.cinemaPlayAll){
-		// 	nx.initSEQ({seqID:5}); /*doorseq todo coil sequence*/ 
+		// 	nx.initSEQ({seqID:'DoorSEQ'}); /*doorseq todo coil sequence*/ 
 		// }else{
 		//SHOW-TITLE-SCREEN-.
 		nx.ui.showTitleScreen({
@@ -695,7 +695,7 @@ nx.GAMEZ = {
 						// nx.camz.freeCam.setTarget( nx.darkBot.position ); 
 
 
-                    	nx.initSEQ({seqID:5})//DOORSEQUENCE
+                    	nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
 
 
 
@@ -964,7 +964,7 @@ debugger;
 	                                nx.anmz.orby.forceIdle = 0; //UNFREEZE ORBY MOVEMENTS
 	                        }});  
 
-	                    	// nx.initSEQ({seqID:5})//DOORSEQUENCE
+	                    	// nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
 	                    // }});
 	                } //end-init-.
 

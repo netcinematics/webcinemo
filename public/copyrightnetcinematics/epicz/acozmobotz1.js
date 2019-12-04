@@ -245,17 +245,18 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
 
         
     },runfn:function(){},endfn:function(){}},
-    5:{seqID:5,name:'DoorSeq',initfn:function(){
+    // 5:{seqID:5,name:'DoorSeq',initfn:function(){
+    'DoorSEQ':{seqID:'DoorSEQ',name:'DoorSeq',initfn:function(){
         // nx.endSEQ(nx.masterSequence[nx.masterIDX]); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.endSEQ(nx.activeSEQ); //stop prior epic. TODO switch this to nx.currentSEQ
         // nx.masterIDX++;
         
-        //todo?
         // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  
         nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
 
         // nx.ui.flashCanvasMSG({txt:'DarkBot!'});  
 
+        //todo - move SEQS into this RUN FUNCTION-.
         //MOVIE2 DOOR INIT-------------------------------------------------------------------
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
         nx.doorSeqIdx[0] = {on:1}; 
@@ -1156,7 +1157,7 @@ if(nx.sonic.sonicBoom1){ nx.sonic.sonicBoom1.play(); }  //SONIC-BOOM-.
                     // nx.ui.flashCanvasMSG({txt:"A SpaceQuest to AlphaMoon!",txtIcon:'drbecky',dur:3000});                      //On cut back 1
                     // nx.ui.flashCanvasMSG({txt:'On a MICROWAVE SpaceBoard!?!',txtIcon:'dracozmo',txtAlign:'right'});             //on orby resume
                     // nx.ui.setMovieModeTXT({txt:"A MICROWAVE SpaceBoard!",type:'narrator'}); 
-             debugger;       
+             // debugger;       
                     iniORBYPOS = nx.orbyMesh.position;
                     endORBYPOS = {x:-2500,y:3933,z:-1500}; //perf, vector3 new not needed-.
                     // endORBYPOS = {x:-2500,y:3750,z:-1500}; //perf, vector3 new not needed-.
@@ -1839,7 +1840,9 @@ console.log('ANM 12 - world scaling - simultaneous');
                     //TODO: MOVIE - TO MOVIE - GAME TO GAME
 
                     if(nx.cinemaPlayAll){
-                        nx.initSEQ({seqID:5}); /*doorseq todo coil sequence*/ 
+                        debugger; //todo change to sneakSeq?
+                        nx.initSEQ({seqID:'DoorSEQ'}); /*doorseq todo coil sequence*/ 
+                        // nx.initSEQ({seqID:'DoorSEQ'}); /*doorseq todo coil sequence*/ 
                     }else{
                         // debugger;
                         setTimeout(function(){
@@ -2051,7 +2054,7 @@ nx.orbyMesh.rotation.copyFrom( {x: 0, y: 4, z: 0})
                         // debugger;
                         // var fastUp = nx.scene.beginAnimation(nx.orbySkeleton[0], 340, 350, false, 1.0);  //fastup
 
-nx.kiloBotMesh1.speed = 4;
+                        nx.kiloBotMesh1.speed = 4;
 
 
                     }
@@ -2095,7 +2098,7 @@ nx.kiloBotMesh1.speed = 4;
                         // debugger;
                         var fastDwn = nx.scene.beginAnimation(nx.orbySkeleton[0], 321, 340, false, 1.0);  //fastdown
                         fastDwn.onAnimationEnd = function(){ nx.sneakSeqIdx[NUM].anmSpeed = 22;
-nx.kiloBotMesh1.speed = 5;
+                        nx.kiloBotMesh1.speed = 5;
                          } //idle
                     }else if(nx.sneakSeqIdx[NUM].stepIdx===275){  //ANM-FRAME-ACTIONZ-.
                         // debugger;
@@ -2144,7 +2147,7 @@ nx.kiloBotMesh1.speed = 5;
                             //         nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);
                             //     } //idle } //idle
                             // },3000*nx.RUNTIME)
-nx.kiloBotMesh1.speed = 7;
+                            nx.kiloBotMesh1.speed = 7;
                         // }
                     }else if(nx.sneakSeqIdx[NUM].stepIdx===600){  //ANM-FRAME-ACTIONZ-.
                         // debugger;
@@ -2166,7 +2169,7 @@ nx.kiloBotMesh1.speed = 7;
                         // nx.scene.stopAnimation(nx.orbySkeleton[0]);
                         // var fastDwn = nx.scene.beginAnimation(nx.orbySkeleton[0], 321, 340, false, 1.0);  //fastdown
                         nx.kiloBotMesh1.clearLaser = 1;  
-nx.kiloBotMesh1.speed = 5;
+                        nx.kiloBotMesh1.speed = 5;
 
                         // debugger;
 
@@ -2184,7 +2187,7 @@ nx.kiloBotMesh1.speed = 5;
                         nx.zapbotMesh2.rayIntersecting = 1;
                     }else if(nx.sneakSeqIdx[NUM].stepIdx===980){  //ANM-FRAME-ACTIONZ-.
                         // debugger;
-nx.kiloBotMesh1.speed = 6;
+                        nx.kiloBotMesh1.speed = 6;
 
                         nx.initFreeCam();  //CAMERA: orby flyby around bend before corkskrew
                         nx.scene.activeCamera.position.copyFrom({x: 620.22, y: 808.39, z: -866.71})
@@ -2224,7 +2227,10 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
                         nx.initFollowCam();
                         nx.scene.activeCamera.heightOffset = 18;
 // nx.sneakSeqIdx[NUM].on=0; //important
+                    }else if(nx.sneakSeqIdx[NUM].stepIdx===1750){  //ANM-FRAME-ACTIONZ-.
 // return;
+                        nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
+                        // nx.sneakSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
                     }
                     // if( nx.sneakSeqIdx[NUM].sneakPath1.length*0.75<=nx.sneakSeqIdx[NUM].stepIdx){ //ANMETHODOLOGY: PERCENT-DONE-ANM through an animation
                     //     if(!nx.sneakSeqIdx[NUM].beforesneakWord){ nx.sneakSeqIdx[NUM].beforesneakWord = 1; //ANMETHODOLOGY: one-time-pattern -.
@@ -2447,8 +2453,8 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
                 nx.scene.activeCamera = nx.camz.freeCam;
 
                 //SET-WORLD-SCALE-.
-                nx.landPad.scaling = new BABYLON.Vector3(1, 1, 1);
-                nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);
+                // nx.landPad.scaling = new BABYLON.Vector3(1, 1, 1);
+                // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);
 
                 //TODO: SET-SKYBOX-.
                 nx.spacebox.position.x = 0
