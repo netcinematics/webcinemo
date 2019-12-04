@@ -132,22 +132,53 @@ nx.botz.loadAssets = function(initFn) {
     } //END-nx.kiloBotMesh1 load-.
 
 
-    nx.getMasterManifest(function(){ }); //pretty sure need this FOR EACH LOADED ASSET - not just each module-.
    
 
-    var zapbotTask2 = nx.assetsManager.addMeshTask("zapbot task2", "", "./copyrightnetcinematics/3d/", "zapbot20.babylon");
+    nx.getMasterManifest(function(){ }); //pretty sure need this FOR EACH LOADED ASSET - not just each module-.
+    // var zapbotTask2 = nx.assetsManager.addMeshTask("zapbot task2", "", "./copyrightnetcinematics/3d/", "zapbot20.babylon");
+    var zapbotTask2 = nx.assetsManager.addMeshTask("zapbot task2", "", "./copyrightnetcinematics/3d/", "zapbotTerra2b.babylon");
     zapbotTask2.onSuccess = function (task) {
         // debugger;
-        nx.zapbotMesh2 = task.loadedMeshes[2]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
+        nx.zapbotMesh2 = task.loadedMeshes[0]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
+        // nx.zapbotMesh2 = task.loadedMeshes[2]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
         nx.zapbotMesh2.position.copyFrom({x:0, y: 2, z:0}); //PLACE ZAPBOT
         nx.zapbotMesh2.rotation.x = 0
         nx.zapbotMesh2.rotation.y = 0;
 
+// debugger;
+        nx.botz.initBotFactory(nx.zapbotMesh2);
+        // nx.zapbotMesh2.startListening();
+        // nx.zapbotMesh2.startHovering();
+        // nx.zapbotMesh2.startScanning();
         // nx.botz.zapBotFactory({mesh:nx.zapbotMesh2})
 
         nx.setMasterManifest(); //after assetLoad, signal asset arrived-.
 
     }
+
+    nx.getMasterManifest(function(){ }); //pretty sure need this FOR EACH LOADED ASSET - not just each module-.
+    var zapbotTask3 = nx.assetsManager.addMeshTask("zapbot task3", "", "./copyrightnetcinematics/3d/", "zapbotMega2.babylon");
+    zapbotTask3.onSuccess = function (task) {
+        nx.zapbotMega = task.loadedMeshes[0]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
+        // nx.zapbotMesh2 = task.loadedMeshes[2]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
+        nx.zapbotMega.position.copyFrom({x:0, y: 2, z:0}); //PLACE ZAPBOT
+        nx.zapbotMega.rotation.x = 0
+        nx.zapbotMega.rotation.y = 0;
+
+
+// debugger;
+        nx.botz.initBotFactory(nx.zapbotMega);
+        // nx.zapbotMega.startListening();
+        // nx.zapbotMega.startHovering();
+        // nx.zapbotMega.startScanning();
+        // nx.botz.zapBotFactory({mesh:nx.zapbotMesh2})
+
+        nx.setMasterManifest(); //after assetLoad, signal asset arrived-.
+
+    }
+
+
+
     nx.assetsManager.load();  // IMPORTANT.
 }
 
@@ -165,6 +196,330 @@ nx.botz.loadAssets();
 
 /********************************************************-ZAP-BOT-INITS-****************************************************************/
 //individualize logic for precision. zap bot factory worked but can be improved for each individual bot for performance.
+nx.botz.initBotFactory = function(aBot){
+    //tri-state-behavior-states-. //TIP: use start and stop accessors-.
+    aBot._isListening=0;
+    aBot._isFlashing=0;
+    aBot._isShocking=0;
+    aBot._isScanning=0;
+    aBot._isHovering=0;
+    aBot._isChasing=0;
+    //init-abilities-.
+    nx.botz.initBotScan(aBot);
+    // nx.botz.initKiloBotShock();
+    //start and stop accessor functions-.
+    aBot.stopLooping = function(){ aBot._isListening=-1; }
+    aBot.startListening = function(){ aBot._isListening=1; }
+    aBot.stopListening = function(){ aBot._isListening=0; } //-1 to unload actionloop-.
+    aBot.startFlashing = function(){ aBot._isFlashing=1; }
+    aBot.stopFlashing = function(){ aBot._isFlashing=-1; aBot.sirenLight.material = aBot.greyMat; }
+    aBot.startShocking = function(){ aBot._isShocking=1; aBot.zapWave.isVisible = 1; }
+    aBot.stopShocking = function(){ aBot._isShocking=-1; aBot.zapWave.isVisible = 0;}
+    aBot.startScanning = function(){ aBot._isScanning=1; aBot.searching=1; }
+    aBot.stopScanning = function(){ aBot._isScanning=-1; aBot.stopSearching(); }
+    aBot.startHovering = function(){ aBot._isHovering=1; }
+    aBot.stopHovering = function(){ aBot._isHovering=0; }
+    aBot.startChasing = function(){ aBot._isChasing=1; }
+    aBot.stopChasing = function(){ aBot._isChasing=-1; }
+    //loop-indexes-.
+    aBot.hoverIdx = 0;
+    aBot.loopIdx = 0;
+    aBot.actionLoopFn = function(){
+        if(++aBot.loopIdx%3===0){return} //loop damper
+        //isLISTENING-.
+        else if(aBot._isListening===0){return} //0 to shut off, -1 to kill loopz-.
+        else if(aBot._isListening<0){ nx.scene.unregisterBeforeRender(aBot.actionLoopFn); } //-1 to UNLOAD-LOOPZ-.!
+        // else if(aBot._isListening<0){ nx.scene.unregisterBeforeRender(kiloBotBehaviorLOOPZ); } //-1 to UNLOAD-LOOPZ-.!
+        //Loop-actions-PATTERN-.
+        //isFLASHING
+        // if(aBot._isFlashing===1){
+        //     if(aBot.loopIdx%20){ //red - %Frequency-Modulator-.
+        //         aBot.sirenLight.material = aBot.redMat;
+        //     } else { //blue
+        //         aBot.sirenLight.material = aBot.blueMat;
+        //     }
+        // }else if(aBot._isFlashing===-1){
+        //     aBot._isFlashing=0;//three way, one time, shut off switch-.
+        //     // aBot.sirenLight.material = aBot.greyMat;
+        // }
+        //isSHOCKING
+        if(aBot._isShocking===1){
+// console.log('isShocking');
+            // nx.botz.kiloBotShockAnm();
+        }else if (aBot._isShocking===-1){ //TODO three way is removable because put logic in accessors
+            aBot._isShocking=0;//three way, one time, shut off switch-.
+        }
+        //isSCANNING
+        if(aBot._isScanning===1){
+// console.log('isScanning');
+            nx.botz.botScanSEQ(aBot);
+            // nx.botz.kiloBotScanSEQ();
+        }else if (aBot._isScanning===-1){ //negative one is shut off switch - 0 to be off.
+            aBot._isScanning=0;//three way, one time, shut off switch-.
+        }
+        //isCHASING
+        if(aBot._isChasing===1){
+// console.log('isChasing');
+        }else if (aBot._isChasing===-1){ //negative one is shut off switch - 0 to be off.
+            aBot._isChasing=0;//three way, one time, shut off switch-.
+        }
+        //isHOVERING
+        if(aBot._isHovering){
+            aBot.hoverIdx += 0.05; //zap-bot-hover-.
+            aBot.position.y += 0.01 * Math.cos(aBot.hoverIdx);
+        } //ok to turn off with isHovering = 0;
+
+    }
+    //SOLO-ANIMATION-LOOP-FOR-ALL-BOT-BEHAVIORS!-.
+    nx.scene.registerBeforeRender(aBot.actionLoopFn);
+    // nx.scene.registerBeforeRender(function kiloBotBehaviorLOOPZ() { //LOOPZ hover, search and chase, zapwave and siren flash sequence-.
+//         if(++aBot.loopIdx%3===0){return} //loop damper
+//         //isLISTENING-.
+//         else if(aBot._isListening===0){return} //0 to shut off, -1 to kill loopz-.
+//         else if(aBot._isListening<0){ nx.scene.unregisterBeforeRender(kiloBotBehaviorLOOPZ); } //-1 to UNLOAD-LOOPZ-.!
+//         //Loop-actions-PATTERN-.
+//         //isFLASHING
+//         if(aBot._isFlashing===1){
+//             if(aBot.loopIdx%20){ //red - %Frequency-Modulator-.
+//                 aBot.sirenLight.material = aBot.redMat;
+//             } else { //blue
+//                 aBot.sirenLight.material = aBot.blueMat;
+//             }
+//         }else if(aBot._isFlashing===-1){
+//             aBot._isFlashing=0;//three way, one time, shut off switch-.
+//             // aBot.sirenLight.material = aBot.greyMat;
+//         }
+//         //isSHOCKING
+//         if(aBot._isShocking===1){
+// // console.log('isShocking');
+//             nx.botz.kiloBotShockAnm();
+//         }else if (aBot._isShocking===-1){ //TODO three way is removable because put logic in accessors
+//             aBot._isShocking=0;//three way, one time, shut off switch-.
+//         }
+//         //isSCANNING
+//         if(aBot._isScanning===1){
+// // console.log('isScanning');
+//             nx.botz.kiloBotScanSEQ();
+//         }else if (aBot._isScanning===-1){ //negative one is shut off switch - 0 to be off.
+//             aBot._isScanning=0;//three way, one time, shut off switch-.
+//         }
+//         //isCHASING
+//         if(aBot._isChasing===1){
+// // console.log('isChasing');
+//         }else if (aBot._isChasing===-1){ //negative one is shut off switch - 0 to be off.
+//             aBot._isChasing=0;//three way, one time, shut off switch-.
+//         }
+//         //isHOVERING
+//         if(aBot._isHovering){
+//             aBot.hoverIdx += 0.05; //zap-bot-hover-.
+//             aBot.position.y += 0.01 * Math.cos(aBot.hoverIdx);
+//         } //ok to turn off with isHovering = 0;
+//     });
+}
+
+/***************************************************NEW-GENERIC-BOT-BEHAVIORS***********************************/
+nx.botz.initBotScan = function(aBot){
+   if(aBot.laserTgtSphere){return;} //ONly 1 init-.
+   //DYNAMIC-BEHAVIORS bot1
+    aBot.targeting = 0;
+    aBot.laserTgtSphere = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
+    aBot.laserTgtSphere.parent =  aBot;
+    aBot.laserTgtSphere.isVisible = 0;   //todo be sure target sphere is not orbiting when it doesnt need to. also parent pos to zapbot.
+    aBot.laserOriginSphere = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
+    aBot.laserOriginSphere.parent =  aBot;
+    aBot.laserOriginSphere.position = new BABYLON.Vector3(0, 0.5, -1.5);
+    // aBot.laserOriginSphere.position = new BABYLON.Vector3(0, 0.5, -2);
+    aBot.laserOriginSphere.isVisible = 0; 
+    aBot.laserBumperLft = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
+    aBot.laserBumperLft.parent =  aBot;
+    aBot.laserBumperLft.position = new BABYLON.Vector3(-55, -17, -45);
+    aBot.laserBumperLft.isVisible = 0;
+    aBot.laserBumperRgt = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
+    aBot.laserBumperRgt.parent =  aBot;
+    aBot.laserBumperRgt.position = new BABYLON.Vector3(55, -17, -45);
+    aBot.laserBumperRgt.isVisible = 0;
+    // aBot.hoverAlpha = 0; //zap bot hover-.
+    aBot.searching = 0; //tick this to 1 to start searching-.
+    aBot.rayIntersecting = 1; //turn off for movie, should not trigger-.
+    aBot.delayOnTargeting = 1; //500
+    aBot.scanDirToggle = 1;
+    // aBot.zapAuraAlpha = 0; //glow size -.
+    aBot.rayLines = [];
+    aBot.hoverChaseAlpha = 0; //TODO rename to CHASE-DAMPER-.
+    // aBot.setScanTarget = nx.botz.setKiloBotScanTgt;
+    // aBot.setScanTarget = nx.botz.setBotScanTgt; //obsolete?
+    aBot.stopSearching = function(){
+      aBot.stopLaser = 1;
+      setTimeout(function(){ //stop all laser animations then delete-.
+        for(var i = 0; i<aBot.rayLines.length;i++){ 
+          aBot.rayLines[i].dispose();  
+        } 
+        aBot.rayLines = [];
+      },100)
+    }
+} //end initbotscan
+    
+nx.botz.botScanSEQ = function(aBot){ //anm is called on every frame!
+    if(aBot.searching > 0){
+        if(aBot.searching===1){ //ONE-TIME-INIT-MECHANISM-.
+            // console.log('ONE-TIME LASER START')
+            //ANM: laser from point to point-.
+            if(++aBot.hoverChaseAlpha%2===0 || aBot.hoverChaseAlpha%3===0){return;} //LOOPZ-DAMPER-. //TODO TEST THIS_.   
+            // nx.botz.laserScanAnm(config);
+            // nx.botz.kiloBotScanANM();
+            nx.botz.botScanANM(aBot);
+        }
+        aBot.searching++;
+    } //end searching
+    else if(aBot.targeting > 0 ){ //------------------------------------------------TARGETING-MODE-.
+        if(aBot.targeting===1){ //init tracking-.
+            //start zapping-.
+        }
+        else if(aBot.targeting%3===0){ //LOOPZ-DAMPER-.
+            console.log('targeting')
+            for(var i = 0; i<aBot.rayLines.length;i++){ aBot.rayLines[i].dispose();  } //TODO perf reuse rays
+
+            aBot.lookAt(nx.orbyMesh.position)
+            aBot.rotation.x = 0.2// default bot rot
+            aBot.rotation.z = 0;
+
+            //LOCAL_POSITION to WORLD_POSITION
+            aBot.computeWorldMatrix();
+            nx.botz.anmMatrix1 = aBot.getWorldMatrix();
+            nx.botz.global_position_origin = BABYLON.Vector3.TransformCoordinates(aBot.laserOriginSphere.position, nx.botz.anmMatrix1); //TODO no vars here
+
+            aBot.rayLines[0] = BABYLON.Mesh.CreateLines("ray1", [nx.botz.global_position_origin, nx.orbyMesh.position], nx.scene, aBot.rayLines[0]);
+            aBot.rayLines[0].alpha = 0.8;//Math.cos(alpha2);//0.8
+            aBot.rayLines[0].color.r = 1;//Math.cos(alpha1);//1;
+            aBot.rayLines[0].color.g = aBot.rayLines[0].color.b = 0
+            if(aBot.targeting%2===0){ //double-damper //todo probably not necessary-.
+                aBot.targeting = 0;
+                aBot.spotted=1;
+                return;
+            }
+        }
+        aBot.targeting++; //frame-iterator-.
+    } //end targeting
+    else if (aBot.spotted) {
+        console.log('spotted')
+        aBot.spotted = 0; //one time only-.
+        setTimeout(function(){ //chase delay-.
+            aBot.chasing = 1;
+        },aBot.delayOnTargeting)    
+    } else if( aBot.chasing > 0){
+        console.log('chasing')
+        // nx.botz.routeKiloBot();
+        // nx.botz.routeZapBot(config);
+    } else if( aBot.catch===1 ){
+        // nx.botz.kiloBotZapsOrby();  //START ZAPPING call-.
+        // nx.botz.startZapping(config);  //START ZAPPING call-.
+    } 
+} //end botscanSEQ
+
+nx.botz.botScanANM = function(aBot){ //anm is called on every frame!
+    aBot.stopLaser = 0;
+
+    var scanDamperAlpha = 0
+    var curScan, tgtScan;
+    // var nx.botz.anmMatrix1, nx.botz.global_position_tgt, nx.botz.global_position_origin;
+    curScan = (aBot.scanDirToggle)? aBot.laserBumperLft.position:aBot.laserBumperRgt.position;
+    tgtScan = (aBot.scanDirToggle)? aBot.laserBumperRgt.position:aBot.laserBumperLft.position;
+
+    aBot.scanTgtAlpha = 0;
+    aBot.disposeRay = null;
+
+    $({x:curScan.x,y:curScan.y,z:curScan.z}) //--------------------------------------------------LASER-SCAN-SWEEP-ANM-.
+    .animate({x:tgtScan.x,y:tgtScan.y,z:tgtScan.z},{queue:false,duration:2000,easing:'swing',
+    step: function(now) { 
+            if(++scanDamperAlpha%2===0||scanDamperAlpha%3===0||scanDamperAlpha%5===0||scanDamperAlpha%7===0){return}
+
+            aBot.laserTgtSphere.position.x = this.x;
+            aBot.laserTgtSphere.position.y = this.y; 
+            aBot.laserTgtSphere.position.z = this.z;
+
+            //LOCAL_POSITION to WORLD_POSITION
+            aBot.computeWorldMatrix();
+            nx.botz.anmMatrix1 = aBot.getWorldMatrix();
+            nx.botz.global_position_tgt = BABYLON.Vector3.TransformCoordinates(aBot.laserTgtSphere.position, nx.botz.anmMatrix1); //TODO no vars here
+            aBot.laserTgtSphere.position.copyFrom(nx.botz.global_position_tgt);
+
+            nx.botz.global_position_origin = BABYLON.Vector3.TransformCoordinates(aBot.laserOriginSphere.position, nx.botz.anmMatrix1); //TODO no vars here
+
+            if(aBot.rayLines.length!=3){ //INIT-
+
+               //LOCAL_POSITION to WORLD_POSITION
+                aBot.computeWorldMatrix();
+                nx.botz.anmMatrix1 = aBot.getWorldMatrix();
+                nx.botz.global_position_origin = BABYLON.Vector3.TransformCoordinates(aBot.laserOriginSphere.position, nx.botz.anmMatrix1); //TODO no vars here
+
+                aBot.rayLines= [];
+                aBot.rayLines[0] = BABYLON.Mesh.CreateLines("ray1", [nx.botz.global_position_origin, aBot.laserTgtSphere.position], nx.scene, aBot.rayLines[0]);
+                aBot.rayLines[0].alpha = 0.8;//Math.cos(alpha2);//0.8
+                aBot.rayLines[1] = BABYLON.Mesh.CreateLines("ray2", [nx.botz.global_position_origin, aBot.laserTgtSphere.position], nx.scene, aBot.rayLines[1]);
+                aBot.rayLines[1].alpha = 0.8;//Math.cos(alpha2);//0.8
+                aBot.rayLines[2] = BABYLON.Mesh.CreateLines("ray3", [nx.botz.global_position_origin, aBot.laserTgtSphere.position], nx.scene, aBot.rayLines[2]);
+                aBot.rayLines[2].alpha = 0.8;//Math.cos(alpha2);//0.8
+
+            }else{ //REPLACEMENT-POS.
+                //FOR EACH ALPHA - PLACE AT A NEW POINT-.
+                aBot.disposeRay = aBot.rayLines[aBot.scanTgtAlpha]; 
+                aBot.rayLines[aBot.scanTgtAlpha] = BABYLON.Mesh.CreateLines("dynoray", [nx.botz.global_position_origin, aBot.laserTgtSphere.position], nx.scene, aBot.rayLines[aBot.scanTgtAlpha]);
+                aBot.disposeRay.dispose();
+            }
+
+            aBot.scanTgtAlpha = (++aBot.scanTgtAlpha>2)?0:aBot.scanTgtAlpha; //TERNARY-TRIAD-ITERATOR-.
+            aBot.rayLines[0].alpha = 0.6            
+            aBot.rayLines[1].alpha = 0.3    //fade-out-.        
+            aBot.rayLines[2].alpha = 0.3    //fade-out-.        
+
+            aBot.rayLines[0].color.r = 1;//Math.cos(alpha1);//1;
+            aBot.rayLines[0].color.g = aBot.rayLines[0].color.b = 0
+            aBot.rayLines[1].color.b = 1;//Math.cos(alpha1);//1;
+            aBot.rayLines[1].color.g = aBot.rayLines[1].color.r = 0
+            aBot.rayLines[2].color.r = 1;//Math.cos(alpha1);//1;
+            aBot.rayLines[2].color.g = aBot.rayLines[2].color.b = 0;        //spotted red laser
+
+            if(aBot.rayIntersecting){ //turn off for movie because triggering too often-. turn on for game
+                if (nx.orbyMesh && aBot.rayLines[0].intersectsMesh(nx.orbyMesh)) {                        //intersection
+                    aBot.targeting = 1;
+                    aBot.searching = 0;
+                    $(this).stop(true);
+                }
+            }
+        }, complete:function(){ //  BOUNCE-.
+            // console.log('BOUNCE')
+            aBot.scanDirToggle = !aBot.scanDirToggle;
+            // console.log('searching5 on')
+            // aBot.searching=1;  //FIX: removed to help shut off laser! maybe breaks something else...
+            if(!aBot.stopLaser){aBot.searching=1;}  //FIX: removed to help shut off laser! maybe breaks something else...
+            return; 
+        } //NEXT-SUB-SEQUENCE-. 
+    });
+    
+}//end botscananm
+
+// nx.botz.setBotScanTgt = function(aBot,tgtPOS){ //obsolete?
+//     aBot.searching = 0;
+//     aBot.stopLaser = 1;
+//     // var that = this;
+//     setTimeout(function(){
+//         for(var i = 0; i<aBot.rayLines.length;i++){ aBot.rayLines[i].dispose();  } //TODO perf reuse rays
+//         aBot.rayLines = []; //clean up lasers-.
+//         //draw laser from origin to tgt
+//         //LOCAL_POSITION to WORLD_POSITION
+//         aBot.computeWorldMatrix();
+//         nx.botz.anmMatrix1 = aBot.getWorldMatrix();
+//         nx.botz.global_position_origin = BABYLON.Vector3.TransformCoordinates(aBot.laserOriginSphere.position, nx.botz.anmMatrix1); 
+//         aBot.rayLines[0] = BABYLON.Mesh.CreateLines("ray1", [nx.botz.global_position_origin, tgtPOS], nx.scene, aBot.rayLines[0]);
+//         aBot.rayLines[0].alpha = 0.8;//Math.cos(alpha2);//0.8
+//         aBot.rayLines[0].color.r = 1;//Math.cos(alpha1);//1;
+//         aBot.rayLines[0].color.g = aBot.rayLines[0].color.b = 0;
+//     },500)
+// } //end set scan tgt
+/********************************************************-END ZAPBOT INITS-****************************************************************/
+
+
+
 nx.botz.initKiloBot = function(){
     //tri-state-behavior-states-. //TIP: use start and stop accessors-.
     nx.kiloBotMesh1._isListening=0;
@@ -188,8 +543,9 @@ nx.botz.initKiloBot = function(){
     nx.kiloBotMesh1.stopScanning = function(){ nx.kiloBotMesh1._isScanning=-1; nx.kiloBotMesh1.stopSearching(); }
     nx.kiloBotMesh1.startHovering = function(){ nx.kiloBotMesh1._isHovering=1; }
     nx.kiloBotMesh1.stopHovering = function(){ nx.kiloBotMesh1._isHovering=0; }
-    nx.kiloBotMesh1.startChasing = function(){ nx.kiloBotMesh1._ising=1; }
-    nx.kiloBotMesh1.stopChasing = function(){ nx.kiloBotMesh1._ising=-1; }
+    nx.kiloBotMesh1.startChasing = function(){ nx.kiloBotMesh1._isChasing=1; }
+    nx.kiloBotMesh1.stopChasing = function(){ nx.kiloBotMesh1._isChasing=-1; }
+    nx.kiloBotMesh1.speed = 0;
     //loop-indexes-.
     var kiloBotHoverIdx = 0;
     var kiloBotLoopIdx = 0;
@@ -202,7 +558,8 @@ nx.botz.initKiloBot = function(){
         //Loop-actions-PATTERN-.
         //isFLASHING
         if(nx.kiloBotMesh1._isFlashing===1){
-            if(kiloBotLoopIdx%20){ //red - %Frequency-Modulator-.
+            // if(kiloBotLoopIdx%20){ //red - %Frequency-Modulator-.
+            if(kiloBotLoopIdx%50){ //red - %Frequency-Modulator-.
                 nx.kiloBotMesh1.sirenLight.material = nx.kiloBotMesh1.redMat;
             } else { //blue
                 nx.kiloBotMesh1.sirenLight.material = nx.kiloBotMesh1.blueMat;
@@ -328,6 +685,7 @@ nx.botz.kiloBotShockAnm = function(){ //warning: anm calls every frame when on-.
     kiloBotShockIdx += 0.09;
 }//end kilobotshockanm
 
+//replaced with generic initBotScan
 nx.botz.initKiloBotScan = function(){
    if(nx.kiloBotMesh1.laserTgtSphere){return;} //ONly 1 init-.
    //DYNAMIC-BEHAVIORS bot1
@@ -354,7 +712,8 @@ nx.botz.initKiloBotScan = function(){
     // nx.kiloBotMesh1.zapAuraAlpha = 0; //glow size -.
     nx.kiloBotMesh1.rayLines = [];
     nx.kiloBotMesh1.hoverChaseAlpha = 0; //TODO rename to CHASE-DAMPER-.
-    nx.kiloBotMesh1.setScanTarget = nx.botz.setKiloBotScanTgt;
+    nx.kiloBotMesh1.setScanTarget = nx.botz.setKiloBotScanTgt; //todo obsolete remove?
+    // nx.kiloBotMesh1.clearLaser = 0; //visible
     nx.kiloBotMesh1.stopSearching = function(){
           nx.kiloBotMesh1.stopLaser = 1;
           setTimeout(function(){ //stop all laser animations then delete-.
@@ -489,6 +848,14 @@ nx.botz.kiloBotScanANM = function(){ //anm is called on every frame!
             nx.kiloBotMesh1.rayLines[2].color.r = 1;//Math.cos(alpha1);//1;
             nx.kiloBotMesh1.rayLines[2].color.g = nx.kiloBotMesh1.rayLines[2].color.b = 0;        //spotted red laser
 
+
+            // if(nx.kiloBotMesh1.clearLaser){
+            //     // debugger;
+            //     nx.kiloBotMesh1.rayLines[0].alpha = 0.1;
+            //     nx.kiloBotMesh1.rayLines[1].alpha = 0.1;
+            //     nx.kiloBotMesh1.rayLines[2].alpha = 0.1;
+            // }
+
             if (nx.orbyMesh && nx.kiloBotMesh1.rayLines[0].intersectsMesh(nx.orbyMesh)) {                        //intersection
                 nx.kiloBotMesh1.targeting = 1;
                 nx.kiloBotMesh1.searching = 0;
@@ -537,7 +904,7 @@ nx.botz.kiloBotScanANM = function(){ //anm is called on every frame!
 /********************************************************-ZAP-BOT-FACTORY-****************************************************************/
 nx.botz.zapBotFactory = function( config ){ //USAGE: nx.botz.zapBotFactory({mesh:nx.zapbotMesh2})
  
-debugger; //obsolete? changed to individual behavior loop, not shared behavior loops-.
+debugger; //obsolete? YES. Moved to initBotFactory changed to individual behavior loop, not shared behavior loops-.
 
    if(config.mesh.laserTgtSphere){return;} //ONly 1 init-.
    //DYNAMIC-BEHAVIORS bot1
@@ -1293,8 +1660,9 @@ nx.botz.routeZapBot = function(config){ //EMBEDDED-FUNCTION-BEHAVIOR-.
         config.mesh.lookAt(nx.orbyMesh.position)
         config.mesh.rotation.x = 0.2;
         config.mesh.rotation.z = 0;
-
-        var botSpeed = config.mesh.chaseDistance/10*1000/3;//start at 1 sec for 10 distance. 20 /10 * 1000 = 2000 miliseconds. Too slow /2 speed-.
+// debugger;
+        // var botSpeed = config.mesh.chaseDistance/10*1000/3;//start at 1 sec for 10 distance. 20 /10 * 1000 = 2000 miliseconds. Too slow /2 speed-.
+        var botSpeed = config.mesh.chaseDistance/10*1000/8;// /2 slower /4 faster-. start at 1 sec for 10 distance. 20 /10 * 1000 = 2000 miliseconds. Too slow /2 speed-.
 
         $({x:config.mesh.position.x,y:config.mesh.position.y,z:config.mesh.position.z,pct:0})
             .animate({x:nx.orbyMesh.position.x,y:nx.orbyMesh.position.y+4,z:nx.orbyMesh.position.z,pct:1},{queue:false,duration:botSpeed,easing:'linear',
@@ -1402,13 +1770,18 @@ nx.botz.routeZapBot = function(config){ //EMBEDDED-FUNCTION-BEHAVIOR-.
 } //end route zapbot
 
 /***************************************************KILO-BOT-BEHAVIOR-CALCULATIONS-***************/
+// nx.kiloBotMesh1.speed = 0;
 nx.botz.routeKiloBot = function(){ //EMBEDDED-FUNCTION-BEHAVIOR-.
     nx.kiloBotMesh1.chaseDistance = BABYLON.Vector3.Distance(nx.kiloBotMesh1.position, nx.orbyMesh.position);  
     if(nx.kiloBotMesh1.chasing===1){ //init chasing-.
         nx.kiloBotMesh1.lookAt(nx.orbyMesh.position)
         nx.kiloBotMesh1.rotation.x = 0.2;
         nx.kiloBotMesh1.rotation.z = 0;
-        var botSpeed = nx.kiloBotMesh1.chaseDistance/10*1000/3;//start at 1 sec for 10 distance. 20 /10 * 1000 = 2000 miliseconds. Too slow /2 speed-.
+
+        var speedGovernor = (nx.kiloBotMesh1.speed)?nx.kiloBotMesh1.speed:3;
+        // var botSpeed = nx.kiloBotMesh1.chaseDistance/10*1000/3;//start at 1 sec for 10 distance. 20 /10 * 1000 = 2000 miliseconds. Too slow /2 speed-.
+        var botSpeed = nx.kiloBotMesh1.chaseDistance/10*1000/speedGovernor;// /2 slower /4 faster-. start at 1 sec for 10 distance. 20 /10 * 1000 = 2000 miliseconds. Too slow /2 speed-.
+// console.log('for KAYALASTAR!!!',botSpeed)
         $({x:nx.kiloBotMesh1.position.x,y:nx.kiloBotMesh1.position.y,z:nx.kiloBotMesh1.position.z,pct:0})
             .animate({x:nx.orbyMesh.position.x,y:nx.orbyMesh.position.y+4,z:nx.orbyMesh.position.z,pct:1},{queue:false,duration:botSpeed,easing:'linear',
             step: function(now) { 

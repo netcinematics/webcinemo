@@ -241,6 +241,27 @@ nx.GAMEZ = {
 
                         nx.initSEQ({seqID:'landingSequence'})//LANDINGPADSEQUENCE
 
+  //               var firstPOS = {"x":-803.65,"y":1334.5,"z":-1500}
+  //               var midPOS1 = {"x":-766.51,"y":1318.31,"z":-1500.65}
+  //               var midPOS2 = {"x":-749.4,"y":1312.7,"z":-1531.67}
+  //               var midPOS3 = {"x":-783.03,"y":1325.61,"z":-1543.4}
+  //               var lastPOS = {"x":-790.48,"y":1328.27,"z":-1511.27}
+  //               var camPOS = nx.BV32({x: -790, y: 1343, z: -1550});
+  // var firstMark = BABYLON.Mesh.CreateSphere("editNode", 1, 4, nx.scene);
+  // var mid1Mark = BABYLON.Mesh.CreateSphere("editNode", 1, 4, nx.scene);
+  // var mid2Mark = BABYLON.Mesh.CreateSphere("editNode", 1, 4, nx.scene);
+  // var mid3Mark = BABYLON.Mesh.CreateSphere("editNode", 1, 4, nx.scene);
+  // var endMark = BABYLON.Mesh.CreateSphere("editNode", 1, 4, nx.scene);
+  // var camMark = BABYLON.Mesh.CreateSphere("editNode", 1, 4, nx.scene);
+  // firstMark.position.copyFrom(firstPOS)
+  // mid1Mark.position.copyFrom(midPOS1)
+  // mid2Mark.position.copyFrom(midPOS2)
+  // mid3Mark.position.copyFrom(midPOS3)
+  // endMark.position.copyFrom(lastPOS)
+  // camMark.position.copyFrom(camPOS)
+
+
+
                         //TODO set ZAP-BOT-SPACEPAD ZONE-ALARM-.
                         // setZoneAlarmZapBot1();
                         //TODO also remove the space-zone-fall listener??

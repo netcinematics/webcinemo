@@ -26,7 +26,20 @@ var prone = nx.scene.beginAnimation(nx.orbySkeleton[0], 1, 1, false, 1.0);  //pr
 var titleANM1 = nx.scene.beginAnimation(nx.orbySkeleton[0], 410, 488, false, 1.0);  //title
 var titleANM2 = nx.scene.beginAnimation(nx.orbySkeleton[0], 488, 500, false, 1.0);  //title eye back
 var titleANM3 = nx.scene.beginAnimation(nx.orbySkeleton[0], 500, 520, false, 1.0);  //title eye back
+var fastDwn = nx.scene.beginAnimation(nx.orbySkeleton[0], 321, 340, false, 1.0);  //fastdown
+var fastUp = nx.scene.beginAnimation(nx.orbySkeleton[0], 340, 350, false, 1.0);  //fastup
+fastUp.onAnimationEnd = function(){nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  } //idle
 nx.scene.stopAnimation(nx.orbySkeleton[0]) 
+var jmpCompress = nx.scene.beginAnimation(nx.orbySkeleton[0], 20, 25, false, 1.0); //compress
+jmpCompress.onAnimationEnd = function (){
+    var jmpApex = nx.scene.beginAnimation(nx.orbySkeleton[0], 25, 35, false, 1.0);  //jump apex
+    jmpApex.onAnimationEnd = function(){
+        var jmpFall = nx.scene.beginAnimation(nx.orbySkeleton[0], 35, 50, false, 1.0);  //landing
+        jmpFall.onAnimationEnd = function(){
+            nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //idleanm
+        }
+    }
+}
 
 //LASER-POS-.
 nx.orby.lookFactory('proneLookUp')
@@ -532,6 +545,7 @@ var anmSurfMovement = function(){
                 nx.orbyMesh.rotation.y -= nx.anmz.orby.turnSpeed; //setting both mesh and rig rotY
                 nx.anmz.orby.rig.originBox.rotation.y -= nx.anmz.orby.turnSpeed;
                 if(!nx.anmz.orby.jump.jumpMode && !nx.anmz.orby.jump.preJumpMode && !nx.anmz.orby.jump.fallMode && nx.anmz.orby.rig.tiltRayHit.length){
+                    // nx.orbyMesh.rotation.z = -0.005;
                     nx.orbyMesh.rotation.z = -0.1;
                     // nx.orbyMesh.rotation.z = -0.2;
                 }
@@ -539,6 +553,7 @@ var anmSurfMovement = function(){
                 nx.orbyMesh.rotation.y += nx.anmz.orby.turnSpeed;
                 nx.anmz.orby.rig.originBox.rotation.y += nx.anmz.orby.turnSpeed;
                 if(!nx.anmz.orby.jump.jumpMode && !nx.anmz.orby.jump.preJumpMode && !nx.anmz.orby.jump.fallMode && nx.anmz.orby.rig.tiltRayHit.length){
+                    // nx.orbyMesh.rotation.z = 0.005;
                     nx.orbyMesh.rotation.z = 0.1;
                     // nx.orbyMesh.rotation.z = 0.2;
                 }
@@ -557,12 +572,14 @@ var anmSurfMovement = function(){
             //SpeedGovernor on TILT
             if(FPS>40){
                 if(nx.anmz.orby.rig.tiltSphere.position.y-nx.anmz.orby.rig.downSphere.position.y>2){ //console.log('UPTILT');
-                speedGovernor -= 0.1;
-            }else if(nx.anmz.orby.rig.tiltSphere.position.y-nx.anmz.orby.rig.downSphere.position.y<1){ //console.log('DWNTILT');
-            speedGovernor += 0.2;
-        }else{  //console.log('FLATTILT');
+                  speedGovernor -= 0.1;
+                }else if(nx.anmz.orby.rig.tiltSphere.position.y-nx.anmz.orby.rig.downSphere.position.y<1){ //console.log('DWNTILT');
+                  speedGovernor += 0.2;
+                }else{  //console.log('FLATTILT');
+                }
             }
-        }
+
+            speedGovernor = 0.7; //todo remove
         
         moveX = parseFloat(Math.sin(parseFloat(nx.anmz.orby.rig.originBox.rotation.y))) * speedGovernor; //divided sin cos speed reduction 0.5 fast /0.9 slow
         moveZ = parseFloat(Math.cos(parseFloat(nx.anmz.orby.rig.originBox.rotation.y))) * speedGovernor; //divide 3 pretty slow

@@ -133,7 +133,7 @@ var createZapBotPosts = function(){ //commandposts station
     // nx.zp1.position.copyFrom( {x: 272, y: 925, z: -1333})
     nx.zp1.position.copyFrom( {x: 170, y: 970, z: -1395} )
     nx.zp2 = BABYLON.MeshBuilder.CreateCylinder("zp1", {diameterTop: 8, diameterBottom: 10, tessellation: 8, height: 10}, nx.scene);
-    nx.zp2.position.copyFrom( {x: 580, y: 845, z: -617})
+    nx.zp2.position.copyFrom( {x: 580, y: 842, z: -617})
     // nx.zp2.position.copyFrom( {x: 605, y: 833, z: -624})
     // nx.zp2.position.copyFrom({x: 624, y: 845, z: -588})
 
@@ -696,17 +696,17 @@ nx.renderMasterPipe = function(masterPath){
 
 var createMasterPipeEditor = function(){  //NEED TO PASS IN THE OUTPUT TGT OBJECT-.
     //POINT-PIPE-EDITOR---------------------------------------------------------------------------.
-    var newPipePOS = new BABYLON.Vector3(570,125,-630)
-    var aPath = nx.createPointEditor({aPath:nx.spacepipe8,aPos:newPipePOS, editTgt:nx.editedPipe ,renderFn:function(aPath){
-        nx.vectorPath = [];
-        for(var i=0; i<aPath.length;i++){ nx.vectorPath.push(new BABYLON.Vector3(Math.round(aPath[i].x*200)/200,Math.round(aPath[i].y*200)/200,Math.round(aPath[i].z*200)/200));  }
-        nx.renderMasterPipe(nx.vectorPath); //Applies edit at runtime-.
-        // console.log(JSON.stringify(nx.vectorPath)); //PUBLISH-.
-    }}); 
+    // var newPipePOS = new BABYLON.Vector3(570,125,-630)
+    // var aPath = nx.createPointEditor({aPath:nx.spacepipe8,aPos:newPipePOS, editTgt:nx.editedPipe ,renderFn:function(aPath){
+    //     nx.vectorPath = [];
+    //     for(var i=0; i<aPath.length;i++){ nx.vectorPath.push(new BABYLON.Vector3(Math.round(aPath[i].x*200)/200,Math.round(aPath[i].y*200)/200,Math.round(aPath[i].z*200)/200));  }
+    //     nx.renderMasterPipe(nx.vectorPath); //Applies edit at runtime-.
+    //     // console.log(JSON.stringify(nx.vectorPath)); //PUBLISH-.
+    // }}); 
     //END-POINT-PIPE-EDITOR---------------------------------------------------------------------------.
     // var aPath = nx.spacepipe7; //PROD-SPACE-PIPE-.
     // var aPath = nx.spacepipe6; //PROD-SPACE-PIPE-.
-    // var aPath = nx.spacepipe8; //PROD-SPACE-PIPE-.
+    var aPath = nx.spacepipe8; //PROD-SPACE-PIPE-.
     var vectorPath = [];
     for(var i=0; i<aPath.length;i++){
         vectorPath.push(new BABYLON.Vector3(aPath[i].x,aPath[i].y,aPath[i].z))
