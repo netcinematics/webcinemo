@@ -173,6 +173,8 @@ nx.GAMEZ = {
 	
 
 
+            nx.spacepadTop.visibility = 1;
+
 			//SPARKS-SYSTEMZ-.
 			if(!nx.orby.easyBakeSparks){nx.orby.createEasyBakeSparks();nx.orby.easyBakeSparks.start()}
 			else{nx.orby.easyBakeSparks.start()}
@@ -364,7 +366,7 @@ nx.GAMEZ = {
 		}); //show fullscreen title 
 
 
-
+nx.spacepadTop.visibility = 1;
 
 
 
@@ -372,7 +374,8 @@ nx.GAMEZ = {
 	    		if(!this.restart){ nx.endGAME(nx.activeSEQ); } //end prior game-.
 
         		// nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-. FIX HARDLOAD not sizing-.
-        		nx.ground.scaling = new BABYLON.Vector3(0.0102,0.0102,0.0102);  //normal-wurld-. FIX HARDLOAD not sizing-.
+        		// nx.ground.scaling = new BABYLON.Vector3(0.0102,0.0102,0.0102);  //normal-wurld-. FIX HARDLOAD not sizing-.
+        		nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 				nx.plateMaster1.scaling.copyFrom({x:1,y:1,z:1});
 
 
@@ -406,7 +409,7 @@ nx.GAMEZ = {
                 	nx.kiloBotMesh1.rotation.x = 0.75
                 	nx.kiloBotMesh1.rotation.y = 1.55
                 	nx.kiloBotMesh1.rotationQuaternion = null;
-                	nx.kiloBotMesh1.searching = 0;
+                	nx.kiloBotMesh1.searching = 0; //todo remove and change to stopScanning();
                 }
                 var anmZapBot = function(){//local-initializer-.
 	                //ANM-ZAPBOT- ADVANCE TO CENTER POS
@@ -421,7 +424,7 @@ nx.GAMEZ = {
 	                    nx.kiloBotMesh1.rotationQuaternion = null
 	                    nx.kiloBotMesh1.rotation.y = 1.5
 	                    console.log('searchings 4 on')
-	                    nx.kiloBotMesh1.searching = 1; //START searching after in position
+	                    nx.kiloBotMesh1.searching = 1; //todo change to startScanning() //START searching after in position
 	                    // nx.initGAME({'gameID':"SpaceIonz"});
 
 	                }
@@ -438,6 +441,10 @@ nx.GAMEZ = {
 		        	positionZapBot(); //localPOS-.
 		        	anmZapBot(); //localANM-.
 		        }
+
+
+                nx.darkBot.position.copyFrom({x: 23, y: 260.5, z: -23});
+                nx.darkBot.rotation.y = -0.7;
 
 		        //END-ZAPBOT-INITIALIZER-.
 
@@ -556,7 +563,7 @@ nx.GAMEZ = {
 						nx.kiloBotMesh1.rotation.y = 0.17;
 					}
 					//RESET-SEARCHING-STATE-.
-					if(!nx.kiloBotMesh1.searching){
+					if(!nx.kiloBotMesh1.searching){ //todo change to scanning
 						console.log('search2 on')
 						nx.kiloBotMesh1.searching = 1;
 					} //init new laser on 1. //start scanning-.
@@ -605,7 +612,7 @@ nx.GAMEZ = {
   //       			nx.camz.followCam.radius = 70; //piperide-top
 					// nx.camz.followCam.heightOffset = 60;//piperide-top
 
-					if(!nx.zapbotMesh2.searching){ 
+					if(!nx.zapbotMesh2.searching){ //todo
 						console.log('search 3 on')
 						nx.zapbotMesh2.searching = 1; 
 					} //init new laser on 1 //start scanning-.
@@ -666,33 +673,33 @@ nx.GAMEZ = {
         		hit:function(){ //fires every frame-. //todo possibly dampen
         			if(this.wasHit){return;}else{this.wasHit=1;/*setTimeout(function(){this.wasHit=0},3000);*/} //one time init-.
         			
-        			nx.initFreeCam();
+//         			nx.initFreeCam();
 
 
 
 
-// debugger;
-        			//ANM-CAM: cam zoom in FACE CAM on darkbot.
-                    $({posx:nx.camz.freeCam.position.x,posy:nx.camz.freeCam.position.y,posz:nx.camz.freeCam.position.z}).
-                    animate({posx:nx.darkBot.position.x+8,posy:nx.darkBot.position.y+2,posz:nx.darkBot.position.z-8},{queue:false,duration:6000,easing:'swing',
-                    step: function(now) { //ANM: - CAM Along Pipeline.-.
-                    	if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); return;}//CINEMA-STOP-.
-                    	nx.camz.freeCam.position.copyFrom({x:this.posx,y:this.posy,z:this.posz})
-						nx.camz.freeCam.setTarget( nx.darkBot.position ); 
-                        // nx.kiloBotMesh1.position = new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) //todo remove x and y from interpolation
-                        // nx.orbyMesh.position = new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) //todo remove x and y from interpolation
-                        // nx.anmz.orby.rig.originBox.position.copyFrom(nx.orbyMesh.position); 
+// // debugger;
+//         			//ANM-CAM: cam zoom in FACE CAM on darkbot.
+//                     $({posx:nx.camz.freeCam.position.x,posy:nx.camz.freeCam.position.y,posz:nx.camz.freeCam.position.z}).
+//                     animate({posx:nx.darkBot.position.x+8,posy:nx.darkBot.position.y+2,posz:nx.darkBot.position.z-8},{queue:false,duration:6000,easing:'swing',
+//                     step: function(now) { //ANM: - CAM Along Pipeline.-.
+//                     	if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); return;}//CINEMA-STOP-.
+//                     	nx.camz.freeCam.position.copyFrom({x:this.posx,y:this.posy,z:this.posz})
+// 						nx.camz.freeCam.setTarget( nx.darkBot.position ); 
+//                         // nx.kiloBotMesh1.position = new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) //todo remove x and y from interpolation
+//                         // nx.orbyMesh.position = new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) //todo remove x and y from interpolation
+//                         // nx.anmz.orby.rig.originBox.position.copyFrom(nx.orbyMesh.position); 
 
-                        // nx.camz.freeCam.setTarget( new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) ); //SMOOTH-CAM-.
-                    }, complete:function(){ 
+//                         // nx.camz.freeCam.setTarget( new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) ); //SMOOTH-CAM-.
+//                     }, complete:function(){ 
 
 
-                    	// debugger;
+//                     	// debugger;
 
-                    	//NOTE: CAM-POS-TGT-SEAM - MEANING THE POSITION and TARGET OF CAM SPANS ACROSS SEQUENCES-. 
-      //               	nx.initFreeCam();  //CAMERA: LONG-CAM - over landingpad-.
-      //               	nx.camz.freeCam.position.copyFrom({x:this.posx,y:this.posy,z:this.posz})
-						// nx.camz.freeCam.setTarget( nx.darkBot.position ); 
+//                     	//NOTE: CAM-POS-TGT-SEAM - MEANING THE POSITION and TARGET OF CAM SPANS ACROSS SEQUENCES-. 
+//       //               	nx.initFreeCam();  //CAMERA: LONG-CAM - over landingpad-.
+//       //               	nx.camz.freeCam.position.copyFrom({x:this.posx,y:this.posy,z:this.posz})
+// 						// nx.camz.freeCam.setTarget( nx.darkBot.position ); 
 
 
                     	nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
@@ -700,16 +707,16 @@ nx.GAMEZ = {
 
 
 
-                    	 // nx.ui.flashCanvasMSG({txt:'DarkBot!'});  
+//                     	 // nx.ui.flashCanvasMSG({txt:'DarkBot!'});  
 
-							// nx.initFollowCam();  //CAMERA: CLOSE-FOLLOW-TOP CAM-.
-	      //       			nx.camz.followCam.radius = 60; //piperide-top
-							// nx.camz.followCam.heightOffset = 80;//piperide-top
-							// nx.camz.followCam.maxCameraSpeed = 6;
+// 							// nx.initFollowCam();  //CAMERA: CLOSE-FOLLOW-TOP CAM-.
+// 	      //       			nx.camz.followCam.radius = 60; //piperide-top
+// 							// nx.camz.followCam.heightOffset = 80;//piperide-top
+// 							// nx.camz.followCam.maxCameraSpeed = 6;
 
-                            // nx.zapScanSeqIdx[NUM].initAnm = 0; 
-                        } //NEXT-SUB-SEQUENCE-. 
-                    });
+//                             // nx.zapScanSeqIdx[NUM].initAnm = 0; 
+//                         } //NEXT-SUB-SEQUENCE-. 
+//                     });
 
 
 
@@ -840,8 +847,8 @@ nx.ui.showGameModeView()
 		nx.camz.freeCam.position.copyFrom({x: -478.1365031303217, y: 21.321846007235653, z: 364.63460065228054}); //CAMPOS: gamestart spacetrain
 		nx.camz.freeCam.setTarget(nx.BV32({x: -474.090460708942, y: 21.995056915796674, z: 361.6818477126597}));
 
-        nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
-
+        // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
+        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 // return;
         nx.orbyMesh.position.copyFrom({x: -418.0711228317587, y: 14.892315408405217, z: 318.1141529417893}); //START ACTORPOS 
         // nx.orbyMesh.position = new BABYLON.Vector3(-2500,3933,-1500); //START ACTORPOS

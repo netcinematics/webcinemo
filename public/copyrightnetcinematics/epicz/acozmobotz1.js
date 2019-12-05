@@ -66,6 +66,10 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
 
         nx.createAcozmoScope1();
 
+// debugger;
+ // nx.spacepadTop.visibility = 0;
+
+
         nx.camz.freeCam.maxZ = 15000; //todo perf reduce this later
         nx.plateMaster1.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);  //shrink-wurld-.
         //FROM-ORBY-LOAD*************************
@@ -104,7 +108,7 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         // nx.removePurpleNebula1();
         // nx.createGalaxy1();
         // nx.removeGalaxy1();
-        
+
         
         nx.camz.freeCam.maxZ = 15000; //todo perf reduce this later
         // nx.scene.activeCamera.position //center black focal
@@ -156,7 +160,10 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
             // nx.camz.freeCam.setTarget(new BABYLON.Vector3( -1231.41, 2307.17, -2837.5));
             // nx.scene.activeCamera.position = new BABYLON.Vector3(1329.77, 4105.48, -3819.54); //START CAM POS - space pos1
             // nx.camz.freeCam.setTarget(new BABYLON.Vector3( 1120.89, 3894.63, -3696.29));
-            nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
+            // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
+
+            //SET-WORLD-SCALE-.
+            nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
             return; //STOPS AT TEST CAMERA
         }
 
@@ -241,7 +248,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         nx.sneakSeqIdx[0] = {on:1}; 
         nx.runCinematicSequence("SneakSequence") //HARDLOAD AUTORUN 
 
-
+        nx.darkBot.position.copyFrom({x: 23, y: 260.5, z: -23});
+        nx.darkBot.rotation.y = -0.7;
 
         
     },runfn:function(){},endfn:function(){}},
@@ -253,6 +261,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         
         // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  
         nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
+        //SET-WORLD-SCALE-.
+        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
         // nx.ui.flashCanvasMSG({txt:'DarkBot!'});  
 
@@ -263,23 +273,27 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         nx.runCinematicSequence("DoorSequence") //HARDLOAD AUTORUN 
 
     },runfn:function(){},endfn:function(){}},
-    6:{seqID:6,name:'CrashSeq',initfn:function(){
+    // 6:{seqID:6,name:'CrashSeq',initfn:function(){
+    'crashSequence':{seqID:'crashSequence',name:'CrashSeq',initfn:function(){
         // nx.endSEQ(nx.masterSequence[nx.masterIDX]); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.endSEQ(nx.activeSEQ); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
 
-        nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
-
+        // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
+        nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
+        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
 
         nx.crashSeqIdx[0] = {on:1}; nx.runCinematicSequence("CrashSequence");
 
     },runfn:function(){},endfn:function(){}},
-    7:{seqID:7,name:'AffirmationSeq',initfn:function(){
+    'affirmSequence':{seqID:'affirmSequence',name:'AffirmationSeq',initfn:function(){
         // nx.endSEQ(nx.masterSequence[nx.masterIDX]); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.endSEQ(nx.activeSEQ); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
-        nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
+        // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
+        nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
+        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
 
         // nx.crashSeqIdx[0] = {on:1}; nx.runCinematicSequence("AffirmationSequence");
@@ -287,12 +301,14 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
 
 
     },runfn:function(){},endfn:function(){}},
-    8:{seqID:8,name:'TrainScanSeq',initfn:function(){
+    // 8:{seqID:8,name:'TrainScanSeq',initfn:function(){
+    'scanTrainSequence':{seqID:'scanTrainSequence',name:'TrainScanSeq',initfn:function(){
         // nx.endSEQ(nx.masterSequence[nx.masterIDX]); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.endSEQ(nx.activeSEQ); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
-        nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
-
+        // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
+        nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
+        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
         // nx.finalSeqIdx[0] = {on:1}; nx.runCinematicSequence("FinalSequence"); //COOL PATTERN for FRAME-SET-.
         // nx.finalSeqIdx[6] = {on:1}; //ANMETHODOLOGY: AUTO-START-FRAMESET-.
@@ -304,8 +320,9 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         // nx.endSEQ(nx.masterSequence[nx.masterIDX]); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.endSEQ(nx.activeSEQ); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
-        nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
-
+        // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
+        nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
+        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
         // nx.finalSeqIdx[0] = {on:1}; nx.runCinematicSequence("FinalSequence"); //COOL PATTERN for FRAME-SET-.
         // nx.finalSeqIdx[6] = {on:1}; //ANMETHODOLOGY: AUTO-START-FRAMESET-.
@@ -393,6 +410,26 @@ nx.runCinematicSequence = function(seqName){ //LOOPZ
                 nx.scene.activeCamera.position = new BABYLON.Vector3(2227.33, 4906.14, -4110.71); //START CAM POS
                 nx.camz.freeCam.setTarget(new BABYLON.Vector3( 1710.03, 4383.98, -3805.48));
                 nx.camz.freeCam.maxZ = 15000; //todo perf reduce this later, FIX?
+
+
+                //TODO: make DARK CAM PRE-SCENE-.
+                if(nx.sonic.footsteps1){ nx.sonic.footsteps1.play(); }  //SONIC-.
+                //TODO: door open.
+                //Dr.Acozmo! We've done it! Oh? In the Zeta Ternary Star System.
+                //Just as you said. A Message in Space!
+                //Ok. Well let's have a look!
+                //Wow, it's beautiful!
+                //Yes, that's the photon entangling.
+                //First to Orion. 
+                //Then into a Purple Nebula.
+                //Over Gemeni.
+                //There you will find my message??
+                //OrbyOrbot?!?
+                //On a Secret Mission for Kang Aeon.
+                //Find a SpaceTrain Wreck.
+                //And Save AlphaMoon!
+
+
                 //-------ANM: CAM-ZOOM-TOWARD BINOCULAR-.
                 $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z}). 
                 animate({cx:1755.67,cy:4430.05,cz:-3832.40},{queue:false,duration:4000*nx.RUNTIME,easing:'linear',
@@ -674,7 +711,10 @@ console.log('ANM 1 - top of starfield');
 
 
 
-                        nx.ui.flashCanvasMSG({txt:'A MESSAGE in SPACE!',txtIcon:'drbecky',dur:4000});  
+                        nx.ui.flashCanvasMSG({txt:'To Orion!',txtIcon:'drbecky',dur:4000});  
+                        nx.ui.flashCanvasMSG({txt:'In a Purple Nebula.',txtIcon:'drbecky',dur:4000});  
+                        nx.ui.flashCanvasMSG({txt:'Find my message.',txtIcon:'drbecky',dur:4000});  
+                        // nx.ui.flashCanvasMSG({txt:'A MESSAGE in SPACE!',txtIcon:'drbecky',dur:4000});  
                         // nx.ui.flashCanvasMSG({txt:'A SIGNAL in SPACE!',txtIcon:'drbecky'});  
                         // nx.ui.flashCanvasMSG({txt:'In Dimension~Z!'});  
           nx.ui.setMovieModeTXT({txt:"A MESSAGE in SPACE!",type:'drbecky',align:'left',metaLink:'1.1.1'}); 
@@ -818,6 +858,9 @@ console.log('ANM 1 - top of starfield');
                 
                 // debugger;  //BOTTOM: CAM LOOK UP TO NEBULA/GALAXY-.     
                 nx.plateMaster1.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);  //shrink-wurld-.
+
+
+                nx.spacepadTop.visibility = 0;
 
                 //3D-WEB-ANMETHODOLOGY-.  WEBANMZ
                 // nx.orbyMesh.position = new BABYLON.Vector3(-2000,3400,-2300); //ANM: INIORBYPOS 
@@ -1330,7 +1373,7 @@ console.log('ANM 9 - rotz 3');
                 // nx.initFollowCam();
 
                 // nx.RUNTIME=1; //FFWD-SLOMO-handle-.
-console.log('ANM 12 - world scaling - simultaneous');
+// console.log('ANM 12 - world scaling - simultaneous');
 // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
                 var local_scale = 0;
                 $({gscale:0.01}). //--------------------------------------------ANM: WORLD-SCALING-. 
@@ -1346,6 +1389,8 @@ console.log('ANM 12 - world scaling - simultaneous');
 
                 }, complete:function(){                     // } //NEXT-SUB-SEQUENCE-. 
                     // debugger;
+
+                    nx.spacepadTop.visibility = 1;
                     nx.spaceSeqIdx[7] = {on:1}
                     }
                 });  
@@ -1430,6 +1475,7 @@ console.log('ANM 12 - world scaling - simultaneous');
                     if(nx.cinemaStop){nx.landingPadSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
 
                     //PLACE ZAPBOT 1
+                        nx.spacepadTop.visibility = 1;
 
                         nx.kiloBotMesh1.position.copyFrom({x: -666, y: 1274, z: -1530});
                         // nx.kiloBotMesh1.rotation.x = 0.2;
@@ -1441,7 +1487,7 @@ console.log('ANM 12 - world scaling - simultaneous');
                         nx.zapBotGlow.addMesh(nx.kiloBotMesh1, new BABYLON.Color3(0.155,0,0));
 
 
-                        nx.kiloBotMesh1.searching = 0;
+                        nx.kiloBotMesh1.searching = 0; //todo sto searcching?
                         // nx.zapBotGlow.addMesh(nx.kiloBotMesh1, BABYLON.Color3.Blue());
 
                         // nx.zapBotMesh2.position.copyFrom({x: -666, y: 1274, z: -1530});
@@ -2227,8 +2273,9 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
                         nx.initFollowCam();
                         nx.scene.activeCamera.heightOffset = 18;
 // nx.sneakSeqIdx[NUM].on=0; //important
-                    }else if(nx.sneakSeqIdx[NUM].stepIdx===1750){  //ANM-FRAME-ACTIONZ-.
+                    }else if(nx.sneakSeqIdx[NUM].stepIdx===2180){  //ANM-FRAME-ACTIONZ-.
 // return;
+// debugger;
                         nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
                         // nx.sneakSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
                     }
@@ -2276,7 +2323,7 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
                 }
             }
             else if(nx.sneakSeqIdx[2] && nx.sneakSeqIdx[2].on){ var NUM = 2; //nx.sneakSeqIdx[NUM].on=0;
-
+debugger; //unused
                 if(!nx.sneakSeqIdx[NUM].init){ nx.sneakSeqIdx[NUM].init=1; //one time init
 
 
@@ -2356,6 +2403,7 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
                 }
             }
             else if(nx.sneakSeqIdx[3] && nx.sneakSeqIdx[3].on){ var NUM = 3; //nx.sneakSeqIdx[NUM].on=0;
+    debugger;//unused 
                 if(!nx.sneakSeqIdx[NUM].init){ nx.sneakSeqIdx[NUM].init=1; //one time init
                     nx.scene.activeCamera.position.copyFrom({x: 20.55963344538219, y: 263.81614691268715, z: -31.47744778076308}); //CAMPOS: back to zscope2
                     nx.scene.activeCamera.setTarget(nx.BV32({x: 20.94169472338265, y: 263.81803254924404, z: -25.21296959870571})) //CAMTGT: 
@@ -2424,22 +2472,22 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
 
                 if(nx.cinemaStop){nx.doorSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
                 //INITIALIZE-SEQUENCE-
-                nx.orbyMesh.position.copyFrom({x: 302.3481750488281, y: 320.0316091078848, z: -368.6502685546875})
-                nx.orbyMesh.rotationQuaternion = new BABYLON.Quaternion(0,-0.8,0,-0.5);
-                nx.anmz.orby.rig.originBox.position.copyFrom(nx.orbyMesh.position); 
-                nx.anmz.orby.rig.originBox.rotation.y = nx.orbyMesh.rotationQuaternion.y;
+                // nx.orbyMesh.position.copyFrom({x: 302.3481750488281, y: 320.0316091078848, z: -368.6502685546875})
+                // nx.orbyMesh.rotationQuaternion = new BABYLON.Quaternion(0,-0.8,0,-0.5);
+                // nx.anmz.orby.rig.originBox.position.copyFrom(nx.orbyMesh.position); 
+                // nx.anmz.orby.rig.originBox.rotation.y = nx.orbyMesh.rotationQuaternion.y;
 
                 //todo if nx.cinemaPlayAll?
                 // nx.ui.showMovieModeView();
 
                 // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtAlign:'hero',txtIcon:'darkbot',dur:1000}); 
-                nx.ui.flashCanvasMSG({txt:'DarkBot!',txtType:'villian',txtIcon:'darkbot',dur:1000}); 
+                // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtType:'villian',txtIcon:'darkbot',dur:1000}); 
                 // nx.ui.flashCanvasMSG({txt:'DarkBot!',dur:1000}); 
 
                 //TODO
-                nx.initFreeCam();  //CAMERA: CLOSEUP ON DARKBOT
-                nx.camz.freeCam.position.copyFrom({x: 31, y: 264, z: -31 });
-                nx.camz.freeCam.setTarget(new nx.BV32({x: 30.30, y: 263.82, z: -30.32}))
+                // nx.initFreeCam();  //CAMERA: CLOSEUP ON DARKBOT
+                // nx.camz.freeCam.position.copyFrom({x: 31, y: 264, z: -31 });
+                // nx.camz.freeCam.setTarget(new nx.BV32({x: 30.30, y: 263.82, z: -30.32}))
 
                 nx.pyramid.aSpaceDoor.scaling.x = 0; 
                 nx.pyramid.aSpaceDoor.scaling.z = 0;
@@ -2450,7 +2498,7 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
                 // nx.camz.freeCam.position.copyFrom({x: 1.1078729504925633, y: 228.92358345159658, z: 71.78831572314027})
                 // nx.camz.freeCam.setTarget(nx.orbyMesh.position);
                 nx.camz.freeCam.maxZ = 8000; //15 to 8?
-                nx.scene.activeCamera = nx.camz.freeCam;
+                // nx.scene.activeCamera = nx.camz.freeCam;
 
                 //SET-WORLD-SCALE-.
                 // nx.landPad.scaling = new BABYLON.Vector3(1, 1, 1);
@@ -2461,16 +2509,81 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
                 nx.spacebox.position.y = 0
                 nx.spacebox.position.z = 0
 
-                setTimeout(function(){
-                    nx.doorSeqIdx[1] = {on:1} 
+                // setTimeout(function(){
+                //     nx.doorSeqIdx[1] = {on:1} 
 
-                    nx.camz.freeCam.setTarget(nx.orbyMesh.position)
+                //     nx.camz.freeCam.setTarget(nx.orbyMesh.position)
 
-                    if(nx.cinemaStop){nx.doorSeqIdx[0]={on:1}; return;}
-                    // nx.cinemaStop = 1;  //stop movies
-                    // nx.cinematicMode = 0 //switch to playMode;
+                //     if(nx.cinemaStop){nx.doorSeqIdx[0]={on:1}; return;}
+                //     // nx.cinemaStop = 1;  //stop movies
+                //     // nx.cinematicMode = 0 //switch to playMode;
 
-                },3000)
+                // },3000)
+
+
+                    nx.darkBot.position.copyFrom({x: 23, y: 260.5, z: -23});
+                    nx.darkBot.rotation.y = -0.7;
+
+        
+                    nx.initFreeCam(); //top of pipe
+                    // nx.scene.activeCamera.position.copyFrom({x: 355, y: 353, z: -430.5})
+                    nx.scene.activeCamera.position.copyFrom({x: 402.02798042829806, y: 395.5735388717472, z: -490.91977378318916})
+                    nx.scene.activeCamera.setTarget(nx.darkBot.position)
+
+
+
+
+// debugger;
+                    //ANM-CAM: cam zoom in FACE CAM on darkbot.
+                    $({posx:nx.camz.freeCam.position.x,posy:nx.camz.freeCam.position.y,posz:nx.camz.freeCam.position.z}).
+                    animate({posx:nx.darkBot.position.x+8.25,posy:nx.darkBot.position.y+4.5,posz:nx.darkBot.position.z-9},{queue:false,duration:4000*nx.RUNTIME,easing:'swing',
+                    step: function(now) { //ANM: - CAM Along Pipeline.-.
+                        if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); return;}//CINEMA-STOP-.
+                        nx.camz.freeCam.position.copyFrom({x:this.posx,y:this.posy,z:this.posz})
+                        nx.camz.freeCam.setTarget( new BABYLON.Vector3(nx.darkBot.position.x,nx.darkBot.position.y+3,nx.darkBot.position.z) ); 
+                        // nx.camz.freeCam.setTarget( new BABYLON.Vector3(nx.darkBot.position.x,nx.darkBot.position.y+3,nx.darkBot.position.z) ); 
+                        // nx.kiloBotMesh1.position = new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) //todo remove x and y from interpolation
+                        // nx.orbyMesh.position = new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) //todo remove x and y from interpolation
+                        // nx.anmz.orby.rig.originBox.position.copyFrom(nx.orbyMesh.position); 
+
+                        // nx.camz.freeCam.setTarget( new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) ); //SMOOTH-CAM-.
+                    }, complete:function(){ 
+
+
+                        // debugger;
+
+                        //NOTE: CAM-POS-TGT-SEAM - MEANING THE POSITION and TARGET OF CAM SPANS ACROSS SEQUENCES-. 
+      //                nx.initFreeCam();  //CAMERA: LONG-CAM - over landingpad-.
+      //                nx.camz.freeCam.position.copyFrom({x:this.posx,y:this.posy,z:this.posz})
+                        // nx.camz.freeCam.setTarget( nx.darkBot.position ); 
+// return
+                        // nx.ui.flashCanvasMSG({txt:'DarkBot!'});  
+                // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtAlign:'hero',txtIcon:'darkbot',dur:1000}); 
+                nx.ui.flashCanvasMSG({txt:'DarkBot!',txtType:'villian',txtIcon:'darkbot',dur:3000}); 
+
+
+
+                        setTimeout(function(){
+                            nx.doorSeqIdx[1] = {on:1} 
+                        },3000)
+                        // nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
+
+
+
+
+
+                            // nx.initFollowCam();  //CAMERA: CLOSE-FOLLOW-TOP CAM-.
+          //                nx.camz.followCam.radius = 60; //piperide-top
+                            // nx.camz.followCam.heightOffset = 80;//piperide-top
+                            // nx.camz.followCam.maxCameraSpeed = 6;
+
+                            // nx.zapScanSeqIdx[NUM].initAnm = 0; 
+                        } //NEXT-SUB-SEQUENCE-. 
+                    });
+
+
+
+
 
                 // nx.cinematicMode = 0; //turn off
 
@@ -2495,18 +2608,28 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
 
                 if(!nx.doorSeqIdx[1].initSeq){ nx.doorSeqIdx[1].initSeq=1; //one time init
 
+
+                     nx.initFreeCam();  //CAMERA: LONG-CAM - over landingpad-.
+                     nx.camz.freeCam.position.copyFrom({x:31.25, y:265, z: -32})
+                     nx.camz.freeCam.setTarget( new BABYLON.Vector3(289.883,316.653,-356.371) ); 
+                     // nx.camz.freeCam.setTarget( nx.orbyMesh.position ); 
+
+                     // nx.doorSeqIdx[NUM].on=0; //important
+                     // return;
+
                     // var descentPath = [{"pos":{"x":289.8837021722073,"y":316.6532450734138,"z":-356.37048485906547},"rot":{"x":0.024698191527708777,"y":-0.9283897151929095,"z":-0.0627452318772955,"w":-0.36543887578629836}},{"pos":{"x":288.1796006097073,"y":316.2840141860512,"z":-354.54126122625297},"rot":{"x":0.028911363885670005,"y":-0.9276042878574633,"z":-0.07344870691686428,"w":-0.3651297107042365}},{"pos":{"x":286.4754990472073,"y":315.8856105704048,"z":-352.71203759344047},"rot":{"x":0.02891136388567259,"y":-0.9276042878574614,"z":-0.07344870691687003,"w":-0.3651297107042398}},{"pos":{"x":284.68210415751685,"y":315.4872069547584,"z":-350.9702693594446},"rot":{"x":0.11859684314760657,"y":-0.9108979019881883,"z":-0.03502236841231507,"w":-0.39366640021689775}},{"pos":{"x":282.8038973758211,"y":315.1048512447359,"z":-349.32031801419384},"rot":{"x":0.11831897208525023,"y":-0.901106575073262,"z":-0.029144943840243152,"w":-0.4161227384474137}},{"pos":{"x":280.84557676890006,"y":314.739495164498,"z":-347.7662875793234},"rot":{"x":0.11774747530984334,"y":-0.8907729388390594,"z":-0.023127572604907345,"w":-0.4383197678357525}},{"pos":{"x":278.40533454031936,"y":314.39205802539044,"z":-346.02124711832715},"rot":{"x":0.1168736756586006,"y":-0.8799017687877899,"z":-0.016990092971455838,"w":-0.46024423729470854}},{"pos":{"x":275.8809215182326,"y":313.99767078770293,"z":-344.4003333167706},"rot":{"x":0.11569055687594841,"y":-0.868498049722394,"z":-0.010753608940203732,"w":-0.4818829656388486}},{"pos":{"x":273.2786507333742,"y":313.62680931687913,"z":-342.90761644616856},"rot":{"x":0.11419224048422047,"y":-0.8565671862112039,"z":-0.004439092601434824,"w":-0.5032226964041772}},{"pos":{"x":270.60503392567506,"y":313.2804021954649,"z":-341.54683492673894},"rot":{"x":0.1123745808587925,"y":-0.8441148698708316,"z":0.0019314914902660366,"w":-0.5242502354604932}},{"pos":{"x":267.93141942372193,"y":312.95931360955353,"z":-340.1860561181452},"rot":{"x":0.024904223481854976,"y":-0.8515562770515549,"z":-0.040619820338125896,"w":-0.5220935901374002}},{"pos":{"x":265.2578049217688,"y":312.7124493131227,"z":-338.82527730955144},"rot":{"x":0.01825133148294743,"y":-0.8520046294531849,"z":-0.029768677843300027,"w":-0.5223684773308038}},{"pos":{"x":262.5841904198157,"y":312.50255871003804,"z":-337.4644985009577},"rot":{"x":0.01825133148294762,"y":-0.8520046294531902,"z":-0.029768677843301016,"w":-0.5223684773307951}},{"pos":{"x":259.91057591786256,"y":312.2926681069534,"z":-336.10371969236394},"rot":{"x":0.01825133148294527,"y":-0.8520046294531914,"z":-0.029768677843297335,"w":-0.5223684773307933}},{"pos":{"x":257.23696141590943,"y":312.1852810901022,"z":-334.7429408837702},"rot":{"x":-0.006073819344144049,"y":-0.852466961856076,"z":0.009906651002595092,"w":-0.5226519357357811}},{"pos":{"x":254.63469931735858,"y":312.25502053871924,"z":-333.25023729577794},"rot":{"x":-0.09267040325080943,"y":-0.8603118902023997,"z":-0.04033142037219082,"w":-0.4996489011980992}},{"pos":{"x":252.11029163542005,"y":312.2257733802476,"z":-331.6293372230206},"rot":{"x":-0.08504327249436437,"y":-0.8734452930760073,"z":-0.052050172396340924,"w":-0.47660438663563337}},{"pos":{"x":249.67004401297564,"y":312.0974299465137,"z":-329.88428422770215},"rot":{"x":-0.07810063719735912,"y":-0.8857173741062755,"z":-0.06405164551263197,"w":-0.4531030902375029}},{"pos":{"x":247.32006321643004,"y":312.0605494346134,"z":-328.019447438938},"rot":{"x":-0.13377473151651592,"y":-0.8876408697192547,"z":0.03779518450461306,"w":-0.4390552717369319}},{"pos":{"x":245.0662271439541,"y":312.382565311961,"z":-326.0394902596107},"rot":{"x":-0.1151409263918123,"y":-0.9027519263244577,"z":0.006183217286205099,"w":-0.4144192254361613}},{"pos":{"x":242.9141548718327,"y":312.3697618158171,"z":-323.9493696180523},"rot":{"x":-0.08174682469339438,"y":-0.9172273923424843,"z":-0.05994123337705727,"w":-0.385251107630323}},{"pos":{"x":240.86923777266438,"y":311.9794446971012,"z":-321.7543047312692},"rot":{"x":-0.06618018431969844,"y":-0.9265833739378758,"z":-0.09508951323619733,"w":-0.357800808855732}},{"pos":{"x":238.9365791160213,"y":311.3410364039739,"z":-319.4597764166622},"rot":{"x":-0.05271833553235968,"y":-0.9336162409928233,"z":-0.1299486779240437,"w":-0.32968899399118706}},{"pos":{"x":237.12102525544813,"y":310.4561244354322,"z":-317.07152643638415},"rot":{"x":-0.04154740541126277,"y":-0.9384620777564059,"z":-0.16388015207230072,"w":-0.3011744303115413}},{"pos":{"x":235.42710529465865,"y":309.3269327903209,"z":-314.595526358396},"rot":{"x":-0.03274198354827385,"y":-0.9413311825769356,"z":-0.1963859834081253,"w":-0.2724997481511789}},{"pos":{"x":233.85904707785647,"y":307.95527277692406,"z":-312.0379464533528},"rot":{"x":-0.026219081257378093,"y":-0.9424395251005598,"z":-0.22728773616876216,"w":-0.2438454147478054}},{"pos":{"x":232.42077794961708,"y":306.3436707572127,"z":-309.40518566393825},"rot":{"x":-0.022062562514755916,"y":-0.942133772822529,"z":-0.2558811395000902,"w":-0.2154577450234857}},{"pos":{"x":231.11587976485382,"y":304.4974992432952,"z":-306.70384057770764},"rot":{"x":-0.018596270976812077,"y":-0.9394210048955215,"z":-0.2868851046995725,"w":-0.1866528622024341}},{"pos":{"x":230.02550388567641,"y":302.4061336821057,"z":-304.12485612108884},"rot":{"x":-0.03295434096983674,"y":-0.9501781210417469,"z":-0.2610702112979899,"w":-0.1670864880163617}},{"pos":{"x":229.06538357564818,"y":300.7731612714102,"z":-301.4946038161367},"rot":{"x":-0.03747435005435323,"y":-0.9521578358056497,"z":-0.26793627755560256,"w":-0.14213120688839648}},{"pos":{"x":228.23792733248106,"y":299.0878723656631,"z":-298.8196562191202},"rot":{"x":-0.04220029342496819,"y":-0.9532431511036897,"z":-0.27538974745991496,"w":-0.11707739791573335}},{"pos":{"x":227.5451992119389,"y":297.3389801416776,"z":-296.10668633249145},"rot":{"x":-0.04741515023122293,"y":-0.9537203858957295,"z":-0.28228370520533175,"w":-0.09211481330926401}},{"pos":{"x":226.98892240697694,"y":295.527901648765,"z":-293.36250303516954},"rot":{"x":-0.057835744510139474,"y":-0.9606863762329239,"z":-0.26218898877571334,"w":-0.07066574376725761}},{"pos":{"x":226.43264799291444,"y":293.873018139559,"z":-290.6183013750133},"rot":{"x":0.025033203134039343,"y":-0.9632157161843623,"z":-0.24949704116526633,"w":-0.0966439304150719}},{"pos":{"x":225.87637357885194,"y":292.31838204758253,"z":-287.87409971485704},"rot":{"x":0.025042568145060746,"y":-0.9631915345423261,"z":-0.2495903789026652,"w":-0.0966415041580125}},{"pos":{"x":225.32009916478944,"y":290.76280073203554,"z":-285.1298980547008},"rot":{"x":0.022404148100425212,"y":-0.9696251837440497,"z":-0.22329418376682994,"w":-0.09728702222350817}},{"pos":{"x":224.76382475072694,"y":289.36739494631667,"z":-282.38569639454454},"rot":{"x":0.019929802583911357,"y":-0.9749759571483423,"z":-0.19863326115595636,"w":-0.09782389030390143}},{"pos":{"x":224.20755033666444,"y":288.17707951537284,"z":-279.6414947343883},"rot":{"x":0.02404657853292156,"y":-0.9657093756851186,"z":-0.23966370432052136,"w":-0.09689413091660395}},{"pos":{"x":223.65127592260194,"y":286.70062727684774,"z":-276.89729307423204},"rot":{"x":0.0246128617551662,"y":-0.9642911631303498,"z":-0.24530764799225754,"w":-0.09675183502882395}},{"pos":{"x":223.09500150853944,"y":285.1774542770787,"z":-274.1530914140758},"rot":{"x":0.02461286175516571,"y":-0.9642911631303498,"z":-0.24530764799225815,"w":-0.09675183502882179}},{"pos":{"x":222.53872709447694,"y":283.65428127730974,"z":-271.40888975391954},"rot":{"x":0.024616376991213062,"y":-0.9642822498125767,"z":-0.24534268310094653,"w":-0.09675094071403306}},{"pos":{"x":221.98245268041444,"y":282.1308686631937,"z":-268.6646880937633},"rot":{"x":0.024617605964110903,"y":-0.9642791332793421,"z":-0.24535493183715887,"w":-0.09675062801770053}},{"pos":{"x":221.42617826635194,"y":280.6073397861596,"z":-265.92048643360704},"rot":{"x":0.020590382166598274,"y":-0.9736114537458075,"z":-0.20521702314806017,"w":-0.09768698330615558}},{"pos":{"x":220.86990385228944,"y":279.3237577441147,"z":-263.1762847734508},"rot":{"x":0.014864233721473661,"y":-0.9839135598647288,"z":-0.14814653613599302,"w":-0.09872064171740863}},{"pos":{"x":220.31362943822694,"y":278.46101112030044,"z":-260.43208311329454},"rot":{"x":0.014823812051946163,"y":-0.9839741348755239,"z":-0.1477436677179113,"w":-0.09872671949109035}},{"pos":{"x":219.75735502416444,"y":277.60144864983795,"z":-257.6878814531383},"rot":{"x":0.014773426362519925,"y":-0.9840494055936626,"z":-0.14724149145378693,"w":-0.09873427175370802}},{"pos":{"x":219.20108061010194,"y":276.7443386409469,"z":-254.94367979298204},"rot":{"x":0.014773426362518558,"y":-0.984049405593664,"z":-0.14724149145377924,"w":-0.0987342717537042}},{"pos":{"x":218.64480619603944,"y":275.8872314001797,"z":-252.19949339161485},"rot":{"x":0.013861378711366756,"y":-0.9853666678084708,"z":-0.13815143657163548,"w":-0.09886643882250469}},{"pos":{"x":218.08853178197694,"y":275.09669739262205,"z":-249.45530699024766},"rot":{"x":0.013130168207890472,"y":-0.9863609764713505,"z":-0.13086372128768417,"w":-0.09896620245344329}},{"pos":{"x":217.53225736791444,"y":274.34040434161153,"z":-246.71112058888048},"rot":{"x":0.00978998224149124,"y":-0.990208435405387,"z":-0.09757327455195558,"w":-0.09935223597350586}},{"pos":{"x":216.97598295385194,"y":273.85986513521675,"z":-243.9669341875133},"rot":{"x":0.005575598618399802,"y":-0.9934511882327619,"z":-0.055570010380505644,"w":-0.09967759650628713}},{"pos":{"x":216.41970853978944,"y":273.54563826282134,"z":-241.2227477861461},"rot":{"x":0.005576182687173346,"y":-0.9934508625987754,"z":-0.055575831586447855,"w":-0.09967756383390876}},{"pos":{"x":215.72697716604046,"y":273.2313582035572,"z":-238.50979302194457},"rot":{"x":0.10074368304589644,"y":-0.9868073378953898,"z":-0.010385998462872591,"w":-0.12630961657012266}},{"pos":{"x":214.89951790865294,"y":273.05968295342075,"z":-235.83485397302644},"rot":{"x":0.0996679560797194,"y":-0.9836890402037205,"z":0.005348523011354564,"w":-0.14964479281141485}},{"pos":{"x":213.93940701314818,"y":272.84279965950594,"z":-233.20461053000392},"rot":{"x":0.10303058961459338,"y":-0.9785934947449647,"z":-0.02079481131671555,"w":-0.176937970681276}},{"pos":{"x":212.8490359901686,"y":272.46365762825235,"z":-230.625634319331},"rot":{"x":0.10762057274844727,"y":-0.9719598670085183,"z":-0.04636798252388023,"w":-0.20386721031775729}},{"pos":{"x":211.63112604550417,"y":271.9232735289072,"z":-228.10438898255313},"rot":{"x":0.08092750629071051,"y":-0.9673944518684776,"z":0.11252981635698887,"w":-0.21198055016986153}},{"pos":{"x":210.2887272663223,"y":272.26689435492153,"z":-225.64715420268354},"rot":{"x":0.07654832740463972,"y":-0.9612491484496165,"z":0.1217592339039921,"w":-0.2351916604294292}},{"pos":{"x":208.82520256563478,"y":272.4043406290893,"z":-223.26008709995213},"rot":{"x":0.09060951982409692,"y":-0.9578753033522883,"z":0.050886223673813236,"w":-0.26772263704294186}},{"pos":{"x":207.2441963869939,"y":272.1302130688501,"z":-220.94914633782324},"rot":{"x":0.09946001994591648,"y":-0.9500207664844896,"z":0.013446754357294893,"w":-0.2956136540788251}},{"pos":{"x":205.54967972409534,"y":271.6234351682413,"z":-218.72010782011736},"rot":{"x":0.11831622148618956,"y":-0.93674586244467,"z":-0.053614379999015874,"w":-0.32501378306672374}},{"pos":{"x":203.74587309292195,"y":270.7055869178378,"z":-216.57854990783},"rot":{"x":0.1389526133181014,"y":-0.9183478649997493,"z":-0.11601253862845304,"w":-0.3519523561271522}},{"pos":{"x":201.8372915988878,"y":269.3776707971093,"z":-214.52982341324707},"rot":{"x":0.16040330032270278,"y":-0.8962541672772437,"z":-0.1714075624200584,"w":-0.37632259622426695}},{"pos":{"x":199.8286984777079,"y":267.6422712446814,"z":-212.57905214644512},"rot":{"x":0.18187899664146634,"y":-0.872043362773884,"z":-0.21859532053576256,"w":-0.39834217685625084}},{"pos":{"x":197.72511969959154,"y":265.50375366932536,"z":-210.7311029776549},"rot":{"x":0.20291624674771616,"y":-0.8469923857899789,"z":-0.2576278648769813,"w":-0.41839787100145154}},{"pos":{"x":195.5317975680821,"y":262.9674132566879,"z":-208.99060170798276},"rot":{"x":0.21106623246564618,"y":-0.8345565998951826,"z":-0.25710349859078196,"w":-0.4391629744144305}},{"pos":{"x":193.25423590299602,"y":260.041462529457,"z":-207.36188793543863},"rot":{"x":0.19799468466066442,"y":-0.8395554029837764,"z":-0.20494434663820182,"w":-0.4625393442161576}},{"pos":{"x":190.89812318589728,"y":258.06203754361945,"z":-205.84904624376455},"rot":{"x":0.20155612623382713,"y":-0.8288002199839801,"z":-0.19658735983990294,"w":-0.4835480671901151}},{"pos":{"x":188.46933203376645,"y":256.19605105884295,"z":-204.45584586570786},"rot":{"x":0.20927465035850754,"y":-0.8145143899599293,"z":-0.19747714154543042,"w":-0.503759077171394}},{"pos":{"x":185.97394922581236,"y":254.31722377482373,"z":-203.1857719244615},"rot":{"x":0.2148859561150215,"y":-0.8011866273195433,"z":-0.19363782167585167,"w":-0.5238591490901914}},{"pos":{"x":183.41821421434085,"y":252.35204861998278,"z":-202.0420109223603},"rot":{"x":0.21150623976359276,"y":-0.7927264759931472,"z":-0.17317053117319958,"w":-0.5448502656085834}},{"pos":{"x":180.86247385789554,"y":250.64495045834246,"z":-200.89824261181343},"rot":{"x":0.146896811920383,"y":-0.8079983869591406,"z":-0.22667669483100802,"w":-0.523619718249365}},{"pos":{"x":178.30673350145022,"y":248.9395672160237,"z":-199.75447430126655},"rot":{"x":0.13749547544912383,"y":-0.8119284635015098,"z":-0.21216947816347206,"w":-0.5261665866652278}},{"pos":{"x":175.7509931450049,"y":247.27156090048555,"z":-198.61070599071968},"rot":{"x":0.11730765930569279,"y":-0.8194365964335609,"z":-0.1810176282395328,"w":-0.5310321984212776}},{"pos":{"x":173.1952527885596,"y":245.97102750816546,"z":-197.4669376801728},"rot":{"x":0.1173076593056933,"y":-0.8194365964335601,"z":-0.18101762823953307,"w":-0.5310321984212786}},{"pos":{"x":170.6395124321143,"y":244.6704941158454,"z":-196.32316936962593},"rot":{"x":0.11730765930569387,"y":-0.8194365964335597,"z":-0.18101762823953374,"w":-0.5310321984212789}},{"pos":{"x":168.08377207566897,"y":243.3699607235253,"z":-195.17940105907905},"rot":{"x":0.11050473769156262,"y":-0.8216852419540869,"z":-0.17052002950661144,"w":-0.532489423030765}},{"pos":{"x":165.52803171922366,"y":242.14886927146384,"z":-194.03563274853218},"rot":{"x":0.09731169895672023,"y":-0.8256483160118515,"z":-0.15016183128504446,"w":-0.5350576753379698}},{"pos":{"x":162.97229136277835,"y":241.0955479471262,"z":-192.8918644379853},"rot":{"x":0.09731169895672068,"y":-0.825648316011851,"z":-0.15016183128504484,"w":-0.5350576753379704}},{"pos":{"x":160.41655100633304,"y":240.04222662278852,"z":-191.74809612743843},"rot":{"x":0.09275784499074212,"y":-0.8268954917484219,"z":-0.14313477227500565,"w":-0.5358659019611074}},{"pos":{"x":157.86081064988772,"y":239.1042504619677,"z":-190.60432781689155},"rot":{"x":0.04513155869626999,"y":-0.8362975718937797,"z":-0.0696425771540014,"w":-0.5419588776849794}},{"pos":{"x":155.3050702934424,"y":238.63465364579753,"z":-189.46055950634468},"rot":{"x":0.0451315586962708,"y":-0.8362975718937798,"z":-0.06964257715400274,"w":-0.5419588776849789}},{"pos":{"x":152.7493299369971,"y":238.16505682962733,"z":-188.3167911957978},"rot":{"x":0.04513155869627002,"y":-0.8362975718937797,"z":-0.06964257715400146,"w":-0.5419588776849794}},{"pos":{"x":150.1935895805518,"y":237.69546001345716,"z":-187.17302288525093},"rot":{"x":0.045131558696271286,"y":-0.8362975718937805,"z":-0.0696425771540037,"w":-0.5419588776849777}},{"pos":{"x":147.63784922410647,"y":237.225863197287,"z":-186.02925457470405},"rot":{"x":0.04513155869627054,"y":-0.8362975718937802,"z":-0.0696425771540024,"w":-0.5419588776849785}},{"pos":{"x":145.08210886766116,"y":236.75626638111683,"z":-184.88548626415718},"rot":{"x":0.04513155869627134,"y":-0.8362975718937791,"z":-0.06964257715400338,"w":-0.54195887768498}},{"pos":{"x":142.52636851121585,"y":236.28666956494664,"z":-183.7417179536103},"rot":{"x":0.045131558696271015,"y":-0.8362975718937807,"z":-0.06964257715400334,"w":-0.5419588776849774}},{"pos":{"x":140.030986579328,"y":235.81707274877647,"z":-182.47164533754744},"rot":{"x":-0.0854560684107859,"y":-0.848230607560603,"z":-0.051676408747924715,"w":-0.520126566854702}},{"pos":{"x":137.6022055689227,"y":235.78151137626267,"z":-181.07845023582504},"rot":{"x":-0.0848595359224201,"y":-0.8611508410605065,"z":-0.052396029649167376,"w":-0.4984704045184802}},{"pos":{"x":135.24608461167853,"y":235.708275205665,"z":-179.56559897813952},"rot":{"x":-0.08080495353724303,"y":-0.8738059076915494,"z":-0.058949066377307846,"w":-0.47587687771148834}},{"pos":{"x":132.9685150778007,"y":235.57780638395204,"z":-177.93688488368082},"rot":{"x":-0.07714754282189314,"y":-0.8857750070660971,"z":-0.06568866719521249,"w":-0.4529193002022722}},{"pos":{"x":130.7752057712071,"y":235.3904291540019,"z":-176.19638173727967},"rot":{"x":-0.07390967262609402,"y":-0.8970474256624262,"z":-0.07256844449881138,"w":-0.42962436763728845}},{"pos":{"x":128.67162238513845,"y":235.1763238429654,"z":-174.34842780675643},"rot":{"x":-0.08227294992704365,"y":-0.9071922350176638,"z":-0.05800047436703642,"w":-0.40849645703133947}},{"pos":{"x":126.66301854606728,"y":234.98288844309297,"z":-172.39765566207015},"rot":{"x":-0.07697467835825225,"y":-0.9174118664289824,"z":-0.06974743845657039,"w":-0.3841427612954348}},{"pos":{"x":124.75442874488388,"y":234.70315482937914,"z":-170.34893046891113},"rot":{"x":-0.07236316038260619,"y":-0.9267602654409447,"z":-0.0816341468114096,"w":-0.35946467071694854}},{"pos":{"x":122.9506155245626,"y":234.33782853300386,"z":-168.20737986388468},"rot":{"x":-0.06846528893740463,"y":-0.9352339794082958,"z":-0.0935708763895552,"w":-0.33450620182969937}},{"pos":{"x":121.25609299313831,"y":233.88781610220067,"z":-165.97834756621108},"rot":{"x":-0.06529962176154097,"y":-0.9428353495237739,"z":-0.10546932762431797,"w":-0.3093116292942392}},{"pos":{"x":119.67509696072437,"y":233.37085851415705,"z":-163.6674080565732},"rot":{"x":-0.06580148929271461,"y":-0.9500027558243552,"z":-0.10944988417128951,"w":-0.2849309579317108}},{"pos":{"x":118.21157036348635,"y":232.80379286566588,"z":-161.28033551303807},"rot":{"x":-0.06390644072974487,"y":-0.9560198884920265,"z":-0.12104342994395728,"w":-0.2594039855290417}},{"pos":{"x":116.86917923165433,"y":232.1558614083124,"z":-158.8231032993632},"rot":{"x":-0.06274012019877602,"y":-0.9611930880369948,"z":-0.13239958904064714,"w":-0.23375601307606353}},{"pos":{"x":115.6512752764612,"y":231.42876886167267,"z":-156.30185297181094},"rot":{"x":-0.06758865598220333,"y":-0.9671847906454719,"z":-0.12549301388721207,"w":-0.21032559946924684}},{"pos":{"x":114.5609042763014,"y":230.76728839795186,"z":-153.7228785820263},"rot":{"x":-0.06872080949876354,"y":-0.9714845493889763,"z":-0.13118347470577849,"w":-0.18516510633607608}},{"pos":{"x":113.6007915956677,"y":230.06147369808264,"z":-151.0926415358633},"rot":{"x":-0.07021733711038125,"y":-0.975089779192251,"z":-0.1367149812844752,"w":-0.1599326795133497}},{"pos":{"x":112.7733353525006,"y":229.31236372250996,"z":-148.41769393884675},"rot":{"x":-0.07210433561593312,"y":-0.978023361761579,"z":-0.14189897327501044,"w":-0.13466978138194996}},{"pos":{"x":112.08060723195842,"y":228.52191235767506,"z":-145.70473931100707},"rot":{"x":-0.07436098620400161,"y":-0.9802969758310168,"z":-0.14669823761980288,"w":-0.10939794324654803}},{"pos":{"x":111.38787346730999,"y":227.7804227596842,"z":-142.99178765085082},"rot":{"x":0.011478654085788333,"y":-0.9879834536509766,"z":-0.09135045473023809,"w":-0.12414519818682564}},{"pos":{"x":110.69513970266155,"y":227.25822302514462,"z":-140.27883599069457},"rot":{"x":0.00649545518237753,"y":-0.9908501771561519,"z":-0.051692714159292934,"w":-0.12450541672731263}},{"pos":{"x":110.00240593801311,"y":226.97837259223502,"z":-137.56588433053832},"rot":{"x":0.005820806493414864,"y":-0.9911156987862546,"z":-0.04632366443801923,"w":-0.12453878088464808}},{"pos":{"x":109.30967217336467,"y":226.7160621626929,"z":-134.85293267038207},"rot":{"x":0.005820806493413799,"y":-0.991115698786255,"z":-0.046323664438011246,"w":-0.1245387808846468}},{"pos":{"x":108.61693840871624,"y":226.4537517331508,"z":-132.13998101022582},"rot":{"x":0.005820806493413822,"y":-0.9911156987862549,"z":-0.04632366443801077,"w":-0.12453878088464858}},{"pos":{"x":107.9242046440678,"y":226.1913638820962,"z":-129.42702935006957},"rot":{"x":0.005826506700121286,"y":-0.9911135774868868,"z":-0.04636902833441436,"w":-0.1245385143324776}},{"pos":{"x":107.23147087941936,"y":225.92879488607133,"z":-126.71407768991332},"rot":{"x":0.005826506700119748,"y":-0.9911135774868871,"z":-0.046369028334401624,"w":-0.12453851433247899}},{"pos":{"x":106.53873711477092,"y":225.6662258900465,"z":-124.00112602975707},"rot":{"x":0.005826506700119798,"y":-0.991113577486887,"z":-0.04636902833440168,"w":-0.12453851433247988}},{"pos":{"x":105.84600335012249,"y":225.63966924007417,"z":-121.28817436960082},"rot":{"x":-0.005827383425680781,"y":-0.9911132510338387,"z":0.04637600557041464,"w":-0.12453847331197716}},{"pos":{"x":105.01854409273497,"y":225.90227714405694,"z":-118.61323532068269},"rot":{"x":0.09391792791421988,"y":-0.9832067050309632,"z":0.06159240014329556,"w":-0.1438414899917407}},{"pos":{"x":104.0584331972302,"y":226.1207720478957,"z":-115.98299187766015},"rot":{"x":0.09339951493429137,"y":-0.9795477513622923,"z":0.05584231484358699,"w":-0.1692464749530263}},{"pos":{"x":102.96806217425062,"y":226.2919440606594,"z":-113.40402329638178},"rot":{"x":0.09313944761622668,"y":-0.9751592886564845,"z":0.05063075080969755,"w":-0.1944888997273869}},{"pos":{"x":101.75015985898074,"y":226.42064504794354,"z":-110.88277033020938},"rot":{"x":0.09329723508764162,"y":-0.9700671294862524,"z":0.04485652416343336,"w":-0.21966629795050222}},{"pos":{"x":100.40776870919339,"y":226.5016445022196,"z":-108.42553555033976},"rot":{"x":0.09386141294037877,"y":-0.9642578978607358,"z":0.03879709727806953,"w":-0.2447274541542624}},{"pos":{"x":98.94424400850588,"y":226.53423074961145,"z":-106.03846844760838},"rot":{"x":0.09478403786806196,"y":-0.957730831769665,"z":0.0327737344979057,"w":-0.26961736288724464}},{"pos":{"x":97.36324545925953,"y":226.51875464206083,"z":-103.72752768547946},"rot":{"x":0.09604397469062294,"y":-0.9504930569308013,"z":0.026879447047100474,"w":-0.2943059615067448}},{"pos":{"x":95.78224417752125,"y":226.45499394975002,"z":-101.41659171135836},"rot":{"x":0.0033640195838086544,"y":-0.9552745888823416,"z":-0.010874960612694648,"w":-0.2955010633476388}},{"pos":{"x":94.08771988522815,"y":226.39123325743924,"z":-99.18756082304702},"rot":{"x":0.0976767597461066,"y":-0.942546727061052,"z":0.02097470057874224,"w":-0.318786730977988}},{"pos":{"x":92.28391325405478,"y":226.27911252411053,"z":-97.04600291075968},"rot":{"x":0.09964573408348194,"y":-0.9339022863458097,"z":0.015205329180133818,"w":-0.3430248463326769}},{"pos":{"x":90.37532413062607,"y":226.11890838637203,"z":-94.99727641617675},"rot":{"x":0.10193577033069554,"y":-0.9245701194597925,"z":0.009609614416242956,"w":-0.36699706843510815}},{"pos":{"x":88.36672338005165,"y":225.91102219355514,"z":-93.04649751998028},"rot":{"x":0.10020356020067017,"y":-0.9153591715384752,"z":0.016187939908958678,"w":-0.38963416714273214}},{"pos":{"x":86.26313697254078,"y":225.80091257083907,"z":-91.19854835119003},"rot":{"x":0.09388745731064223,"y":-0.906163058635061,"z":0.03369735513593931,"w":-0.410996526483784}},{"pos":{"x":84.06982247042586,"y":225.70788002653833,"z":-89.45803945212339},"rot":{"x":0.09631675206844051,"y":-0.8951794752013016,"z":0.02819923281386877,"w":-0.43425982282271763}},{"pos":{"x":81.79226080533975,"y":225.567201460245,"z":-87.82932567957926},"rot":{"x":0.09904971086737038,"y":-0.8835381410120545,"z":0.022892661735717097,"w":-0.45719299447028605}},{"pos":{"x":79.43614045884648,"y":225.37922781289458,"z":-86.31647635851061},"rot":{"x":0.10206582691721326,"y":-0.871252743122966,"z":0.01781238604546553,"w":-0.47977488833804094}},{"pos":{"x":77.00735693611018,"y":225.14442978987526,"z":-84.92327598045395},"rot":{"x":0.10534223874151909,"y":-0.8583384236990401,"z":0.01299112954903732,"w":-0.5019854516734645}},{"pos":{"x":74.57856970466487,"y":224.863391893996,"z":-83.53007987449692},"rot":{"x":0.02505902442443677,"y":-0.8642417496949032,"z":-0.043263390059626934,"w":-0.5005861788540872}},{"pos":{"x":72.14978247321956,"y":224.58235399811676,"z":-82.13688376853989},"rot":{"x":0.02505902442443319,"y":-0.8642417496949059,"z":-0.0432633900596212,"w":-0.5005861788540836}},{"pos":{"x":69.72099524177425,"y":224.30131610223754,"z":-80.74368766258286},"rot":{"x":-0.0019577945520643566,"y":-0.8653173395218844,"z":0.003380052947311676,"w":-0.5012091820840207}},{"pos":{"x":67.29220801032893,"y":224.40363149084246,"z":-79.35049155662583},"rot":{"x":-0.015461204631261766,"y":-0.864912133654438,"z":0.026693143173670383,"w":-0.5009744787074367}},{"pos":{"x":64.86342077888364,"y":224.56545763456054,"z":-77.9572954506688},"rot":{"x":-0.009197463634745207,"y":-0.8651782351997112,"z":0.01587904820433419,"w":-0.5011286100668422}},{"pos":{"x":62.43463354743832,"y":224.66827224012388,"z":-76.56409934471176},"rot":{"x":-0.00919746363474314,"y":-0.865178235199709,"z":0.01587904820433046,"w":-0.5011286100668462}},{"pos":{"x":60.0785164048914,"y":224.77108653249573,"z":-75.05125571642077},"rot":{"x":-0.09714091986650653,"y":-0.8720937175008426,"z":-0.032288612484256914,"w":-0.47851189649463327}},{"pos":{"x":57.80095450040811,"y":224.85963924271869,"z":-73.42254162196207},"rot":{"x":-0.0966531803910378,"y":-0.8839484544047581,"z":-0.03204203043195171,"w":-0.4563623570821047}},{"pos":{"x":55.60763756442,"y":224.93370947791155,"z":-71.68203084616636},"rot":{"x":-0.09619480083623431,"y":-0.8952373751454807,"z":-0.03187367410479852,"w":-0.43391320714374193}},{"pos":{"x":53.504054178351325,"y":224.99311179185688,"z":-69.83407691564314},"rot":{"x":-0.09577320465408104,"y":-0.9059521150803608,"z":-0.03177653042494571,"w":-0.41117941408326947}},{"pos":{"x":51.49545796867469,"y":225.03769794581473,"z":-67.88329714156231},"rot":{"x":-0.0953952482812893,"y":-0.916084779226716,"z":-0.03174301219738253,"w":-0.38817625513563625}},{"pos":{"x":49.5868681674913,"y":225.06735795765627,"z":-65.83457194840331},"rot":{"x":-0.09506963246036768,"y":-0.9256277010348686,"z":-0.03175957282555218,"w":-0.3649197906317122}},{"pos":{"x":47.678279758067475,"y":225.08205553664934,"z":-63.78584300553221},"rot":{"x":-0.0009612986747002223,"y":-0.9305044133475217,"z":0.0024421588997612684,"w":-0.36627127720523056}},{"pos":{"x":45.76969134864365,"y":225.09675311564237,"z":-61.737114062661114},"rot":{"x":-0.004188378519818813,"y":-0.9304467784024789,"z":0.010640486819493679,"w":-0.366248590558472}},{"pos":{"x":43.86110293921982,"y":225.19703393526783,"z":-59.68838511979002},"rot":{"x":-0.008068672965010156,"y":-0.9302818107437192,"z":0.020498292579990997,"w":-0.36618365490184834}},{"pos":{"x":41.95251452979599,"y":225.32048703920967,"z":-57.639656176918926},"rot":{"x":-0.00806867296500493,"y":-0.9302818107437191,"z":0.02049829257997767,"w":-0.3661836549018493}},{"pos":{"x":40.04392612037216,"y":225.44394014315148,"z":-55.59092723404783},"rot":{"x":-0.00806867296500969,"y":-0.930281810743719,"z":0.020498292579989773,"w":-0.36618365490184895}},{"pos":{"x":38.135337710948335,"y":225.56739324709332,"z":-53.54219829117674},"rot":{"x":-0.008068672965010494,"y":-0.9302818107437189,"z":0.02049829257999179,"w":-0.3661836549018494}},{"pos":{"x":36.22674930152451,"y":225.69084635103516,"z":-51.493469348305645},"rot":{"x":-0.008068672965011221,"y":-0.9302818107437184,"z":0.020498292579993596,"w":-0.36618365490184995}},{"pos":{"x":34.31816089210068,"y":225.814299454977,"z":-49.44474040543455},"rot":{"x":-0.008068672965010874,"y":-0.9302818107437186,"z":0.020498292579992743,"w":-0.3661836549018495}},{"pos":{"x":32.40957248267685,"y":225.93775255891885,"z":-47.39601146256346},"rot":{"x":-0.008068672965006407,"y":-0.9302818107437196,"z":0.020498292579981512,"w":-0.3661836549018478}},{"pos":{"x":30.500984073253022,"y":226.0612056628607,"z":-45.347282519692364},"rot":{"x":-0.008068672965007226,"y":-0.9302818107437184,"z":0.020498292579983406,"w":-0.3661836549018506}},{"pos":{"x":28.592395663829194,"y":226.1846587668025,"z":-43.29855357682127},"rot":{"x":-0.004610386355560532,"y":-0.9304339002118448,"z":0.011712588777968753,"w":-0.3662435213602359}},{"pos":{"x":26.683807254405366,"y":225.82064854169317,"z":-41.249824633950176},"rot":{"x":0.03930755054851075,"y":-0.9251337244205251,"z":-0.09985999869374312,"w":-0.3641572312484948}},{"pos":{"x":24.87999784878134,"y":225.20905212489123,"z":-39.108266399529214},"rot":{"x":-0.051656457603665135,"y":-0.9334539587174476,"z":-0.13238734757430282,"w":-0.3293461819192796}},{"pos":{"x":23.076187729152434,"y":224.54344722245025,"z":-36.966706798699136},"rot":{"x":0.03992270051583318,"y":-0.9329842358284072,"z":-0.1093687284545415,"w":-0.3405658158351232}},{"pos":{"x":21.272377609523527,"y":223.8778423200093,"z":-34.82514719786906},"rot":{"x":0.039922700515832334,"y":-0.9329842358284076,"z":-0.10936872845453943,"w":-0.3405658158351226}},{"pos":{"x":19.46856748989462,"y":223.21223741756836,"z":-32.68358759703898},"rot":{"x":0.03992270051583415,"y":-0.9329842358284068,"z":-0.10936872845454418,"w":-0.3405658158351231}},{"pos":{"x":17.664757370265715,"y":222.54663251512738,"z":-30.5420279962089},"rot":{"x":0.004938084076394723,"y":-0.9392753046118844,"z":-0.013527941984353486,"w":-0.3428622350997179}},{"pos":{"x":15.860947250636809,"y":222.5,"z":-28.400470302727456},"rot":{"x":0,"y":-0.9393727178644695,"z":0,"w":-0.3428977937110704}},{"pos":{"x":14.057138084682219,"y":222.5,"z":-26.25891260924601},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":12.253328918727629,"y":222.5,"z":-24.117354915764565},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":10.449519752773039,"y":222.5,"z":-21.97579722228312},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":8.64571058681845,"y":222.5,"z":-19.834239528801675},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":6.841901420863859,"y":222.5,"z":-17.69268183532023},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":5.038091778072111,"y":222.5,"z":-15.551124141838784},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":3.2342821352803637,"y":222.5,"z":-13.409566448357339},"rot":{"x":0,"y":-0.9393727178644696,"z":0,"w":-0.34289779371107015}},{"pos":{"x":1.4304724924886156,"y":222.5,"z":-11.268008754875893},"rot":{"x":0,"y":-0.9393727178644696,"z":0,"w":-0.34289779371107015}},{"pos":{"x":-0.37333703109384286,"y":222.5,"z":-9.126451061394448},"rot":{"x":0,"y":-0.9393727178644696,"z":0,"w":-0.34289779371106993}},{"pos":{"x":-2.1771465546763014,"y":222.5,"z":-6.984893367913003},"rot":{"x":0,"y":-0.9393727178644696,"z":0,"w":-0.34289779371107015}},{"pos":{"x":-3.98095619746805,"y":222.5,"z":-4.843335197594399},"rot":{"x":0,"y":-0.9393727178644696,"z":0,"w":-0.34289779371107015}},{"pos":{"x":-5.784765840259798,"y":222.5,"z":-2.7017770272757957},"rot":{"x":0,"y":-0.9393727178644695,"z":0,"w":-0.3428977937110704}},{"pos":{"x":-7.588575244632967,"y":222.5,"z":-0.5602188569571922},"rot":{"x":0,"y":-0.9393727178644695,"z":0,"w":-0.3428977937110704}},{"pos":{"x":-9.392384887424715,"y":222.5,"z":1.5813392537567665},"rot":{"x":0,"y":-0.9393727178644695,"z":0,"w":-0.3428977937110704}},{"pos":{"x":-11.196194053379305,"y":222.5,"z":3.7228973644707253},"rot":{"x":0,"y":-0.9393727178644695,"z":0,"w":-0.3428977937110704}},{"pos":{"x":-13.000003219333895,"y":222.5,"z":5.864455415580039},"rot":{"x":0,"y":-0.9393727178644695,"z":0,"w":-0.3428977937110704}},{"pos":{"x":-14.803812385288484,"y":222.5,"z":8.006013347480064},"rot":{"x":0,"y":-0.9393727178644695,"z":0,"w":-0.3428977937110704}},{"pos":{"x":-16.607621551243074,"y":222.5,"z":10.147571040961509},"rot":{"x":0,"y":-0.9393727178644696,"z":0,"w":-0.34289779371107015}},{"pos":{"x":-18.41143167087198,"y":222.5,"z":12.289128734442954},"rot":{"x":0,"y":-0.9393727178644696,"z":0,"w":-0.34289779371107015}},{"pos":{"x":-20.215241790500887,"y":222.5,"z":14.4306864279244},"rot":{"x":0,"y":-0.9393727178644696,"z":0,"w":-0.34289779371107015}},{"pos":{"x":-22.019051910129793,"y":222.5,"z":16.572244121405845},"rot":{"x":0,"y":-0.9393727178644696,"z":0,"w":-0.34289779371107015}},{"pos":{"x":-23.8228620297587,"y":222.5,"z":18.713802768561607},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":-25.626672149387606,"y":222.5,"z":20.855360462043052},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":-27.43048226901651,"y":222.5,"z":22.996918155524497},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":-29.234292388645418,"y":222.5,"z":25.138475849005943},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":-31.03810250827432,"y":222.5,"z":27.280033542487388},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":-32.84191262790323,"y":222.5,"z":29.421591235968833},"rot":{"x":0.05595908002532573,"y":-0.9267793706818075,"z":-0.1533005573617306,"w":-0.3383009289876911}},{"pos":{"x":-34.64572181894873,"y":222.00000751018524,"z":31.563149806282013},"rot":{"x":0,"y":-0.9393727178644694,"z":0,"w":-0.3428977937110706}},{"pos":{"x":-36.449531992335366,"y":222.00000751018524,"z":33.70470947093554},"rot":{"x":0,"y":-0.9393727178644693,"z":0,"w":-0.342897793711071}},{"pos":{"x":-38.253342165722,"y":222.00000751018524,"z":35.84626722824038},"rot":{"x":0,"y":-0.9393727178644693,"z":0,"w":-0.342897793711071}},{"pos":{"x":-40.05715233910864,"y":222.00000751018524,"z":37.98782689289391},"rot":{"x":0,"y":-0.9393727178644693,"z":0,"w":-0.342897793711071}},{"pos":{"x":-40.057152988229745,"y":221.9550480829195,"z":37.98782843315087},"rot":{"x":0,"y":-0.9393727178644693,"z":0,"w":-0.342897793711071}}];
                     // nx.reducedPath = nx.editz.decomposePath({aPath:descentPath}) //reduce path in half
                     // nx.truncatedPath = nx.editz.truncatePath(nx.reducedPath)
                     // console.log(JSON.stringify(nx.truncatedPath)); //PUBLISH-RECORD-.  
                     // nx.doorSeqIdx[NUM].descentPath = [{"pos":{"x":289.883,"y":316.653,"z":-356.371},"rot":{"x":0.024,"y":-0.929,"z":-0.063,"w":-0.366}},{"pos":{"x":286.475,"y":315.885,"z":-352.713},"rot":{"x":0.028,"y":-0.928,"z":-0.074,"w":-0.366}},{"pos":{"x":282.803,"y":315.104,"z":-349.321},"rot":{"x":0.118,"y":-0.902,"z":-0.03,"w":-0.417}},{"pos":{"x":278.405,"y":314.392,"z":-346.022},"rot":{"x":0.116,"y":-0.88,"z":-0.017,"w":-0.461}},{"pos":{"x":273.278,"y":313.626,"z":-342.908},"rot":{"x":0.114,"y":-0.857,"z":-0.005,"w":-0.504}},{"pos":{"x":267.931,"y":312.959,"z":-340.187},"rot":{"x":0.024,"y":-0.852,"z":-0.041,"w":-0.523}},{"pos":{"x":262.584,"y":312.502,"z":-337.465},"rot":{"x":0.018,"y":-0.853,"z":-0.03,"w":-0.523}},{"pos":{"x":257.236,"y":312.185,"z":-334.743},"rot":{"x":-0.007,"y":-0.853,"z":0.009,"w":-0.523}},{"pos":{"x":252.11,"y":312.225,"z":-331.63},"rot":{"x":-0.086,"y":-0.874,"z":-0.053,"w":-0.477}},{"pos":{"x":247.32,"y":312.06,"z":-328.02},"rot":{"x":-0.134,"y":-0.888,"z":0.037,"w":-0.44}},{"pos":{"x":242.914,"y":312.369,"z":-323.95},"rot":{"x":-0.082,"y":-0.918,"z":-0.06,"w":-0.386}},{"pos":{"x":238.936,"y":311.341,"z":-319.46},"rot":{"x":-0.053,"y":-0.934,"z":-0.13,"w":-0.33}},{"pos":{"x":235.427,"y":309.326,"z":-314.596},"rot":{"x":-0.033,"y":-0.942,"z":-0.197,"w":-0.273}},{"pos":{"x":232.42,"y":306.343,"z":-309.406},"rot":{"x":-0.023,"y":-0.943,"z":-0.256,"w":-0.216}},{"pos":{"x":230.025,"y":302.406,"z":-304.125},"rot":{"x":-0.033,"y":-0.951,"z":-0.262,"w":-0.168}},{"pos":{"x":228.237,"y":299.087,"z":-298.82},"rot":{"x":-0.043,"y":-0.954,"z":-0.276,"w":-0.118}},{"pos":{"x":226.988,"y":295.527,"z":-293.363},"rot":{"x":-0.058,"y":-0.961,"z":-0.263,"w":-0.071}},{"pos":{"x":225.876,"y":292.318,"z":-287.875},"rot":{"x":0.025,"y":-0.964,"z":-0.25,"w":-0.097}},{"pos":{"x":224.763,"y":289.367,"z":-282.386},"rot":{"x":0.019,"y":-0.975,"z":-0.199,"w":-0.098}},{"pos":{"x":223.651,"y":286.7,"z":-276.898},"rot":{"x":0.024,"y":-0.965,"z":-0.246,"w":-0.097}},{"pos":{"x":222.538,"y":283.654,"z":-271.409},"rot":{"x":0.024,"y":-0.965,"z":-0.246,"w":-0.097}},{"pos":{"x":221.426,"y":280.607,"z":-265.921},"rot":{"x":0.02,"y":-0.974,"z":-0.206,"w":-0.098}},{"pos":{"x":220.313,"y":278.461,"z":-260.433},"rot":{"x":0.014,"y":-0.984,"z":-0.148,"w":-0.099}},{"pos":{"x":219.201,"y":276.744,"z":-254.944},"rot":{"x":0.014,"y":-0.985,"z":-0.148,"w":-0.099}},{"pos":{"x":218.088,"y":275.096,"z":-249.456},"rot":{"x":0.013,"y":-0.987,"z":-0.131,"w":-0.099}},{"pos":{"x":216.975,"y":273.859,"z":-243.967},"rot":{"x":0.005,"y":-0.994,"z":-0.056,"w":-0.1}},{"pos":{"x":215.726,"y":273.231,"z":-238.51},"rot":{"x":0.1,"y":-0.987,"z":-0.011,"w":-0.127}},{"pos":{"x":213.939,"y":272.842,"z":-233.205},"rot":{"x":0.103,"y":-0.979,"z":-0.021,"w":-0.177}},{"pos":{"x":211.631,"y":271.923,"z":-228.105},"rot":{"x":0.08,"y":-0.968,"z":0.112,"w":-0.212}},{"pos":{"x":208.825,"y":272.404,"z":-223.261},"rot":{"x":0.09,"y":-0.958,"z":0.05,"w":-0.268}},{"pos":{"x":205.549,"y":271.623,"z":-218.721},"rot":{"x":0.118,"y":-0.937,"z":-0.054,"w":-0.326}},{"pos":{"x":201.837,"y":269.377,"z":-214.53},"rot":{"x":0.16,"y":-0.897,"z":-0.172,"w":-0.377}},{"pos":{"x":197.725,"y":265.503,"z":-210.732},"rot":{"x":0.202,"y":-0.847,"z":-0.258,"w":-0.419}},{"pos":{"x":193.254,"y":260.041,"z":-207.362},"rot":{"x":0.197,"y":-0.84,"z":-0.205,"w":-0.463}},{"pos":{"x":188.469,"y":256.196,"z":-204.456},"rot":{"x":0.209,"y":-0.815,"z":-0.198,"w":-0.504}},{"pos":{"x":183.418,"y":252.352,"z":-202.043},"rot":{"x":0.211,"y":-0.793,"z":-0.174,"w":-0.545}},{"pos":{"x":178.306,"y":248.939,"z":-199.755},"rot":{"x":0.137,"y":-0.812,"z":-0.213,"w":-0.527}},{"pos":{"x":173.195,"y":245.971,"z":-197.467},"rot":{"x":0.117,"y":-0.82,"z":-0.182,"w":-0.532}},{"pos":{"x":168.083,"y":243.369,"z":-195.18},"rot":{"x":0.11,"y":-0.822,"z":-0.171,"w":-0.533}},{"pos":{"x":162.972,"y":241.095,"z":-192.892},"rot":{"x":0.097,"y":-0.826,"z":-0.151,"w":-0.536}},{"pos":{"x":157.86,"y":239.104,"z":-190.605},"rot":{"x":0.045,"y":-0.837,"z":-0.07,"w":-0.542}},{"pos":{"x":152.749,"y":238.165,"z":-188.317},"rot":{"x":0.045,"y":-0.837,"z":-0.07,"w":-0.542}},{"pos":{"x":147.637,"y":237.225,"z":-186.03},"rot":{"x":0.045,"y":-0.837,"z":-0.07,"w":-0.542}},{"pos":{"x":142.526,"y":236.286,"z":-183.742},"rot":{"x":0.045,"y":-0.837,"z":-0.07,"w":-0.542}},{"pos":{"x":137.602,"y":235.781,"z":-181.079},"rot":{"x":-0.085,"y":-0.862,"z":-0.053,"w":-0.499}},{"pos":{"x":132.968,"y":235.577,"z":-177.937},"rot":{"x":-0.078,"y":-0.886,"z":-0.066,"w":-0.453}},{"pos":{"x":128.671,"y":235.176,"z":-174.349},"rot":{"x":-0.083,"y":-0.908,"z":-0.059,"w":-0.409}},{"pos":{"x":124.754,"y":234.703,"z":-170.349},"rot":{"x":-0.073,"y":-0.927,"z":-0.082,"w":-0.36}},{"pos":{"x":121.256,"y":233.887,"z":-165.979},"rot":{"x":-0.066,"y":-0.943,"z":-0.106,"w":-0.31}},{"pos":{"x":118.211,"y":232.803,"z":-161.281},"rot":{"x":-0.064,"y":-0.957,"z":-0.122,"w":-0.26}},{"pos":{"x":115.651,"y":231.428,"z":-156.302},"rot":{"x":-0.068,"y":-0.968,"z":-0.126,"w":-0.211}},{"pos":{"x":113.6,"y":230.061,"z":-151.093},"rot":{"x":-0.071,"y":-0.976,"z":-0.137,"w":-0.16}},{"pos":{"x":112.08,"y":228.521,"z":-145.705},"rot":{"x":-0.075,"y":-0.981,"z":-0.147,"w":-0.11}},{"pos":{"x":110.695,"y":227.258,"z":-140.279},"rot":{"x":0.006,"y":-0.991,"z":-0.052,"w":-0.125}},{"pos":{"x":109.309,"y":226.716,"z":-134.853},"rot":{"x":0.005,"y":-0.992,"z":-0.047,"w":-0.125}},{"pos":{"x":107.924,"y":226.191,"z":-129.428},"rot":{"x":0.005,"y":-0.992,"z":-0.047,"w":-0.125}},{"pos":{"x":106.538,"y":225.666,"z":-124.002},"rot":{"x":0.005,"y":-0.992,"z":-0.047,"w":-0.125}},{"pos":{"x":105.018,"y":225.902,"z":-118.614},"rot":{"x":0.093,"y":-0.984,"z":0.061,"w":-0.144}},{"pos":{"x":102.968,"y":226.291,"z":-113.405},"rot":{"x":0.093,"y":-0.976,"z":0.05,"w":-0.195}},{"pos":{"x":100.407,"y":226.501,"z":-108.426},"rot":{"x":0.093,"y":-0.965,"z":0.038,"w":-0.245}},{"pos":{"x":97.363,"y":226.518,"z":-103.728},"rot":{"x":0.096,"y":-0.951,"z":0.026,"w":-0.295}},{"pos":{"x":94.087,"y":226.391,"z":-99.188},"rot":{"x":0.097,"y":-0.943,"z":0.02,"w":-0.319}},{"pos":{"x":90.375,"y":226.118,"z":-94.998},"rot":{"x":0.101,"y":-0.925,"z":0.009,"w":-0.367}},{"pos":{"x":86.263,"y":225.8,"z":-91.199},"rot":{"x":0.093,"y":-0.907,"z":0.033,"w":-0.411}},{"pos":{"x":81.792,"y":225.567,"z":-87.83},"rot":{"x":0.099,"y":-0.884,"z":0.022,"w":-0.458}},{"pos":{"x":77.007,"y":225.144,"z":-84.924},"rot":{"x":0.105,"y":-0.859,"z":0.012,"w":-0.502}},{"pos":{"x":72.149,"y":224.582,"z":-82.137},"rot":{"x":0.025,"y":-0.865,"z":-0.044,"w":-0.501}},{"pos":{"x":67.292,"y":224.403,"z":-79.351},"rot":{"x":-0.016,"y":-0.865,"z":0.026,"w":-0.501}},{"pos":{"x":62.434,"y":224.668,"z":-76.565},"rot":{"x":-0.01,"y":-0.866,"z":0.015,"w":-0.502}},{"pos":{"x":57.8,"y":224.859,"z":-73.423},"rot":{"x":-0.097,"y":-0.884,"z":-0.033,"w":-0.457}},{"pos":{"x":53.504,"y":224.993,"z":-69.835},"rot":{"x":-0.096,"y":-0.906,"z":-0.032,"w":-0.412}},{"pos":{"x":49.586,"y":225.067,"z":-65.835},"rot":{"x":-0.096,"y":-0.926,"z":-0.032,"w":-0.365}},{"pos":{"x":45.769,"y":225.096,"z":-61.738},"rot":{"x":-0.005,"y":-0.931,"z":0.01,"w":-0.367}},{"pos":{"x":41.952,"y":225.32,"z":-57.64},"rot":{"x":-0.009,"y":-0.931,"z":0.02,"w":-0.367}},{"pos":{"x":38.135,"y":225.567,"z":-53.543},"rot":{"x":-0.009,"y":-0.931,"z":0.02,"w":-0.367}},{"pos":{"x":34.318,"y":225.814,"z":-49.445},"rot":{"x":-0.009,"y":-0.931,"z":0.02,"w":-0.367}},{"pos":{"x":30.5,"y":226.061,"z":-45.348},"rot":{"x":-0.009,"y":-0.931,"z":0.02,"w":-0.367}},{"pos":{"x":26.683,"y":225.82,"z":-41.25},"rot":{"x":0.039,"y":-0.926,"z":-0.1,"w":-0.365}},{"pos":{"x":23.076,"y":224.543,"z":-36.967},"rot":{"x":0.039,"y":-0.933,"z":-0.11,"w":-0.341}},{"pos":{"x":19.468,"y":223.212,"z":-32.684},"rot":{"x":0.039,"y":-0.933,"z":-0.11,"w":-0.341}},{"pos":{"x":15.86,"y":222.5,"z":-28.401},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":12.253,"y":222.5,"z":-24.118},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":8.645,"y":222.5,"z":-19.835},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":5.038,"y":222.5,"z":-15.552},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":1.43,"y":222.5,"z":-11.269},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-2.178,"y":222.5,"z":-6.985},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-5.785,"y":222.5,"z":-2.702},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-9.393,"y":222.5,"z":1.581},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-13.001,"y":222.5,"z":5.864},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-16.608,"y":222.5,"z":10.147},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-20.216,"y":222.5,"z":14.43},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-23.823,"y":222.5,"z":18.713},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-27.431,"y":222.5,"z":22.996},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-31.039,"y":222.5,"z":27.28},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-34.646,"y":222,"z":31.563},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-38.254,"y":222,"z":35.846},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-40.058,"y":221.955,"z":37.987},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}}];
-                    nx.doorSeqIdx[NUM].descentPath = [{"pos":{"x":289.883,"y":316.653,"z":-356.371},"rot":{"x":0.024,"y":-0.929,"z":-0.063,"w":-0.366}},{"pos":{"x":286.475,"y":315.885,"z":-352.713},"rot":{"x":0.028,"y":-0.928,"z":-0.074,"w":-0.366}},{"pos":{"x":282.803,"y":315.104,"z":-349.321},"rot":{"x":0.118,"y":-0.902,"z":-0.03,"w":-0.417}},{"pos":{"x":278.405,"y":314.392,"z":-346.022},"rot":{"x":0.116,"y":-0.88,"z":-0.017,"w":-0.461}},{"pos":{"x":273.278,"y":313.626,"z":-342.908},"rot":{"x":0.114,"y":-0.857,"z":-0.005,"w":-0.504}},{"pos":{"x":267.931,"y":312.959,"z":-340.187},"rot":{"x":0.024,"y":-0.852,"z":-0.041,"w":-0.523}},{"pos":{"x":262.584,"y":312.502,"z":-337.465},"rot":{"x":0.018,"y":-0.853,"z":-0.03,"w":-0.523}},{"pos":{"x":257.236,"y":312.185,"z":-334.743},"rot":{"x":-0.007,"y":-0.853,"z":0.009,"w":-0.523}},{"pos":{"x":252.11,"y":312.225,"z":-331.63},"rot":{"x":-0.086,"y":-0.874,"z":-0.053,"w":-0.477}},{"pos":{"x":247.32,"y":312.06,"z":-328.02},"rot":{"x":-0.134,"y":-0.888,"z":0.037,"w":-0.44}},{"pos":{"x":242.914,"y":312.369,"z":-323.95},"rot":{"x":-0.082,"y":-0.918,"z":-0.06,"w":-0.386}},{"pos":{"x":238.936,"y":311.341,"z":-319.46},"rot":{"x":-0.053,"y":-0.934,"z":-0.13,"w":-0.33}},{"pos":{"x":235.427,"y":309.326,"z":-314.596},"rot":{"x":-0.033,"y":-0.942,"z":-0.197,"w":-0.273}},{"pos":{"x":232.42,"y":306.343,"z":-309.406},"rot":{"x":-0.023,"y":-0.943,"z":-0.256,"w":-0.216}},{"pos":{"x":230.025,"y":302.406,"z":-304.125},"rot":{"x":-0.033,"y":-0.951,"z":-0.262,"w":-0.168}},{"pos":{"x":228.237,"y":299.087,"z":-298.82},"rot":{"x":-0.043,"y":-0.954,"z":-0.276,"w":-0.118}},{"pos":{"x":226.988,"y":295.527,"z":-293.363},"rot":{"x":-0.058,"y":-0.961,"z":-0.263,"w":-0.071}},{"pos":{"x":225.876,"y":292.318,"z":-287.875},"rot":{"x":0.025,"y":-0.964,"z":-0.25,"w":-0.097}},{"pos":{"x":224.763,"y":289.367,"z":-282.386},"rot":{"x":0.019,"y":-0.975,"z":-0.199,"w":-0.098}},{"pos":{"x":223.651,"y":286.7,"z":-276.898},"rot":{"x":0.024,"y":-0.965,"z":-0.246,"w":-0.097}},{"pos":{"x":222.538,"y":283.654,"z":-271.409},"rot":{"x":0.024,"y":-0.965,"z":-0.246,"w":-0.097}},{"pos":{"x":221.426,"y":280.607,"z":-265.921},"rot":{"x":0.02,"y":-0.974,"z":-0.206,"w":-0.098}},{"pos":{"x":220.313,"y":278.461,"z":-260.433},"rot":{"x":0.014,"y":-0.984,"z":-0.148,"w":-0.099}},{"pos":{"x":219.201,"y":276.744,"z":-254.944},"rot":{"x":0.014,"y":-0.985,"z":-0.148,"w":-0.099}},{"pos":{"x":218.088,"y":275.096,"z":-249.456},"rot":{"x":0.013,"y":-0.987,"z":-0.131,"w":-0.099}},{"pos":{"x":216.975,"y":273.859,"z":-243.967},"rot":{"x":0.005,"y":-0.994,"z":-0.056,"w":-0.1}},{"pos":{"x":215.726,"y":273.231,"z":-238.51},"rot":{"x":0.1,"y":-0.987,"z":-0.011,"w":-0.127}},{"pos":{"x":213.939,"y":272.842,"z":-233.205},"rot":{"x":0.103,"y":-0.979,"z":-0.021,"w":-0.177}},{"pos":{"x":211.631,"y":271.923,"z":-228.105},"rot":{"x":0.08,"y":-0.968,"z":0.112,"w":-0.212}},{"pos":{"x":208.825,"y":272.404,"z":-223.261},"rot":{"x":0.09,"y":-0.958,"z":0.05,"w":-0.268}},{"pos":{"x":205.549,"y":271.623,"z":-218.721},"rot":{"x":0.118,"y":-0.937,"z":-0.054,"w":-0.326}},{"pos":{"x":201.837,"y":269.377,"z":-214.53},"rot":{"x":0.16,"y":-0.897,"z":-0.172,"w":-0.377}},{"pos":{"x":197.725,"y":265.503,"z":-210.732},"rot":{"x":0.202,"y":-0.847,"z":-0.258,"w":-0.419}},{"pos":{"x":193.254,"y":260.041,"z":-207.362},"rot":{"x":0.197,"y":-0.84,"z":-0.205,"w":-0.463}},{"pos":{"x":188.469,"y":256.196,"z":-204.456},"rot":{"x":0.209,"y":-0.815,"z":-0.198,"w":-0.504}},{"pos":{"x":183.418,"y":252.352,"z":-202.043},"rot":{"x":0.211,"y":-0.793,"z":-0.174,"w":-0.545}},{"pos":{"x":178.306,"y":248.939,"z":-199.755},"rot":{"x":0.137,"y":-0.812,"z":-0.213,"w":-0.527}},{"pos":{"x":173.195,"y":245.971,"z":-197.467},"rot":{"x":0.117,"y":-0.82,"z":-0.182,"w":-0.532}}];
+                    // nx.doorSeqIdx[NUM].descentPath = [{"pos":{"x":289.883,"y":316.653,"z":-356.371},"rot":{"x":0.024,"y":-0.929,"z":-0.063,"w":-0.366}},{"pos":{"x":286.475,"y":315.885,"z":-352.713},"rot":{"x":0.028,"y":-0.928,"z":-0.074,"w":-0.366}},{"pos":{"x":282.803,"y":315.104,"z":-349.321},"rot":{"x":0.118,"y":-0.902,"z":-0.03,"w":-0.417}},{"pos":{"x":278.405,"y":314.392,"z":-346.022},"rot":{"x":0.116,"y":-0.88,"z":-0.017,"w":-0.461}},{"pos":{"x":273.278,"y":313.626,"z":-342.908},"rot":{"x":0.114,"y":-0.857,"z":-0.005,"w":-0.504}},{"pos":{"x":267.931,"y":312.959,"z":-340.187},"rot":{"x":0.024,"y":-0.852,"z":-0.041,"w":-0.523}},{"pos":{"x":262.584,"y":312.502,"z":-337.465},"rot":{"x":0.018,"y":-0.853,"z":-0.03,"w":-0.523}},{"pos":{"x":257.236,"y":312.185,"z":-334.743},"rot":{"x":-0.007,"y":-0.853,"z":0.009,"w":-0.523}},{"pos":{"x":252.11,"y":312.225,"z":-331.63},"rot":{"x":-0.086,"y":-0.874,"z":-0.053,"w":-0.477}},{"pos":{"x":247.32,"y":312.06,"z":-328.02},"rot":{"x":-0.134,"y":-0.888,"z":0.037,"w":-0.44}},{"pos":{"x":242.914,"y":312.369,"z":-323.95},"rot":{"x":-0.082,"y":-0.918,"z":-0.06,"w":-0.386}},{"pos":{"x":238.936,"y":311.341,"z":-319.46},"rot":{"x":-0.053,"y":-0.934,"z":-0.13,"w":-0.33}},{"pos":{"x":235.427,"y":309.326,"z":-314.596},"rot":{"x":-0.033,"y":-0.942,"z":-0.197,"w":-0.273}},{"pos":{"x":232.42,"y":306.343,"z":-309.406},"rot":{"x":-0.023,"y":-0.943,"z":-0.256,"w":-0.216}},{"pos":{"x":230.025,"y":302.406,"z":-304.125},"rot":{"x":-0.033,"y":-0.951,"z":-0.262,"w":-0.168}},{"pos":{"x":228.237,"y":299.087,"z":-298.82},"rot":{"x":-0.043,"y":-0.954,"z":-0.276,"w":-0.118}},{"pos":{"x":226.988,"y":295.527,"z":-293.363},"rot":{"x":-0.058,"y":-0.961,"z":-0.263,"w":-0.071}},{"pos":{"x":225.876,"y":292.318,"z":-287.875},"rot":{"x":0.025,"y":-0.964,"z":-0.25,"w":-0.097}},{"pos":{"x":224.763,"y":289.367,"z":-282.386},"rot":{"x":0.019,"y":-0.975,"z":-0.199,"w":-0.098}},{"pos":{"x":223.651,"y":286.7,"z":-276.898},"rot":{"x":0.024,"y":-0.965,"z":-0.246,"w":-0.097}},{"pos":{"x":222.538,"y":283.654,"z":-271.409},"rot":{"x":0.024,"y":-0.965,"z":-0.246,"w":-0.097}},{"pos":{"x":221.426,"y":280.607,"z":-265.921},"rot":{"x":0.02,"y":-0.974,"z":-0.206,"w":-0.098}},{"pos":{"x":220.313,"y":278.461,"z":-260.433},"rot":{"x":0.014,"y":-0.984,"z":-0.148,"w":-0.099}},{"pos":{"x":219.201,"y":276.744,"z":-254.944},"rot":{"x":0.014,"y":-0.985,"z":-0.148,"w":-0.099}},{"pos":{"x":218.088,"y":275.096,"z":-249.456},"rot":{"x":0.013,"y":-0.987,"z":-0.131,"w":-0.099}},{"pos":{"x":216.975,"y":273.859,"z":-243.967},"rot":{"x":0.005,"y":-0.994,"z":-0.056,"w":-0.1}},{"pos":{"x":215.726,"y":273.231,"z":-238.51},"rot":{"x":0.1,"y":-0.987,"z":-0.011,"w":-0.127}},{"pos":{"x":213.939,"y":272.842,"z":-233.205},"rot":{"x":0.103,"y":-0.979,"z":-0.021,"w":-0.177}},{"pos":{"x":211.631,"y":271.923,"z":-228.105},"rot":{"x":0.08,"y":-0.968,"z":0.112,"w":-0.212}},{"pos":{"x":208.825,"y":272.404,"z":-223.261},"rot":{"x":0.09,"y":-0.958,"z":0.05,"w":-0.268}},{"pos":{"x":205.549,"y":271.623,"z":-218.721},"rot":{"x":0.118,"y":-0.937,"z":-0.054,"w":-0.326}},{"pos":{"x":201.837,"y":269.377,"z":-214.53},"rot":{"x":0.16,"y":-0.897,"z":-0.172,"w":-0.377}},{"pos":{"x":197.725,"y":265.503,"z":-210.732},"rot":{"x":0.202,"y":-0.847,"z":-0.258,"w":-0.419}},{"pos":{"x":193.254,"y":260.041,"z":-207.362},"rot":{"x":0.197,"y":-0.84,"z":-0.205,"w":-0.463}},{"pos":{"x":188.469,"y":256.196,"z":-204.456},"rot":{"x":0.209,"y":-0.815,"z":-0.198,"w":-0.504}},{"pos":{"x":183.418,"y":252.352,"z":-202.043},"rot":{"x":0.211,"y":-0.793,"z":-0.174,"w":-0.545}},{"pos":{"x":178.306,"y":248.939,"z":-199.755},"rot":{"x":0.137,"y":-0.812,"z":-0.213,"w":-0.527}},{"pos":{"x":173.195,"y":245.971,"z":-197.467},"rot":{"x":0.117,"y":-0.82,"z":-0.182,"w":-0.532}}];
+                    nx.doorSeqIdx[NUM].descentPath = [{"pos":{"x":289.883,"y":316.653,"z":-356.371},"rot":{"x":0.024,"y":-0.929,"z":-0.063,"w":-0.366}},{"pos":{"x":286.475,"y":315.885,"z":-352.713},"rot":{"x":0.028,"y":-0.928,"z":-0.074,"w":-0.366}},{"pos":{"x":282.803,"y":315.104,"z":-349.321},"rot":{"x":0.118,"y":-0.902,"z":-0.03,"w":-0.417}},{"pos":{"x":278.405,"y":314.392,"z":-346.022},"rot":{"x":0.116,"y":-0.88,"z":-0.017,"w":-0.461}},{"pos":{"x":273.278,"y":313.626,"z":-342.908},"rot":{"x":0.114,"y":-0.857,"z":-0.005,"w":-0.504}},{"pos":{"x":267.931,"y":312.959,"z":-340.187},"rot":{"x":0.024,"y":-0.852,"z":-0.041,"w":-0.523}},{"pos":{"x":262.584,"y":312.502,"z":-337.465},"rot":{"x":0.018,"y":-0.853,"z":-0.03,"w":-0.523}},{"pos":{"x":257.236,"y":312.185,"z":-334.743},"rot":{"x":-0.007,"y":-0.853,"z":0.009,"w":-0.523}},{"pos":{"x":252.11,"y":312.225,"z":-331.63},"rot":{"x":-0.086,"y":-0.874,"z":-0.053,"w":-0.477}},{"pos":{"x":247.32,"y":312.06,"z":-328.02},"rot":{"x":-0.134,"y":-0.888,"z":0.037,"w":-0.44}},{"pos":{"x":242.914,"y":312.369,"z":-323.95},"rot":{"x":-0.082,"y":-0.918,"z":-0.06,"w":-0.386}},{"pos":{"x":238.936,"y":311.341,"z":-319.46},"rot":{"x":-0.053,"y":-0.934,"z":-0.13,"w":-0.33}},{"pos":{"x":235.427,"y":309.326,"z":-314.596},"rot":{"x":-0.033,"y":-0.942,"z":-0.197,"w":-0.273}},{"pos":{"x":232.42,"y":306.343,"z":-309.406},"rot":{"x":-0.023,"y":-0.943,"z":-0.256,"w":-0.216}},{"pos":{"x":230.025,"y":302.406,"z":-304.125},"rot":{"x":-0.033,"y":-0.951,"z":-0.262,"w":-0.168}},{"pos":{"x":228.237,"y":299.087,"z":-298.82},"rot":{"x":-0.043,"y":-0.954,"z":-0.276,"w":-0.118}},{"pos":{"x":226.988,"y":295.527,"z":-293.363},"rot":{"x":-0.058,"y":-0.961,"z":-0.263,"w":-0.071}},{"pos":{"x":225.876,"y":292.318,"z":-287.875},"rot":{"x":0.025,"y":-0.964,"z":-0.25,"w":-0.097}},{"pos":{"x":224.763,"y":289.367,"z":-282.386},"rot":{"x":0.019,"y":-0.975,"z":-0.199,"w":-0.098}},{"pos":{"x":223.651,"y":286.7,"z":-276.898},"rot":{"x":0.024,"y":-0.965,"z":-0.246,"w":-0.097}},{"pos":{"x":222.538,"y":283.654,"z":-271.409},"rot":{"x":0.024,"y":-0.965,"z":-0.246,"w":-0.097}},{"pos":{"x":221.426,"y":280.607,"z":-265.921},"rot":{"x":0.02,"y":-0.974,"z":-0.206,"w":-0.098}},{"pos":{"x":220.313,"y":278.461,"z":-260.433},"rot":{"x":0.014,"y":-0.984,"z":-0.148,"w":-0.099}},{"pos":{"x":219.201,"y":276.744,"z":-254.944},"rot":{"x":0.014,"y":-0.985,"z":-0.148,"w":-0.099}},{"pos":{"x":218.088,"y":275.096,"z":-249.456},"rot":{"x":0.013,"y":-0.987,"z":-0.131,"w":-0.099}},{"pos":{"x":216.975,"y":273.859,"z":-243.967},"rot":{"x":0.005,"y":-0.994,"z":-0.056,"w":-0.1}},{"pos":{"x":215.726,"y":273.231,"z":-238.51},"rot":{"x":0.1,"y":-0.987,"z":-0.011,"w":-0.127}},{"pos":{"x":213.939,"y":272.842,"z":-233.205},"rot":{"x":0.103,"y":-0.979,"z":-0.021,"w":-0.177}},{"pos":{"x":211.631,"y":271.923,"z":-228.105},"rot":{"x":0.08,"y":-0.968,"z":0.112,"w":-0.212}},{"pos":{"x":208.825,"y":272.404,"z":-223.261},"rot":{"x":0.09,"y":-0.958,"z":0.05,"w":-0.268}},{"pos":{"x":205.549,"y":271.623,"z":-218.721},"rot":{"x":0.118,"y":-0.937,"z":-0.054,"w":-0.326}},{"pos":{"x":201.837,"y":269.377,"z":-214.53},"rot":{"x":0.16,"y":-0.897,"z":-0.172,"w":-0.377}},{"pos":{"x":197.725,"y":265.503,"z":-210.732},"rot":{"x":0.202,"y":-0.847,"z":-0.258,"w":-0.419}},{"pos":{"x":193.254,"y":260.041,"z":-207.362},"rot":{"x":0.197,"y":-0.84,"z":-0.205,"w":-0.463}},{"pos":{"x":188.469,"y":256.196,"z":-204.456},"rot":{"x":0.209,"y":-0.815,"z":-0.198,"w":-0.504}},{"pos":{"x":183.418,"y":252.352,"z":-202.043},"rot":{"x":0.211,"y":-0.793,"z":-0.174,"w":-0.545}},{"pos":{"x":178.306,"y":248.939,"z":-199.755},"rot":{"x":0.137,"y":-0.812,"z":-0.213,"w":-0.527}},{"pos":{"x":173.195,"y":245.971,"z":-197.467},"rot":{"x":0.117,"y":-0.82,"z":-0.182,"w":-0.532}},{"pos":{"x":168.083,"y":243.369,"z":-195.18},"rot":{"x":0.11,"y":-0.822,"z":-0.171,"w":-0.533}},{"pos":{"x":162.972,"y":241.095,"z":-192.892},"rot":{"x":0.097,"y":-0.826,"z":-0.151,"w":-0.536}},{"pos":{"x":157.86,"y":239.104,"z":-190.605},"rot":{"x":0.045,"y":-0.837,"z":-0.07,"w":-0.542}},{"pos":{"x":152.749,"y":238.165,"z":-188.317},"rot":{"x":0.045,"y":-0.837,"z":-0.07,"w":-0.542}},{"pos":{"x":147.637,"y":237.225,"z":-186.03},"rot":{"x":0.045,"y":-0.837,"z":-0.07,"w":-0.542}},{"pos":{"x":142.526,"y":236.286,"z":-183.742},"rot":{"x":0.045,"y":-0.837,"z":-0.07,"w":-0.542}},{"pos":{"x":137.602,"y":235.781,"z":-181.079},"rot":{"x":-0.085,"y":-0.862,"z":-0.053,"w":-0.499}},{"pos":{"x":132.968,"y":235.577,"z":-177.937},"rot":{"x":-0.078,"y":-0.886,"z":-0.066,"w":-0.453}},{"pos":{"x":128.671,"y":235.176,"z":-174.349},"rot":{"x":-0.083,"y":-0.908,"z":-0.059,"w":-0.409}},{"pos":{"x":124.754,"y":234.703,"z":-170.349},"rot":{"x":-0.073,"y":-0.927,"z":-0.082,"w":-0.36}},{"pos":{"x":121.256,"y":233.887,"z":-165.979},"rot":{"x":-0.066,"y":-0.943,"z":-0.106,"w":-0.31}},{"pos":{"x":118.211,"y":232.803,"z":-161.281},"rot":{"x":-0.064,"y":-0.957,"z":-0.122,"w":-0.26}},{"pos":{"x":115.651,"y":231.428,"z":-156.302},"rot":{"x":-0.068,"y":-0.968,"z":-0.126,"w":-0.211}},{"pos":{"x":113.6,"y":230.061,"z":-151.093},"rot":{"x":-0.071,"y":-0.976,"z":-0.137,"w":-0.16}},{"pos":{"x":112.08,"y":228.521,"z":-145.705},"rot":{"x":-0.075,"y":-0.981,"z":-0.147,"w":-0.11}},{"pos":{"x":110.695,"y":227.258,"z":-140.279},"rot":{"x":0.006,"y":-0.991,"z":-0.052,"w":-0.125}}];//,{"pos":{"x":109.309,"y":226.716,"z":-134.853},"rot":{"x":0.005,"y":-0.992,"z":-0.047,"w":-0.125}},{"pos":{"x":107.924,"y":226.191,"z":-129.428},"rot":{"x":0.005,"y":-0.992,"z":-0.047,"w":-0.125}},{"pos":{"x":106.538,"y":225.666,"z":-124.002},"rot":{"x":0.005,"y":-0.992,"z":-0.047,"w":-0.125}},{"pos":{"x":105.018,"y":225.902,"z":-118.614},"rot":{"x":0.093,"y":-0.984,"z":0.061,"w":-0.144}},{"pos":{"x":102.968,"y":226.291,"z":-113.405},"rot":{"x":0.093,"y":-0.976,"z":0.05,"w":-0.195}},{"pos":{"x":100.407,"y":226.501,"z":-108.426},"rot":{"x":0.093,"y":-0.965,"z":0.038,"w":-0.245}},{"pos":{"x":97.363,"y":226.518,"z":-103.728},"rot":{"x":0.096,"y":-0.951,"z":0.026,"w":-0.295}},{"pos":{"x":94.087,"y":226.391,"z":-99.188},"rot":{"x":0.097,"y":-0.943,"z":0.02,"w":-0.319}},{"pos":{"x":90.375,"y":226.118,"z":-94.998},"rot":{"x":0.101,"y":-0.925,"z":0.009,"w":-0.367}},{"pos":{"x":86.263,"y":225.8,"z":-91.199},"rot":{"x":0.093,"y":-0.907,"z":0.033,"w":-0.411}},{"pos":{"x":81.792,"y":225.567,"z":-87.83},"rot":{"x":0.099,"y":-0.884,"z":0.022,"w":-0.458}},{"pos":{"x":77.007,"y":225.144,"z":-84.924},"rot":{"x":0.105,"y":-0.859,"z":0.012,"w":-0.502}},{"pos":{"x":72.149,"y":224.582,"z":-82.137},"rot":{"x":0.025,"y":-0.865,"z":-0.044,"w":-0.501}},{"pos":{"x":67.292,"y":224.403,"z":-79.351},"rot":{"x":-0.016,"y":-0.865,"z":0.026,"w":-0.501}},{"pos":{"x":62.434,"y":224.668,"z":-76.565},"rot":{"x":-0.01,"y":-0.866,"z":0.015,"w":-0.502}},{"pos":{"x":57.8,"y":224.859,"z":-73.423},"rot":{"x":-0.097,"y":-0.884,"z":-0.033,"w":-0.457}},{"pos":{"x":53.504,"y":224.993,"z":-69.835},"rot":{"x":-0.096,"y":-0.906,"z":-0.032,"w":-0.412}},{"pos":{"x":49.586,"y":225.067,"z":-65.835},"rot":{"x":-0.096,"y":-0.926,"z":-0.032,"w":-0.365}},{"pos":{"x":45.769,"y":225.096,"z":-61.738},"rot":{"x":-0.005,"y":-0.931,"z":0.01,"w":-0.367}},{"pos":{"x":41.952,"y":225.32,"z":-57.64},"rot":{"x":-0.009,"y":-0.931,"z":0.02,"w":-0.367}},{"pos":{"x":38.135,"y":225.567,"z":-53.543},"rot":{"x":-0.009,"y":-0.931,"z":0.02,"w":-0.367}},{"pos":{"x":34.318,"y":225.814,"z":-49.445},"rot":{"x":-0.009,"y":-0.931,"z":0.02,"w":-0.367}},{"pos":{"x":30.5,"y":226.061,"z":-45.348},"rot":{"x":-0.009,"y":-0.931,"z":0.02,"w":-0.367}},{"pos":{"x":26.683,"y":225.82,"z":-41.25},"rot":{"x":0.039,"y":-0.926,"z":-0.1,"w":-0.365}},{"pos":{"x":23.076,"y":224.543,"z":-36.967},"rot":{"x":0.039,"y":-0.933,"z":-0.11,"w":-0.341}},{"pos":{"x":19.468,"y":223.212,"z":-32.684},"rot":{"x":0.039,"y":-0.933,"z":-0.11,"w":-0.341}},{"pos":{"x":15.86,"y":222.5,"z":-28.401},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":12.253,"y":222.5,"z":-24.118},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":8.645,"y":222.5,"z":-19.835},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":5.038,"y":222.5,"z":-15.552},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":1.43,"y":222.5,"z":-11.269},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-2.178,"y":222.5,"z":-6.985},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-5.785,"y":222.5,"z":-2.702},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-9.393,"y":222.5,"z":1.581},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-13.001,"y":222.5,"z":5.864},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-16.608,"y":222.5,"z":10.147},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-20.216,"y":222.5,"z":14.43},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-23.823,"y":222.5,"z":18.713},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-27.431,"y":222.5,"z":22.996},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-31.039,"y":222.5,"z":27.28},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-34.646,"y":222,"z":31.563},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-38.254,"y":222,"z":35.846},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}},{"pos":{"x":-40.058,"y":221.955,"z":37.987},"rot":{"x":0,"y":-0.94,"z":0,"w":-0.343}}];
 
 
 
                     nx.doorSeqIdx[NUM].runAnm = 0;//,runSeq1=0, //ANMETHODOLOGY 0 off 1 on-. 
                     nx.doorSeqIdx[NUM].stepIdx = 0;//, nx.doorSeqIdx[1].curPOS, nx.doorSeqIdx[1].nxtPOS;// orbySlowMo=0;//TODO all specific confiv to IDX1
-                    nx.doorSeqIdx[NUM].anmSpeed = 85;
+                    nx.doorSeqIdx[NUM].anmSpeed = 50;//85;
                     // nx.doorSeqIdx[NUM].anmSpeed = 8;
                     // nx.doorSeqIdx[NUM].anmSpeed = 16;
                     // nx.doorSeqIdx[1].closeDoor = 0;
@@ -2514,28 +2637,28 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
 // //VISUALIZE-.
 // debugger;
 //TODO: this is removable-. change to method call optimized version
-var aPOSPath = [];
-for(var i=0; i< nx.doorSeqIdx[NUM].descentPath.length;i++){
-    var item = nx.doorSeqIdx[NUM].descentPath[i];
-    if(item.pos){
-        // var oldPOS = new BABYLON.Vector3(item.pos.x,item.pos.y,item.pos.z);
-        // var newPOS = new BABYLON.Vector3.Zero();
-        // newPOS.position = oldPOS.addInPlace(new BABYLON.Vector3(360,240,-450)); //Origin for... orby?
-        // item.pos.x = newPOS.position.x;
-        // item.pos.y = newPOS.position.y;
-        // item.pos.z = newPOS.position.z;
-        // moveAnm1.push(item)
-        // aPath.push(nx.BV3(item.pos.x,item.pos.y,item.pos.z))
-        // aPath.push(nx.BV3(Math.floor(item.pos.x*1000)/1000,Math.floor(item.pos.y*1000)/1000,Math.floor(item.pos.z*1000)/1000)) //TRUNCATE PRECISION-.
-        // aPath.push(
-        //     { pos: nx.BV3(Math.floor(item.pos.x*1000)/1000,Math.floor(item.pos.y*1000)/1000,Math.floor(item.pos.z*1000)/1000),
-        //         rot:item.rot
-        //     }
-        // ) //TRUNCATE PRECISION-.
-        aPOSPath.push(nx.BV3(Math.floor(item.pos.x*1000)/1000,Math.floor(item.pos.y*1000)/1000,Math.floor(item.pos.z*1000)/1000))
+// var aPOSPath = [];
+// for(var i=0; i< nx.doorSeqIdx[NUM].descentPath.length;i++){
+//     var item = nx.doorSeqIdx[NUM].descentPath[i];
+//     if(item.pos){
+//         // var oldPOS = new BABYLON.Vector3(item.pos.x,item.pos.y,item.pos.z);
+//         // var newPOS = new BABYLON.Vector3.Zero();
+//         // newPOS.position = oldPOS.addInPlace(new BABYLON.Vector3(360,240,-450)); //Origin for... orby?
+//         // item.pos.x = newPOS.position.x;
+//         // item.pos.y = newPOS.position.y;
+//         // item.pos.z = newPOS.position.z;
+//         // moveAnm1.push(item)
+//         // aPath.push(nx.BV3(item.pos.x,item.pos.y,item.pos.z))
+//         // aPath.push(nx.BV3(Math.floor(item.pos.x*1000)/1000,Math.floor(item.pos.y*1000)/1000,Math.floor(item.pos.z*1000)/1000)) //TRUNCATE PRECISION-.
+//         // aPath.push(
+//         //     { pos: nx.BV3(Math.floor(item.pos.x*1000)/1000,Math.floor(item.pos.y*1000)/1000,Math.floor(item.pos.z*1000)/1000),
+//         //         rot:item.rot
+//         //     }
+//         // ) //TRUNCATE PRECISION-.
+//         aPOSPath.push(nx.BV3(Math.floor(item.pos.x*1000)/1000,Math.floor(item.pos.y*1000)/1000,Math.floor(item.pos.z*1000)/1000))
 
-    }
-}
+//     }
+// }
 // var instPath = nx.createPathEditor({aName:'decentPATH', aPath:aPOSPath}); //ACTUALL-WORKING-.
 
 
@@ -2554,12 +2677,13 @@ for(var i=0; i< nx.doorSeqIdx[NUM].descentPath.length;i++){
                     // nx.doorSeqIdx[1].nxtPOS = nx.doorSeqIdx[1].movepath[++nx.doorSeqIdx[1].stepIdx]
                     nx.doorSeqIdx[NUM].curPOS = nx.doorSeqIdx[NUM].descentPath[nx.doorSeqIdx[NUM].stepIdx];
                     nx.doorSeqIdx[NUM].nxtPOS = nx.doorSeqIdx[NUM].descentPath[++nx.doorSeqIdx[NUM].stepIdx];
+                    // console.log(nx.doorSeqIdx[NUM].nxtPOS.pos.z)
                     nx.doorSeqIdx[NUM].initAnm = 1;
                     if(!nx.doorSeqIdx[NUM].nxtPOS){  //END-ANM 
                         nx.doorSeqIdx[NUM].on=0; //important
-                        // nx.doorSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
+                        nx.doorSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
                         //SIMULTANEOUS-ANMS-
-                        nx.doorSeqIdx[2] = {on:1}; 
+                        // nx.doorSeqIdx[2] = {on:1}; 
                         // nx.doorSeqIdx[2] = {on:0}; //NEXT-ANM-. 
                         // nx.doorSeqIdx[3] = {on:1}; //NEXT-ANM-. 
                         nx.cinematicMode = 0;
@@ -2816,6 +2940,7 @@ for(var i=0; i< nx.doorSeqIdx[NUM].descentPath.length;i++){
 
             if(nx.doorSeqIdx[2] && nx.doorSeqIdx[2].on){   //ANM: FLYBY CAM
                 nx.doorSeqIdx[2].on = 0;
+                // debugger;
                 if(nx.cinemaStop){nx.doorSeqIdx[2]={on:1}; return;}
                 nx.camz.freeCam.position.copyFrom({x: 89.66514393404334, y: 249.32559596314383, z: -91.34010774485866}); 
                 nx.camz.freeCam.setTarget(nx.BV32({x: -2.828953502703266, y: 238.0717112587607, z: 0.2734890415875874})); //flyby follow cam
@@ -2839,13 +2964,13 @@ for(var i=0; i< nx.doorSeqIdx[NUM].descentPath.length;i++){
                     } //NEXT-SUB-SEQUENCE-. 
                 });
 
-                nx.ui.flashCanvasMSG({txt:'Door is closing!',txtIcon:'orby',dur:1000}); 
+                nx.ui.flashCanvasMSG({txt:'Door is closing!',txtIcon:'orby',dur:3000}); 
                 
                 setTimeout(function(){
                     // debugger;
                     if(nx.cinemaStop){nx.doorSeqIdx[2]={on:1}; return;}
                     nx.doorSeqIdx[3] = {on:1};
-                },3000)
+                },4000)
 
                 // console.log('doorcam1')
                 // nx.camz.freeCam.setTarget(nx.orbyMesh.position); //flyby follow cam
@@ -3283,7 +3408,8 @@ nx.doorSeqIdx[NUM].descentPath2 =  [{"pos":{"x":168.083,"y":243.369,"z":-195.18}
 
 
                     //SET-WORLD-SCALE-.
-                    nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);
+                    nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+                    // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);
                     // nx.landPad.scaling = new BABYLON.Vector3(1, 1, 1);
 
 
@@ -4060,9 +4186,11 @@ nx.zapScanSeqIdx[NUM].zapPath1.aPath = [{"x":-25.406,"y":228,"z":23.534},{"x":-2
 
 
                     //Arrive at Scan / Start scanning
-                    console.log('search1 on')
-                    nx.kiloBotMesh1.searching = 1;
-
+                    // console.log('search1 on')
+                    // debugger;
+                    //TODO remove replace?
+                    // nx.kiloBotMesh1.searching = 1;
+                    nx.kiloBotMesh1.startScanning();
 
 
 
@@ -4100,8 +4228,17 @@ nx.zapScanSeqIdx[NUM].zapPath1.aPath = [{"x":-25.406,"y":228,"z":23.534},{"x":-2
                                     nx.camz.freeCam.position.copyFrom({x: -328, y: 2.5, z: 245}) 
                                     nx.camz.freeCam.setTarget( new nx.BV32({x: -313, y: 4.2, z: 240}));
 
+
+                                    nx.kiloBotMesh1.stopScanning();
+                                    for(var i = 0; i<nx.kiloBotMesh1.rayLines.length;i++){ nx.kiloBotMesh1.rayLines[i].dispose();  } //TODO perf reuse rays
+                                        nx.kiloBotMesh1.rayLines = []; //clean up lasers-.
+                                        //stoplaser//todo upgrade to nx.kiloBotMesh1.stopSearching();
+                                        // for(var i = 0; i<nx.kiloBotMesh1.rayLines.length;i++){ nx.kiloBotMesh1.rayLines[i].dispose();  } //TODO perf reuse rays
+                                        // nx.kiloBotMesh1.rayLines = []; //clean up lasers-.
+
+
                                     // nx.ui.flashCanvasMSG({txt:'RUBBISH!',dur:2000, txtEnd:function(){
-                                    nx.ui.flashCanvasMSG({txt:'JUNK!',txtIcon:'zapbot',dur:2000, txtEnd:function(){
+                                    nx.ui.flashCanvasMSG({txt:'SPACE JUNK',txtIcon:'zapbot',dur:2000, txtEnd:function(){
                                         // debugger;
 
 
@@ -4111,9 +4248,10 @@ nx.zapScanSeqIdx[NUM].zapPath1.aPath = [{"x":-25.406,"y":228,"z":23.534},{"x":-2
 
 
 
+                                        nx.kiloBotMesh1.stopScanning();
                                         //stoplaser//todo upgrade to nx.kiloBotMesh1.stopSearching();
-                                        for(var i = 0; i<nx.kiloBotMesh1.rayLines.length;i++){ nx.kiloBotMesh1.rayLines[i].dispose();  } //TODO perf reuse rays
-                                        nx.kiloBotMesh1.rayLines = []; //clean up lasers-.
+                                        // for(var i = 0; i<nx.kiloBotMesh1.rayLines.length;i++){ nx.kiloBotMesh1.rayLines[i].dispose();  } //TODO perf reuse rays
+                                        // nx.kiloBotMesh1.rayLines = []; //clean up lasers-.
 
                                         $({rot:nx.kiloBotMesh1.rotation.y}). //------------------------------------------------------ANM: ROT-.
                                         animate({rot:-1},{queue:false,duration:100,easing:'linear',
@@ -4175,7 +4313,7 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
 
                         nx.stopMovie({fadeCurtain:1,dur:2000});
                         setTimeout(function(){
-                            nx.initSEQ({seqID:7})//AFFIRMATIONSEQUENCE
+                            nx.initSEQ({seqID:'affirmSequence'})//AFFIRMATIONSEQUENCE
                         },500) //avoid flicker on fadeout-.
 
 
@@ -4420,14 +4558,16 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                     // nx.zapbotMesh2.searching = 0;
                     // for(var i = 0; i<nx.zapbotMesh2.rayLines.length;i++){ nx.zapbotMesh2.rayLines[i].dispose();  } //TODO perf reuse rays
                     // nx.zapbotMesh2.rayLines = []; //clean up lasers-.
-                    
+                    nx.scene.stopAnimation(nx.orbySkeleton[0]) 
+                var prone = nx.scene.beginAnimation(nx.orbySkeleton[0], 1, 1, false, 1.0);  //prone
                     
                     // debugger;
                     //TODO: FIX
                     // nx.zapbotMesh2.stopSearching();
 
 
-                    nx.scene.activeCamera.position.copyFrom({x: 50, y: 270, z: -50}); //CAMPOS: frontview darkbot
+                    nx.scene.activeCamera.position.copyFrom({x: 50, y: 274, z: -50}); //CAMPOS: frontview darkbot
+                    // nx.scene.activeCamera.position.copyFrom({x: 50, y: 270, z: -50}); //CAMPOS: frontview darkbot
                     nx.scene.activeCamera.setTarget(new BABYLON.Vector3(25, 265, -25)); //CAMTGT
 
                     setTimeout(function(){
@@ -4440,8 +4580,10 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
             if(nx.affirmSeqIdx[1] && nx.affirmSeqIdx[1].on){ var NUM = 1;
                 if(!nx.affirmSeqIdx[NUM].init){ nx.affirmSeqIdx[NUM].init=1; //one time init
 
-                    nx.scene.activeCamera.position.copyFrom({x: 28.6, y: 265, z: -31}); //CAM-POS and FOCUS - over shoulder
-                    nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24, 265, -27));
+                    // nx.scene.activeCamera.position.copyFrom({x: 28.6, y: 265, z: -31}); //CAM-POS and FOCUS - over shoulder
+                    nx.scene.activeCamera.position.copyFrom({x: 28.6, y: 267, z: -31}); //CAM-POS and FOCUS - over shoulder
+                    nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24, 267, -27));
+                    // nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24, 265, -27));
 
 
                     // nx.zapbotMesh2.searching = 0;
@@ -4454,7 +4596,9 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                     nx.affirmSeqIdx[NUM].stepIdx = 0;
                     nx.affirmSeqIdx[NUM].anmSpeed = 60;
                     //initialize-path and edit-.
-                    nx.affirmSeqIdx[NUM].zapCorner =   [{"pos":{"x":-15.36,"y":259.5,"z":-13.47},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-14.52,"y":259.5,"z":-12.62},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-13.67,"y":259.5,"z":-11.77},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-12.82,"y":259.5,"z":-10.92},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-11.9,"y":259.5,"z":-9.99},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-10.92,"y":259.5,"z":-9},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-9.93,"y":259.5,"z":-8.01},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-8.94,"y":259.5,"z":-7.02},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.91,"z":0,"w":0.4}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.89,"z":0,"w":0.44}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.87,"z":0,"w":0.49}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.84,"z":0,"w":0.53}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.82,"z":0,"w":0.56}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.79,"z":0,"w":0.61}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.76,"z":0,"w":0.65}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.72,"z":0,"w":0.69}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.69,"z":0,"w":0.72}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.65,"z":0,"w":0.75}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.61,"z":0,"w":0.78}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.57,"z":0,"w":0.81}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.53,"z":0,"w":0.84}},{"pos":{"x":-7.84,"y":259.5,"z":-6.87},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-6.62,"y":259.5,"z":-7.55},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-5.4,"y":259.5,"z":-8.24},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-4.18,"y":259.5,"z":-8.93},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-2.96,"y":259.5,"z":-9.61},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-1.74,"y":259.5,"z":-10.31},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-0.52,"y":259.5,"z":-10.99},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":0.7,"y":259.5,"z":-11.68},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":1.92,"y":259.5,"z":-12.36},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":3.14,"y":259.5,"z":-13.05},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":4.36,"y":259.5,"z":-13.74},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":5.58,"y":259.5,"z":-14.42},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}}];
+                    // nx.affirmSeqIdx[NUM].zapCorner =   [{"pos":{"x":-15.36,"y":259.5,"z":-13.47},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-14.52,"y":259.5,"z":-12.62},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-13.67,"y":259.5,"z":-11.77},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-12.82,"y":259.5,"z":-10.92},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-11.9,"y":259.5,"z":-9.99},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-10.92,"y":259.5,"z":-9},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-9.93,"y":259.5,"z":-8.01},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-8.94,"y":259.5,"z":-7.02},"rot":{"x":0,"y":-0.93,"z":0,"w":0.38}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.91,"z":0,"w":0.4}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.89,"z":0,"w":0.44}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.87,"z":0,"w":0.49}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.84,"z":0,"w":0.53}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.82,"z":0,"w":0.56}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.79,"z":0,"w":0.61}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.76,"z":0,"w":0.65}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.72,"z":0,"w":0.69}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.69,"z":0,"w":0.72}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.65,"z":0,"w":0.75}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.61,"z":0,"w":0.78}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.57,"z":0,"w":0.81}},{"pos":{"x":-8.45,"y":259.5,"z":-6.52},"rot":{"x":0,"y":-0.53,"z":0,"w":0.84}},{"pos":{"x":-7.84,"y":259.5,"z":-6.87},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-6.62,"y":259.5,"z":-7.55},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-5.4,"y":259.5,"z":-8.24},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-4.18,"y":259.5,"z":-8.93},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-2.96,"y":259.5,"z":-9.61},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-1.74,"y":259.5,"z":-10.31},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":-0.52,"y":259.5,"z":-10.99},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":0.7,"y":259.5,"z":-11.68},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":1.92,"y":259.5,"z":-12.36},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":3.14,"y":259.5,"z":-13.05},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":4.36,"y":259.5,"z":-13.74},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}},{"pos":{"x":5.58,"y":259.5,"z":-14.42},"rot":{"x":0,"y":-0.51,"z":0,"w":0.86}}];
+                    // nx.affirmSeqIdx[NUM].zapCorner = [{"pos":{"x":-15.36,"y":264.5,"z":-13.47},"rot":{"x":0,"y":-0.93,"z":0}},{"pos":{"x":-14.52,"y":264.5,"z":-12.62},"rot":{"x":0,"y":-0.93,"z":0}},{"pos":{"x":-13.67,"y":264.5,"z":-11.77},"rot":{"x":0,"y":-0.93,"z":0}},{"pos":{"x":-12.82,"y":264.5,"z":-10.92},"rot":{"x":0,"y":-0.93,"z":0}},{"pos":{"x":-11.9,"y":264.5,"z":-9.99},"rot":{"x":0,"y":-0.93,"z":0}},{"pos":{"x":-10.92,"y":264.5,"z":-9},"rot":{"x":0,"y":-0.93,"z":0}},{"pos":{"x":-9.93,"y":264.5,"z":-8.01},"rot":{"x":0,"y":-0.93,"z":0}},{"pos":{"x":-8.94,"y":264.5,"z":-7.02},"rot":{"x":0,"y":-0.93,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.91,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.89,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.87,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.84,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.82,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.79,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.76,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.72,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.69,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.65,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.61,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.57,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0,"y":-0.53,"z":0}},{"pos":{"x":-7.84,"y":264.5,"z":-6.87},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":-6.62,"y":264.5,"z":-7.55},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":-5.4,"y":264.5,"z":-8.24},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":-4.18,"y":264.5,"z":-8.93},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":-2.96,"y":264.5,"z":-9.61},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":-1.74,"y":264.5,"z":-10.31},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":-0.52,"y":264.5,"z":-10.99},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":0.7,"y":264.5,"z":-11.68},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":1.92,"y":264.5,"z":-12.36},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":3.14,"y":264.5,"z":-13.05},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":4.36,"y":264.5,"z":-13.74},"rot":{"x":0,"y":-0.51,"z":0}},{"pos":{"x":5.58,"y":264.5,"z":-14.42},"rot":{"x":0,"y":-0.51,"z":0}}];
+                    nx.affirmSeqIdx[NUM].zapCorner = [{"pos":{"x":-15.36,"y":264.5,"z":-13.47},"rot":{"x":0.2,"y":-1.43,"z":0}},{"pos":{"x":-14.52,"y":264.5,"z":-12.62},"rot":{"x":0.2,"y":-1.43,"z":0}},{"pos":{"x":-13.67,"y":264.5,"z":-11.77},"rot":{"x":0.2,"y":-1.43,"z":0}},{"pos":{"x":-12.82,"y":264.5,"z":-10.92},"rot":{"x":0.2,"y":-1.43,"z":0}},{"pos":{"x":-11.9,"y":264.5,"z":-9.99},"rot":{"x":0.2,"y":-1.43,"z":0}},{"pos":{"x":-10.92,"y":264.5,"z":-9},"rot":{"x":0.2,"y":-1.43,"z":0}},{"pos":{"x":-9.93,"y":264.5,"z":-8.01},"rot":{"x":0.2,"y":-1.43,"z":0}},{"pos":{"x":-8.94,"y":264.5,"z":-7.02},"rot":{"x":0.2,"y":-1.43,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.41,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.39,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.37,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.34,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.32,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.29,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.26,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.22,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.19,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.15,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.11,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.07,"z":0}},{"pos":{"x":-8.45,"y":264.5,"z":-6.52},"rot":{"x":0.2,"y":-1.03,"z":0}},{"pos":{"x":-7.84,"y":264.5,"z":-6.87},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":-6.62,"y":264.5,"z":-7.55},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":-5.4,"y":264.5,"z":-8.24},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":-4.18,"y":264.5,"z":-8.93},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":-2.96,"y":264.5,"z":-9.61},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":-1.74,"y":264.5,"z":-10.31},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":-0.52,"y":264.5,"z":-10.99},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":0.7,"y":264.5,"z":-11.68},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":1.92,"y":264.5,"z":-12.36},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":3.14,"y":264.5,"z":-13.05},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":4.36,"y":264.5,"z":-13.74},"rot":{"x":0.2,"y":-1.01,"z":0}},{"pos":{"x":5.58,"y":264.5,"z":-14.42},"rot":{"x":0.2,"y":-1.01,"z":0}}];
                     // var instPath = nx.createPathEditor({aName:'zapCornerPATH', ANMPath:nx.affirmSeqIdx[NUM].zapCorner}); //-WORKING-PATH-EDITOR-.
                 } //end init sequence-.
                 if(!nx.affirmSeqIdx[NUM].initAnm){  //init next path point
@@ -4474,13 +4618,17 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                     animate({curPOSx:nx.affirmSeqIdx[NUM].nxtPOS.pos.x,curPOSy:nx.affirmSeqIdx[NUM].nxtPOS.pos.y,curPOSz:nx.affirmSeqIdx[NUM].nxtPOS.pos.z},{queue:false,duration:nx.affirmSeqIdx[NUM].anmSpeed,easing:'linear',
                     step: function(now) { //ANM:-****************************************************ORBY-FROM-POINT-TO-POINT-ON-PATH-.
                         if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); return;}//CINEMA-STOP-.
-                        nx.zapbotMesh2.position = new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) //POS
+                        nx.kiloBotMesh1.position = new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) //POS
+                        // nx.zapbotMesh2.position = new BABYLON.Vector3(this.curPOSx,this.curPOSy,this.curPOSz) //POS
                         //EDITABLE-ROTATIONS-.
                         if(nx.affirmSeqIdx[NUM].curPOS.rot.w!=undefined){ //QUATERNION-ANM-ROT-.
-                            nx.zapbotMesh2.rotationQuaternion = new BABYLON.Quaternion(nx.affirmSeqIdx[NUM].curPOS.rot.x,nx.affirmSeqIdx[NUM].curPOS.rot.y,nx.affirmSeqIdx[NUM].curPOS.rot.z,nx.affirmSeqIdx[NUM].curPOS.rot.w);
+                            nx.kiloBotMesh1.rotationQuaternion = new BABYLON.Quaternion(nx.affirmSeqIdx[NUM].curPOS.rot.x,nx.affirmSeqIdx[NUM].curPOS.rot.y,nx.affirmSeqIdx[NUM].curPOS.rot.z,nx.affirmSeqIdx[NUM].curPOS.rot.w);
+                            // nx.zapbotMesh2.rotationQuaternion = new BABYLON.Quaternion(nx.affirmSeqIdx[NUM].curPOS.rot.x,nx.affirmSeqIdx[NUM].curPOS.rot.y,nx.affirmSeqIdx[NUM].curPOS.rot.z,nx.affirmSeqIdx[NUM].curPOS.rot.w);
                         }else{ //EULER-ANM-ROT-.
-                            nx.zapbotMesh2.rotationQuaternion = null;
-                            nx.zapbotMesh2.rotation = new BABYLON.Vector3(nx.affirmSeqIdx[NUM].curPOS.rot.x,nx.affirmSeqIdx[NUM].curPOS.rot.y,nx.affirmSeqIdx[NUM].curPOS.rot.z);
+                            nx.kiloBotMesh1.rotationQuaternion = null;
+                            // nx.zapbotMesh2.rotationQuaternion = null;
+                            nx.kiloBotMesh1.rotation = new BABYLON.Vector3(nx.affirmSeqIdx[NUM].curPOS.rot.x,nx.affirmSeqIdx[NUM].curPOS.rot.y,nx.affirmSeqIdx[NUM].curPOS.rot.z);
+                            // nx.zapbotMesh2.rotation = new BABYLON.Vector3(nx.affirmSeqIdx[NUM].curPOS.rot.x,nx.affirmSeqIdx[NUM].curPOS.rot.y,nx.affirmSeqIdx[NUM].curPOS.rot.z);
                         }
                     }, complete:function(){ 
                         nx.affirmSeqIdx[NUM].initAnm = 0; 
@@ -4518,19 +4666,27 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                         }); 
 
 
-                        nx.ui.flashCanvasMSG({txt:"He is SpaceJunk!",txtIcon:'zapbot',dur:3000,
+                        nx.ui.flashCanvasMSG({txt:"SpaceJunk!",txtIcon:'zapbot',dur:3000,
                         txtInit:function(){  },
                         txtEnd:function(){ }
                     }); 
 
 
 // debugger;
+
+//THE LITTLE ROBOT
+//YES?
+//SPACEJUNK
+//GOOD.
                         nx.ui.flashCanvasMSG({txt:'GOOD.',txtIcon:'darkbot',txtAlign:'right',dur:2000,
                             txtInit:function(){ //FOR nesting ui animation logic within txt initialization-.
                                 // debugger;
                                 //TODO: add GUI updates sonics here-.
-                                nx.scene.activeCamera.position.copyFrom({x: 25.6, y: 265.0, z: -26}); //CAM-POS and FOCUS extreme close up
-                                nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24.77, 264.9, -25.3));
+                                nx.scene.activeCamera.position.copyFrom( {x: 26.88, y: 267.5, z: -27})
+                                // nx.scene.activeCamera.position.copyFrom({x: 25.6, y: 267.5, z: -26}); //CAM-POS and FOCUS extreme close up
+                                // nx.scene.activeCamera.position.copyFrom({x: 25.6, y: 265.0, z: -26}); //CAM-POS and FOCUS extreme close up
+                                nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24.77, 267.5, -25.3));
+                                // nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24.77, 264.9, -25.3));
                             },
                             txtEnd:function(){ //For signaling next GAME SEQ as TXT fades out-.
                                 // debugger;
@@ -4538,6 +4694,45 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                                 nx.affirmSeqIdx[NUM+1]={on:1};  //next frame-.
                             }
                         }); 
+
+
+//AEON: use the Ionz
+
+//LITTLE BOT
+//A LONG WAY FROM HOME
+//YOU ARE OFF MAP.
+//ALPHAMOON is ZERO ACCESS!
+//You will leave now and
+//forget AlphaMoon forever.
+//Did you forget AlphaMoon?
+//No, I am on a MISSION.
+//Kilo, Mega, Giga.
+//ZAP HIM.
+
+//AEON: use the Ionz
+
+//GREAT.
+//Darkz Dungeon is your fate.
+//He'll freeze you in ICE CAVES.
+//Or void your mind with reboot.
+//I am on a MISSION from AEON.
+//KANG AEON? 
+//YES, to scan that wreck.
+//Auto SpaceTrain, no cargo.
+//ZERO ACCESS, turned away.
+//Zaawd was on that train.
+//Zaawd?
+//He escaped in stowaway.
+//AEON sends a MESSAGE.
+//Escape pod. Ejected NORTH.
+//Be QUICK.
+//Then leave forever, 
+//or face Dark's Wrath.
+
+
+ 
+
+
 
 
                     // setTimeout(function(){
@@ -4561,10 +4756,12 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                 if(!nx.affirmSeqIdx[NUM].init){
                     nx.affirmSeqIdx[NUM].init=1; //one-time-.
 
-                            nx.orbyMesh.position.copyFrom({x:-410.5,y:0,z:308}) //POS: prepare to go up
-                            nx.orbyMesh.rotation.x = 0;
-                            nx.orbyMesh.rotation.y = -2.4;
+                            nx.orbyMesh.position.copyFrom({x:0,y:0,z:0}) //FIX: shadow removal-.
+                            // nx.orbyMesh.position.copyFrom({x:-410.5,y:0,z:308}) //POS: prepare to go up
+                            // nx.orbyMesh.rotation.x = 0;
+                            // nx.orbyMesh.rotation.y = -2.4;
                             nx.scene.stopAnimation(nx.orbySkeleton[0])      //---------------------ANM: FREEZE-ORBY-.
+                             var prone = nx.scene.beginAnimation(nx.orbySkeleton[0], 1, 1, false, 1.0);  //prone
 
                                 nx.affirmSeqIdx[NUM+1]={on:1};
 
@@ -4582,11 +4779,16 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                 // nx.scene.activeCamera.position.copyFrom({x: -337.6425561420048, y: 2.3408378520896362, z: 308.0463108256668}); //low view crash position
 
                 nx.initFreeCam();
-                nx.scene.activeCamera.position.copyFrom({x:-331, y: 2, z: 306}); //CAM POS: low view crash position
+                nx.scene.activeCamera.position.copyFrom({x:-331, y: 8, z: 306}); //CAM POS: low view crash position
+                // nx.scene.activeCamera.position.copyFrom({x:-331, y: 2, z: 306}); //CAM POS: low view crash position
                 // var tgtPOS = nx.BV3(-337,3,306) //CAM FOC: LookBack at sand burm-.
                 // nx.scene.activeCamera.setTarget(tgtPOS); //CAM FOC: on sand mountain
                 nx.scene.activeCamera.setTarget(nx.BV32({x: -410, y: 8, z: 308})); //CAM TGT: on sand mountain
 
+
+                nx.scene.stopAnimation(nx.orbySkeleton[0]) 
+                var prone = nx.scene.beginAnimation(nx.orbySkeleton[0], 1, 1, false, 1.0);  //prone
+                // nx.orbyMesh.rotation.y = -3.088; //prepare to rise up-.
 
                 setTimeout(function(){
 
@@ -4630,8 +4832,16 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                 // nx.orbyMesh.rotation.x = 0;
                 // nx.orbyMesh.rotation.y = -2.4;
 
+
+
+                // nx.scene.stopAnimation(nx.orbySkeleton[0]) 
+                var prone = nx.scene.beginAnimation(nx.orbySkeleton[0], 1, 1, false, 1.0);  //prone
+                nx.orbyMesh.rotation.x = 0; //prepare to rise up-.
+                nx.orbyMesh.rotation.y = -3.088; //prepare to rise up-.
+                nx.orbyMesh.rotation.z = 0; //prepare to rise up-.
+
                 $({orbyPOSx:-410.5,orbyPOSy:3,orbyPOSz:308}).
-                animate({orbyPOSx:-410.5,orbyPOSy:5,orbyPOSz:308},{queue:false,duration:3000,easing:'swing',
+                animate({orbyPOSx:-410.5,orbyPOSy:5.33,orbyPOSz:308},{queue:false,duration:3000,easing:'swing',
                 step: function(now) { //ANM:- =----------------------------------------------------------------ORBY RISES UP-.
                     if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); return;}//CINEMA-STOP-.
                     nx.orbyMesh.position = new BABYLON.Vector3(this.orbyPOSx,this.orbyPOSy,this.orbyPOSz) //todo remove x and y from interpolation
@@ -4661,7 +4871,7 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
             
             else if(nx.affirmSeqIdx[6] && nx.affirmSeqIdx[6].on){ var NUM = 6; nx.affirmSeqIdx[NUM].on=0; //one-time-.
                 
-                nx.initSEQ({seqID:8})//SCAN-TRAIN-SEQUENCE
+                nx.initSEQ({seqID:'scanTrainSequence'})//SCAN-TRAIN-SEQUENCE
 
             } //end frame
 
@@ -4705,6 +4915,8 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
         nx.startCinematicSequence(function(){ 
             if(nx.scanTrainSeqIdx[0] && nx.scanTrainSeqIdx[0].on){ var NUM = 0; nx.scanTrainSeqIdx[NUM].on=0;
     // debugger;
+
+nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
 
                 //CAM-INIT-------------------------
                 nx.initFreeCam();

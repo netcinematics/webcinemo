@@ -1,20 +1,24 @@
 PLEASE READ THE FOLLOWING END USER LICENSE AGREEMENT (“AGREEMENT”) BEFORE INSTALLING ACOZMOZONE, (THE “GAME SOFTWARE”). BY INSTALLING, COPYING, AND/OR OTHERWISE USING THE GAME SOFTWARE, YOU AGREE TO BE BOUND BY THE TERMS OF THIS AGREEMENT AS SET FORTH BY NetCinematics llc. ("NetCinematics"),  netcinematics@protonmail.com.
 
-YOUR USE OF THE GAME SOFTWARE IS ALSO SUBJECT TO THE APPLICABLE TERMS AND CONDITIONS SET FORTH ON THE PLATFORM, WHERE APPLICABLE, THE SUBSCRIBER AGREEMENT AND/OR ANY OTHER TERMS SET FORTH BY VALVE CORPORATION IN RELATION TO THE DISTRIBUTION SERVICE AND USER AGREEMENT on any portal or platfrom this product may be applicable to.
+YOUR USE OF THE GAME SOFTWARE IS ALSO SUBJECT TO THE APPLICABLE TERMS AND CONDITIONS SET FORTH ON THE PLATFORM, WHERE APPLICABLE, THE SUBSCRIBER AGREEMENT AND/OR ANY OTHER TERMS SET FORTH BY NetCinematics IN RELATION TO THE DISTRIBUTION SERVICE AND USER AGREEMENT on any portal or platform this product may be applicable to.
 
-IF YOU AGREE TO THE TERMS SET FORTH IN THIS AGREEMENT, select “I ACCEPT” to install the Game Software and to indicate your acceptance of these terms and your understanding of the conditions of use of the Game Software.
+IF YOU AGREE TO THE TERMS SET FORTH IN THIS AGREEMENT, select “Enter” to enter site, or "Get App" to install the App and indicate your acceptance of these terms and your understanding of the conditions of use of the Software.
 
-IF YOU DO NOT AGREE TO THE TERMS SET FORTH IN THIS AGREEMENT, do not use this software and NetCinematics shall not grant to you the License (defined below) to the Game Software. 
+IF YOU DO NOT AGREE TO THE TERMS SET FORTH IN THIS AGREEMENT, do not use this software and NetCinematics shall not grant to you the License (defined below) to the App Software. 
 
 LIMITED USE LICENSE 
 
-The term “Game Software” includes the software included in this video game, the associated media, any software associated with the online mode of the video game (subject to any additional terms of use applicable to such online mode), any printed materials, manuals, any online or electronic documentation, and any and all copies of such software and materials. NetCinematics grants to you the non-exclusive, non-transferable, limited right and license to install and use one (1) copy of the Game Software on one (1) computer hard drive at any given time solely for your personal use (the “License”). All rights not specifically granted under this License are hereby reserved by NetCinematics and, as applicable, by its licensors. The Game Software is licensed to you, not sold. This License does not give you any title or ownership in the Game Software, and should not be construed as a sale or transfer of any intellectual property or other rights to the Game Software.
+The term “Game Software” includes the software included in this video game, movie, book, app, the associated media, any software associated with the online mode of the video game (subject to any additional terms of use applicable to such online mode), any printed materials, manuals, any online or electronic documentation, and any and all copies of such software and materials. NetCinematics grants to you the non-exclusive, non-transferable, limited right and license to install and use one (1) copy of the Game Software on one (1) computer hard drive at any given time, as PWA APP, solely for your personal use (the “License”). All rights not specifically granted under this License are hereby reserved by NetCinematics and, as applicable, by its licensors. The Game Software is licensed to you, not sold. This License does not give you any title or ownership in the Game Software, and should not be construed as a sale or transfer of any intellectual property or other rights to the Game Software. Specifically, but not limited to all code in the "copyrightnetcinematics" folder. 
+
+It is intended, that over time, some components will later be released under a separate open-source license, available as a benefit to fellow artists. That separate open-source folder may be called "netcinemoz", under the OBJECT NAMESPACE nz, with the intent to separately benefit the open-source community in ADVANCING THE CRAFT.
 
 OWNERSHIP
 
 You agree and acknowledge that all title, ownership rights, and intellectual property rights connected with the Game Software and any and all copies thereof (including but not limited to any derivative works, titles, computer code, themes, objects, characters, character names, stories, dialogs, catch phrases, locations, concepts, artwork, graphics, animation, sounds, musical compositions, audio-visual effects, text, screen displays, methods of operation, moral rights, “applets” incorporated into the Game Software, and any related documentation) are owned by NetCinematics or its licensors. 
 
-The Game Software is protected by the copyright laws of the United States, international copyright treaties and conventions, United States and common law trademark laws, and other laws. All rights are reserved worldwide. The Game Software contains certain materials licensed by NetCinematics from others, and NetCinematics and NetCinematics' licensors may protect their rights in the event of any violation of this Agreement. 2019 Copyright ACOZMOZONE AND 2019 Copyright Envolveron by NetCinematics.  
+The Game Software is protected by the copyright laws of the United States, international copyright treaties and conventions, United States and common law trademark laws, and other laws. All rights are reserved worldwide. The Game Software contains certain materials licensed by NetCinematics from others, and NetCinematics and NetCinematics' licensors may protect their rights in the event of any violation of this Agreement. 2019 Copyright ACOZMOZONE AND 2019 Copyright by NetCinematics.
+
+Expressely defined (but not limited to) the contents of the "copyrightnetcinematics" folder.  
 
 LICENSE CONDITIONS AND RESTRICTIONS
 
@@ -89,12 +93,24 @@ NetCinematics reserves the right to amend this Agreement at any time, at its sol
 
 FICTIONAL COINCIDENCE
 
-Names, characters, businesses, places, events, locales, and incidents are either the products of the author's imagination or used in a fictitious manner. Any resemblance to actual persons, living or dead, or actual events is purely coincidental and unintentional.
+Names, characters, businesses, places, events, locales, and incidents are either the products of the author's imagination or used in a fictitious manner. Any resemblance to actual persons, living or dead, or actual events is purely coincidental and unintentional. Expressed effort and care was taken to make all fiction as-distant-as-possible from any similar and previously existing fiction.  A consistent effort was made to distance the creativity as far as possible from everything that is known of all other fictions.
 
 
-MISCELLANEOUS
+ MISCELLANEOUS
 
 This Agreement represents the complete agreement between you and NetCinematics concerning the License and your rights to use the Game Software, and supersedes all prior agreements and representations, warranties or understandings between you and NetCinematics (whether negligently or innocently made but excluding those made fraudulently), regarding the same subject matter. If any provision of this Agreement is held to be unenforceable for any reason, such provision shall be reformed only to the extent necessary to make it enforceable, and the remaining provisions of this Agreement shall remain in full force and not be affected. 
 
+QUESTIONS
 
-If you have any questions concerning this Agreement or the License contained therein, you may contact NetCinematics at netcinematics@protonmail.com. Attn. Legal Department.
+If you have any questions concerning this Agreement or the License contained therein, you may contact NetCinematics at netcinematics@protonmail.com. Attn. Legal.
+
+NOTE TO PIRATES
+
+We have code templates. There is an easy way to get clean code without embedded tokens. Contact us for component templates. We can help, and we want to help through a simple permissable license.For more information, Github: NetCinematics.
+
+
+OPEN-SOURCE COMMITMENT
+
+As this software was only made possible by the good-faith of many open-source contributors, in kind NetCinematics aims to share-back for the advancement of the community and the art. We want to help, and we want to hear from you. For press contact, additional service, or opportunity, contact us at alpinefalcon@protonmail.com Attn: ContentCreator.
+
+(c) 2019 NetCinematics llc.

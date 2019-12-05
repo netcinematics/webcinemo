@@ -447,7 +447,8 @@ var createLandingPadMaster = function(){
             nx.spacepadTop = BABYLON.Mesh.CreateRibbon("topConnector", STACKVECTORS, false, false, 0, nx.scene, true, BABYLON.Mesh.BACKSIDE);
             nx.spacepadTop.position = polyPOS || new BABYLON.Vector3.Zero();
             nx.spacepadTop.rotation = polyROT || new BABYLON.Vector3.Zero();
-
+            // nx.spacepadTop.parent = nx.topConnector; //PARENT-TO-LANDPAD
+            nx.spacepadTop.visibility = 0;
 
             nx.spacepadTop.polyRow = POLYSTACKPATH.length; //META-DATA-REQUIRED-TO REHYDRATE AFTER EDIT-.
             nx.spacepadTop.polyCol = POLYSTACKPATH[0].length;

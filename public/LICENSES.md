@@ -5,6 +5,7 @@ NetCinematics.llc --------------------------------------------------------------
 Contact for licensing: netcinematics@protonmail.com
 Copyright 2018 NetCinematics llc. BOXiGON Trademark of NetCinematics llc. 2018.
 All Rights Reserved NetCinematics. See EULA.
+Code in folder of "copyrightnetcinematics" is a second license in the EULA.
 "NX" and "nx" acronym for NetCinematics.
 
 Attributions: ---------------------------------------------------------------------------------- 

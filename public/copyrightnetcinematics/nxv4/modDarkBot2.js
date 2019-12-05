@@ -9,6 +9,7 @@ if(!nx){nx={}}
 /******************************-LOCALVARZ-**********************************/
 // if(!nx.sub){nx.sub={}}
 // nx.sub = {num0:0,num1:0} 
+nx.darkBot = {};
 /******************************-MODULE-**********************************/
 //MODULE-READY-RENDERER-MECHANISMO-.
 nx.getMasterManifest(function readyRender (){ //Ready-Renderer-.
@@ -18,13 +19,14 @@ nx.getMasterManifest(function readyRender (){ //Ready-Renderer-.
 
 nx.initDarkBot = function(){
 
-  // nx.getMasterManifest(function(){ }); //get await spot in line on manifest to loading-count.
+  nx.getMasterManifest(function(){ }); //get await spot in line on manifest to loading-count.
  
   // var darkMezmo = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 0, 95, false, 0.5); //MEXMO 
 
 // 
-  setTimeout(function(){
-      BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot15c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+  // setTimeout(function(){
+      BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot16c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+      // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot15c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot14d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot13b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot12h.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
@@ -51,7 +53,7 @@ nx.initDarkBot = function(){
           nx.darkBotSkeleton = skeletons;
           // var darkMezmo = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 0, 30, false, 1); 
 
-          nx.initDarkBotHover();
+          // nx.initDarkBotHover();
           
 
           nx.initDarkBotShadow();
@@ -67,9 +69,10 @@ nx.initDarkBot = function(){
 
           // nx.orbyMesh.camFocusTgt.position = new BABYLON.Vector3(0, 0, 0);
 
+          nx.setMasterManifest(); //after assetLoad, signal asset arrived, needs to be done for every asset-.
 
       });
-  },1000); //Necessary
+  // },10); //Necessary???
 
   // var darkBotTask = nx.assetsManager.addMeshTask("darkbot task", "", "./copyrightnetcinematics/3d/", "darcbot1.babylon");
   // darkBotTask.onSuccess = function (task) {
@@ -79,7 +82,7 @@ nx.initDarkBot = function(){
   //     nx.darkbot.position.copyFrom({x: 10, y: 10, z: -10});
   //     nx.darkbot.rotation.y = -0.7;
 
-  //     // nx.setMasterManifest(); //after assetLoad, signal asset arrived, needs to be done for every asset-.
+      // nx.setMasterManifest(); //after assetLoad, signal asset arrived, needs to be done for every asset-.
 
   //     // nx.darkbot.showBoundingBox();
   //     // if(nx.editz.createMasterEditor){ nx.editz.createMasterEditor(nx.darkbot); }  //GOOD-POS-EDITOR-example-.

@@ -1264,8 +1264,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
   } 
   else if(config.btns && config.btns.movieFn && config.btns.gameFn && config.btns.bookFn){
     // debugger;
-    // nx.movieBtn = $('<button style="color:royalblue;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">MOVIE</button>')
-    nx.movieBtn = $('<button style="color:royalblue;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">SKIP</button>')
+    nx.movieBtn = $('<button style="color:royalblue;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">MOVIE</button>')
+    // nx.movieBtn = $('<button style="color:royalblue;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">SKIP</button>')
     .on('click',function(){
         //FIX for dis persist-.
         nx.ui.flashMSGQueue = [];
@@ -1277,8 +1277,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
         config.btns.movieFn(); //CALLBACK MSG INIT
       });
 
-    //  nx.gameBtn = $('<button style="color:darkviolet;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">GAME</button>')
-     nx.gameBtn = $('<button style="color:darkviolet;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">PLAY</button>')
+     nx.gameBtn = $('<button style="color:darkviolet;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">GAME</button>')
+     // nx.gameBtn = $('<button style="color:darkviolet;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">PLAY</button>')
       .on('click',function(){
         //FIX for dis persist-.
         nx.ui.flashMSGQueue = [];
@@ -1289,8 +1289,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
         config.btns.gameFn(); //CALLBACK MSG INIT
       });
 
-    //  nx.bookBtn = $('<button style="color:forestgreen;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">BOOK</button>')
-     nx.bookBtn = $('<button style="color:forestgreen;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">EPIC</button>')
+     nx.bookBtn = $('<button style="color:forestgreen;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">BOOK</button>')
+     // nx.bookBtn = $('<button style="color:forestgreen;font-weight:bold;border:0px;text-decoration:underline;font-size:0.8em;background:black;cursor: pointer;">EPIC</button>')
       .on('click',function(){
         //FIX for dis persist-.
         nx.ui.flashMSGQueue = [];
@@ -1301,8 +1301,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
         config.btns.bookFn(); //CALLBACK MSG INIT
       });
 // debugger; //''
-    // var aBtnTXT = $('<span><i class="fa fa-map-signs"></i><span class="mTgt" style="margin-left:0.5em"></span>, <span class="gTgt"></span>, or <span class="bTgt"></span>?</span>');
-    var aBtnTXT = $('<span><i class="fa fa-map-signs"></i><span class="gTgt"></span>, <span class="mTgt" style="margin-left:0.5em"></span>, or <span class="bTgt"></span>?</span>');
+    var aBtnTXT = $('<span><i class="fa fa-map-signs"></i><span class="mTgt" style="margin-left:0.5em"></span>, <span class="gTgt"></span>, or <span class="bTgt"></span>?</span>');
+    // var aBtnTXT = $('<span><i class="fa fa-map-signs"></i><span class="gTgt"></span>, <span class="mTgt" style="margin-left:0.5em"></span>, or <span class="bTgt"></span>?</span>');
 
     // debugger;
     aBtnTXT.find(".mTgt").append(nx.movieBtn)
