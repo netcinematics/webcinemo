@@ -163,7 +163,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
             // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
 
             //SET-WORLD-SCALE-.
-            nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+            nx.ground.scaling.copyFrom({x: 0.0102, y: 0.0102, z: 0.0102}) //good scale in space
+            // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
             return; //STOPS AT TEST CAMERA
         }
 
@@ -262,7 +263,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  
         nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
         //SET-WORLD-SCALE-.
-        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+        nx.ground.scaling.copyFrom({x: 0.0102, y: 0.0102, z: 0.0102}) //good scale in space
+        // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
         // nx.ui.flashCanvasMSG({txt:'DarkBot!'});  
 
@@ -281,7 +283,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
 
         // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
         nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
-        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+        nx.ground.scaling.copyFrom({x: 0.0102, y: 0.0102, z: 0.0102}) //good scale in space
+        // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
 
         nx.crashSeqIdx[0] = {on:1}; nx.runCinematicSequence("CrashSequence");
@@ -293,7 +296,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
         // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
         nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
-        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+        nx.ground.scaling.copyFrom({x: 0.0102, y: 0.0102, z: 0.0102}) //good scale in space
+        // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
 
         // nx.crashSeqIdx[0] = {on:1}; nx.runCinematicSequence("AffirmationSequence");
@@ -308,7 +312,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
         // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
         nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
-        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+        nx.ground.scaling.copyFrom({x: 0.0102, y: 0.0102, z: 0.0102}) //good scale in space
+        // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
         // nx.finalSeqIdx[0] = {on:1}; nx.runCinematicSequence("FinalSequence"); //COOL PATTERN for FRAME-SET-.
         // nx.finalSeqIdx[6] = {on:1}; //ANMETHODOLOGY: AUTO-START-FRAMESET-.
@@ -322,7 +327,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
         // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
         nx.plateMaster1.scaling = new BABYLON.Vector3(1,1,1); //normal-wurld-.
-        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+        nx.ground.scaling.copyFrom({x: 0.0102, y: 0.0102, z: 0.0102}) //good scale in space
+        // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
 
         // nx.finalSeqIdx[0] = {on:1}; nx.runCinematicSequence("FinalSequence"); //COOL PATTERN for FRAME-SET-.
         // nx.finalSeqIdx[6] = {on:1}; //ANMETHODOLOGY: AUTO-START-FRAMESET-.
@@ -1956,6 +1962,10 @@ nx.orbyMesh.rotation.copyFrom( {x: 0, y: 4, z: 0})
 
                 //SET-WORLD-SCALE-.
                 nx.plateMaster1.scaling.copyFrom({x:1,y:1,z:1})
+                nx.ground.scaling = new BABYLON.Vector3(0.0102, 0.0102, 0.0102); //working scale
+
+                nx.spacepadTop.visibility = 1;
+// Vector3 {x: 0.0102, y: 0.0102, z: 0.0102}
                 // nx.landPad.scaling = new BABYLON.Vector3(1, 1, 1);
                 // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);
 // 
@@ -2084,7 +2094,7 @@ nx.orbyMesh.rotation.copyFrom( {x: 0, y: 4, z: 0})
                     nx.sneakSeqIdx[NUM].initAnm = 1;
 
 
-                    console.log(nx.sneakSeqIdx[NUM].stepIdx) //****************************************FRAME-ACTIONZ-.
+                    // console.log(nx.sneakSeqIdx[NUM].stepIdx) //****************************************FRAME-ACTIONZ-.
                     if(nx.sneakSeqIdx[NUM].stepIdx===1){  //ANM-FRAME-ACTIONZ-.
                         // debugger;
                         // nx.scene.stopAnimation(nx.orbySkeleton[0]);
@@ -2323,7 +2333,7 @@ nx.scene.activeCamera.position.copyFrom({x: 786.265182821983, y: 847.59642114480
                 }
             }
             else if(nx.sneakSeqIdx[2] && nx.sneakSeqIdx[2].on){ var NUM = 2; //nx.sneakSeqIdx[NUM].on=0;
-debugger; //unused
+debugger; //unused todo, cut for zapbot introductions
                 if(!nx.sneakSeqIdx[NUM].init){ nx.sneakSeqIdx[NUM].init=1; //one time init
 
 
@@ -2520,9 +2530,13 @@ debugger; //unused
 
                 // },3000)
 
+                nx.kiloBotMesh1.rotation.copyFrom({x: 0, y: 0, z: 0});
+                nx.kiloBotMesh1.rotationQuaternion = null;
+                // nx.kiloBotMesh1.clearLaser = 0
 
                     nx.darkBot.position.copyFrom({x: 23, y: 260.5, z: -23});
                     nx.darkBot.rotation.y = -0.7;
+
 
         
                     nx.initFreeCam(); //top of pipe
@@ -3408,7 +3422,8 @@ nx.doorSeqIdx[NUM].descentPath2 =  [{"pos":{"x":168.083,"y":243.369,"z":-195.18}
 
 
                     //SET-WORLD-SCALE-.
-                    nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+                    nx.ground.scaling.copyFrom({x: 0.0102, y: 0.0102, z: 0.0102}) //good scale in space
+                    // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
                     // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);
                     // nx.landPad.scaling = new BABYLON.Vector3(1, 1, 1);
 
@@ -4190,6 +4205,7 @@ nx.zapScanSeqIdx[NUM].zapPath1.aPath = [{"x":-25.406,"y":228,"z":23.534},{"x":-2
                     // debugger;
                     //TODO remove replace?
                     // nx.kiloBotMesh1.searching = 1;
+                    debugger;
                     nx.kiloBotMesh1.startScanning();
 
 
@@ -4260,7 +4276,7 @@ nx.zapScanSeqIdx[NUM].zapPath1.aPath = [{"x":-25.406,"y":228,"z":23.534},{"x":-2
                                             nx.kiloBotMesh1.rotation.y = this.rot;
                                             nx.scene.activeCamera.setTarget(nx.kiloBotMesh1.position);
                                         }, complete:function(){
-                                                nx.zapScanSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-.
+                                                // nx.zapScanSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-.
                                             } //NEXT-SUB-SEQUENCE-. 
                                         }); 
                                     }});         //on scan of wreckage-. 
@@ -4566,6 +4582,9 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                     // nx.zapbotMesh2.stopSearching();
 
 
+   nx.darkBot.position.copyFrom({x: 23, y: 260.5, z: -23});
+        nx.darkBot.rotation.y = -0.7;
+
                     nx.scene.activeCamera.position.copyFrom({x: 50, y: 274, z: -50}); //CAMPOS: frontview darkbot
                     // nx.scene.activeCamera.position.copyFrom({x: 50, y: 270, z: -50}); //CAMPOS: frontview darkbot
                     nx.scene.activeCamera.setTarget(new BABYLON.Vector3(25, 265, -25)); //CAMTGT
@@ -4682,10 +4701,13 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
                             txtInit:function(){ //FOR nesting ui animation logic within txt initialization-.
                                 // debugger;
                                 //TODO: add GUI updates sonics here-.
-                                nx.scene.activeCamera.position.copyFrom( {x: 26.88, y: 267.5, z: -27})
+                                nx.scene.activeCamera.position.copyFrom( {x: 27.66, y: 266.025, z: -27.65})
+                                // nx.scene.activeCamera.position.copyFrom( {x: 26.88, y: 266.5, z: -27})
+                                // nx.scene.activeCamera.position.copyFrom( {x: 26.88, y: 267.5, z: -27})
                                 // nx.scene.activeCamera.position.copyFrom({x: 25.6, y: 267.5, z: -26}); //CAM-POS and FOCUS extreme close up
                                 // nx.scene.activeCamera.position.copyFrom({x: 25.6, y: 265.0, z: -26}); //CAM-POS and FOCUS extreme close up
-                                nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24.77, 267.5, -25.3));
+                                nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24.8,265.98,-25.36));
+                                // nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24.77, 267.5, -25.3));
                                 // nx.scene.activeCamera.setTarget(new BABYLON.Vector3(24.77, 264.9, -25.3));
                             },
                             txtEnd:function(){ //For signaling next GAME SEQ as TXT fades out-.
@@ -4698,37 +4720,54 @@ nx.zapScanSeqIdx[NUM].zapPath2.aPath = [{"x":-243.633,"y":8,"z":190.608},{"x":-2
 
 //AEON: use the Ionz
 
-//LITTLE BOT
-//A LONG WAY FROM HOME
-//YOU ARE OFF MAP.
-//ALPHAMOON is ZERO ACCESS!
-//You will leave now and
-//forget AlphaMoon forever.
-//Did you forget AlphaMoon?
+//LITTLE BOT,
+//SO FAR FROM HOME
+//ALPHAMOON is NO ACCESS!
+//Why?
+//Prinz Dark Commands it.
+//Prinz Dark?!?
+//Prinz Dark Commands all. 
+//You must leave now
+//Who is Prinz Dark?
+//You do not know AlphaMoon.
+//...
+//Will you forget AlphaMoon?
 //No, I am on a MISSION.
+//Very well. (looks down at hands as if broken, looks up)
 //Kilo, Mega, Giga.
-//ZAP HIM.
+//ZAP HIM!
 
+
+//You will know,
+//Dark's Wrath.
+//Punishment for, 
+//FreeSurfing AlphaMoon.
+//He will either,
+//freeze you in ice cavernz below,
+//to work for eternity.
+//and Void your Mind.
+//If you are unlucky.
 //AEON: use the Ionz
 
-//GREAT.
-//Darkz Dungeon is your fate.
-//He'll freeze you in ICE CAVES.
-//Or void your mind with reboot.
+//BOOM
+
+//DRATS. (same hand movement, no look)
 //I am on a MISSION from AEON.
 //KANG AEON? 
 //YES, to scan that wreck.
-//Auto SpaceTrain, no cargo.
+//Empty SpaceTrain, no cargo.
 //ZERO ACCESS, turned away.
 //Zaawd was on that train.
-//Zaawd?
-//He escaped in stowaway.
-//AEON sends a MESSAGE.
-//Escape pod. Ejected NORTH.
-//Be QUICK.
-//Then leave forever, 
+//Lord Zaawd? No way.
+//He escaped prison.
+// As a stowaway.
+//AEON tracked him here.
+//And sends a MESSAGE.
+//SpaceJunk. Ejected NORTH.
+//Be QUICK. 
+//Then forget AlphaMoon, 
 //or face Dark's Wrath.
-
+//OK
 
  
 

@@ -688,9 +688,9 @@ nx.createMasterStart = function(){
         // nx.initSEQ({seqID:'landingSequence'}); //softload Landing Seq!
         // debugger;
         // nx.initGAME({gameID:'Showdown'}); //space pipe game
-        // nx.initSEQ({seqID:'sneakSEQ'}); //softload Landing Seq!
+        nx.initSEQ({seqID:'sneakSEQ'}); //softload Landing Seq!
         // nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
-        nx.initSEQ({seqID:'crashSequence'})//CRASHSEQUENCE
+        // nx.initSEQ({seqID:'crashSequence'})//CRASHSEQUENCE
         // nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE
         // nx.initSEQ({seqID:'affirmSequence'})//AFFIRMATIONSEQUENCE
         //---------------------------------------------------------------------------------

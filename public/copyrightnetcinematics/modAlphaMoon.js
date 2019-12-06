@@ -19,7 +19,8 @@
     /******************************-MODULE-**********************************/
     //WORLD-VARIABLES***********************************************************
     nx.alphaMoon1 = {};
-    var currentPlate, nextPlate, lastPlate;//todo merge with world. and spaceplate //rename planetoid
+    var currentPlate = {name:"platetop"}; //init 
+    var nextPlate, lastPlate;//todo merge with world. and spaceplate //rename planetoid
     var newPlate = false;
     // var worldOrbiting=false;//todo merge with world.
     var initGravity = false;
@@ -296,6 +297,8 @@
                     return;
                 }
 
+
+                if(!nextPlate || !currentPlate){debugger; return;} //todo fix?
                 // if(!nextPlate || !nextPlate.name || !currentPlate || !currentPlate.name){return;} //error on skydive landing-.
                 // if(nextPlate.name!=currentPlate.name && !nx.worldOrbiting && !freeCameraMode){ //TICK1: NewPlate.
                 if(nextPlate.name!=currentPlate.name && !nx.worldOrbiting){ //TICK1: NewPlate.

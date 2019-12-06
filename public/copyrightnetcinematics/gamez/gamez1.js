@@ -337,7 +337,7 @@ nx.GAMEZ = {
 				// nx.orbyMesh.rotation = new BABYLON.Vector3(-1,-1.5,0); //align-initial-rotation-.
 				// nx.anmz.orby.rig.originBox.rotation.y = Math.PI/2; //nx.orbyMesh.rotation.y;
 				// nx.anmz.orby.rig.originBox.position.copyFrom(nx.orbyMesh.position);
-		
+				initShowdownZones();
 				// if(!nx.spaceIonzActive||nx.spaceIonzActive.length===0){nx.createSpaceIonz();} 
 		
 				setTimeout(function(){
@@ -366,7 +366,7 @@ nx.GAMEZ = {
 		}); //show fullscreen title 
 
 
-nx.spacepadTop.visibility = 1;
+		nx.spacepadTop.visibility = 1;
 
 
 
@@ -375,7 +375,8 @@ nx.spacepadTop.visibility = 1;
 
         		// nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-. FIX HARDLOAD not sizing-.
         		// nx.ground.scaling = new BABYLON.Vector3(0.0102,0.0102,0.0102);  //normal-wurld-. FIX HARDLOAD not sizing-.
-        		nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+        		// nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+        		nx.ground.scaling.copyFrom({x: 0.0102, y: 0.0102, z: 0.0102}) //good scale in space
 				nx.plateMaster1.scaling.copyFrom({x:1,y:1,z:1});
 
 
@@ -514,6 +515,8 @@ nx.spacepadTop.visibility = 1;
                 // if(nx.orbySparks){nx.orbySparks.stop();}
 
 
+		var initShowdownZones = function(){ //FIX: avoid zones on MOVIE selection.
+			//TODO: move this to nx.zonez.initShowdown();
 
             //SET-CAM-ZONEZ-.
             nx.zonez.camZoneFactory({name:'zone0',pos:{x: -609, y: 1248, z: -1497},dim:{h:100,w:10,d:100},alpha:0.22,color:{r:0,g:1,b:1},
@@ -768,6 +771,8 @@ nx.spacepadTop.visibility = 1;
 
             nx.zoneAlarmsOn = 1; //TURN ON ZONEALARM-.
 
+        } //end initshowdownzones
+
                 // nx.ui.flashCanvasMSG({'btn':'GO!',fn:function(){ 
                 //     nx.runGAME({gameID:4}); // on click go at end of movie. softload
                 // }});
@@ -848,7 +853,8 @@ nx.ui.showGameModeView()
 		nx.camz.freeCam.setTarget(nx.BV32({x: -474.090460708942, y: 21.995056915796674, z: 361.6818477126597}));
 
         // nx.ground.scaling = new BABYLON.Vector3(1, 1, 1);  //normal-wurld-.
-        nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+        // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
+        nx.ground.scaling.copyFrom({x: 0.0102, y: 0.0102, z: 0.0102}) //good scale in space
 // return;
         nx.orbyMesh.position.copyFrom({x: -418.0711228317587, y: 14.892315408405217, z: 318.1141529417893}); //START ACTORPOS 
         // nx.orbyMesh.position = new BABYLON.Vector3(-2500,3933,-1500); //START ACTORPOS
