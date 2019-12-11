@@ -37,9 +37,11 @@ nx.ui.zoomBtn2 = $('#zoomBtn2');
 nx.ui.playAllBtn1 = $('#playAllBtn1');
 nx.ui.playOneBtn2 = $('#playOneBtn2');
 nx.ui.pauseBtn2 = $('#pauseBtn2');
+nx.ui.audioToggle1 = $('#audioToggle1');  //good example of UI-.
 setTimeout(function(){
   // nx.ui.playBtn1.show(1000); //default show-.
   nx.ui.pauseBtn2.show(500);
+  nx.ui.audioToggle1.show(800);
 },2000)
   
 nx.ui.trickBtn1 = $('#trickBtn1');
@@ -660,6 +662,7 @@ nx.ui.showMovieModeView = function(){
   nx.ui.zoomBtn2.hide();
   // nx.ui.playBtn1.show(1000);
   nx.ui.pauseBtn2.show(500);
+  nx.ui.audioToggle1.show(800);
   nx.ui.trickBtn1.hide();
   nx.ui.jumpBtn1.hide();
 
@@ -724,6 +727,7 @@ nx.ui.showGameModeView = function(){
   // nx.ui.viewRow2.css({'flex':3});
   // nx.ui.playBtn1.hide();
   nx.ui.pauseBtn2.hide();
+  // nx.ui.audioToggle1.hide();
   nx.ui.zoomBtn1.show(1000);
   nx.ui.zoomBtn2.show(500);
   nx.ui.trickBtn1.show(1000);
@@ -872,6 +876,7 @@ nx.ui.showBookModeView = function(){
   nx.ui.zoomBtn2.hide();
   // nx.ui.playBtn1.hide();
   nx.ui.pauseBtn2.hide();
+  // nx.ui.audioToggle1.hide();
   nx.ui.trickBtn1.hide();
   nx.ui.jumpBtn1.hide();
   
@@ -1649,6 +1654,17 @@ nx.ui.pauseBtn2.click(function(){
   if(!toggleOff){ nx.ui.pauseBtn2.addClass('playModeSelector'); }
   (!nx.cinemaStop)?nx.cinemaStop=1:nx.cinemaStop=0; console.log(nx.cinemaStop); 
 });
+
+
+//moved to sonics
+// nx.ui.audioToggle1.click(function(){ 
+//   // var toggleOff = nx.ui.pauseBtn2.hasClass('playModeSelector');
+//   // var toggleOff = nx.ui.pauseBtn2.hasClass('playModeSelector');
+//   // nx.ui.playModeSelector = $('.playModeSelector'); //remove all selectors-.
+//   // nx.ui.playModeSelector.removeClass('playModeSelector');
+//   // if(!toggleOff){ nx.ui.pauseBtn2.addClass('playModeSelector'); }
+//   // (!nx.cinemaStop)?nx.cinemaStop=1:nx.cinemaStop=0; console.log(nx.cinemaStop); 
+// });
 // nx.ui.playBtn1.click(function(){(!nx.cinemaPlayAll)?nx.cinemaPlayAll=1:nx.cinemaPlayAll=0; console.log(nx.cinemaPlayAll); });
 // nx.ui.pauseBtn2.click(function(){ (!nx.cinemaPause)?nx.cinemaPause=1:nx.cinemaPause=0; console.log(nx.cinemaPause); });
 nx.ui.zoomBtn1.click(function(){

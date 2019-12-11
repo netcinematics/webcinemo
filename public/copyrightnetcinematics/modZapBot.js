@@ -554,7 +554,10 @@ nx.botz.initKiloBot = function(){
         if(++kiloBotLoopIdx%3===0){return} //loop damper
         //isLISTENING-.
         else if(nx.kiloBotMesh1._isListening===0){return} //0 to shut off, -1 to kill loopz-.
-        else if(nx.kiloBotMesh1._isListening<0){ nx.scene.unregisterBeforeRender(kiloBotBehaviorLOOPZ); } //-1 to UNLOAD-LOOPZ-.!
+        else if(nx.kiloBotMesh1._isListening<0){ 
+            debugger;
+            nx.scene.unregisterBeforeRender(kiloBotBehaviorLOOPZ); 
+            } //-1 to UNLOAD-LOOPZ-.!
         //Loop-actions-PATTERN-.
         //isFLASHING
         if(nx.kiloBotMesh1._isFlashing===1){

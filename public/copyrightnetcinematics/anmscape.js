@@ -26,8 +26,8 @@ var initNX = function(nx){ //todo rename to ini
     // nx.act = {};    //maybe change to seq
     // nx.role = {};  
     // nx.route = {};
-    nx.sonic = {};
-    nx.sonic.toggle=0; //0off 1on
+    nx.sonics = {};
+    // nx.sonic.toggle=0; //0off 1on
     // nx.light = {};
     // nx.util = {};
     // nx.lvl = {}; // level logic-.
@@ -686,7 +686,6 @@ nx.createMasterStart = function(){
         //GAME 1 INIT / RUN --------------------------------------------------------------------------------------
         // nx.initGAME({gameID:"SpaceIonz"}); //softload GO IONZ!
         // nx.initSEQ({seqID:'landingSequence'}); //softload Landing Seq!
-        // debugger;
         // nx.initGAME({gameID:'Showdown'}); //space pipe game
         // nx.initSEQ({seqID:'sneakSEQ'}); //softload Landing Seq!
         // nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE

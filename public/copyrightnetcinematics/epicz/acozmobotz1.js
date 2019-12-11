@@ -181,7 +181,6 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         
         nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0); //ANIMATED-SURFBOARD-.
 
-        debugger;
         
         //SPARK-SYSTEMZ-.
         if(!nx.orby.easyBakeSparks){nx.orby.createEasyBakeSparks();nx.orby.easyBakeSparks.start()}
@@ -202,7 +201,7 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         // nx.spaceSeqIdx[0] = {on:1}; 
         // nx.spaceSeqIdx[2] = {on:1};
         //TODO switch back! 
-        debugger; //obsolete?
+        // debugger; //obsolete?
         nx.runCinematicSequence("VortexSequence") //very beginning todo runEpic then runEpic and initEpic and endEpic
         // nx.runCinematicSequence("SpaceSequence") //very beginning todo runEpic then runEpic and initEpic and endEpic
 
@@ -417,22 +416,24 @@ nx.runCinematicSequence = function(seqName){ //LOOPZ
                 nx.camz.freeCam.setTarget(new BABYLON.Vector3( 1710.03, 4383.98, -3805.48));
                 nx.camz.freeCam.maxZ = 15000; //todo perf reduce this later, FIX?
 
-
+debugger;
                 //TODO: make DARK CAM PRE-SCENE-.
-                if(nx.sonic.footsteps1){ nx.sonic.footsteps1.play(); }  //SONIC-.
-                //TODO: door open.
-                //Dr.Acozmo! We've done it! Oh? In the Zeta Ternary Star System.
-                //Just as you said. A Message in Space!
-                //Ok. Well let's have a look!
+                if(nx.sonics && nx.sonics.on && nx.sonics.footsteps1){ nx.sonics.footsteps1.play(); }  //SONIC-.
+                //TODO: TXT
+                //Dr.Acozmo, we've done it! 
+                //What? 
+                //The Zeta Star System,
+                //just as you said. 
+                //A Message in Space!
+                //Oh? Let's have a look!
                 //Wow, it's beautiful!
-                //Yes, that's the photon entangling.
+                //Yes, Photo-Detangling.
                 //First to Orion. 
-                //Then into a Purple Nebula.
-                //Over Gemeni.
-                //There you will find my message??
+                //Then a Purple Nebula in Gemeni.
+                //There you will find my message.
                 //OrbyOrbot?!?
-                //On a Secret Mission for Kang Aeon.
-                //Find a SpaceTrain Wreck.
+                //On a Secret Mission
+                //To find a SpaceTrain Wreck.
                 //And Save AlphaMoon!
 
 
@@ -1031,7 +1032,8 @@ nx.removeOrion1();
 // - use ANM: key to search through ANMZ use SEQ: to search seqs.
 /**********************************************/
 
-if(nx.sonic.sonicBoom1){ nx.sonic.sonicBoom1.play(); }  //SONIC-BOOM-.
+// debugger;
+// if(nx.sonics.sonicBoom1){ nx.sonics.sonicBoom1.play(); }  //SONIC-BOOM-.
 
 //   debugger; 
                 console.log('ANM 3 - bottom of nebula into nebula');
@@ -2261,7 +2263,9 @@ nx.orbyMesh.rotation.copyFrom( {x: 0, y: 4, z: 0})
                     }else if(nx.sneakSeqIdx[NUM].stepIdx===1200){  //ANM-FRAME-ACTIONZ-.
                         // nx.kiloBotMesh1.clearLaser = 1;
                         // nx.kiloBotMesh1.stopChasing();
-                        nx.kiloBotMesh1.stopLooping();//todo stop chasing
+                        nx.kiloBotMesh1.stopScanning();
+                        // debugger;
+                        // nx.kiloBotMesh1.stopLooping();//todo stop chasing
                         // debugger;
                     }else if(nx.sneakSeqIdx[NUM].stepIdx===1300){  //ANM-FRAME-ACTIONZ-.
 
@@ -4205,7 +4209,7 @@ nx.zapScanSeqIdx[NUM].zapPath1.aPath = [{"x":-25.406,"y":228,"z":23.534},{"x":-2
                     // debugger;
                     //TODO remove replace?
                     // nx.kiloBotMesh1.searching = 1;
-                    debugger;
+                    // debugger;
                     nx.kiloBotMesh1.startScanning();
 
 
@@ -4276,7 +4280,9 @@ nx.zapScanSeqIdx[NUM].zapPath1.aPath = [{"x":-25.406,"y":228,"z":23.534},{"x":-2
                                             nx.kiloBotMesh1.rotation.y = this.rot;
                                             nx.scene.activeCamera.setTarget(nx.kiloBotMesh1.position);
                                         }, complete:function(){
-                                                // nx.zapScanSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-.
+                                                nx.zapScanSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-.
+
+                                                debugger;//todo right before glitch
                                             } //NEXT-SUB-SEQUENCE-. 
                                         }); 
                                     }});         //on scan of wreckage-. 
