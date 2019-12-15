@@ -1275,7 +1275,7 @@ setTimeout(function(){if(nx.sonics){nx.sonics.stopAllSonics()}},2000)
 
 
 
-if(nx.sonics && nx.sonics.on && nx.sonics.breakBeatTheme1){ nx.sonics.breakBeatTheme1.play(); }  //BREAKBEAT THEME-.
+// if(nx.sonics && nx.sonics.on && nx.sonics.breakBeatTheme1){ nx.sonics.breakBeatTheme1.play(); }  //BREAKBEAT THEME-.
 
 
         nx.sonics.breakBeatTheme1.initLoopz();

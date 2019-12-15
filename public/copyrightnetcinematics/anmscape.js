@@ -407,6 +407,7 @@ var loadBabylon = function() {
         // load.js('./libs/babylon/babylon.3.0-min.js'),      /*error in jitter and particles??? contains MORPHTARGET*/
         load.js('./libs/babylon/hand.min-1.2.js') ,
         // load.js('./lib/babylon/hand.min-1.2.js') ,
+        // load.js('./libs/NoSleep/NoSleep.min.js') ,      //MOBILE-ONLY-.
         // load.js('./copyrightnetcinematics/templateModule1.js') 
         // load.css('lib/.css'),// load.img('images/logo.png')
         // load.css('./libs/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css')
@@ -446,6 +447,18 @@ var loadBabylon = function() {
       }).then(function(){
         setTimeout(function(){ 
             createWorld(); 
+
+
+            // debugger;
+            // var noSleep = new NoSleep(); //MOBILE-ONLY-.
+            // document.addEventListener('click', function enableNoSleep() {
+            //     debugger;
+            //   document.removeEventListener('click', enableNoSleep, false);
+            //   noSleep.enable();
+            // }, false);
+
+
+
             // nx.showCurtain({dur:1000,speedFI:1000,initCurtain:function(){
                 // createWorld();
             // }}); 
