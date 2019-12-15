@@ -54,11 +54,12 @@ nx.GAMEZ = {
 		// }else{
 		//SHOW-TITLE-SCREEN-.
 		nx.ui.showTitleScreen({
-		    meta:{lvlNUM:1,lvlTXT:'COLLECT~SPACEIONZ!',lvlSubTXT:'Land safely on AlphaMoon.',
+            // meta:{lvlNUM:1,lvlTXT:'COLLECT~SPACEIONZ!',lvlSubTXT:'Land on SpacePad.',
+		    meta:{lvlNUM:1,lvlTXT:'ORBY vs ZAPBOTZ!',lvlSubTXT:'Land on SpacePlatform.',
 			lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`<ul>
-				<li>GAME: use WASD or TOUCH controls: <img style="width:1.11em" src="./img/dragCtrl1.png">  </li>
-				<li>MOVIE: PLAYONE scene or MOVIE PLAYALL. </li>
-				<li>BOOK: enter EPIC~ADVENTURE! </li>
+				<li>MOVIE: PLAY~ONE or PLAY~ALL. </li>
+                <li>GAME: COLLECT SPACE~IONZ, WASD or TOUCH <img style="width:1.11em" src="./img/dragCtrl1.png">  </li>
+				<li>BOOK: follow EPIC~ADVENTURE! </li>
 			</ul>`},
 		    btn1fn:function(){
 				nx.scene.activeCamera.position.copyFrom({x: -2507.4568834597867, y: 3964.6208496093823, z: -1499.4712168505087});
@@ -323,11 +324,11 @@ nx.GAMEZ = {
 
 		//SHOW-TITLE-SCREEN-.
 		nx.ui.showTitleScreen({
-		    meta:{lvlNUM:2,lvlTXT:'ZAPBOT~SHOWDOWN!',
-		    lvlSubTXT:'Sneak by ZapBotz.',
+		    meta:{lvlNUM:2,lvlTXT:'KILOBOT~SHOWDOWN!',
+		    lvlSubTXT:"Dont get SHOCKED.",
 			lvlIMG:'./copyrightnetcinematics/img/zapbot1.png',lvlTIPS:`<ul>
-				<li>Use TRICK to escape ZAPBOT LazerLock.</li>
-				<li>Find the SpaceTrain Wreck.</li>
+				<li>TRICK to escape ZAPBOT LazerLock.</li>
+				<li>Find SpaceTrain Wreck.</li>
 				<li>Collect SpaceIonz!</li>
 			</ul>`},
 		    btn1fn:function(){

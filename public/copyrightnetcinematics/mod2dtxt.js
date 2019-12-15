@@ -1232,7 +1232,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       `<span class='frameSpan ${txtClass}' style="">
         ${(heroLogo && txtAlign==='left')?heroLogo:''}
         <span class='mainSpan' style="${(txtAlign==='center')?'display:flex;align-items:center;':''};
-          ${(txtAlign==='right')?'margin-right:-6em;padding-right:4em':(stateIcon)?'':(config.align==='center')?'':'margin-left:-4em'};justify-content:center;">
+          ${(txtAlign==='right')?'margin-right:0em;padding-right:4em':(stateIcon)?'':(config.align==='center')?'':'margin-left:0'};justify-content:center;">
             ${(stateIcon)?stateIcon:''}<span style="${(stateIcon)?'margin-left:0.5em;':''}">${config.txt}</span></span>
         ${(heroLogo && txtAlign==='right')?heroLogo:''}
         ${(txtName && !stateIcon)?`<div class='heroName' style='position:absolute;bottom:${lblBtm};${(txtAlign==='right')?`right:${lblRgt}`:`left:${lblLft}`};

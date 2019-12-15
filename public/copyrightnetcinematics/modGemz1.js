@@ -101,7 +101,7 @@ nx.createSpaceIonz = function(){
             if(nx.spaceIonzActive[i].intersectsMesh(nx.orbyMesh)){
                 
 
-
+                if(nx.sonics && nx.sonics.blip2){ nx.sonics.blip2.play();}
                 // debugger;
 
                 //TODO: send count to 2DUI-.

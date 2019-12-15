@@ -719,12 +719,14 @@ nx.botz.initKiloBotScan = function(){
     // nx.kiloBotMesh1.clearLaser = 0; //visible
     nx.kiloBotMesh1.stopSearching = function(){
           nx.kiloBotMesh1.stopLaser = 1;
+          // nx.kiloBotMesh1.targeting = 0; //TODO???
           setTimeout(function(){ //stop all laser animations then delete-.
             for(var i = 0; i<nx.kiloBotMesh1.rayLines.length;i++){ 
               nx.kiloBotMesh1.rayLines[i].dispose();  
             } 
             nx.kiloBotMesh1.rayLines = [];
-          },100)
+          // debugger;
+          },200)
     }
 } //end initkilobotscan
     
@@ -804,7 +806,7 @@ nx.botz.kiloBotScanANM = function(){ //anm is called on every frame!
     .animate({x:tgtScan.x,y:tgtScan.y,z:tgtScan.z},{queue:false,duration:2000,easing:'swing',
     step: function(now) { 
             if(++scanDamperAlpha%2===0||scanDamperAlpha%3===0||scanDamperAlpha%5===0||scanDamperAlpha%7===0){return}
-
+            if(nx.kiloBotMesh1.stopLaser){return 1;}
             nx.kiloBotMesh1.laserTgtSphere.position.x = this.x;
             nx.kiloBotMesh1.laserTgtSphere.position.y = this.y; 
             nx.kiloBotMesh1.laserTgtSphere.position.z = this.z;
