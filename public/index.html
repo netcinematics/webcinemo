@@ -582,12 +582,11 @@ var nx = {}; //NetcinematiX NameSpace-.
                 nx.ui.titleViewFrame.fadeOut(1000)
             },1)
 
-
-
-              //MOBILE-ONLY disable sleeping-.
+            if(nx.mobile){  //MOBILE-ONLY disable sleeping-.
+              //TODO does tablet do this?
               var noSleep = new NoSleep(); //MOBILE-ONLY-.
               noSleep.enable(); //MUST-BE-IN-UI-EVENT-.
-
+            }
 
         });
 
@@ -900,6 +899,9 @@ text-shadow: 1px 1px 10px #a20358;
           <!-- <footer id=canvasFooter style='background:#252425;width:60%;margin:0 auto;border:1px solid orange;color: orange;border-radius: 13px;padding: 0.5em;padding-left: 1em; margin-top: -2.5em; z-index: 100; text-align: center;height: 1.4em; line-height: 1.4em;'><span>Dr~Acozmo!</span></footer> -->
 
     <!-- <section id="playBtn1" class="steelNeonIconBtn" style='display:none;position:absolute;top:3.4em;right:0.1em;z-index:111'><i class="fa fa-play-circle"></i></section> -->
+
+
+
     <section id="pauseBtn2" class="steelNeonIconBtn" style='display:none;position:absolute;top:1.8em;right:0.1em;z-index:111'><i class="fa fa-pause-circle"></i></section>
 
 
@@ -910,6 +912,8 @@ text-shadow: 1px 1px 10px #a20358;
       }
     </style>
     <section id="audioToggle1" class="steelNeonIconBtn sonicOn" style='display:none;position:absolute;top:3.5em;right:0.1em;z-index:111'><i class="fa fa-volume-off"></i></section>
+
+    <section id="refreshBtn1" class="steelNeonIconBtn" style='display:none;position:absolute;top:5.2em;right:0.1em;z-index:111'><i class="fa fa-redo"></i></section>
 
 
   </div>
@@ -2452,8 +2456,18 @@ window.onload = function() { //Standard-ServiceWorker-Registration-.
 }
 </script>
 
-
-
+<script>
+  nx.initDeviceDetectionStrategy = function(){
+      if (window.matchMedia("(max-width: 777px)").matches){ 
+          console.log('rendering MOBILE')
+          nx.mobile=1;
+      } else { 
+          nx.mobile=0;
+          console.log('rendering NON-MOBILE')
+      }  
+  }
+  nx.initDeviceDetectionStrategy();
+</script>
 
 <!--**************************************************-LIBS-*****************************************-->
 <script type="text/javascript" src="./libs/NoSleep/NoSleep.min.js" ></script> 

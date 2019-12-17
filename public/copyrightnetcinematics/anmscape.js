@@ -104,6 +104,8 @@ var initNX = function(nx){ //todo rename to ini
     nx.RV3 = function (x,y,z) { return new BABYLON.Vector3(Math.PI/x,Math.PI/y,Math.PI/z); }
 }
 /**************************-END-NX-****************************************/
+
+
 /********************************************* - STANDARD - COLOR - MATERIALS - *********************************************************/
 // var createEditColors = function(){
 //     nx.greenMat = new BABYLON.StandardMaterial("green1", nx.scene);
@@ -762,3 +764,6 @@ nx.RGBAtoNormal = function(r,g,b,a){
  if(r && g && b){return new BABYLON.Color4(r/255,g/255,b/255,a);}
  return new BABYLON.Color4(0.22, 0.44, 0.88, 1.0);
 }
+
+
+

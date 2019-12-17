@@ -97,20 +97,24 @@ nx.sonics.createSonics = function( ){ //
 
     nx.sonics.sonicBoom1 = new BABYLON.Sound("bg1","./copyrightnetcinematics/sonicz/nxBoomCoreWind3.mp3",nx.scene,null,{loop:false,autoplay:false, volume:0.04});
     nx.sonics.blip2= new BABYLON.Sound("blipIn1","./copyrightnetcinematics/sonicz/nxBlip2b.mp3", nx.scene, null, { loop: false, autoplay: false });
-    // BABYLON.Engine.audioEngine.setGlobalVolume(0.8); //0.02 is on the quiet side.
-    //MOBILE
-    BABYLON.Engine.audioEngine.setGlobalVolume(2); //0.02 is on the quiet side.
+
+    if(nx.mobile){
+      BABYLON.Engine.audioEngine.setGlobalVolume(2); //0.02 is on the quiet side.
+    }else{
+      BABYLON.Engine.audioEngine.setGlobalVolume(0.8); //0.02 is on the quiet side.
+    }
     nx.sonics.loaded=1;
     nx.sonics.on=1;
     setTimeout(function(){
+        var mobileVol = (nx.mobile)?1:0.022;
         //TODO: load at scene time.
-        nx.sonics.themeTrack1= new BABYLON.Sound("theme1","./copyrightnetcinematics/sonicz/nxTheme1Phaser1.mp3", nx.scene, null, { loop: false, autoplay: false, volume:0.022 });
+        nx.sonics.themeTrack1= new BABYLON.Sound("theme1","./copyrightnetcinematics/sonicz/nxTheme1Phaser1.mp3", nx.scene, null, { loop: false, autoplay: false, volume:mobileVol });
         nx.sonics.breakBeatTheme1= new BABYLON.Sound("breakBeat1","./copyrightnetcinematics/sonicz/nxSpaceBreakBeat4.mp3", nx.scene, null, { loop: false, autoplay: false });
         nx.sonics.fightScene1= new BABYLON.Sound("fightScene1","./copyrightnetcinematics/sonicz/nxFightLoop1.mp3", nx.scene, null, { loop: false, autoplay: false });
         nx.sonics.fightScene2= new BABYLON.Sound("fightScene2","./copyrightnetcinematics/sonicz/nxFightScene2.mp3", nx.scene, null, { loop: false, autoplay: false });
         nx.sonics.goodTimes2= new BABYLON.Sound("goodTimes2","./copyrightnetcinematics/sonicz/nxGoodTimes2.mp3", nx.scene, null, { loop: false, autoplay: false });
         nx.sonics.exploreLoop1= new BABYLON.Sound("exploreLoop1","./copyrightnetcinematics/sonicz/nxExploreLoop1.mp3", nx.scene, null, { loop: false, autoplay: false });
-        nx.sonics.spaceWind2= new BABYLON.Sound("spaceWind2","./copyrightnetcinematics/sonicz/nxSpaceTrack5.mp3", nx.scene, null, { loop: false, autoplay: false, volume:0.022 });
+        nx.sonics.spaceWind2= new BABYLON.Sound("spaceWind2","./copyrightnetcinematics/sonicz/nxSpaceTrack5.mp3", nx.scene, null, { loop: false, autoplay: false, volume:mobileVol });
         // nx.sonics.spaceWind2= new BABYLON.Sound("spaceWind2","./copyrightnetcinematics/sonicz/nxSpaceWind4.mp3", nx.scene, null, { loop: false, autoplay: false, volume:0.44 });
 
         nx.sonics.initLoopz();

@@ -38,10 +38,12 @@ nx.ui.playAllBtn1 = $('#playAllBtn1');
 nx.ui.playOneBtn2 = $('#playOneBtn2');
 nx.ui.pauseBtn2 = $('#pauseBtn2');
 nx.ui.audioToggle1 = $('#audioToggle1');  //good example of UI-.
+nx.ui.refreshBtn1 = $('#refreshBtn1');  //good example of UI-.
 setTimeout(function(){
   // nx.ui.playBtn1.show(1000); //default show-.
   nx.ui.pauseBtn2.show(500);
-  nx.ui.audioToggle1.show(800);
+  nx.ui.audioToggle1.show(700);
+  nx.ui.refreshBtn1.show(900);
 },2000)
   
 nx.ui.trickBtn1 = $('#trickBtn1');
@@ -662,7 +664,8 @@ nx.ui.showMovieModeView = function(){
   nx.ui.zoomBtn2.hide();
   // nx.ui.playBtn1.show(1000);
   nx.ui.pauseBtn2.show(500);
-  nx.ui.audioToggle1.show(800);
+  nx.ui.audioToggle1.show(700);
+  nx.ui.refreshBtn1.show(900);
   nx.ui.trickBtn1.hide();
   nx.ui.jumpBtn1.hide();
 
@@ -1072,7 +1075,7 @@ nx.ui.showQuestModeView = function(){
 nx.ui.flashMSGPlaying = 0;
 nx.ui.flashMSGQueue = [];
 
-//todo rename to setMSGTXT
+//todo rename to txtFactory, and do USAGE:
 nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
   // console.log('FLASHSTART',config.txt)
   if(nx.cinemaStop){ nx.ui.flashMSGPlaying = 0; nx.ui.flashMSGQueue = []; return; } //pause functionality-.
@@ -1520,6 +1523,8 @@ setTimeout(function(){ //break from animloop-.
                                 // nx.ui.canvasFooter.fadeOut('slow');
                               }
 
+
+//TODO rename txtEndFn
                               if(aSpan && aSpan.config && aSpan.config.txtEnd){ //txtEnd: call back for sequence handling-.
                                 aSpan.config.txtEnd() 
                               }
@@ -1656,15 +1661,9 @@ nx.ui.pauseBtn2.click(function(){
 });
 
 
-//moved to sonics
-// nx.ui.audioToggle1.click(function(){ 
-//   // var toggleOff = nx.ui.pauseBtn2.hasClass('playModeSelector');
-//   // var toggleOff = nx.ui.pauseBtn2.hasClass('playModeSelector');
-//   // nx.ui.playModeSelector = $('.playModeSelector'); //remove all selectors-.
-//   // nx.ui.playModeSelector.removeClass('playModeSelector');
-//   // if(!toggleOff){ nx.ui.pauseBtn2.addClass('playModeSelector'); }
-//   // (!nx.cinemaStop)?nx.cinemaStop=1:nx.cinemaStop=0; console.log(nx.cinemaStop); 
-// });
+nx.ui.refreshBtn1.click(function(){ 
+  location.reload(true);
+});
 // nx.ui.playBtn1.click(function(){(!nx.cinemaPlayAll)?nx.cinemaPlayAll=1:nx.cinemaPlayAll=0; console.log(nx.cinemaPlayAll); });
 // nx.ui.pauseBtn2.click(function(){ (!nx.cinemaPause)?nx.cinemaPause=1:nx.cinemaPause=0; console.log(nx.cinemaPause); });
 nx.ui.zoomBtn1.click(function(){
