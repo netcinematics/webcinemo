@@ -494,7 +494,7 @@ nx.runCinematicSequence = function(seqName){ //LOOPZ
                 nx.ui.flashCanvasMSG({txt:'Dr.Acozmo!',txtIcon:'drbecky',dur:3000});                 //on first frame   //TODO add with another space zooom anm-.
                 nx.ui.flashCanvasMSG({txt:'Yes, Dr.Becky?',txtIcon:'dracozmo',dur:3000});                 //on first frame   //TODO add with another space zooom anm-.
                 nx.ui.flashCanvasMSG({txt:'We did it!',txtIcon:'drbecky',dur:3000});                 //on first frame   //TODO add with another space zooom anm-.
-                nx.ui.flashCanvasMSG({txt:'Did What?',txtIcon:'dracozmo',dur:3000});                 //on first frame   //TODO add with another space zooom anm-.
+                nx.ui.flashCanvasMSG({txt:'Did what?',txtIcon:'dracozmo',dur:3000});                 //on first frame   //TODO add with another space zooom anm-.
                 nx.ui.flashCanvasMSG({txt:'A MESSAGE IN SPACE!',txtIcon:'drbecky',dur:3000,
                   txtEnd:function(){
 
@@ -1392,8 +1392,8 @@ setTimeout(function(){if(nx.sonics){nx.sonics.stopAllSonics()}},2000)
 // nx.ui.flashCanvasMSG({txt:'Find the Space Train Crash!',persist:true});         //on cut back 2    
 // nx.ui.flashCanvasMSG({txt:'"Find SpaceTrain Crash"',txtIcon:'azod'});         //on cut back 2    
 nx.ui.flashCanvasMSG({txt:'"Find the SpaceTrain CRASH."',txtIcon:'azod'});         //on cut back 2    
-nx.ui.flashCanvasMSG({txt:'"Scan it with this Laser."',txtIcon:'azod'});         //on cut back 2    
-nx.ui.flashCanvasMSG({txt:'"Go Orby!"',txtIcon:'azod'});         //on cut back 2    
+nx.ui.flashCanvasMSG({txt:'"Scan with this Laser."',txtIcon:'azod'});         //on cut back 2    
+nx.ui.flashCanvasMSG({txt:'"And send to me. Go Orby!"',txtIcon:'azod'});         //on cut back 2    
 
 nx.ui.setMovieModeTXT({txt:"Find the SpaceTrain CRASH and",type:'azod',align:'center'}); 
 // nx.ui.setMovieModeTXT({txt:"Find the Space Train Crash!",type:'azod',align:'center'}); 
