@@ -1391,9 +1391,9 @@ setTimeout(function(){if(nx.sonics){nx.sonics.stopAllSonics()}},2000)
 // nx.ui.flashCanvasMSG({txt:'Land on AlphaMoon!',persist:true});         //on cut back 2    
 // nx.ui.flashCanvasMSG({txt:'Find the Space Train Crash!',persist:true});         //on cut back 2    
 // nx.ui.flashCanvasMSG({txt:'"Find SpaceTrain Crash"',txtIcon:'azod'});         //on cut back 2    
-nx.ui.flashCanvasMSG({txt:'"Find the SpaceTrain CRASH."',txtIcon:'azod'});         //on cut back 2    
-nx.ui.flashCanvasMSG({txt:'"Scan with this Laser."',txtIcon:'azod'});         //on cut back 2    
-nx.ui.flashCanvasMSG({txt:'"And send to me. Go Orby!"',txtIcon:'azod'});         //on cut back 2    
+nx.ui.flashCanvasMSG({txt:'"Take this LaserBox"',txtIcon:'azod'});         //on cut back 2    
+nx.ui.flashCanvasMSG({txt:'"Find the SpaceTrain crash."',txtIcon:'azod'});         //on cut back 2    
+nx.ui.flashCanvasMSG({txt:'"Scan it for me. Go Orby!"',txtIcon:'azod'});         //on cut back 2    
 
 nx.ui.setMovieModeTXT({txt:"Find the SpaceTrain CRASH and",type:'azod',align:'center'}); 
 // nx.ui.setMovieModeTXT({txt:"Find the Space Train Crash!",type:'azod',align:'center'}); 
