@@ -1469,6 +1469,7 @@ setTimeout(function(){ //break from animloop-.
 
       if(aSpan && aSpan.config && aSpan.config.txtInit){
         // debugger;
+        //TODO make this txtStart and txtEnd
         aSpan.config.txtInit(); //txtINIT: call back for sequence handling-.
       }
 

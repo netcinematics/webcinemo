@@ -80,10 +80,11 @@ nx.loadOrbyAssets = function() {
     
         
         nx.lazerbox = nx.scene.getMeshByName('lazerbox') ; //lazerbox
-        // nx.lazerbox.attachToBone(nx.orbySkeleton[0].bones[35], nx.orbyMesh); //left-index-tip-.
-        nx.lazerbox.attachToBone(nx.orbySkeleton[0].bones[47], nx.orbyMesh); //right-index-tip-.
+        nx.lazerbox.attachToBone(nx.orbySkeleton[0].bones[35], nx.orbyMesh); //left-index-tip-.
+        // nx.lazerbox.attachToBone(nx.orbySkeleton[0].bones[47], nx.orbyMesh); //right-index-tip-.
         nx.lazerbox.position.y = 0.1
-        nx.lazerbox.position.x = 0.1
+        // nx.lazerbox.position.x = 0.1
+        nx.lazerbox.visibility = 1;
 
 
         // nx.scene.registerBeforeRender(function() {
@@ -309,7 +310,7 @@ nx.createOrbyAnmRig = function(){
     var length = nx.anmz.orby.rig.rayStub * nx.anmz.orby.scale; //DOWN-RAY-LENGTH-.
     // var length = nx.anmz.orby.rig.rayStub * nx.anmz.orby.scale;
     rayHelper.attachToMesh(nx.anmz.orby.rig.originBox, localMeshDirection, localMeshOrigin, length);
-    rayHelper.show(nx.scene, new BABYLON.Color3(1,0,0));
+    // rayHelper.show(nx.scene, new BABYLON.Color3(1,0,0));
     //--------------------------------------------------------------INIT-TILTRAY-.
     nx.anmz.orby.rig.tiltRay = new BABYLON.Ray();
     var rayHelper2 = new BABYLON.RayHelper(nx.anmz.orby.rig.tiltRay);

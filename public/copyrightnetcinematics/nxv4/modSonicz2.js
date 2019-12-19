@@ -96,7 +96,7 @@ nx.sonics.createSonics = function( ){ //
     nx.sonics.footsteps1= new BABYLON.Sound("footsteps1","./copyrightnetcinematics/sonicz/nxStepsAndDoor3.mp3", nx.scene, null, { loop: false, autoplay: false });
 
     nx.sonics.sonicBoom1 = new BABYLON.Sound("bg1","./copyrightnetcinematics/sonicz/nxBoomCoreWind3.mp3",nx.scene,null,{loop:false,autoplay:false, volume:0.04});
-    nx.sonics.blip2= new BABYLON.Sound("blipIn1","./copyrightnetcinematics/sonicz/nxBlip2b.mp3", nx.scene, null, { loop: false, autoplay: false });
+    nx.sonics.blip2= new BABYLON.Sound("blipIn1","./copyrightnetcinematics/sonicz/nxBlip2b.mp3", nx.scene, null, { loop: false, autoplay: false, volume:2.22 });
 
     if(nx.mobile){
       BABYLON.Engine.audioEngine.setGlobalVolume(2); //0.02 is on the quiet side.

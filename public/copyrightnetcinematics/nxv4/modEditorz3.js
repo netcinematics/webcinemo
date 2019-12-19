@@ -2133,7 +2133,7 @@ var createPolyMeshEditor = function(){
 }
 
 // debugger;
-createPolyMeshEditor();
+// createPolyMeshEditor();//PLACES MESH 1000 up.
 
 //TODO compare nx.orby  and createPolyMeshEditor
 

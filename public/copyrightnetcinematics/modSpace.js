@@ -184,19 +184,19 @@ nx.nebulasf8.position.copyFrom({x: -2400, y: -20, z: -1260})
 }
 
 nx.removeOrion1 = function(){
-    nx.gMatsf5.dispose();
-    nx.nebulasf5.dispose();
-    nx.gMatsf6.dispose();
-    nx.nebulasf6.dispose();
-    nx.gMatsf8.dispose();
-    nx.nebulasf8.dispose();
-    nx.gMatsf5 = null;
-    nx.nebulasf5 = null;
-    nx.gMatsf6 = null;
-    nx.nebulasf6 = null;
-    nx.gMatsf8 = null;
-    nx.nebulasf8 = null;
-    nx.state.orion = 0;
+    if(nx.gMatsf5){ nx.gMatsf5.dispose(); }
+    if(nx.nebulasf5){ nx.nebulasf5.dispose(); }
+    if(nx.gMatsf6){ nx.gMatsf6.dispose(); }
+    if(nx.nebulasf6){ nx.nebulasf6.dispose(); }
+    if(nx.gMatsf8){ nx.gMatsf8.dispose(); }
+    if(nx.nebulasf8){ nx.nebulasf8.dispose(); }
+    if(nx.gMatsf5){ nx.gMatsf5 = null; }
+    if(nx.nebulasf5){ nx.nebulasf5 = null; }
+    if(nx.gMatsf6){ nx.gMatsf6 = null; }
+    if(nx.nebulasf6){ nx.nebulasf6 = null; }
+    if(nx.gMatsf8){ nx.gMatsf8 = null; }
+    if(nx.nebulasf8){ nx.nebulasf8 = null; }
+    if(nx.state){ nx.state.orion = 0; }
 }
 
 nx.createGalaxy1 = function(){
@@ -314,18 +314,18 @@ nx.createGalaxy1 = function(){
 }
 
 nx.removeGalaxy1 = function(){
-    nx.gmasterMat1.dispose();
-    nx.galaxyMaster1.dispose();
-    nx.gMatsga1.dispose();
-    nx.galaxyframe1.dispose();
-    nx.gMatsga2.dispose();
-    nx.galaxyframe2.dispose();
-    nx.gMatsga3.dispose();
-    nx.galaxyframe3.dispose();
-    nx.gMatsga4.dispose();
-    nx.galaxyframe4.dispose();
-    nx.gMatsga5.dispose();
-    nx.galaxyframe5.dispose();
+    if(nx.gmasterMat1){ nx.gmasterMat1.dispose(); }
+    if(nx.galaxyMaster1){ nx.galaxyMaster1.dispose(); }
+    if(nx.gMatsga1){ nx.gMatsga1.dispose(); }
+    if(nx.galaxyframe1){ nx.galaxyframe1.dispose(); }
+    if(nx.gMatsga2){ nx.gMatsga2.dispose(); }
+    if(nx.galaxyframe2){ nx.galaxyframe2.dispose(); }
+    if(nx.gMatsga3){ nx.gMatsga3.dispose(); }
+    if(nx.galaxyframe3){ nx.galaxyframe3.dispose(); }
+    if(nx.gMatsga4){ nx.gMatsga4.dispose(); }
+    if(nx.galaxyframe4){ nx.galaxyframe4.dispose(); }
+    if(nx.gMatsga5){ nx.gMatsga5.dispose(); }
+    if(nx.galaxyframe5){ nx.galaxyframe5.dispose(); }
     nx.gmasterMat1 = null;
     nx.galaxyMaster1 = null;
     nx.gMatsga1 = null;
@@ -339,10 +339,10 @@ nx.removeGalaxy1 = function(){
     nx.gMatsga5 = null;
     nx.galaxyframe5 = null;
 
-    nx.gMatssc1.dispose();
-    nx.nebulassc1.dispose();
-    nx.gMatsga6.dispose();
-    nx.nebulasga6.dispose();
+    if(nx.gMatssc1){ nx.gMatssc1.dispose(); }
+    if(nx.nebulassc1){ nx.nebulassc1.dispose(); }
+    if(nx.gMatsga6){ nx.gMatsga6.dispose(); }
+    if(nx.nebulasga6){ nx.nebulasga6.dispose(); }
     nx.gMatssc1 = null;
     nx.nebulassc1 = null;
     nx.gMatsga6 = null;

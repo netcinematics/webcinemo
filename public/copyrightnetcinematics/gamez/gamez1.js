@@ -386,11 +386,11 @@ nx.GAMEZ = {
         		nx.scene.stopAnimation(nx.orbySkeleton[0])      //---------------------ANM: FREEZE-ORBY-.
         		nx.anmz.orby.idle = 1; //FIX: keep orby frozen;
 
-    			nx.orbyMesh.position.copyFrom( {x: -790.48, y: 1328.27, z: -1511.74} );
-
+    			// nx.orbyMesh.position.copyFrom( {x: -790.48, y: 1328.27, z: -1511.74} );
+// 
 				// nx.anmz.orby.rig.originBox.rotation.y = Math.PI/2;
 				// nx.orbyMesh.rotation.y = Math.PI/2;
-				nx.orbyMesh.rotation.y = -1.7;
+				// nx.orbyMesh.rotation.y = -1.7;
 
 
 				nx.anmz.orby.intermissionFreeze = 1;
@@ -791,6 +791,8 @@ nx.GAMEZ = {
 			nx.anmz.orby.intermissionFreeze = 0;
             nx.anmz.orby.jump.fallMode = 1; //TODO performance do not move y until downray collisions say so.
 
+            nx.orbyMesh.position.copyFrom( {x: -790.48, y: 1328.27, z: -1511.74} );
+            nx.orbyMesh.rotation.y = -1.7;
             //TODO: probably re-animate orby
             // nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);    //---------------------ANM: UNFREEZE-ORBY-.
             nx.anmz.orby.idle = 1; 
@@ -971,9 +973,9 @@ nx.ui.showGameModeView()
 
 
 							//TODO: laser sequence, new QUESTS: where is Zawd?, Why zapbots on AlphaMoon?
-debugger;
+// debugger;
                 			nx.ui.flashCanvasMSG({'title':'Where is Zawd?','btn':'GO!',fn:function(){ 
-	        debugger;
+	        // debugger;
 	                                nx.initFollowCam();
 	                                nx.anmz.orby.forceIdle = 0; //UNFREEZE ORBY MOVEMENTS
 	                        }});  
