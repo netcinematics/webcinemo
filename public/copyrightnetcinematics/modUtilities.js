@@ -83,6 +83,7 @@ editNode.position.copyFrom(local_position);
 
         var aBALL = BABYLON.Mesh.CreateSphere("aBALL", 4, 13, nx.scene);
         aBALL.position = new BABYLON.Vector3(50,5,50)
+        aBALL.visibility = 0.5
 
 var aBOX = BABYLON.MeshBuilder.CreateBox("aBox", {height: 210, width:110, depth:600 }, this.scene);
 

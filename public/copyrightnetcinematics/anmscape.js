@@ -694,7 +694,7 @@ nx.createMasterStart = function(){
         // debugger;
         
         //---------------------------------MASTER~SCRIPT------------------------------------------------
-        nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
+        // nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
         // nx.runSCENE({id:"VortexSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
 
         // nx.spaceSeqIdx[0] = {on:1}; 
@@ -710,7 +710,7 @@ nx.createMasterStart = function(){
         // nx.initSEQ({seqID:'sneakSEQ'}); //softload Landing Seq!
         // nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
         // nx.initSEQ({seqID:'crashSequence'})//CRASHSEQUENCE
-        // nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE
+        nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE
         // nx.initSEQ({seqID:'affirmSequence'})//AFFIRMATIONSEQUENCE
         //---------------------------------------------------------------------------------
         

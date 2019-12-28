@@ -28,6 +28,7 @@ var titleANM2 = nx.scene.beginAnimation(nx.orbySkeleton[0], 488, 500, false, 1.0
 var titleANM3 = nx.scene.beginAnimation(nx.orbySkeleton[0], 500, 520, false, 1.0);  //title eye back
 var fastDwn = nx.scene.beginAnimation(nx.orbySkeleton[0], 321, 340, false, 1.0);  //fastdown
 var fastUp = nx.scene.beginAnimation(nx.orbySkeleton[0], 340, 350, false, 1.0);  //fastup
+var lookLazer = nx.scene.beginAnimation(nx.orbySkeleton[0], 150, 200, false, 1.0);  //Look At Lazer
 fastUp.onAnimationEnd = function(){nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  } //idle
 nx.scene.stopAnimation(nx.orbySkeleton[0]) 
 var jmpCompress = nx.scene.beginAnimation(nx.orbySkeleton[0], 20, 25, false, 1.0); //compress
@@ -49,7 +50,7 @@ var prone = nx.scene.beginAnimation(nx.orbySkeleton[0], 150, 160, false, 1.0);  
 /*******************************-ANMZ-************************************/
 nx.loadOrbyAssets = function() {
     if(!nx.scene){return;}
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot18d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot17d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     //    nx.orbyMesh = newMeshes[0]; //spacewaverider
@@ -82,7 +83,7 @@ nx.loadOrbyAssets = function() {
         nx.lazerbox = nx.scene.getMeshByName('lazerbox') ; //lazerbox
         nx.lazerbox.attachToBone(nx.orbySkeleton[0].bones[35], nx.orbyMesh); //left-index-tip-.
         // nx.lazerbox.attachToBone(nx.orbySkeleton[0].bones[47], nx.orbyMesh); //right-index-tip-.
-        nx.lazerbox.position.y = 0.1
+        nx.lazerbox.position.y = 0.17
         // nx.lazerbox.position.x = 0.1
         nx.lazerbox.visibility = 1;
 
@@ -1582,8 +1583,8 @@ nx.orby.startLaserScanAnm = function(){
     // nx.orbyMesh.laserBumperRgt.position = nx.BV32({x: 55, y: -17, z: -45})
 
 
-    nx.orbyMesh.laserBumperLft.position = nx.BV32({x: -323.4889300956459, y: 5.717820962062265, z: 266.95865147353646})
-    nx.orbyMesh.laserBumperRgt.position = nx.BV32({x: -347.0334602261931, y: 8.896506634172113, z: 305})
+    // nx.orbyMesh.laserBumperLft.position = nx.BV32({x: -323.4889300956459, y: 5.717820962062265, z: 266.95865147353646})
+    // nx.orbyMesh.laserBumperRgt.position = nx.BV32({x: -347.0334602261931, y: 8.896506634172113, z: 305})
 
     curScan = (nx.orbyMesh.scanDirToggle)? nx.orbyMesh.laserBumperLft.position:nx.orbyMesh.laserBumperRgt.position;
     tgtScan = (nx.orbyMesh.scanDirToggle)? nx.orbyMesh.laserBumperRgt.position:nx.orbyMesh.laserBumperLft.position;
@@ -1742,7 +1743,8 @@ nx.orby.initLaser = function(){ //USAGE: nx.orby.zapBotFactory({mesh:nx.zapbotMe
     nx.orbyMesh.laserOriginSphere = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
     nx.orbyMesh.laserOriginSphere.parent =  nx.orbyMesh;
     // nx.orbyMesh.laserOriginSphere.position = new BABYLON.Vector3(0, 5, -2);
-    nx.orbyMesh.laserOriginSphere.position = new BABYLON.Vector3(0, 2.5, -2.2);
+    nx.orbyMesh.laserOriginSphere.position = new BABYLON.Vector3(-0.25, -0.044, -2.8);
+    // nx.orbyMesh.laserOriginSphere.position = new BABYLON.Vector3(0, 2.5, -2.2);
     // nx.orbyMesh.laserOriginSphere.position = new BABYLON.Vector3(0, 0.5, -2);
     nx.orbyMesh.laserOriginSphere.isVisible = 0; 
 
@@ -1757,6 +1759,12 @@ nx.orby.initLaser = function(){ //USAGE: nx.orby.zapBotFactory({mesh:nx.zapbotMe
     // nx.orbyMesh.laserBumperRgt.position = new BABYLON.Vector3(55, -17, -45);
     nx.orbyMesh.laserBumperRgt.isVisible = 0;
     // nx.orbyMesh.laserBumperRgt.position = new BABYLON.Vector3(25, -5, -35);
+
+
+
+    nx.orbyMesh.laserBumperLft.position = nx.BV32({x: -313.4889300956459, y: 5.717820962062265, z: 266.95865147353646})
+    nx.orbyMesh.laserBumperRgt.position = nx.BV32({x: -337.0334602261931, y: 8.896506634172113, z: 305})
+
 
     // nx.orbyMesh.hoverAlpha = 0; //zap bot hover-.
     nx.orbyMesh.scanning = 0; //tick this to 1 to start scanning-.
@@ -1821,7 +1829,7 @@ nx.orby.initLaser = function(){ //USAGE: nx.orby.zapBotFactory({mesh:nx.zapbotMe
             // if(nx.orbyMesh.stopLaser){
             //         nx.scene.unregisterBeforeRender(anmLaserSEQs); return; //LOOPZ-MUTER-.
             // }
-            nx.orbyMesh.anmLaserAlpha++;
+            // nx.orbyMesh.anmLaserAlpha++;
 
         // nx.orbyMesh.hoverAlpha += 0.05; //zap-bot-hover-.
         // nx.orbyMesh.position.y += 0.01 * Math.cos(nx.orbyMesh.hoverAlpha);
@@ -2027,7 +2035,370 @@ nx.orby.initShadows = function(){
               // nx.anmz.orby.move.autoGO = 1;
 
 
-// });
+
+
+
+
+
+nx.orby.startLazerRainbow = function(fnEnd){
+
+// debugger;
+    nx.orby.fnEndRainbow = fnEnd;
+
+    // nx.orby.rainbowLazerOn = 1;
+
+    nx.orby.lazerBALL = BABYLON.Mesh.CreateSphere("nx.orby.lazerBALL", 4, 0.5, nx.scene);
+    // nx.orby.lazerBALL.position.copyFrom({x: -355.555, y: 8.94342968043685, z: 290})
+    nx.orby.lazerBALL.position.copyFrom({x: -355.555, y: 9.222, z: 290})
+    // nx.orby.lazerBALL.position.copyFrom({x: -355.555, y: -1, z: 290})
+    nx.orby.lazerBALL.visibility = 0
+
+    // nx.orby.prysmTgts = BABYLON.Mesh.CreateCylinder("aPrysm",1, 5, 4, 6, 0, nx.scene);
+    // nx.orby.prysmTgts.visibility = 0;
+    // nx.orby.prysmTgts.position.y = -1;
+    // nx.orby.prysmTgts.scaling = new BABYLON.Vector3(10,10,10)
+    // nx.orby.prysmTgts.parent = nx.orby.lazerBALL; 
+
+    //todo move function out of nexting
+    // nx.orby.drawRainbow = function(stop){
+    //   // return;
+    //   if(!stop){
+
+        // nx.orby.prysmData = nx.orby.prysmTgts.getVertexBuffer(BABYLON.VertexBuffer.PositionKind).getData();
+        // var prysmVerts = nx.orby.prysmTgts.getIndices()
+
+      //   nx.orby.tgtPts= [];
+      //   // for(var i = 0; i< nx.orby.prysmData.length;i++){
+      //   for(var i = 0; i< nx.orby.prysmData.length;i+=3){
+      //   // for(var i = 0; i< 36;i++){
+      //     nx.orby.aPt = BABYLON.Mesh.CreateSphere("nx.orby.aPt", 2, 0.05, nx.scene);
+      //     nx.orby.aPt.position = new BABYLON.Vector3(nx.orby.prysmData[i],nx.orby.prysmData[i+1],nx.orby.prysmData[i+2])
+      //     nx.orby.aPt.parent = nx.orby.prysmTgts;
+      //     nx.orby.tgtPts.push(nx.orby.aPt)
+      //   }
+      // // debugger;
+
+      //   nx.orby.worldTgtPts = [];
+      //   // for(var i=0; i< tgtPts.length;i++){
+      //   for(var i=0; i< 6;i++){
+      //     nx.orby.prysmTgts.computeWorldMatrix();
+      //     nx.orby.prysmMatrix = nx.orby.prysmTgts.getWorldMatrix();
+      //     nx.orby.worldTgtPts.push(BABYLON.Vector3.TransformCoordinates(nx.orby.tgtPts[i].position, nx.orby.prysmMatrix) ); //TODO no vars here
+      //   }
+
+
+
+      //   //draw lines each vert.
+      //   if(!nx.orby.rainbowRays){ nx.orby.rainbowRays = []; }
+      //   // else { 
+      //   //clean up.
+      //   // debugger;
+      //   for(var i=0; i<nx.orby.rainbowRays.length;i++){
+      //     nx.orby.rainbowRays[i].dispose();
+      //   }
+      //   nx.orby.rainbowRays = []; 
+        // }
+
+  //     nx.orby.rainbowRayPts = [
+  //       new BABYLON.Vector3(5, 10, 5),
+  //       new BABYLON.Vector3(5, 10, 0),
+  //       new BABYLON.Vector3(5, 10, -5),
+  //       new BABYLON.Vector3(0, 10, -5),
+  //       new BABYLON.Vector3(-5, 10, -5),
+  //       new BABYLON.Vector3(-5, 10, 0),
+  //       new BABYLON.Vector3(-5, 10, 5),
+  //       new BABYLON.Vector3(0, 10, 5),
+  //     ];
+
+  //   // var nx.orby.rainbowRay1 = [];
+
+  // //Create nx.orby.rainbowRay1 
+  // nx.orby.rainbowRay1 = BABYLON.MeshBuilder.CreateLines("rainbowRays1", {points: nx.orby.rainbowRayPts}, nx.scene);
+  //   // nx.orby.rainbowRay11.color = new BABYLON.Color3(.3, .3, .3);
+  //   nx.orby.rainbowRay1.color = BABYLON.Color3.Green();
+    // nx.orby.rainbowRay11.setPivotPoint(nx.orby.rainbowRay11.getBoundingInfo().boundingBox.center);
+    // nx.orby.rainbowRay1.push(nx.orby.rainbowRay1);
+
+  // var nx.orby.rainbowRay12 = nx.orby.rainbowRay11.clone();
+  // lines2.position = new BABYLON.Vector3(-5.5, -5.5, 0);
+  //   lines.push(lines2);
+
+  // var lines3 = lines1.clone();
+  // lines3.position = new BABYLON.Vector3(-5.5, 5.5, 0);
+  //   lines.push(lines3);
+
+  // var lines4 = lines1.clone();
+  // lines4.position = new BABYLON.Vector3(5.5, 5.5, 0);
+  //   lines.push(lines4);
+
+  // // var lines5 = BABYLON.MeshBuilder.CreateLines("lines5", {points: myPoints4}, scene);
+  // var lines5 = lines1.clone();
+  // lines5.position = new BABYLON.Vector3(5.5, -5.5, 0);
+  //   lines.push(lines5);
+
+
+        // nx.orbyMesh.rayLines= [];
+        // // nx.rayLine1 = BABYLON.Mesh.CreateLines("ray3", [zapBotLaserOffset1, nx.orbyMesh.position], nx.scene);
+        // nx.orbyMesh.rayLines[0] = BABYLON.Mesh.CreateLines("ray1", [nx.orby.global_position_origin, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[0]);
+        // nx.orbyMesh.rayLines[0].alpha = 0.8;//Math.cos(alpha2);//0.8
+        // nx.orbyMesh.rayLines[1] = BABYLON.Mesh.CreateLines("ray2", [nx.orby.global_position_origin, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[1]);
+        // nx.orbyMesh.rayLines[1].alpha = 0.8;//Math.cos(alpha2);//0.8
+        // nx.orbyMesh.rayLines[2] = BABYLON.Mesh.CreateLines("ray3", [nx.orby.global_position_origin, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[2]);
+        // nx.orbyMesh.rayLines[2].alpha = 0.8;//Math.cos(alpha2);//0.8
+
+
+        // for(var i=0; i<nx.orby.worldTgtPts.length; i++){
+        //   // if(nx.orby.rainbowRays[i]){
+        //     // nx.orby.aPrysmRay = BABYLON.Mesh.CreateLines("ray"+i, [nx.orby.lazerBALL.position,nx.orby.worldTgtPts[i]], nx.scene, nx.orby.rainbowRays[i]);
+        //   // }else{
+        //    nx.orby.aPrysmRay = BABYLON.Mesh.CreateLines("ray"+i, [nx.orby.lazerBALL.position,nx.orby.worldTgtPts[i]], nx.scene);
+
+        //   // }
+
+        //   if(nx.orby.prysmAlpha<50){
+        //     nx.orby.aPrysmRay.color.r = 1;
+        //     nx.orby.aPrysmRay.color.g = nx.orby.aPrysmRay.color.b = 0;
+        //   } else if(nx.orby.prysmAlpha<100){
+        //     nx.orby.aPrysmRay.color.g = 1;
+        //     nx.orby.aPrysmRay.color.r = nx.orby.aPrysmRay.color.b = 0;
+        //   } else {
+        //     nx.orby.aPrysmRay.color.b = 1;
+        //     nx.orby.aPrysmRay.color.r = nx.orby.aPrysmRay.color.g = 0;
+        //   }
+        //   // nx.orby.aPrysmRay.parent = nx.orby.lazerBALL;//nx.lazerbox;
+        //   nx.orby.aPrysmRay.alpha = 0.8;//Math.cos(alpha2);//0.8
+        //   nx.orby.rainbowRays.push(nx.orby.aPrysmRay);
+        // } //end FOR
+    //   } else { //stop
+
+    //     for(var i=0; i<nx.orby.rainbowRays.length;i++){
+    //       nx.orby.rainbowRays[i].dispose();
+    //     }
+    //     nx.orby.rainbowRays = []; 
+    //     // nx.orby.prysmMatrix = [];
+    //     // nx.orby.tgtPts= [];
+    //     // nx.orby.worldTgtPts = [];
+    //     // nx.orby.prysmData = [];
+
+    //   }
+
+    // }
+
+    //todo: draw lines to each vert. spin prysm. move prysm up- (down), scale to a point.
+// debugger;
+      nx.orby.centerLazer = new BABYLON.Vector3(0, 0, 0);
+
+        nx.orby.rainbowRayPts = [ //IDENTITY MATRIX-.
+          new BABYLON.Vector3(15, -5, 15),
+          new BABYLON.Vector3(15, -5, 0),
+          new BABYLON.Vector3(15, -5, -15),
+          new BABYLON.Vector3(0, -5, -15),
+          new BABYLON.Vector3(-15, -5, -15),
+          new BABYLON.Vector3(-15, -5, 0),
+          new BABYLON.Vector3(-15, -5, 15),
+          new BABYLON.Vector3(0, -5, 15),
+        ];
+
+        nx.orby.tempPnt = new BABYLON.Vector3.Zero();
+
+        nx.orby.offRad = 1; //multiplier
+        nx.orby.offY = 0;
+      nx.orby.prysmFactory = function(){
+
+        // config.offY = (config && config.offY)? config.offY : 0;  //defaults-.
+        // config.offRad = (config && config.offRad)? config.offRad : 0;
+
+// debugger;
+
+        nx.orby.rainbowRayLines = [];
+        for(var i=0; i<nx.orby.rainbowRayPts.length; i++){
+          // if(nx.orby.rainbowRays[i]){
+            // nx.orby.aPrysmRay = BABYLON.Mesh.CreateLines("ray"+i, [nx.orby.lazerBALL.position,nx.orby.worldTgtPts[i]], nx.scene, nx.orby.rainbowRays[i]);
+          // }else{
+          nx.orby.tempPnt.copyFrom({x:nx.orby.rainbowRayPts[i].x*nx.orby.offRad,y:nx.orby.rainbowRayPts[i].y+nx.orby.offY,z:nx.orby.rainbowRayPts[i].z*nx.orby.offRad});
+          // nx.orby.rainbowRayLines.push(BABYLON.Mesh.CreateLines("ray"+i, [nx.orby.lazerBALL.position,nx.orby.tempPnt, nx.scene, nx.orby.rainbowRays[i]))
+          // nx.orby.rainbowRayLines.push(nx.orby.tempPnt);
+          nx.orby.tempPnt.copyFrom(nx.orby.tempPnt.add(nx.orby.lazerBALL.position))
+
+          // console.log('PUSH: ',nx.orby.lazerBALL.position,nx.orby.tempPnt)
+
+          nx.orby.rainbowRayLines.push([new BABYLON.Vector3(nx.orby.lazerBALL.position.x,nx.orby.lazerBALL.position.y,nx.orby.lazerBALL.position.z),
+            new BABYLON.Vector3(nx.orby.tempPnt.x,nx.orby.tempPnt.y,nx.orby.tempPnt.z)]);
+
+        }
+        return nx.orby.rainbowRayLines;
+      } //end factory
+
+
+// debugger;
+
+           // nx.orby.aPrysmRay = BABYLON.Mesh.CreateLines("ray"+i, [nx.orby.lazerBALL.position,nx.orby.worldTgtPts[i]], nx.scene);
+
+    // var lines = [];
+    // for (var i = 0; i < normals.length; i += 3) {
+    //     // var v1 = BABYLON.Vector3.FromArray(positions, i);
+    //     var v2 = v1.add(BABYLON.Vector3.FromArray(normals, i).scaleInPlace(size));
+    //     lines.push([nx.orby.centerLazer, v2.add(mesh.position)]);
+    // }
+
+
+if(!nx.orby.rainBowRaySystem){
+
+    nx.orby.offY = 0;
+    nx.orby.rainbowRayLines = nx.orby.prysmFactory();
+    nx.orby.rainBowRaySystem = BABYLON.MeshBuilder.CreateLineSystem("rainBowRaySystem", {lines: nx.orby.rainbowRayLines,updatable:true}, nx.scene);
+    nx.orby.rainBowRaySystem.color = BABYLON.Color3.Green();
+    // nx.orby.rainBowRaySystem.updatable = true;
+}
+// else{
+//     nx.orby.offY += 0.02;
+//     nx.orby.rainbowRayLines = nx.orby.prysmFactory();
+//     nx.orby.rainBowRaySystem = BABYLON.MeshBuilder.CreateLineSystem("rainBowRaySystem", {lines: nx.orby.rainbowRayLines,instance:nx.orby.rainBowRaySystem});
+//     nx.orby.rainBowRaySystem.color = BABYLON.Color3.Green();
+//     // nx.orby.rainBowRaySystem.updatable = true;
+
+// // updates the existing instance of lineSystem : no need for the parameter scene here
+// // lineSystem = BABYLON.MeshBuilder.CreateLineSystem("lineSystem", {lines: myArray, instance: lineSystem});
+// }
+
+
+
+    // var nx.orby.rainbowRay1 = [];
+
+  //Create nx.orby.rainbowRay1 
+  // nx.orby.rainbowRay1 = BABYLON.MeshBuilder.CreateLines("rainbowRays1", {points: nx.orby.rainbowRayPts}, nx.scene);
+    // nx.orby.rainbowRay11.color = new BABYLON.Color3(.3, .3, .3);
+    // nx.orby.rainbowRay1.color = BABYLON.Color3.Green();
+
+    // nx.orby.prysmScale = 10;
+    nx.orby.prysmAlpha=0;
+    nx.orby.prysmDamper=0;
+    // nx.orby.prysmRot = 0;
+    nx.orby.stopRainbowLazer = 0;
+    // console.log('ONETIMECHECKA')
+    nx.scene.registerBeforeRender(function rainbowLazerRun() {
+        if(++nx.orby.prysmDamper%2===0){return}
+        if(nx.orby.stopRainbowLazer<0){ nx.orby.fnEndRainbow(); nx.scene.unregisterBeforeRender(rainbowLazerRun); return; }
+        // nx.orby.prysmTgts.rotation.y += 0.044;
+        // nx.orby.prysmTgts.position.y += 0.444;
+        // console.log('ALPHA',++nx.orby.prysmAlpha)
+        // if(++nx.orby.prysmAlpha>100){
+          // nx.orby.prysmScale -= 1;
+          // if(nx.orby.prysmScale<=0){
+          //   nx.orby.stopRainbowLazer = -1;
+          // }else{
+          //   // nx.orby.prysmTgts.scaling = new BABYLON.Vector3(nx.orby.prysmScale,nx.orby.prysmScale,nx.orby.prysmScale)
+          // }
+        // }
+        // if(nx.orby.stopRainbowLazer===-1){
+          // console.log('ONETIMECHECKB')
+          // nx.orby.drawRainbow(true); //stop
+          // nx.orby.fnEndRainbow();//callback to script-.
+
+
+
+          // nx.orby.endRainbowRays('green');
+          // setTimeout(function(){
+          //   nx.orby.endRainbowRays('red');
+          //   setTimeout(function(){
+          //     nx.orby.endRainbowRays('end');
+          //   },2000)
+          // },3000)
+        // } else {
+        if(nx.orby.offRad>0){
+
+          nx.orby.offRad = (nx.orby.offY<20)?1:nx.orby.offRad - 0.02; //multiplier
+          nx.orby.offY += 0.4;
+          nx.orby.rainbowRayLines = nx.orby.prysmFactory();
+          nx.orby.rainBowRaySystem = BABYLON.MeshBuilder.CreateLineSystem("rainBowRaySystem", {lines: nx.orby.rainbowRayLines,instance:nx.orby.rainBowRaySystem});
+          if(nx.orby.offRad===1){
+            nx.orby.rainBowRaySystem.color = BABYLON.Color3.Green();
+          }else{
+            nx.orby.rainBowRaySystem.color = BABYLON.Color3.Blue();
+          }
+
+          // nx.orby.drawRainbow();
+        } else { //signal DONE-.
+          nx.orby.stopRainbowLazer=-1
+          // debugger;
+          nx.orby.rainBowRaySystem.dispose();
+        }
+        // nx.orby.prysmTgts.position.y += 0.01 * Math.cos(nx.orby.prysmDamper) *10;
+        // nx.orby.prysmTgts.position.y = (Math.cos(nx.orby.prysmAlpha+=0.01) *10);
+    });
+
+    // nx.orbyMesh.computeWorldMatrix();
+    // nx.orby.anmMatrix1 = nx.orbyMesh.getWorldMatrix();
+    // var lazerWorldPOS = BABYLON.Vector3.TransformCoordinates(nx.orbyMesh.laserOriginSphere.position, nx.orby.anmMatrix1); //TODO no vars here
+    //FIRE-LZR - UP
+//     nx.orbyMesh.rayLines= [];
+// //    nx.orbyMesh.laserORIG.position = new BABYLON.Vector3(nx.lazerbox.position.x,12,nx.lazerbox.position.z)
+//     nx.orbyMesh.laserTgtSphere.position = new BABYLON.Vector3(nx.orby.lazerBALL.position.x,nx.orby.lazerBALL.position.y+100,nx.orby.lazerBALL.position.z)
+//     nx.orbyMesh.rayLines[0] = BABYLON.Mesh.CreateLines("ray1", [nx.orby.lazerBALL.position, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[0]);
+//     nx.orbyMesh.rayLines[0].alpha = 0.8;//Math.cos(alpha2);//0.8
+//     nx.orbyMesh.rayLines[1] = BABYLON.Mesh.CreateLines("ray2", [nx.orby.lazerBALL.position, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[1]);
+//     nx.orbyMesh.rayLines[1].alpha = 0.8;//Math.cos(alpha2);//0.8
+//     nx.orbyMesh.rayLines[2] = BABYLON.Mesh.CreateLines("ray3", [nx.orby.lazerBALL.position, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[2]);
+//     nx.orbyMesh.rayLines[2].alpha = 0.8;//Math.cos(alpha2);//0.8
+//     nx.orbyMesh.rayLines[0].color.g = 1;//Math.cos(alpha1);//1;
+//     nx.orbyMesh.rayLines[0].color.r = nx.orbyMesh.rayLines[0].color.b = 0
+//     nx.orbyMesh.rayLines[1].color.b = 1;//Math.cos(alpha1);//1;
+//     nx.orbyMesh.rayLines[1].color.g = nx.orbyMesh.rayLines[1].color.r = 0
+//     nx.orbyMesh.rayLines[2].color.r = 1;//Math.cos(alpha1);//1;
+//     nx.orbyMesh.rayLines[2].color.g = nx.orbyMesh.rayLines[2].color.b = 0;        //yellow-green-laser-.
+
+}
+
+//todo move out
+nx.orby.endRainbowRays = function(mode){
+  // console.log('ENDRAINBOW',mode)
+    for(var i=0; i<nx.orbyMesh.rayLines.length;i++){
+      nx.orbyMesh.rayLines[i].dispose();
+    }
+    nx.orbyMesh.rayLines = [];    
+  //FIRE-LZR - UP
+  if(mode==='green'){
+      // nx.orbyMesh.rayLines= [];
+  //    nx.orbyMesh.laserORIG.position = new BABYLON.Vector3(nx.lazerbox.position.x,12,nx.lazerbox.position.z)
+      nx.orbyMesh.laserTgtSphere.position = new BABYLON.Vector3(nx.orby.lazerBALL.position.x,nx.orby.lazerBALL.position.y+500,nx.orby.lazerBALL.position.z)
+      nx.orbyMesh.rayLines[0] = BABYLON.Mesh.CreateLines("ray1", [nx.orby.lazerBALL.position, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[0]);
+      nx.orbyMesh.rayLines[0].alpha = 0.8;//Math.cos(alpha2);//0.8
+      nx.orbyMesh.rayLines[1] = BABYLON.Mesh.CreateLines("ray2", [nx.orby.lazerBALL.position, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[1]);
+      nx.orbyMesh.rayLines[1].alpha = 0.8;//Math.cos(alpha2);//0.8
+      nx.orbyMesh.rayLines[2] = BABYLON.Mesh.CreateLines("ray3", [nx.orby.lazerBALL.position, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[2]);
+      nx.orbyMesh.rayLines[2].alpha = 0.8;//Math.cos(alpha2);//0.8
+      nx.orbyMesh.rayLines[0].color.g = 1;//Math.cos(alpha1);//1;
+      nx.orbyMesh.rayLines[0].color.r = nx.orbyMesh.rayLines[0].color.b = 0
+      nx.orbyMesh.rayLines[1].color.g = 1;//Math.cos(alpha1);//1;
+      nx.orbyMesh.rayLines[1].color.b = nx.orbyMesh.rayLines[1].color.r = 0
+      nx.orbyMesh.rayLines[2].color.g = 1;//Math.cos(alpha1);//1;
+      nx.orbyMesh.rayLines[2].color.r = nx.orbyMesh.rayLines[2].color.b = 0;        //yellow-green-laser-.
+  }else if(mode==='red'){
+    // nx.orbyMesh.rayLines= [];
+//    nx.orbyMesh.laserORIG.position = new BABYLON.Vector3(nx.lazerbox.position.x,12,nx.lazerbox.position.z)
+    nx.orbyMesh.laserTgtSphere.position = new BABYLON.Vector3(nx.orby.lazerBALL.position.x,nx.orby.lazerBALL.position.y+500,nx.orby.lazerBALL.position.z)
+    nx.orbyMesh.rayLines[0] = BABYLON.Mesh.CreateLines("ray1", [nx.orby.lazerBALL.position, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[0]);
+    nx.orbyMesh.rayLines[0].alpha = 0.8;//Math.cos(alpha2);//0.8
+    nx.orbyMesh.rayLines[1] = BABYLON.Mesh.CreateLines("ray2", [nx.orby.lazerBALL.position, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[1]);
+    nx.orbyMesh.rayLines[1].alpha = 0.8;//Math.cos(alpha2);//0.8
+    nx.orbyMesh.rayLines[2] = BABYLON.Mesh.CreateLines("ray3", [nx.orby.lazerBALL.position, nx.orbyMesh.laserTgtSphere.position], nx.scene, nx.orbyMesh.rayLines[2]);
+    nx.orbyMesh.rayLines[2].alpha = 0.8;//Math.cos(alpha2);//0.8
+    nx.orbyMesh.rayLines[0].color.g = 1;//Math.cos(alpha1);//1;
+    nx.orbyMesh.rayLines[0].color.r = nx.orbyMesh.rayLines[0].color.b = 0
+    nx.orbyMesh.rayLines[1].color.b = 1;//Math.cos(alpha1);//1;
+    nx.orbyMesh.rayLines[1].color.g = nx.orbyMesh.rayLines[1].color.r = 0
+    nx.orbyMesh.rayLines[2].color.r = 1;//Math.cos(alpha1);//1;
+    nx.orbyMesh.rayLines[2].color.g = nx.orbyMesh.rayLines[2].color.b = 0;        //yellow-green-laser-.
+  }else if(mode==='end'){
+    // for(var i=0; i<nx.orbyMesh.rayLines.length;i++){
+    //   nx.orbyMesh.rayLines[i].dispose();
+    // }
+    // nx.orbyMesh.rayLines = [];     
+  }
+
+}
+
+// }); //end-module-.
 
 
 

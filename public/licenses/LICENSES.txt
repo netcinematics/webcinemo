@@ -21,6 +21,9 @@ CC0 - "2015_2016 » LAURENT_Tiphany_2015_2016_explosion.wav" https://freesound.o
 CC0 - "Distant Boom.wav" https://freesound.org/people/Henrythetrain/sounds/142598/
 "SonicBoomTrack" derivative by Jac Falcon, NetCinematics.
 
+CC0 - "Waltz of Flowers" Tchaikovsky. Nutcracker Suite. http://www.orangefreesounds.com/waltz-of-the-flowers/
+"The song is permitted for commercial use under license public domain, non copyrighted."
+
 //3D-Mesh-------------------------------------------------------------------------------
 "worldbox.babylon" - created by Jack Falcon, NetCinematics, with Blender. MIT
 "skull.babylon" - Apache License 2.0, included.

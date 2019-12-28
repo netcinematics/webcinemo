@@ -924,7 +924,7 @@ nx.ui.showGameModeView()
 	     // nx.activeZonez = []; //CLEAR OUT ALL ZONES?
 
 
-            nx.zonez.camZoneFactory({name:'zoneSpaceTrain',pos:{x: -347, y: 2, z: 300},dim:{h:20,w:30,d:40},alpha:0.22,color:{r:1,g:0,b:1},
+            nx.zonez.camZoneFactory({name:'zoneSpaceTrain',pos:{x: -347, y: 2, z: 300},dim:{h:20,w:20,d:20},alpha:0.22,color:{r:1,g:0,b:1},
         		hit:function(){ //fires every frame-. //todo possibly dampen
         			if(this.wasHit){ //RUN-HIT-.
         				return;

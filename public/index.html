@@ -2465,6 +2465,23 @@ window.onload = function() { //Standard-ServiceWorker-Registration-.
           nx.mobile=0;
           console.log('rendering NON-MOBILE')
       }  
+
+      var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+      var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+//var ua = window.navigator.userAgent;
+//var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+//var webkit = !!ua.match(/WebKit/i);
+//var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+      if (isSafari || iOS) {
+          alert("Apple not supported. Use Chrome, or have a look anyway.");
+  //    } else if(webkit || iOSSafari) {
+   //       alert("Apple not supported. Use Chrome, or have a look anyway.");
+      } else {
+        //alert("Apple not supported. Use Chrome, or have a look anyway.");
+      }
+
+
+
   }
   nx.initDeviceDetectionStrategy();
 </script>
