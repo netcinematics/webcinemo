@@ -9,7 +9,7 @@ if(!nx){nx={}}
 /******************************-LOCALVARZ-**********************************/
 // if(!nx.sub){nx.sub={}}
 // nx.sub = {num0:0,num1:0} 
-nx.darkBot = {};
+nx.dBot = {};
 /******************************-MODULE-**********************************/
 //MODULE-READY-RENDERER-MECHANISMO-.
 nx.getMasterManifest(function readyRender (){ //Ready-Renderer-.
@@ -25,7 +25,8 @@ nx.initDarkBot = function(){
 
 // 
   // setTimeout(function(){
-      BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot16c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+      BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot17a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+      // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot16c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot15c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot14d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot13b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
@@ -140,9 +141,10 @@ nx.initDarkBotShadow = function(){
 
 }
 
+nx.dBot.stopHover = 1;
 nx.initDarkBotHover = function(){
 
-
+  if(nx.darkBot.hoverAlpha>0){return} //init once
   // nx.darkBot.hoverAlpha += 0.05; //orby-hover-.
   // nx.orbyMesh.position.y += 0.01 * Math.cos(nx.anmz.orby.hoverAlpha);
   // nx.rayLines1 = [];
@@ -157,7 +159,11 @@ nx.initDarkBotHover = function(){
   // nx.zapbotMesh1.delayOnTargeting = 500;
   // nx.zapbotMesh1.zapOffset = 
 
-  nx.scene.registerBeforeRender(function() { //hover, search and chase sequence-.
+  nx.scene.registerBeforeRender(function darkBotHover() { //hover, search and chase sequence-.
+
+      if(nx.dBot.stopHover===0){return}
+      if(nx.dBot.stopHover<0){nx.scene.unregisterBeforeRender(darkBotHover); return}
+
       //TODO NEED TO DAMPEN THIS-.
       //TODO if in frustum
       nx.darkBot.hoverAlpha += 0.05; //bot-hover-.
@@ -166,7 +172,101 @@ nx.initDarkBotHover = function(){
 
 }
 
+/******************************-DARKBOT-MEZMORAY-*****************************/
 
+// nx.dBot.mezmoLines = [];
+nx.dBot.startMezmoRays = function(fnEnd){
+
+// debugger;
+    nx.dBot.fnEndMezmo = fnEnd || function(){};
+
+    nx.dBot.lazerBALL1 = BABYLON.Mesh.CreateSphere("nx.dBot.lazerBALL1", 4, 0.5, nx.scene);
+    nx.dBot.lazerBALL1.position.copyFrom({x: -2, y: 2.35, z: -1.3})
+    // nx.dBot.lazerBALL1.setPivotPoint(new BABYLON.Vector3(0, 0, 0)); //spacewaverider pivot
+    nx.dBot.lazerBALL1.parent = nx.darkBot;
+    nx.dBot.lazerBALL1.visibility = 1
+
+    nx.dBot.lazerBALL2 = BABYLON.Mesh.CreateSphere("nx.dBot.lazerBALL2", 4, 0.5, nx.scene);
+    nx.dBot.lazerBALL2.position.copyFrom({x: 2, y: 2.45, z: -1.3})
+    nx.dBot.lazerBALL2.parent = nx.darkBot;
+    nx.dBot.lazerBALL2.visibility = 1
+
+
+
+
+    // return;
+      // nx.dBot.centerLazer = new BABYLON.Vector3(0, 0, 0);
+
+      nx.dBot.mezmoRayPts1 = [ //IDENTITY MATRIX-.
+        new BABYLON.Vector3(-15, 5, -15),
+        new BABYLON.Vector3(-15, 5, 0),
+        new BABYLON.Vector3(0, 5, -15),
+        new BABYLON.Vector3(-15, 8, -15),
+        new BABYLON.Vector3(0, 8, -15),
+        new BABYLON.Vector3(-15, 3, -15),
+        new BABYLON.Vector3(-15, 3, 0),
+        new BABYLON.Vector3(-15, 3, -15),
+      ];
+
+      nx.dBot.tempPnt = new BABYLON.Vector3.Zero();
+
+      nx.dBot.offRad = 1; //multiplier
+      nx.dBot.offY = 0;
+      nx.dBot.mezmoFactory = function(){
+        nx.dBot.mezmoRayLines = [];
+        for(var i=0; i<nx.dBot.mezmoRayPts1.length; i++){
+          nx.dBot.tempPnt.copyFrom({x:nx.dBot.mezmoRayPts1[i].x*nx.dBot.offRad,y:nx.dBot.mezmoRayPts1[i].y+nx.dBot.offY,z:nx.dBot.mezmoRayPts1[i].z*nx.dBot.offRad});
+          nx.dBot.tempPnt.copyFrom(nx.dBot.tempPnt.add(nx.dBot.lazerBALL1.position))
+          nx.dBot.mezmoRayLines.push([new BABYLON.Vector3(nx.dBot.lazerBALL1.position.x,nx.dBot.lazerBALL1.position.y,nx.dBot.lazerBALL1.position.z),
+            new BABYLON.Vector3(nx.dBot.tempPnt.x,nx.dBot.tempPnt.y,nx.dBot.tempPnt.z)]);
+        }
+        // return nx.dBot.mezmoRayLines;
+      } //end factory
+
+      if(!nx.dBot.mezmoRaySystem){
+        // debugger;
+          // nx.dBot.offY = 0;
+          // nx.dBot.mezmoRayLines = nx.dBot.mezmoFactory();
+          nx.dBot.mezmoFactory();
+          nx.dBot.mezmoRaySystem = BABYLON.MeshBuilder.CreateLineSystem("mezmoRaySystem", {lines: nx.dBot.mezmoRayLines,updatable:true}, nx.scene);
+          nx.dBot.mezmoRaySystem.color = BABYLON.Color3.Green();
+          nx.dBot.mezmoRaySystem.setPivotPoint(new BABYLON.Vector3(-2,2.35,-1.3)); //IMPORTANT same point as LIGHTBALL offset-.
+          nx.dBot.mezmoRaySystem.parent = nx.darkBot;
+      }
+      nx.dBot.mezmoAlpha=0;
+      nx.dBot.mezmoDamper=0;
+      nx.dBot.stopMezmoLazer = 0;
+      nx.scene.registerBeforeRender(function mezmoLazerRun() {
+        if(++nx.dBot.mezmoDamper%2===0){return}
+        if(nx.dBot.stopMezmoLazer<0){ nx.dBot.fnEndMezmo(); nx.scene.unregisterBeforeRender(mezmoLazerRun); return; }
+        nx.dBot.mezmoAlpha += 0.02;
+        nx.dBot.mezmoRaySystem.rotation.z = nx.dBot.mezmoAlpha;
+
+        // if(nx.dBot.offRad>0){
+        //   nx.dBot.offRad = (nx.dBot.offY<20)?1:nx.dBot.offRad - 0.02; //multiplier
+        //   nx.dBot.offY += 0.4;
+        //   nx.dBot.mezmoFactory();
+        //   // nx.dBot.mezmoRayLines = nx.dBot.mezmoFactory();
+        //   nx.dBot.mezmoRaySystem = BABYLON.MeshBuilder.CreateLineSystem("mezmoRaySystem", {lines: nx.dBot.mezmoRayLines,instance:nx.dBot.mezmoRaySystem});
+        //   if(nx.dBot.offRad===1){
+        //     nx.dBot.mezmoRaySystem.color = BABYLON.Color3.Green();
+        //   }else{
+        //     nx.dBot.mezmoRaySystem.color = BABYLON.Color3.Blue();
+        //   }
+        // } else { //signal DONE-.
+        //   nx.dBot.stopMezmoLazer=-1
+        //   // debugger;
+        //   nx.dBot.mezmoRaySystem.dispose();
+        // }
+    });
+}
+
+nx.dBot.endMezmoRays = function(mode){
+    // for(var i=0; i<nx.dBot.mezmoLines.length;i++){
+    //   nx.dBot.mezmoLines[i].dispose();
+    // }
+    // nx.dBot.mezmoLines = [];    
+}
 
 
 

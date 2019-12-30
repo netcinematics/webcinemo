@@ -320,7 +320,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         nx.runCinematicSequence("ScanTrainSequence"); //Pattern to start sequence (at zero frame)-.
 
     },runfn:function(){},endfn:function(){}},
-    9:{seqID:9,name:'FinalSeq',initfn:function(){
+    // 9:{seqID:9,name:'FinalSeq',initfn:function(){
+    'aFinalSequence':{seqID:'aFinalSequence',name:'aFinalSequence',initfn:function(){
         // nx.endSEQ(nx.masterSequence[nx.masterIDX]); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.endSEQ(nx.activeSEQ); //stop prior epic. TODO switch this to nx.currentSEQ
         nx.cinematicMode=0;//Start new cinematic-. 1 keeps two movies from running-.
@@ -337,6 +338,8 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
     },runfn:function(){},endfn:function(){}},
 // ]
 }
+
+//TODO change runCinematicSequence into GENERIC (simple) runCINEMO and runGAMEO
 
 //TEMPLATE-EPIC-.
 // nx.SEQZ = {
@@ -5497,11 +5500,11 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                                 nx.scene.activeCamera.rotationOffset = 0;
                             },
                         }); 
-                        nx.ui.flashCanvasMSG({txt:"You need 100 SpaceIonz",txtIcon:'azod',txtAlign:'right',dur:3000,
+                        nx.ui.flashCanvasMSG({txt:"You need 100 SpaceIonz",txtIcon:'azod',txtAlign:'right',dur:4000,
                         });  
-                        nx.ui.flashCanvasMSG({txt:"Then question Darkbot",txtIcon:'azod',txtAlign:'right',dur:3000,
+                        nx.ui.flashCanvasMSG({txt:"Then question Darkbot",txtIcon:'azod',txtAlign:'right',dur:4000,
                         });  
-                        nx.ui.flashCanvasMSG({txt:"He is an old friend",txtIcon:'azod',txtAlign:'right',dur:3000,
+                        nx.ui.flashCanvasMSG({txt:"He is an old friend",txtIcon:'azod',txtAlign:'right',dur:2000,
                             txtEnd:function(){ 
                                 nx.orby.endRainbowRays('red');
                                 setTimeout(function(){
@@ -5509,7 +5512,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                                   setTimeout(function(){
                                     nx.scanTrainSeqIdx[NUM+1] = {on:1}; //NEXT-Frame-. 
                                   },2000)
-                                },2000)
+                                },4000)
                             }
                         });  
 
@@ -5653,7 +5656,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                     nx.scanTrainSeqIdx[NUM].runAnm = 1;
                     if(!nx.scanTrainSeqIdx[NUM].nxtPOS){  //END-ANM 
                         nx.scanTrainSeqIdx[NUM].on=0; //important
-                        nx.initSEQ({seqID:9})//FINALSEQUENCE
+                        nx.initSEQ({seqID:'aFinalSequence'})//FINALSEQUENCE
                         // nx.scanTrainSeqIdx[NUM+1] = {on:1}; //NEXT-Frame-. 
                         return; //END-SUB-SEQUENCES-.
                     } 
@@ -5722,6 +5725,131 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
 // debugger;
                 nx.scene.finalSequenceFlag = 1; //Scene state var to suppress zoneCam
 
+
+//TXT
+//Little Bot
+//So far from home
+//AlphaMoon is offgrid now!
+//You must FREESURF elsewhere!
+
+                //Prepare Botz
+                nx.kiloBotMesh1.position.copyFrom({x: 0, y: 5, z: 0})
+                nx.zapbotMesh2.position.copyFrom({x: 0, y: 5, z: 0})
+
+
+                nx.darkBot.position.copyFrom({x: 23, y: 260.5, z: -23});
+                nx.darkBot.rotation.y = -0.7;
+
+
+                nx.finalSeqIdx[NUM].on = 0;
+                nx.finalSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
+
+//But!
+//You are MEZMERIZED.
+//There is NO ALPHAMOON!
+//There is NO ALPHAMOON?
+//You do NOT KNOW ALPHAMOON.
+//I do not know AlphaMoon?
+//(eyes move)
+//Are you MEZMERIZED?
+//Well, no. But...
+//Dratz!
+//Kilo, Mega, Terra...
+//Zap Him!
+//Noooo!
+//Use Ionz.
+//BOOM!
+//I am not FREESURFING!
+//A MISSION for AEON.
+//What???
+//Zawd escaped prison
+//On that wrecked SPACETRAIN.
+//I am here to find Zawd
+//and deliver a MESSAGE.
+//Stay out of sight
+//Prinz Darc records everything
+//Who?
+//Prinz Darc crashed the train,
+//He controls this Moon.
+//Even me.
+//That is why AlphaMoon is off grid?
+//Yes.
+//And Zapbots on AlphaMoon?
+//Yes.
+//Dark builds a ZapBot Army
+//On the dark side of this moon
+//No!
+//And why you must GO NOW!
+//I have a MISSION to COMPLETE.
+//If you dont GO, 
+//Darc will CONTROL YOU.
+//Just like me.
+//Wait!
+//Look North.
+//For the ESCAPE~POD.
+//Then GO.
+//Tell AEON, WAR on AlphaMoon.
+
+
+//
+//AEON here.
+// only a prison guard
+//Orby!
+// tracks leading away.
+// Darc is building an army
+// on the dark side of AlphaMoon
+// What???
+//Zawd is in grave danger
+//Quickly!
+//Deliver the MESSAGE!
+//SANDSTORM
+//Oh no!
+//Not good.
+//FREEZING!
+
+
+//MAXADRAT - talking vagabon
+//Leads Orby to a Cave
+//warms him, above a GreenIon Fire.
+
+//Who are you?
+//I am a father
+//looking for my son
+// AMAXA DRAT
+// OrbyOrbot
+// What is a Drat?
+// Dynamically Enhanced
+// Space Rat.
+// Oh?
+// I farm.
+// What is an Orbot?
+// Ordinary Robot.
+// On a SpaceBoard?
+// Yes.
+//How do you speak?
+//Ha, ha. Funny.
+//How do you speak?
+// I dont know.
+// My son was lost,
+// in a SANDSTORM,
+// fighting the BOTZ.
+// I try to find him but,
+// the dunes stop me.
+// I search that way too.
+// On a SECRET MISSION.
+// After the STORM
+// You can ride along
+// You'll help me?
+// Orby help AMAXA DRAT.
+// Thank you!
+
+
+
+
+            }//end frame
+            else if(nx.finalSeqIdx[1] && nx.finalSeqIdx[1].on){ var NUM = 1; //nx.finalSeqIdx[NUM].on=0;
+                
+
                 //POSROT ANM-PATH SEQUENCE FRAME:
                 // if(nx.finalSeqIdx[3] && nx.finalSeqIdx[3].on){ var NUM = 3;
                 if(!nx.finalSeqIdx[NUM].init){ nx.finalSeqIdx[NUM].init=1; //one time init
@@ -5729,10 +5857,8 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                     nx.scene.activeCamera.position.copyFrom({x: 50, y: 270, z: -50}); //CAMPOS: frontview darkbot
                     nx.scene.activeCamera.setTarget(new BABYLON.Vector3(25, 265, -25)); //CAMTGT
 
-                    nx.ui.flashCanvasMSG({txt:'Chapter 3: A Final Warning',dur:2000,txtInit:function(){
-                    }}); 
-
-                    nx.zapbotMesh2.position.copyFrom({x: 0, y: 5, z: 0})
+                    //TODO:
+                   
 
 
                     // nx.camz.freeCam.position.copyFrom({x: 125.91809305164549, y: 252.910231776879, z: -113.34096907171961}); 
@@ -5742,7 +5868,8 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                     //initialize-path and edit-.
                     // nx.finalSeqIdx[NUM].confronting1 =  [{"pos":{"x":-20.53,"y":262.5,"z":20.47},"rot":{"x":-0.05,"y":-0.46,"z":0.08,"w":0.88}},{"pos":{"x":-19.56,"y":262.5,"z":19.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-18.59,"y":262.5,"z":19.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-17.62,"y":262.5,"z":18.35},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-16.65,"y":262.5,"z":17.64},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-15.68,"y":262.5,"z":16.94},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-14.71,"y":262.5,"z":16.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-13.74,"y":262.5,"z":15.52},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-12.77,"y":262.5,"z":14.82},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-11.72,"y":262.5,"z":14.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-10.58,"y":262.5,"z":13.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-9.45,"y":262.5,"z":12.4},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-8.32,"y":262.5,"z":11.58},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-7.19,"y":262.5,"z":10.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-6.06,"y":262.5,"z":9.93},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-4.92,"y":262.5,"z":9.11},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-3.79,"y":262.5,"z":8.28},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-2.66,"y":262.5,"z":7.46},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-1.53,"y":262.5,"z":6.64},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-0.4,"y":262.5,"z":5.81},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":0.74,"y":262.5,"z":4.99},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":1.87,"y":262.5,"z":4.17},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":3,"y":262.5,"z":3.34},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":4.13,"y":262.5,"z":2.52},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":5.26,"y":262.5,"z":1.69},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":6.39,"y":262.5,"z":0.87},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":7.53,"y":262.5,"z":0.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":8.66,"y":262.5,"z":-0.78},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":9.79,"y":262.5,"z":-1.6},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":10.92,"y":262.5,"z":-2.43},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":12.05,"y":262.5,"z":-3.25},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":13.19,"y":262.5,"z":-4.07},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":14.32,"y":262.5,"z":-4.9},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":15.45,"y":262.5,"z":-5.72},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":16.58,"y":262.5,"z":-6.55},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":17.71,"y":262.5,"z":-7.37},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":18.85,"y":262.5,"z":-8.19},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":19.98,"y":262.5,"z":-9.02},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":21.11,"y":262.5,"z":-9.84},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":22.24,"y":262.5,"z":-10.66},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}}];
                     // nx.finalSeqIdx[NUM].confronting1 =  [{"pos":{"x":-24.53,"y":262.5,"z":20.47},"rot":{"x":-0.05,"y":-0.46,"z":0.08,"w":0.88}},{"pos":{"x":-23.56,"y":262.5,"z":19.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-22.59,"y":262.5,"z":19.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-21.62,"y":262.5,"z":18.35},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-20.65,"y":262.5,"z":17.64},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-19.68,"y":262.5,"z":16.94},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-18.71,"y":262.5,"z":16.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-17.75,"y":262.5,"z":15.52},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-16.77,"y":262.5,"z":14.82},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-15.72,"y":262.5,"z":14.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-14.58,"y":262.5,"z":13.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-13.45,"y":262.5,"z":12.4},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-12.32,"y":262.5,"z":11.58},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-11.2,"y":262.5,"z":10.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-10.06,"y":262.5,"z":9.93},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-8.92,"y":262.5,"z":9.11},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-7.79,"y":262.5,"z":8.27},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-6.66,"y":262.5,"z":7.46},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-5.53,"y":262.5,"z":6.64},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-4.41,"y":262.5,"z":5.81},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-3.26,"y":262.5,"z":4.99},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-2.13,"y":262.5,"z":4.17},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-1,"y":262.5,"z":3.34},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":0.12,"y":262.5,"z":2.52},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":1.25,"y":262.5,"z":1.69},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":2.38,"y":262.5,"z":0.87},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":3.53,"y":262.5,"z":0.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":4.66,"y":262.5,"z":-0.78},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":5.78,"y":262.5,"z":-1.6},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":6.92,"y":262.5,"z":-2.44},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":8.05,"y":262.5,"z":-3.25},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":9.19,"y":262.5,"z":-4.08},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":10.32,"y":262.5,"z":-4.91},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":11.45,"y":262.5,"z":-5.72},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":12.57,"y":262.5,"z":-6.55},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":13.71,"y":262.5,"z":-7.37},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":14.85,"y":262.5,"z":-8.19},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":15.98,"y":262.5,"z":-9.02},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":17.11,"y":262.5,"z":-9.84},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":18.23,"y":262.5,"z":-10.66},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}}];
-                    nx.finalSeqIdx[NUM].confronting1 =  [{"pos":{"x":-21.53,"y":262.5,"z":17.47},"rot":{"x":-0.05,"y":-0.46,"z":0.08,"w":0.88}},{"pos":{"x":-20.56,"y":262.5,"z":16.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-19.59,"y":262.5,"z":16.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-18.62,"y":262.5,"z":15.35},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-17.65,"y":262.5,"z":14.64},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-16.68,"y":262.5,"z":13.94},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-15.71,"y":262.5,"z":13.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-14.75,"y":262.5,"z":12.52},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-13.77,"y":262.5,"z":11.82},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-12.72,"y":262.5,"z":11.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-11.58,"y":262.5,"z":10.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-10.45,"y":262.5,"z":9.4},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-9.32,"y":262.5,"z":8.58},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-8.2,"y":262.5,"z":7.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-7.07,"y":262.5,"z":6.93},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-5.92,"y":262.5,"z":6.1},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-4.79,"y":262.5,"z":5.27},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-3.66,"y":262.5,"z":4.46},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-2.54,"y":262.5,"z":3.63},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-1.42,"y":262.5,"z":2.8},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-0.26,"y":262.5,"z":1.99},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":0.87,"y":262.5,"z":1.17},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":2,"y":262.5,"z":0.33},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":3.12,"y":262.5,"z":-0.48},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":4.25,"y":262.5,"z":-1.31},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":5.38,"y":262.5,"z":-2.13},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":6.52,"y":262.5,"z":-2.95},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":7.66,"y":262.5,"z":-3.79},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":8.77,"y":262.5,"z":-4.6},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":9.92,"y":262.5,"z":-5.44},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":11.05,"y":262.5,"z":-6.25},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":12.19,"y":262.5,"z":-7.08},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":13.32,"y":262.5,"z":-7.91},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":14.45,"y":262.5,"z":-8.73},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":15.57,"y":262.5,"z":-9.56},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":16.71,"y":262.5,"z":-10.38},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":17.85,"y":262.5,"z":-11.19},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":18.98,"y":262.5,"z":-12.02},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":20.11,"y":262.5,"z":-12.84},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":21.23,"y":262.5,"z":-13.66},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}}];
+                    // nx.finalSeqIdx[NUM].confronting1 =  [{"pos":{"x":-21.53,"y":262.5,"z":17.47},"rot":{"x":-0.05,"y":-0.46,"z":0.08,"w":0.88}},{"pos":{"x":-20.56,"y":262.5,"z":16.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-19.59,"y":262.5,"z":16.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-18.62,"y":262.5,"z":15.35},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-17.65,"y":262.5,"z":14.64},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-16.68,"y":262.5,"z":13.94},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-15.71,"y":262.5,"z":13.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-14.75,"y":262.5,"z":12.52},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-13.77,"y":262.5,"z":11.82},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-12.72,"y":262.5,"z":11.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-11.58,"y":262.5,"z":10.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-10.45,"y":262.5,"z":9.4},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-9.32,"y":262.5,"z":8.58},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-8.2,"y":262.5,"z":7.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-7.07,"y":262.5,"z":6.93},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-5.92,"y":262.5,"z":6.1},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-4.79,"y":262.5,"z":5.27},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-3.66,"y":262.5,"z":4.46},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-2.54,"y":262.5,"z":3.63},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-1.42,"y":262.5,"z":2.8},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-0.26,"y":262.5,"z":1.99},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":0.87,"y":262.5,"z":1.17},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":2,"y":262.5,"z":0.33},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":3.12,"y":262.5,"z":-0.48},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":4.25,"y":262.5,"z":-1.31},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":5.38,"y":262.5,"z":-2.13},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":6.52,"y":262.5,"z":-2.95},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":7.66,"y":262.5,"z":-3.79},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":8.77,"y":262.5,"z":-4.6},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":9.92,"y":262.5,"z":-5.44},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":11.05,"y":262.5,"z":-6.25},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":12.19,"y":262.5,"z":-7.08},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":13.32,"y":262.5,"z":-7.91},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":14.45,"y":262.5,"z":-8.73},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":15.57,"y":262.5,"z":-9.56},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":16.71,"y":262.5,"z":-10.38},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":17.85,"y":262.5,"z":-11.19},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":18.98,"y":262.5,"z":-12.02},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":20.11,"y":262.5,"z":-12.84},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":21.23,"y":262.5,"z":-13.66},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}}];
+                    nx.finalSeqIdx[NUM].confronting1 =  [{"pos":{"x":-21.53,"y":262.5,"z":17.47},"rot":{"x":-0.05,"y":-0.46,"z":0.08,"w":0.88}},{"pos":{"x":-20.56,"y":262.5,"z":16.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-19.59,"y":262.5,"z":16.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-18.62,"y":262.5,"z":15.35},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-17.65,"y":262.5,"z":14.64},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-16.68,"y":262.5,"z":13.94},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-15.71,"y":262.5,"z":13.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-14.75,"y":262.5,"z":12.52},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-13.77,"y":262.5,"z":11.82},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-12.72,"y":262.5,"z":11.05},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-11.58,"y":262.5,"z":10.23},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-10.45,"y":262.5,"z":9.4},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-9.32,"y":262.5,"z":8.58},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-8.2,"y":262.5,"z":7.76},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-7.07,"y":262.5,"z":6.93},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-5.92,"y":262.5,"z":6.1},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-4.79,"y":262.5,"z":5.27},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-3.66,"y":262.5,"z":4.46},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-2.54,"y":262.5,"z":3.63},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-1.42,"y":262.5,"z":2.8},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":-0.26,"y":262.5,"z":1.99},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":0.87,"y":262.5,"z":1.17},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":2,"y":262.5,"z":0.33},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":3.12,"y":262.5,"z":-0.48},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":4.25,"y":262.5,"z":-1.31},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":5.38,"y":262.5,"z":-2.13},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":6.52,"y":262.5,"z":-2.95},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":7.66,"y":262.5,"z":-3.79},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":8.77,"y":262.5,"z":-4.6},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":9.92,"y":262.5,"z":-5.44},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":11.05,"y":262.5,"z":-6.25},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":12.19,"y":262.5,"z":-7.08},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}},{"pos":{"x":13.32,"y":262.5,"z":-7.91},"rot":{"x":0,"y":-0.46,"z":0,"w":0.89}}];
                     // var instPath = nx.createPathEditor({aName:'confronting1', ANMPath:nx.finalSeqIdx[NUM].confronting1}); //-WORKING-PATH-EDITOR-.
                 } //end init sequence-.
                 if(!nx.finalSeqIdx[NUM].initAnm){  //init next path point
@@ -5782,26 +5909,104 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
 
                 
             }//end frame
-            else if(nx.finalSeqIdx[1] && nx.finalSeqIdx[1].on){ var NUM = 1; nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[2] && nx.finalSeqIdx[2].on){ var NUM = 2; nx.finalSeqIdx[NUM].on=0;
                 
                 //METHODOLOGY: cinematics frontView, sideView, heroView, birdEyeView, longView, PAIRVIEW, GROUPVIEW-.
                 nx.scene.activeCamera.position.copyFrom({x: 15, y: 266, z: -41}); //CAMPOS: sideview darkbot zscope1
                 nx.scene.activeCamera.setTarget(nx.BV32({x: 16, y: 266, z: -36.8})) //CAMTGT: 
 
-                nx.ui.flashCanvasMSG({txt:"Where is Zawd?",txtIcon:'orby',dur:2000,
-                    txtInit:function(){  },
-                    txtEnd:function(){  }
-                }); 
 
-                // nx.ui.flashCanvasMSG({txt:"I don't know,",txtIcon:'darkbot',txtAlign:'right',dur:2000,
-                nx.ui.flashCanvasMSG({txt:"How should I know.",txtIcon:'darkbot',txtAlign:'right',dur:2000,
-                    txtInit:function(){  },
-                    txtEnd:function(){ 
-                        nx.finalSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
-                    }
-                }); 
+                //ANMSCRIPT: precise syntax to result in flexible, extensible, reusable, time~relative, liquid animations.
+                //nx.anm.darkBot.mezmerize() //ANM-ATOMZ
+
+                //TODO rename nx.ui.flashTXT() nx.ui.flashMain()  nx.ui.flashTitle nx.ui.flashChapter nx.ui.flashMission-. nx.ui.flashMSG-.
+                nx.ui.flashCanvasMSG({txt:"Little Bot, far from home",txtIcon:'darkbot',dur:4000,txtInit:function(){
+                    nx.anm.zoomCam1();
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"AlphaMoon is OFFGRID!",txtIcon:'darkbot',dur:3000,txtInit:function(){
+                },txtEnd:function(){
+nx.scene.activeCamera.position.copyFrom({x: 3.968097052342768, y: 261.90380344016035, z: 18.883871374518645})//campos1
+nx.scene.activeCamera.setTarget(nx.BV32(nx.darkBot.position)) //CAMTGT: 
+nx.anm.darkBot.flipAround();
+                    
+                }});
+                nx.ui.flashCanvasMSG({txt:"FREESURF Elsewhere!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"But, Darkbot... wait!",txtIcon:'orby',dur:3000,txtInit:function(){
+                    nx.anm.finalCam2()
+                },txtEnd:function(){} }); 
+
+
+// nx.scene.activeCamera.setTarget(nx.BV32(nx.darkBot.position)) //CAMTGT: 
+
+// nx.scene.activeCamera.position.copyFrom({x: -11.8183699297542, y: 261.9038034402584, z: 4.685938709047795})//campos2
+
+                nx.ui.flashCanvasMSG({txt:"MEZMORIZE!!!",txtIcon:'darkbot',dur:3000,txtInit:function(){
+                    nx.anm.darkBot.mezmerize();
+                    
+                },txtEnd:function(){}});
+return;
+                nx.ui.flashCanvasMSG({txt:"There is NO AlphaMoon!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"There is no AlphaMoon?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"You did NOT see Darkbot!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"I didn't see Darkbot?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Are you NOT MEZMORIZED?!?",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Well, no. But...",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Dratz!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Junk!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Kilo, Mega, Terra!",txtIcon:'darkbot',dur:6000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Zap him.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Noooo!!!",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Use Ionz",txtIcon:'azod',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"BOOM!",dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"It's NOT FREESURFING.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"I'm on a MISSION from AEON!",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"What?!?",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Zawd escaped on that SPACETRAIN.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Aeon sent me to find him,",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"and deliver a MESSAGE.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"You are in DANGER!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Darc controls AlphaMoon.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Who?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Prinz Darc crashed the SPACEPATROL",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"He moved AlphaMoon OFFGRID?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Yes.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"And those are Darc's ZapBots?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Yes, but more.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Prinz Darc...",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"builds a ZapBotArmy,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"on the dark side of AlphaMoon.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"No!!!",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Little bot, GO NOW!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Tell AEON,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"it is already a WAR.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"But I must...",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"finish the MISSION,",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"and find Zawd.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"If you do not GO,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Darc will CORRUPT YOU,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"to Forever~Labor. Like me.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Wait!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Look North...",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"for an ESCAPE~POD.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Then you MUST Save Yourself.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"GO!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+
+
+
+
+                // nx.ui.flashCanvasMSG({txt:"Where is Zawd?",txtIcon:'orby',dur:2000,
+                //     txtInit:function(){  },
+                //     txtEnd:function(){  }
+                // }); 
+                // // nx.ui.flashCanvasMSG({txt:"I don't know,",txtIcon:'darkbot',txtAlign:'right',dur:2000,
+                // nx.ui.flashCanvasMSG({txt:"i dont know.",txtIcon:'darkbot',txtAlign:'right',dur:2000,
+                //     txtInit:function(){  },
+                //     txtEnd:function(){ 
+                //         nx.finalSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
+                //     }
+                // }); 
             }//end frame
-            else if(nx.finalSeqIdx[2] && nx.finalSeqIdx[2].on){ var NUM = 2; nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[3] && nx.finalSeqIdx[3].on){ var NUM = 3; nx.finalSeqIdx[NUM].on=0;
                 // nx.initFreeCam(); 
                 //METHODOLOGY: cinematics frontView, sideView, heroView, birdEyeView, longView, PAIRVIEW, GROUPVIEW-.
                 nx.scene.activeCamera.position.copyFrom({x: 20.55963344538219, y: 263.81614691268715, z: -31.47744778076308}); //CAMPOS: zscope2
@@ -5834,7 +6039,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                     }
                 }); 
             }//end frame
-            else if(nx.finalSeqIdx[3] && nx.finalSeqIdx[3].on){ var NUM = 3; nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[4] && nx.finalSeqIdx[4].on){ var NUM = 4; nx.finalSeqIdx[NUM].on=0;
                 // nx.initFreeCam(); 
                 //METHODOLOGY: cinematics frontView, sideView, heroView, birdEyeView, longView, PAIRVIEW, GROUPVIEW-.
                 nx.scene.activeCamera.position.copyFrom({x: 20.40128581284473, y: 264.70539579989634, z: -23.66391276021648}); //CAMPOS: sideview zscope 4
@@ -5852,7 +6057,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                     }
                 }); 
             }//end frame
-            else if(nx.finalSeqIdx[4] && nx.finalSeqIdx[4].on){ var NUM = 4; nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[5] && nx.finalSeqIdx[5].on){ var NUM = 5; nx.finalSeqIdx[NUM].on=0;
                 // nx.initFreeCam(); 
                 //METHODOLOGY: cinematics frontView, sideView, heroView, birdEyeView, longView, PAIRVIEW, GROUPVIEW-.
                 nx.scene.activeCamera.position.copyFrom({x: 20.622311576562176, y: 264.59912429481346, z: -21.04874184492707}); //CAMPOS: zscope5
@@ -5884,14 +6089,14 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                 //     }
                 // }); 
             }//end frame
-            else if(nx.finalSeqIdx[5] && nx.finalSeqIdx[5].on){ var NUM = 5; nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[6] && nx.finalSeqIdx[6].on){ var NUM = 6; nx.finalSeqIdx[NUM].on=0;
                 //animate eye
                     setTimeout(function(){
                         nx.finalSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
 
                     },3000)
             }//end frame
-            else if(nx.finalSeqIdx[6] && nx.finalSeqIdx[6].on){ var NUM = 6; //nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[7] && nx.finalSeqIdx[7].on){ var NUM = 7; //nx.finalSeqIdx[NUM].on=0;
                 // nx.initFreeCam(); 
                 //METHODOLOGY: cinematics frontView, sideView, heroView, birdEyeView, longView, PAIRVIEW, GROUPVIEW-.
 
@@ -5961,7 +6166,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
             //anmethodology: sequential anmframes-.
             // else 
             // if(nx.finalSeqIdx[7] && nx.finalSeqIdx[7].on){ var NUM = 7; nx.finalSeqIdx[NUM].on=0;
-            if(nx.finalSeqIdx[7] && nx.finalSeqIdx[7].on){ nx.finalSeqIdx[7].on=0;
+            if(nx.finalSeqIdx[8] && nx.finalSeqIdx[8].on){ nx.finalSeqIdx[8].on=0;
 
 
                 //todo sonic BZZZRT.
@@ -6020,7 +6225,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
 
                 //ANM: down the pyramid
             }//end frame
-            else if(nx.finalSeqIdx[8] && nx.finalSeqIdx[8].on){ var NUM = 8; nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[9] && nx.finalSeqIdx[9].on){ var NUM = 9; nx.finalSeqIdx[NUM].on=0;
                 //ANM: past the spacetrain and toward the edge
 
 
@@ -6055,7 +6260,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
 
                         // nx.finalSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
             }//end frame
-            else if(nx.finalSeqIdx[9] && nx.finalSeqIdx[9].on){ var NUM = 9; //nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[10] && nx.finalSeqIdx[10].on){ var NUM = 10; //nx.finalSeqIdx[NUM].on=0;
                 //ANM: up and fwd and rot and dwn
                 if(!nx.finalSeqIdx[NUM].init){ nx.finalSeqIdx[NUM].init=1; //one time init
 
@@ -6206,7 +6411,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
 
                         // nx.finalSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
             }//end frame
-            else if(nx.finalSeqIdx[10] && nx.finalSeqIdx[10].on){ var NUM = 10; //nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[11] && nx.finalSeqIdx[11].on){ var NUM = 11; //nx.finalSeqIdx[NUM].on=0;
                 //ANM: up and fwd and rot and dwn
                 if(!nx.finalSeqIdx[NUM].init){ nx.finalSeqIdx[NUM].init=1; //one time init
 
@@ -6376,7 +6581,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
 
                         // nx.finalSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
             }//end frame
-            else if(nx.finalSeqIdx[11] && nx.finalSeqIdx[11].on){ var NUM = 11; nx.finalSeqIdx[NUM].on=0;
+            else if(nx.finalSeqIdx[12] && nx.finalSeqIdx[12].on){ var NUM = 12; nx.finalSeqIdx[NUM].on=0;
                 //ANM: past the spacetrain and toward the edge
                 nx.ui.flashCanvasMSG({txt:"~END~",dur:8000,persist:true,
                     txtInit:function(){ },

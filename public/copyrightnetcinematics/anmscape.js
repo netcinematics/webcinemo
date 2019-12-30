@@ -298,6 +298,11 @@ var createFPSUI = function(){
 nx.mats = []
 var createDefaultMaterials = function(){
 
+    //todo put reusable materials into nx.matz-.
+    //TODO: move to bots or UTILITY, AND do TERRAINCLRS
+
+
+
     //METAL-MATERIAL-COLORS-.
     var mat = new BABYLON.StandardMaterial('darkMetal', nx.scene);
     mat.diffuseColor = new BABYLON.Color3(0.4,0.4,0.4);
@@ -312,7 +317,6 @@ var createDefaultMaterials = function(){
     mat.diffuseColor = new BABYLON.Color3(0.9,0.8,0.75);
     nx.mats['lighterMetal'] = mat;
 
-    //todo put reusable materials into nx.matz-.
 
     //RANDOM-SPACE-TEXTURE-.
     nx.defaultMat1 = new BABYLON.StandardMaterial("defaultmat1", nx.scene);
@@ -446,6 +450,7 @@ var loadBabylon = function() {
             load.js('./copyrightnetcinematics/nxv4/modMenu1.js') 
             // load.js('./copyrightnetcinematics/modSonicz1.js')  //to nxv4DONE
             load.js('./copyrightnetcinematics/nxv4/modSonicz2.js')  
+            load.js('./copyrightnetcinematics/nxv4/modAnmz2.js')  
       }).then(function(){
         setTimeout(function(){ 
             createWorld(); 
@@ -710,8 +715,9 @@ nx.createMasterStart = function(){
         // nx.initSEQ({seqID:'sneakSEQ'}); //softload Landing Seq!
         // nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
         // nx.initSEQ({seqID:'crashSequence'})//CRASHSEQUENCE
-        nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE
-        // nx.initSEQ({seqID:'affirmSequence'})//AFFIRMATIONSEQUENCE
+        // nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE
+        // nx.initSEQ({seqID:'affirmSequence'})//AFFIRMATIONSEQUENCE space junk
+        nx.initSEQ({seqID:'aFinalSequence'})//zaphimSEQUENCE
         //---------------------------------------------------------------------------------
         
         
