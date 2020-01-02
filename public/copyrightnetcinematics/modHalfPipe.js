@@ -148,9 +148,9 @@ var createZapBotPosts = function(){ //commandposts station
                 //TODO these LOOPZ are slowing things down-. PUT INTO SCRIPT not LOOPZ
                 nx.scene.registerBeforeRender(function botPositionLoop1() {  //BOT-POSITION-LOOP-ZONE-ALARM-.
                     if(nx.orbyMesh && nx.orbyMesh.position.y < 1222){
-                        nx.zapBotMesh2.position.copyFrom({x:94,y:992,z:-1462});
-                        nx.zapBotMesh2.rotation.x = 0.2;
-                        nx.zapBotMesh2.rotation.y = 2;
+                        nx.zapbotTerra2.position.copyFrom({x:94,y:992,z:-1462});
+                        nx.zapbotTerra2.rotation.x = 0.2;
+                        nx.zapbotTerra2.rotation.y = 2;
                         nx.scene.unregisterBeforeRender(botPositionLoop1);
                         //todo clean up other memory
                         initBotPOS(2);
@@ -161,9 +161,9 @@ var createZapBotPosts = function(){ //commandposts station
             else if(idx===2){
                 nx.scene.registerBeforeRender(function botPositionLoop2() {  //BOT-POSITION-LOOP-ZONE-ALARM-.
                     if(nx.orbyMesh && nx.orbyMesh.position.x > 430 && nx.orbyMesh.position.y >860){
-                        nx.zapBotMesh2.position.copyFrom({x:624,y:850,z:-588});
-                        // nx.zapBotMesh2.rotation.x = 0.2;
-                        nx.zapBotMesh2.rotation.y = 0.8;
+                        nx.zapbotTerra2.position.copyFrom({x:624,y:850,z:-588});
+                        // nx.zapbotTerra2.rotation.x = 0.2;
+                        nx.zapbotTerra2.rotation.y = 0.8;
                         nx.scene.unregisterBeforeRender(botPositionLoop2);
                         //todo clean up other memory
                         // initBotPOS(2);

@@ -149,11 +149,126 @@ nx.anm.orbyCloseUp = function(){
 	    },complete:function(){}
 	});
 }
+nx.anm.orbyCloseUp2 = function(){
 
-nx.anm.zapBotIntros = function(){
-	
-};
 
+    var rCur=0,rLast=0,rAdd=0; //TRICKY-ROTATION-SYNTAX-. rCur-rLast = rAdd, for animated-rotations-.
+    $({ry:nx.orbyMesh.rotation.y})
+    .animate({ry:-1}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+        step:function(now) { 
+            if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+            rCur = this.ry; rAdd = rCur-rLast; rLast = rCur; //TRICKY-ROTATION-SYNTAX-.
+            nx.orbyMesh.rotation.y = rAdd;
+            console.log('ROT orby',rAdd)
+            // nx.orbyMesh.rotation.y = this.ry;
+        },complete:function(){}
+    });
+
+
+	nx.scene.activeCamera.position.copyFrom({x: 33.66187692892416, y: 270.8647460809518, z: -42.5054591322443})
+	nx.scene.activeCamera.setTarget(nx.BV32({x: 7.6484554777684215, y: 266.69786997352037, z: -10.736219571946753})) //CAMTGT: 
+    $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
+    .animate({cx:27.4,cy:269,cz:-34.85}
+    ,{queue:false,duration:2000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { //CAM POS
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.scene.activeCamera.position.x = this.cx;
+	        nx.scene.activeCamera.position.y = this.cy;
+	        nx.scene.activeCamera.position.z = this.cz;
+			nx.scene.activeCamera.setTarget(nx.BV32({x: 7.6484554777684215, y: 266.69786997352037, z: -10.736219571946753})) //CAMTGT: 
+	    },complete:function(){}
+	});
+}
+nx.anm.zapBotConvergence = function(){
+	nx.kiloBotMesh1.startShocking()
+	nx.zapbotMega.startShocking()
+	nx.zapbotTerra2.startShocking()
+
+    $({cx:nx.kiloBotMesh1.position.x,cy:nx.kiloBotMesh1.position.y,cz:nx.kiloBotMesh1.position.z})
+    .animate({cx:-3,cy:264.7,cz:-3}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { //CAM POS
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.kiloBotMesh1.position.x = this.cx;
+	        nx.kiloBotMesh1.position.y = this.cy;
+	        nx.kiloBotMesh1.position.z = this.cz;
+	    },complete:function(){}
+	});
+
+    $({cx:nx.zapbotMega.position.x,cy:nx.zapbotMega.position.y,cz:nx.zapbotMega.position.z})
+    .animate({cx:-3,cy:266.36,cz:3}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { //CAM POS
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.zapbotMega.position.x = this.cx;
+	        nx.zapbotMega.position.y = this.cy;
+	        nx.zapbotMega.position.z = this.cz;
+	    },complete:function(){}
+	});
+
+
+    $({cx:nx.zapbotTerra2.position.x,cy:nx.zapbotTerra2.position.y,cz:nx.zapbotTerra2.position.z})
+    .animate({cx:2.6,cy:264.5,cz:2.5}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { //CAM POS
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.zapbotTerra2.position.x = this.cx;
+	        nx.zapbotTerra2.position.y = this.cy;
+	        nx.zapbotTerra2.position.z = this.cz;
+	    },complete:function(){
+	    	nx.orby.addGlow('zap')
+            nx.scene.beginAnimation(nx.orbySkeleton[0], 1, 4, true, 0.25); //ANIMATED-SURFBOARD-.
+	    }
+	});
+
+
+}
+
+// nx.anm.zapBotIntros = function(){
+// 	// nx.orbyMesh.position.copyFrom({x: 0, y: 262.5, z: 0})
+// 	nx.kiloBotMesh1.position.copyFrom({x: -18.503743511479904, y: 265.2077840580054, z: -16.072452649156094})
+// 	nx.kiloBotMesh1.rotation.y = -2.3
+// 	nx.scene.activeCamera.position.copyFrom({x: 0, y: 262.5, z: 0})
+// 	nx.scene.activeCamera.setTarget(nx.kiloBotMesh1.position) //CAMTGT: 
+// 	setTimeout(function(){
+// 		nx.zapbotMega.position.copyFrom({x: -20.519167819340684, y: 266, z: 19.320231975620192})
+// 		nx.zapbotMega.rotation.y = -0.8
+// 		nx.scene.activeCamera.position.copyFrom({x: 0, y: 262.5, z: 0})
+// 		nx.scene.activeCamera.setTarget(nx.zapbotMega.position) //CAMTGT: 
+
+// 		setTimeout(function(){
+
+// 			nx.zapbotTerra2.position.copyFrom( {x: 26.014782132909403, y: 263.2003778787977, z: 18.889698881576113})
+// 			nx.zapbotTerra2.rotation.y = 1;
+// 			nx.scene.activeCamera.position.copyFrom({x: 0, y: 266, z: 0})
+// 			nx.scene.activeCamera.setTarget(nx.zapbotTerra2.position) //CAMTGT: 
+
+// 			setTimeout(function(){
+
+// 			},2000)
+// 		},2000)
+// 	},2000)
+// 	// nx.orbyMesh.rotation.y = 0.44;
+// };
+
+nx.anm.orbyShockGem = function(endfn){
+
+	nx.orby.loadOrbyMouth(function(){
+		nx.orbyMesh.position.y = 0; //HIDE THE REAL ORBY-.
+		endfn();
+	});
+ //    $({rx:nx.darkBot.rotation.x, ry:nx.darkBot.rotation.y,rz:nx.darkBot.rotation.z})
+ //    .animate({rx:-0.88,ry:-1.75,rz:0.4}
+ //    ,{queue:false,duration:1000*nx.RUNTIME,easing:'swing',
+	//     step:function(now) { 
+	//        if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	//         nx.darkBot.rotation.x = this.rotx;
+	//         nx.darkBot.rotation.y = this.roty;
+	//         nx.darkBot.rotation.z = this.rotz;
+	//     },complete:function(){}
+	// });
+}
 /*******************************-TEMPLATE-ATOMIC-ANM-****************************/
 // nx.anm.darkBot.mezmerize = function(){
 //     $({rx:nx.darkBot.rotation.x, ry:nx.darkBot.rotation.y,rz:nx.darkBot.rotation.z})

@@ -51,6 +51,7 @@ var prone = nx.scene.beginAnimation(nx.orbySkeleton[0], 150, 160, false, 1.0);  
 nx.loadOrbyAssets = function() {
     if(!nx.scene){return;}
     BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot18d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot17d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     //    nx.orbyMesh = newMeshes[0]; //spacewaverider
@@ -173,7 +174,7 @@ nx.loadOrbyAssets = function() {
 // debugger;
         if(nx.setMasterManifest){ nx.setMasterManifest(); }
 
-    });
+    }); //end import orby?
 
 
 
@@ -1731,7 +1732,7 @@ nx.orby.stopLaser = function(){
   },100)
 }
 
-nx.orby.initLaser = function(){ //USAGE: nx.orby.zapBotFactory({mesh:nx.zapbotMesh2})
+nx.orby.initLaser = function(){ //USAGE: nx.orby.zapBotFactory({mesh:nx.zapbotTerra2})
 
     if(nx.orbyMesh.laserTgtSphere){return;} //ONly 1 init-.
    //DYNAMIC-BEHAVIORS bot1
@@ -2398,6 +2399,111 @@ nx.orby.endRainbowRays = function(mode){
 
 }
 
+
+//USAGE: addGlow('zap'||'ionized'||'stop')
+nx.orby.addGlow = function(glowType){
+  if(glowType==='zap'){
+    //ANM GLOW BLUR-.
+    if(!nx.orbyMesh.glow){ //one-time-init-.
+        nx.orbyMesh.glow = new BABYLON.HighlightLayer("orby.glow", nx.scene, {
+            // blueTextureSizeRatio: 0.5,
+            // alphaBlendingMode: 2,
+            blurHorizontalSize: 1,
+            blurVerticalSize: 1,
+            innerGlow:false,
+            outerGlow:false
+            // mainTextureRatio: 0.25
+        });
+
+        nx.orbyMesh.glow.addMesh(nx.orbyMesh, new BABYLON.Color3(0.44,0.44,1));
+        nx.orbyMesh.glow.addMesh(nx.orbyMeshBody, new BABYLON.Color3(0.44,0.44,1));
+    } 
+        // nx.orbyMesh.glow.addMesh(config.mesh, new BABYLON.Color3(0.44,0.44,1));
+        // nx.orbyMesh1.glow.removeMesh(config.mesh);
+        // nx.orbyMesh1.glow.blurHorizontalSize = 2;
+        // nx.orbyMesh1.glow.blurVerticalSize = 2;
+        // nx.orbyMesh1.glow.innerGlow = false;
+        // nx.orbyMesh1.glow.outerGlow = true;
+
+    // config.mesh.zapAuraAlpha++ //todo move into render loop?
+    // nx.orbyMesh.glow.blurHorizontalSize = 1 +  Math.cos(config.mesh.zapAuraAlpha)*2;
+    // nx.orbyMesh.glow.blurVerticalSize = 1 +  Math.cos(config.mesh.zapAuraAlpha)*2;
+
+  }//end zap
+  else if (glowType==='stop'){
+    nx.orbyMesh.glow.removeMesh(nx.orbyMesh);
+    nx.orbyMesh.glow.removeMesh(nx.orbyMeshBody);
+    nx.orbyMesh.glow = null;
+  }
+}//end addglow
+
+
+
+nx.orby.loadOrbyMouth = function(endfn){
+
+  // debugger; 
+
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyMouth1c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot18d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot17d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    //    nx.orbyMesh = newMeshes[0]; //spacewaverider
+        // nx.orbyMeshBody = newMeshes[1]; //orbymesh
+        nx.orbyMeshM = nx.scene.getMeshByName('spacewaveriderM') 
+        // nx.orbyMesh.convertToFlatShadedMesh();
+        nx.orbyMeshBodyM = nx.scene.getMeshByName('orbymeshM') ; //orbymesh
+        nx.orbySkeletonM = skeletons;
+        
+        // nx.orbyMeshM.position.copyFrom(nx.anmz.orby.rig.originBox.position);
+
+
+        //SCENE SPECIFIC
+        nx.orbyMeshM.position.copyFrom({x: 0, y: 265, z: 0}); //pyramid top
+
+
+        nx.orbyMeshM.rotation = new BABYLON.Vector3(0,-2,0); //align-initial-rotation-.
+        nx.orbyMeshM.scaling = new BABYLON.Vector3(1*nx.anmz.orby.scale,1*nx.anmz.orby.scale,1*nx.anmz.orby.scale,)
+        // nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0); //ANIMATED-SURFBOARD-. Move out to scriptz
+       
+
+        nx.orbyMeshM.glow = new BABYLON.HighlightLayer("orby.glowM", nx.scene, {
+            // blueTextureSizeRatio: 0.5,
+            // alphaBlendingMode: 2,
+            blurHorizontalSize: 1,
+            blurVerticalSize: 1,
+            innerGlow:false,
+            outerGlow:false
+            // mainTextureRatio: 0.25
+        });
+
+        nx.orbyMeshM.glow.addMesh(nx.orbyMeshM, new BABYLON.Color3(0.44,0.44,1));
+        nx.orbyMeshM.glow.addMesh(nx.orbyMeshBodyM, new BABYLON.Color3(0.44,0.44,1));
+
+        
+        // nx.orbyMesh.setPivotPoint(new BABYLON.Vector3(0, -3, 0)); //spacewaverider pivot
+        
+        nx.orbyMouthM = nx.scene.getMeshByName('orbyMouthCoverM') ; //orbyMouth
+        if(nx.orbyMouthM) nx.orbyMouthM.parent = nx.orbyMeshM
+
+        // nx.orbyM.mouthCover = nx.scene.getMeshByName('orbyMouthCover');
+        
+        nx.lazerboxM = nx.scene.getMeshByName('lazerboxM') ; //lazerbox
+        nx.lazerboxM.visibility = 0;
+
+// nx.scene.beginAnimation(nx.orbySkeletonM[0], 4, 4, false, 1); //end shock-. 
+// nx.scene.beginAnimation(nx.orbySkeletonM[0], 3, 22, true, 0.1); //end shock-. 
+        // nx.orby.iris = nx.scene.getMeshByName('separatedIRIS') 
+        // if(nx.iris) nx.iris.parent = nx.orbyMesh
+        // nx.orbyM.eye = nx.scene.getMeshByName('separatedEYE') 
+        
+        // nx.orbyM.noMouth = nx.scene.getMeshByName('orbymeshNoMouth')
+        
+        endfn(); //important
+    }); //end orby mouth
+
+
+
+}//end orby mouth
 // }); //end-module-.
 
 

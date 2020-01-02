@@ -47,7 +47,7 @@ if(!nx.botz){nx.botz={}}
 // var loadAssets = function() {
 nx.botz.loadAssets = function(initFn) {
     if(nx.kiloBotMesh1){return;} //already loaded-.
-    if(nx.zapbotMesh2){return;} //already loaded-.
+    if(nx.zapbotTerra2){return;} //already loaded-.
     if(!nx.scene){return;}
     if(!nx.botz){nx.botz={}}
     if(!nx.assetsManager){ nx.assetsManager = new BABYLON.AssetsManager(nx.scene); }
@@ -100,12 +100,11 @@ nx.botz.loadAssets = function(initFn) {
         // setTimeout(function(){
         //     nx.kiloBotMesh1.sirenLight.material = nx.kiloBotMesh1.blueMat;
         // },20000);
-
         nx.botz.initKiloBot();
 
         // debugger;
-        nx.kiloBotMesh1._isListening=1; //important - TEST
-        nx.kiloBotMesh1.startHovering(); //todo
+        nx.kiloBotMesh1._isListening=1; //important - TEST turn on by SCRIPT.
+        nx.kiloBotMesh1.startHovering(); //todo turn on by script
 
         nx.botz.initBotShadows();
 
@@ -139,18 +138,23 @@ nx.botz.loadAssets = function(initFn) {
     var zapbotTask2 = nx.assetsManager.addMeshTask("zapbot task2", "", "./copyrightnetcinematics/3d/", "zapbotTerra2b.babylon");
     zapbotTask2.onSuccess = function (task) {
         // debugger;
-        nx.zapbotMesh2 = task.loadedMeshes[0]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
-        // nx.zapbotMesh2 = task.loadedMeshes[2]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
-        nx.zapbotMesh2.position.copyFrom({x:0, y: 2, z:0}); //PLACE ZAPBOT
-        nx.zapbotMesh2.rotation.x = 0
-        nx.zapbotMesh2.rotation.y = 0;
+        nx.zapbotTerra2 = task.loadedMeshes[0]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
+        // nx.zapbotTerra2 = task.loadedMeshes[2]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
+        nx.zapbotTerra2.position.copyFrom({x:0, y: 2, z:0}); //PLACE ZAPBOT
+        nx.zapbotTerra2.rotation.x = 0
+        nx.zapbotTerra2.rotation.y = 0;
 
-// debugger;
-        nx.botz.initBotFactory(nx.zapbotMesh2);
-        // nx.zapbotMesh2.startListening();
-        // nx.zapbotMesh2.startHovering();
-        // nx.zapbotMesh2.startScanning();
-        // nx.botz.zapBotFactory({mesh:nx.zapbotMesh2})
+        nx.botz.initBotFactory(nx.zapbotTerra2);
+
+
+    nx.zapbotTerra2._isListening=1; //important - TEST turn on by SCRIPT.
+    nx.zapbotTerra2.startHovering(); //todo turn on by script
+
+
+        // nx.zapbotTerra2.startListening();
+        // nx.zapbotTerra2.startHovering();
+        // nx.zapbotTerra2.startScanning();
+        // nx.botz.zapBotFactory({mesh:nx.zapbotTerra2})
 
         nx.setMasterManifest(); //after assetLoad, signal asset arrived-.
 
@@ -160,7 +164,7 @@ nx.botz.loadAssets = function(initFn) {
     var zapbotTask3 = nx.assetsManager.addMeshTask("zapbot task3", "", "./copyrightnetcinematics/3d/", "zapbotMega2.babylon");
     zapbotTask3.onSuccess = function (task) {
         nx.zapbotMega = task.loadedMeshes[0]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
-        // nx.zapbotMesh2 = task.loadedMeshes[2]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
+        // nx.zapbotTerra2 = task.loadedMeshes[2]; //TODO change nx.kiloBotMesh1 to nx.botz.bot1.mesh;
         nx.zapbotMega.position.copyFrom({x:0, y: 2, z:0}); //PLACE ZAPBOT
         nx.zapbotMega.rotation.x = 0
         nx.zapbotMega.rotation.y = 0;
@@ -168,10 +172,16 @@ nx.botz.loadAssets = function(initFn) {
 
 // debugger;
         nx.botz.initBotFactory(nx.zapbotMega);
+
+
+    nx.zapbotMega._isListening=1; //important - TEST turn on by SCRIPT.
+    nx.zapbotMega.startHovering(); //todo turn on by script
+
+
         // nx.zapbotMega.startListening();
         // nx.zapbotMega.startHovering();
         // nx.zapbotMega.startScanning();
-        // nx.botz.zapBotFactory({mesh:nx.zapbotMesh2})
+        // nx.botz.zapBotFactory({mesh:nx.zapbotTerra2})
 
         nx.setMasterManifest(); //after assetLoad, signal asset arrived-.
 
@@ -190,7 +200,7 @@ nx.botz.loadAssets();
 // nx.botz.initBotz = function(){
 //     // debugger;
 //     nx.botz.zapBotFactory({mesh:nx.kiloBotMesh1})
-//     // nx.botz.zapBotFactory({mesh:nx.zapbotMesh2})
+//     // nx.botz.zapBotFactory({mesh:nx.zapbotTerra2})
 // }
 
 
@@ -206,21 +216,25 @@ nx.botz.initBotFactory = function(aBot){
     aBot._isChasing=0;
     //init-abilities-.
     nx.botz.initBotScan(aBot);
-    // nx.botz.initKiloBotShock();
+    nx.botz.initBotShock(aBot);
     //start and stop accessor functions-.
     aBot.stopLooping = function(){ aBot._isListening=-1; }
     aBot.startListening = function(){ aBot._isListening=1; }
     aBot.stopListening = function(){ aBot._isListening=0; } //-1 to unload actionloop-.
     aBot.startFlashing = function(){ aBot._isFlashing=1; }
     aBot.stopFlashing = function(){ aBot._isFlashing=-1; aBot.sirenLight.material = aBot.greyMat; }
-    aBot.startShocking = function(){ aBot._isShocking=1; aBot.zapWave.isVisible = 1; }
-    aBot.stopShocking = function(){ aBot._isShocking=-1; aBot.zapWave.isVisible = 0;}
+    aBot.startShocking = function(){ aBot._isShocking=1; if(aBot.zapWave){aBot.zapWave.isVisible = 1;} }
+    aBot.stopShocking = function(){ aBot._isShocking=-1; if(aBot.zapWave){aBot.zapWave.isVisible = 0;} }
     aBot.startScanning = function(){ aBot._isScanning=1; aBot.searching=1; }
     aBot.stopScanning = function(){ aBot._isScanning=-1; aBot.stopSearching(); }
     aBot.startHovering = function(){ aBot._isHovering=1; }
     aBot.stopHovering = function(){ aBot._isHovering=0; }
     aBot.startChasing = function(){ aBot._isChasing=1; }
     aBot.stopChasing = function(){ aBot._isChasing=-1; }
+
+    aBot.shockIdx = 0;
+
+
     //loop-indexes-.
     aBot.hoverIdx = 0;
     aBot.loopIdx = 0;
@@ -244,8 +258,10 @@ nx.botz.initBotFactory = function(aBot){
         // }
         //isSHOCKING
         if(aBot._isShocking===1){
+            // debugger;
 // console.log('isShocking');
             // nx.botz.kiloBotShockAnm();
+            nx.botz.shockAnm(aBot);
         }else if (aBot._isShocking===-1){ //TODO three way is removable because put logic in accessors
             aBot._isShocking=0;//three way, one time, shut off switch-.
         }
@@ -555,7 +571,7 @@ nx.botz.initKiloBot = function(){
         //isLISTENING-.
         else if(nx.kiloBotMesh1._isListening===0){return} //0 to shut off, -1 to kill loopz-.
         else if(nx.kiloBotMesh1._isListening<0){ 
-            debugger;
+            // debugger;
             nx.scene.unregisterBeforeRender(kiloBotBehaviorLOOPZ); 
             } //-1 to UNLOAD-LOOPZ-.!
         //Loop-actions-PATTERN-.
@@ -649,6 +665,60 @@ nx.botz.initBotShadows = function(){
 
 
 }
+
+/**********************************************-BOTSHOCK-*************************************************/
+nx.botz.initBotShock = function(aBot){
+    //-----------------------------------------------------ZAPWAVE-.
+    aBot.zapWavePath = [];
+    for(var i = -22; i < 22; i++) {
+       var x = i, y = 0, z = 0;
+       aBot.zapWavePath.push(new BABYLON.Vector3(x, y, z));
+    }
+   if(!aBot.zapParent){
+       aBot.zapParent = BABYLON.Mesh.CreateSphere("zapParent", 1, 6, nx.scene);
+       aBot.zapParent.parent =  aBot;
+       aBot.zapParent.position = new BABYLON.Vector3(0.15, -1.5, -2);
+       aBot.zapParent.scaling = new BABYLON.Vector3(0.09, 0.08, 0.06);
+       aBot.zapParent.isVisible = 0;
+   }
+   if(!aBot.zapWave){
+       aBot.zapMaterial = new BABYLON.StandardMaterial("zapMaterial1", nx.scene);
+       aBot.zapMaterial.emissiveColor = new BABYLON.Color3(0.3, 0.3, 1);
+       aBot.zapMaterial.diffuseColor = new BABYLON.Color3(1, 1, 1);
+       aBot.zapMaterial.backFaceCulling = false;
+       aBot.zapMaterial.wireframe = false;//true;
+       aBot.zapMaterial.alpha = 1.0;
+       aBot.zapWave = BABYLON.Mesh.CreateTube("tube", aBot.zapWavePath, 2, 3, null, BABYLON.Mesh.CAP_ALL, nx.scene,true, BABYLON.Mesh.FRONTSIDE);
+       aBot.zapWave.material = aBot.zapMaterial;
+       aBot.zapWave.parent = aBot.zapParent;
+       aBot.zapWave.isVisible = 0;
+    }
+   //-----------------------------------------------------ZAPWAVE-.
+} //end init bot shock
+
+nx.botz.shockAnm = function(aBot){ //warning: anm calls every frame when on-.
+    // aBot.updateZapPath(aBot.shockIdx);
+    nx.botz.updateBotZapPath(aBot);
+    aBot.zapWave = BABYLON.Mesh.CreateTube("aBot.zapWave", aBot.zapWavePath, 0.8, 60, null, 0, nx.scene, true, BABYLON.Mesh.FRONTSIDE, aBot.zapWave);
+    aBot.zapWave.parent = aBot.zapParent;
+    aBot.zapWave.rotation.x += 7.4;
+    aBot.shockIdx += 0.09;
+}//end botshockanm
+
+
+//creates new positioning for zapwave based on zapIdx
+nx.botz.updateBotZapPath = function(aBot) {
+    for (var i = 0; i < aBot.zapWavePath.length; i++) {
+        var x = aBot.zapWavePath[i].x;
+        var y = 5 * Math.sin(i / 3 + aBot.shockIdx);
+        var z = aBot.zapWavePath[i].z;
+        aBot.zapWavePath[i].x = x;
+        aBot.zapWavePath[i].y = y;
+        aBot.zapWavePath[i].z = z;
+    }
+};
+
+/***********************************-END-*************************************************/
 
 nx.botz.initKiloBotShock = function(){
     //-----------------------------------------------------ZAPWAVE-.
@@ -907,241 +977,241 @@ nx.botz.kiloBotScanANM = function(){ //anm is called on every frame!
 // });
 
 /********************************************************-ZAP-BOT-FACTORY-****************************************************************/
-nx.botz.zapBotFactory = function( config ){ //USAGE: nx.botz.zapBotFactory({mesh:nx.zapbotMesh2})
+// nx.botz.zapBotFactory = function( config ){ //USAGE: nx.botz.zapBotFactory({mesh:nx.zapbotTerra2})
  
-debugger; //obsolete? YES. Moved to initBotFactory changed to individual behavior loop, not shared behavior loops-.
+// debugger; //obsolete? YES. Moved to initBotFactory changed to individual behavior loop, not shared behavior loops-.
 
-   if(config.mesh.laserTgtSphere){return;} //ONly 1 init-.
-   //DYNAMIC-BEHAVIORS bot1
-    config.mesh.targeting = 0;
-    config.mesh.laserTgtSphere = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
-    config.mesh.laserTgtSphere.parent =  config.mesh;
-    config.mesh.laserTgtSphere.isVisible = 0;   //todo be sure target sphere is not orbiting when it doesnt need to. also parent pos to zapbot.
+//    if(config.mesh.laserTgtSphere){return;} //ONly 1 init-.
+//    //DYNAMIC-BEHAVIORS bot1
+//     config.mesh.targeting = 0;
+//     config.mesh.laserTgtSphere = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
+//     config.mesh.laserTgtSphere.parent =  config.mesh;
+//     config.mesh.laserTgtSphere.isVisible = 0;   //todo be sure target sphere is not orbiting when it doesnt need to. also parent pos to zapbot.
 
-    config.mesh.laserOriginSphere = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
-    config.mesh.laserOriginSphere.parent =  config.mesh;
-    config.mesh.laserOriginSphere.position = new BABYLON.Vector3(0, 0.5, -2);
-    config.mesh.laserOriginSphere.isVisible = 0; 
+//     config.mesh.laserOriginSphere = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
+//     config.mesh.laserOriginSphere.parent =  config.mesh;
+//     config.mesh.laserOriginSphere.position = new BABYLON.Vector3(0, 0.5, -2);
+//     config.mesh.laserOriginSphere.isVisible = 0; 
 
-    //parented offset interpolation spheres-.
-    config.mesh.laserBumperLft = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
-    config.mesh.laserBumperLft.parent =  config.mesh;
-    config.mesh.laserBumperLft.position = new BABYLON.Vector3(-55, -17, -45);
-    // config.mesh.laserBumperLft.position = new BABYLON.Vector3(-25, -5, -35);
-    config.mesh.laserBumperLft.isVisible = 0;
-    config.mesh.laserBumperRgt = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
-    config.mesh.laserBumperRgt.parent =  config.mesh;
-    config.mesh.laserBumperRgt.position = new BABYLON.Vector3(55, -17, -45);
-    // config.mesh.laserBumperRgt.position = new BABYLON.Vector3(25, -5, -35);
-    config.mesh.laserBumperRgt.isVisible = 0;
+//     //parented offset interpolation spheres-.
+//     config.mesh.laserBumperLft = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
+//     config.mesh.laserBumperLft.parent =  config.mesh;
+//     config.mesh.laserBumperLft.position = new BABYLON.Vector3(-55, -17, -45);
+//     // config.mesh.laserBumperLft.position = new BABYLON.Vector3(-25, -5, -35);
+//     config.mesh.laserBumperLft.isVisible = 0;
+//     config.mesh.laserBumperRgt = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
+//     config.mesh.laserBumperRgt.parent =  config.mesh;
+//     config.mesh.laserBumperRgt.position = new BABYLON.Vector3(55, -17, -45);
+//     // config.mesh.laserBumperRgt.position = new BABYLON.Vector3(25, -5, -35);
+//     config.mesh.laserBumperRgt.isVisible = 0;
 
-    config.mesh.hoverAlpha = 0; //zap bot hover-.
-    config.mesh.searching = 0; //tick this to 1 to start searching-.
-    config.mesh.delayOnTargeting = 1; //500
-    config.mesh.scanDirToggle = 1;
-
-
-    config.mesh.zapAuraAlpha = 0; //glow size -.
-    config.mesh.rayLines = [];
-
-    // var scanDirToggle = 1;
-    // var curScan, tgtScan;
+//     config.mesh.hoverAlpha = 0; //zap bot hover-.
+//     config.mesh.searching = 0; //tick this to 1 to start searching-.
+//     config.mesh.delayOnTargeting = 1; //500
+//     config.mesh.scanDirToggle = 1;
 
 
-    // var hoverChaseAlpha = 0;
-    config.mesh.hoverChaseAlpha = 0; //TODO rename to CHASE-DAMPER-.
+//     config.mesh.zapAuraAlpha = 0; //glow size -.
+//     config.mesh.rayLines = [];
+
+//     // var scanDirToggle = 1;
+//     // var curScan, tgtScan;
+
+
+//     // var hoverChaseAlpha = 0;
+//     config.mesh.hoverChaseAlpha = 0; //TODO rename to CHASE-DAMPER-.
 
 
 
-    config.mesh.setScanTarget = nx.botz.setScanTgt;
+//     config.mesh.setScanTarget = nx.botz.setScanTgt;
 
 
-    config.mesh.stopSearching = function(){
-          config.mesh.stopLaser = 1;
-          setTimeout(function(){ //stop all laser animations then delete-.
-            for(var i = 0; i<config.mesh.rayLines.length;i++){ 
-              config.mesh.rayLines[i].dispose();  
-            } 
-            config.mesh.rayLines = [];
-          },100)
-    }
+//     config.mesh.stopSearching = function(){
+//           config.mesh.stopLaser = 1;
+//           setTimeout(function(){ //stop all laser animations then delete-.
+//             for(var i = 0; i<config.mesh.rayLines.length;i++){ 
+//               config.mesh.rayLines[i].dispose();  
+//             } 
+//             config.mesh.rayLines = [];
+//           },100)
+//     }
 
 
-    debugger;
+//     debugger;
 
-    // var zapPath = [];
-    //-----------------------------------------------------ZAPWAVE-.
-    zapWavePath = [];
-    for(var i = -22; i < 22; i++) {
-    // for(var i = -20; i < 20; i++) {
-        var x = i;
-        var y = 0;
-        var z = 0;
-        zapWavePath.push(new BABYLON.Vector3(x, y, z));
-    }
-    if(!config.mesh.zapParent){
-        config.mesh.zapParent = BABYLON.Mesh.CreateSphere("zapParent", 1, 6, nx.scene);
-        // config.mesh.zapParent.material = mat
-        config.mesh.zapParent.parent =  config.mesh;
-        config.mesh.zapParent.position = new BABYLON.Vector3(0, -1.5, -2.5);
-        config.mesh.zapParent.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
-        config.mesh.zapParent.isVisible = 0;
-    }
-    if(!config.mesh.zapWave){
-        var zapMaterial = new BABYLON.StandardMaterial("zapMaterial1", nx.scene);
-        zapMaterial.emissiveColor = new BABYLON.Color3(0.8, 0.8, 1.0);
-        zapMaterial.diffuseColor = new BABYLON.Color3(0.44, 0.44, 1.0);
-        zapMaterial.backFaceCulling = false;
-        zapMaterial.wireframe = true;//false;
-        zapMaterial.alpha = 1.0;
-        config.mesh.zapWave = BABYLON.Mesh.CreateTube("tube", zapWavePath, 2, 60, null, 0, nx.scene,true, BABYLON.Mesh.FRONTSIDE);
-        config.mesh.zapWave.material = zapMaterial;
-        config.mesh.zapWave.parent = config.mesh.zapParent;
-        config.mesh.zapWave.isVisible = 0;
-    }
-    //-----------------------------------------------------ZAPWAVE-.
-
-
-    nx.scene.registerBeforeRender(function hoverChaseLOOPZ() { //LOOPZ hover, search and chase sequence-.
-    // config.mesh.hoverChaseLOOPZ = function(config) { //LOOPZ hover, search and chase sequence-.
+//     // var zapPath = [];
+//     //-----------------------------------------------------ZAPWAVE-.
+//     zapWavePath = [];
+//     for(var i = -22; i < 22; i++) {
+//     // for(var i = -20; i < 20; i++) {
+//         var x = i;
+//         var y = 0;
+//         var z = 0;
+//         zapWavePath.push(new BABYLON.Vector3(x, y, z));
+//     }
+//     if(!config.mesh.zapParent){
+//         config.mesh.zapParent = BABYLON.Mesh.CreateSphere("zapParent", 1, 6, nx.scene);
+//         // config.mesh.zapParent.material = mat
+//         config.mesh.zapParent.parent =  config.mesh;
+//         config.mesh.zapParent.position = new BABYLON.Vector3(0, -1.5, -2.5);
+//         config.mesh.zapParent.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
+//         config.mesh.zapParent.isVisible = 0;
+//     }
+//     if(!config.mesh.zapWave){
+//         var zapMaterial = new BABYLON.StandardMaterial("zapMaterial1", nx.scene);
+//         zapMaterial.emissiveColor = new BABYLON.Color3(0.8, 0.8, 1.0);
+//         zapMaterial.diffuseColor = new BABYLON.Color3(0.44, 0.44, 1.0);
+//         zapMaterial.backFaceCulling = false;
+//         zapMaterial.wireframe = true;//false;
+//         zapMaterial.alpha = 1.0;
+//         config.mesh.zapWave = BABYLON.Mesh.CreateTube("tube", zapWavePath, 2, 60, null, 0, nx.scene,true, BABYLON.Mesh.FRONTSIDE);
+//         config.mesh.zapWave.material = zapMaterial;
+//         config.mesh.zapWave.parent = config.mesh.zapParent;
+//         config.mesh.zapWave.isVisible = 0;
+//     }
+//     //-----------------------------------------------------ZAPWAVE-.
 
 
-        if(config.mesh.stopChase){
-                nx.scene.unregisterBeforeRender(config.mesh.hoverChaseLOOPZ); return; //LOOPZ-MUTER-.
-        }
-        // config.mesh.hoverChaseAlpha++;
-        // config.mesh.hoverAlpha = 0; //zap bot hover-.
-        config.mesh.hoverAlpha += 0.05; //zap-bot-hover-.
-        config.mesh.position.y += 0.01 * Math.cos(config.mesh.hoverAlpha);
+//     nx.scene.registerBeforeRender(function hoverChaseLOOPZ() { //LOOPZ hover, search and chase sequence-.
+//     // config.mesh.hoverChaseLOOPZ = function(config) { //LOOPZ hover, search and chase sequence-.
 
-        if(config.mesh.searching > 0){
-            if(config.mesh.searching===1){ //ONE-TIME-INIT-MECHANISM-.
-                // console.log('ONE-TIME LASER START')
-                //ANM: laser from point to point-.
 
-                if(++config.mesh.hoverChaseAlpha%2===0 || config.mesh.hoverChaseAlpha%3===0){return;} //LOOPZ-DAMPER-. //TODO TEST THIS_.   
-                nx.botz.laserScanAnm(config);
+//         if(config.mesh.stopChase){
+//                 nx.scene.unregisterBeforeRender(config.mesh.hoverChaseLOOPZ); return; //LOOPZ-MUTER-.
+//         }
+//         // config.mesh.hoverChaseAlpha++;
+//         // config.mesh.hoverAlpha = 0; //zap bot hover-.
+//         config.mesh.hoverAlpha += 0.05; //zap-bot-hover-.
+//         config.mesh.position.y += 0.01 * Math.cos(config.mesh.hoverAlpha);
 
-                // curScan = (scanDirToggle)? config.mesh.laserBumperLft.position:config.mesh.laserBumperRgt.position;
-                // tgtScan = (scanDirToggle)? config.mesh.laserBumperRgt.position:config.mesh.laserBumperLft.position;
-                // $({x:curScan.x,y:curScan.y,z:curScan.z})
-                // .animate({x:tgtScan.x,y:tgtScan.y,z:tgtScan.z},{queue:false,duration:8000,easing:'swing',
-                // step: function(now) { 
+//         if(config.mesh.searching > 0){
+//             if(config.mesh.searching===1){ //ONE-TIME-INIT-MECHANISM-.
+//                 // console.log('ONE-TIME LASER START')
+//                 //ANM: laser from point to point-.
 
-                //         config.mesh.laserTgtSphere.position.x = this.x;
-                //         config.mesh.laserTgtSphere.position.y = this.y; 
-                //         config.mesh.laserTgtSphere.position.z = this.z;
+//                 if(++config.mesh.hoverChaseAlpha%2===0 || config.mesh.hoverChaseAlpha%3===0){return;} //LOOPZ-DAMPER-. //TODO TEST THIS_.   
+//                 nx.botz.laserScanAnm(config);
 
-                //         //LOCAL_POSITION to WORLD_POSITION
-                //         config.mesh.computeWorldMatrix();
-                //         var matrix = config.mesh.getWorldMatrix();
-                //         var nx.botz.global_position_tgt = BABYLON.Vector3.TransformCoordinates(config.mesh.laserTgtSphere.position, matrix); //TODO no vars here
-                //         // nx.botz.global_position_tgt.y = config.mesh.position.y - 5;
-                //         config.mesh.laserTgtSphere.position.copyFrom(nx.botz.global_position_tgt);
+//                 // curScan = (scanDirToggle)? config.mesh.laserBumperLft.position:config.mesh.laserBumperRgt.position;
+//                 // tgtScan = (scanDirToggle)? config.mesh.laserBumperRgt.position:config.mesh.laserBumperLft.position;
+//                 // $({x:curScan.x,y:curScan.y,z:curScan.z})
+//                 // .animate({x:tgtScan.x,y:tgtScan.y,z:tgtScan.z},{queue:false,duration:8000,easing:'swing',
+//                 // step: function(now) { 
 
-                //         var nx.botz.global_position_origin = BABYLON.Vector3.TransformCoordinates(config.mesh.laserOriginSphere.position, matrix); //TODO no vars here
+//                 //         config.mesh.laserTgtSphere.position.x = this.x;
+//                 //         config.mesh.laserTgtSphere.position.y = this.y; 
+//                 //         config.mesh.laserTgtSphere.position.z = this.z;
 
-                //         if(config.mesh.rayLines.length && config.mesh.rayLines[3]){ config.mesh.rayLines[3].dispose(); config.mesh.rayLines.splice(3,1); } //remove back-.
-                //         if(config.mesh.rayLines[1]){ config.mesh.rayLines[1].alpha = 0.5    }           
-                //         if(config.mesh.rayLines[2]){ config.mesh.rayLines[1].alpha = 0.4    }   //fade-out-.        
+//                 //         //LOCAL_POSITION to WORLD_POSITION
+//                 //         config.mesh.computeWorldMatrix();
+//                 //         var matrix = config.mesh.getWorldMatrix();
+//                 //         var nx.botz.global_position_tgt = BABYLON.Vector3.TransformCoordinates(config.mesh.laserTgtSphere.position, matrix); //TODO no vars here
+//                 //         // nx.botz.global_position_tgt.y = config.mesh.position.y - 5;
+//                 //         config.mesh.laserTgtSphere.position.copyFrom(nx.botz.global_position_tgt);
+
+//                 //         var nx.botz.global_position_origin = BABYLON.Vector3.TransformCoordinates(config.mesh.laserOriginSphere.position, matrix); //TODO no vars here
+
+//                 //         if(config.mesh.rayLines.length && config.mesh.rayLines[3]){ config.mesh.rayLines[3].dispose(); config.mesh.rayLines.splice(3,1); } //remove back-.
+//                 //         if(config.mesh.rayLines[1]){ config.mesh.rayLines[1].alpha = 0.5    }           
+//                 //         if(config.mesh.rayLines[2]){ config.mesh.rayLines[1].alpha = 0.4    }   //fade-out-.        
                         
-                //         // zapBotLaserOffset1 = nx.BV32(config.mesh.position);   //todo move into nx.zapbot
-                //         // zapBotLaserOffset1.y = config.mesh.position.y + 1.15;
+//                 //         // zapBotLaserOffset1 = nx.BV32(config.mesh.position);   //todo move into nx.zapbot
+//                 //         // zapBotLaserOffset1.y = config.mesh.position.y + 1.15;
 
-                //         // nx.rayLine1 = BABYLON.Mesh.CreateLines("ray3", [nx.botz.global_position_origin, config.mesh.laserTgtSphere.position], nx.scene, nx.rayLine1);
-                //         nx.rayLine1 = BABYLON.Mesh.CreateLines("ray3", [nx.botz.global_position_origin, config.mesh.laserTgtSphere.position], nx.scene);
-                //         // nx.rayLine1 = BABYLON.Mesh.CreateLines("ray3", [zapBotLaserOffset1, config.mesh.laserTgtSphere.position], nx.scene);
-                //         nx.rayLine1.alpha = 0.6;//Math.cos(alpha2);//0.8
-                //         nx.rayLine1.color.r = 1;//Math.cos(alpha1);//1;
-                //         nx.rayLine1.color.g = nx.rayLine1.color.b = 0;
-                //         config.mesh.rayLines.unshift(nx.rayLine1); //add to front
-                //         if (nx.orbyMesh && nx.rayLine1.intersectsMesh(nx.orbyMesh)) {                        //intersection
-                //             config.mesh.targeting = 1;
-                //             config.mesh.searching = 0;
-                //             $(this).stop(true);
-                //         }
-                //     }, complete:function(){ //  BOUNCE-.
-                //         // console.log('BOUNCE')
-                //         scanDirToggle = !scanDirToggle;
-                //         // console.log('looks suspicious')
-                //         config.mesh.searching=1; return; 
-                //     } //NEXT-SUB-SEQUENCE-. 
-                // });
-            }
-            config.mesh.searching++;
-        } //end searching
-        else if(config.mesh.targeting > 0 ){ //------------------------------------------------TARGETING-MODE-.
-            if(config.mesh.targeting===1){ //init tracking-.
-                //start zapping-.
-            }
-            else if(config.mesh.targeting%3===0){ //LOOPZ-DAMPER-.
-                console.log('targeting')
-                for(var i = 0; i<config.mesh.rayLines.length;i++){ config.mesh.rayLines[i].dispose();  } //TODO perf reuse rays
-                    // config.mesh.rayLines = []; //clean up lasers-.
+//                 //         // nx.rayLine1 = BABYLON.Mesh.CreateLines("ray3", [nx.botz.global_position_origin, config.mesh.laserTgtSphere.position], nx.scene, nx.rayLine1);
+//                 //         nx.rayLine1 = BABYLON.Mesh.CreateLines("ray3", [nx.botz.global_position_origin, config.mesh.laserTgtSphere.position], nx.scene);
+//                 //         // nx.rayLine1 = BABYLON.Mesh.CreateLines("ray3", [zapBotLaserOffset1, config.mesh.laserTgtSphere.position], nx.scene);
+//                 //         nx.rayLine1.alpha = 0.6;//Math.cos(alpha2);//0.8
+//                 //         nx.rayLine1.color.r = 1;//Math.cos(alpha1);//1;
+//                 //         nx.rayLine1.color.g = nx.rayLine1.color.b = 0;
+//                 //         config.mesh.rayLines.unshift(nx.rayLine1); //add to front
+//                 //         if (nx.orbyMesh && nx.rayLine1.intersectsMesh(nx.orbyMesh)) {                        //intersection
+//                 //             config.mesh.targeting = 1;
+//                 //             config.mesh.searching = 0;
+//                 //             $(this).stop(true);
+//                 //         }
+//                 //     }, complete:function(){ //  BOUNCE-.
+//                 //         // console.log('BOUNCE')
+//                 //         scanDirToggle = !scanDirToggle;
+//                 //         // console.log('looks suspicious')
+//                 //         config.mesh.searching=1; return; 
+//                 //     } //NEXT-SUB-SEQUENCE-. 
+//                 // });
+//             }
+//             config.mesh.searching++;
+//         } //end searching
+//         else if(config.mesh.targeting > 0 ){ //------------------------------------------------TARGETING-MODE-.
+//             if(config.mesh.targeting===1){ //init tracking-.
+//                 //start zapping-.
+//             }
+//             else if(config.mesh.targeting%3===0){ //LOOPZ-DAMPER-.
+//                 console.log('targeting')
+//                 for(var i = 0; i<config.mesh.rayLines.length;i++){ config.mesh.rayLines[i].dispose();  } //TODO perf reuse rays
+//                     // config.mesh.rayLines = []; //clean up lasers-.
 
-                config.mesh.lookAt(nx.orbyMesh.position)
-                config.mesh.rotation.x = 0.2// default bot rot
-                config.mesh.rotation.z = 0;
+//                 config.mesh.lookAt(nx.orbyMesh.position)
+//                 config.mesh.rotation.x = 0.2// default bot rot
+//                 config.mesh.rotation.z = 0;
 
-                    //LOCAL_POSITION to WORLD_POSITION
-                    config.mesh.computeWorldMatrix();
-                    nx.botz.anmMatrix1 = config.mesh.getWorldMatrix();
-                    nx.botz.global_position_origin = BABYLON.Vector3.TransformCoordinates(config.mesh.laserOriginSphere.position, nx.botz.anmMatrix1); //TODO no vars here
-
-
-// debugger;
-                // nx.rayLine1 = BABYLON.Mesh.CreateLines("ray3", [zapBotLaserOffset1, nx.orbyMesh.position], nx.scene);
-                config.mesh.rayLines[0] = BABYLON.Mesh.CreateLines("ray1", [nx.botz.global_position_origin, nx.orbyMesh.position], nx.scene, config.mesh.rayLines[0]);
-                config.mesh.rayLines[0].alpha = 0.8;//Math.cos(alpha2);//0.8
-                config.mesh.rayLines[0].color.r = 1;//Math.cos(alpha1);//1;
-                config.mesh.rayLines[0].color.g = config.mesh.rayLines[0].color.b = 0
-                // config.mesh.rayLines[1] = BABYLON.Mesh.CreateLines("ray2", [nx.botz.global_position_origin, nx.orbyMesh.position], nx.scene, config.mesh.rayLines[1]);
-                // config.mesh.rayLines[1].alpha = 0.8;//Math.cos(alpha2);//0.8
-                // config.mesh.rayLines[1].color.g = 1;//Math.cos(alpha1);//1;
-                // config.mesh.rayLines[1].color.r = config.mesh.rayLines[1].color.b = 0
-                // config.mesh.rayLines[2] = BABYLON.Mesh.CreateLines("ray3", [nx.botz.global_position_origin, nx.orbyMesh.position], nx.scene, config.mesh.rayLines[2]);
-                // config.mesh.rayLines[2].alpha = 0.8;//Math.cos(alpha2);//0.8
-                // config.mesh.rayLines[2].color.b = 1;//Math.cos(alpha1);//1;
-                // config.mesh.rayLines[2].color.g = config.mesh.rayLines[2].color.r = 0;        //spotted red laser
-
-                // if(config.mesh.rayLines.length && config.mesh.rayLines[3]){ config.mesh.rayLines[3].dispose(); config.mesh.rayLines.splice(3,1); } //remove back-.
-                // config.mesh.rayLines.unshift(nx.rayLine1); //add to front
-
-                if(config.mesh.targeting%2===0){ //double-damper //todo probably not necessary-.
-                    console.log('doubledamper???')
-                        config.mesh.targeting = 0;
-                        config.mesh.spotted=1;
-                        return;
-                }
-            }
-            config.mesh.targeting++; //frame-iterator-.
-
-        } //end targeting
-        else if (config.mesh.spotted) {
-            console.log('spotted')
-            config.mesh.spotted = 0; //one time only-.
-            setTimeout(function(){ //chase delay-.
-                config.mesh.chasing = 1;
-            },config.mesh.delayOnTargeting)    
-        } else if( config.mesh.chasing > 0){
-            console.log('chasing')
-            nx.botz.routeZapBot(config);
-        } else if( config.mesh.catch===1 ){
-            // console.log('catch')
-            debugger; //deprecated
-            nx.botz.startZapping(config);  //START ZAPPING call-.
-            // config.mesh.startZapping();
-            // config.mesh.chasing = 0;
-            // config.mesh.catch = 0;
-        } 
-
-    // } //***********************************************************END hover, search and chase LOOPZ-.
-    // nx.scene.registerBeforeRender(config.mesh.hoverChaseLOOPZ(config));
-    }); //***********************************************************END hover, search and chase LOOPZ-.
-// }//end initbotz
+//                     //LOCAL_POSITION to WORLD_POSITION
+//                     config.mesh.computeWorldMatrix();
+//                     nx.botz.anmMatrix1 = config.mesh.getWorldMatrix();
+//                     nx.botz.global_position_origin = BABYLON.Vector3.TransformCoordinates(config.mesh.laserOriginSphere.position, nx.botz.anmMatrix1); //TODO no vars here
 
 
-} //END-ZAP-BOT-FACTORY********************************************************************
+// // debugger;
+//                 // nx.rayLine1 = BABYLON.Mesh.CreateLines("ray3", [zapBotLaserOffset1, nx.orbyMesh.position], nx.scene);
+//                 config.mesh.rayLines[0] = BABYLON.Mesh.CreateLines("ray1", [nx.botz.global_position_origin, nx.orbyMesh.position], nx.scene, config.mesh.rayLines[0]);
+//                 config.mesh.rayLines[0].alpha = 0.8;//Math.cos(alpha2);//0.8
+//                 config.mesh.rayLines[0].color.r = 1;//Math.cos(alpha1);//1;
+//                 config.mesh.rayLines[0].color.g = config.mesh.rayLines[0].color.b = 0
+//                 // config.mesh.rayLines[1] = BABYLON.Mesh.CreateLines("ray2", [nx.botz.global_position_origin, nx.orbyMesh.position], nx.scene, config.mesh.rayLines[1]);
+//                 // config.mesh.rayLines[1].alpha = 0.8;//Math.cos(alpha2);//0.8
+//                 // config.mesh.rayLines[1].color.g = 1;//Math.cos(alpha1);//1;
+//                 // config.mesh.rayLines[1].color.r = config.mesh.rayLines[1].color.b = 0
+//                 // config.mesh.rayLines[2] = BABYLON.Mesh.CreateLines("ray3", [nx.botz.global_position_origin, nx.orbyMesh.position], nx.scene, config.mesh.rayLines[2]);
+//                 // config.mesh.rayLines[2].alpha = 0.8;//Math.cos(alpha2);//0.8
+//                 // config.mesh.rayLines[2].color.b = 1;//Math.cos(alpha1);//1;
+//                 // config.mesh.rayLines[2].color.g = config.mesh.rayLines[2].color.r = 0;        //spotted red laser
+
+//                 // if(config.mesh.rayLines.length && config.mesh.rayLines[3]){ config.mesh.rayLines[3].dispose(); config.mesh.rayLines.splice(3,1); } //remove back-.
+//                 // config.mesh.rayLines.unshift(nx.rayLine1); //add to front
+
+//                 if(config.mesh.targeting%2===0){ //double-damper //todo probably not necessary-.
+//                     console.log('doubledamper???')
+//                         config.mesh.targeting = 0;
+//                         config.mesh.spotted=1;
+//                         return;
+//                 }
+//             }
+//             config.mesh.targeting++; //frame-iterator-.
+
+//         } //end targeting
+//         else if (config.mesh.spotted) {
+//             console.log('spotted')
+//             config.mesh.spotted = 0; //one time only-.
+//             setTimeout(function(){ //chase delay-.
+//                 config.mesh.chasing = 1;
+//             },config.mesh.delayOnTargeting)    
+//         } else if( config.mesh.chasing > 0){
+//             console.log('chasing')
+//             nx.botz.routeZapBot(config);
+//         } else if( config.mesh.catch===1 ){
+//             // console.log('catch')
+//             debugger; //deprecated
+//             nx.botz.startZapping(config);  //START ZAPPING call-.
+//             // config.mesh.startZapping();
+//             // config.mesh.chasing = 0;
+//             // config.mesh.catch = 0;
+//         } 
+
+//     // } //***********************************************************END hover, search and chase LOOPZ-.
+//     // nx.scene.registerBeforeRender(config.mesh.hoverChaseLOOPZ(config));
+//     }); //***********************************************************END hover, search and chase LOOPZ-.
+// // }//end initbotz
+
+
+// } //END-ZAP-BOT-FACTORY********************************************************************
 
 
 
@@ -1168,7 +1238,7 @@ debugger; //obsolete? YES. Moved to initBotFactory changed to individual behavio
 //     config.mesh.laserBumperRgt = BABYLON.Mesh.CreateSphere("sphere", 4, 1, nx.scene);
 //     config.mesh.laserBumperRgt.parent =  nx.kiloBotMesh1;
 //     config.mesh.laserBumperRgt.position = new BABYLON.Vector3(55, -17, -45);
-//     nx.zapbotMesh2.targeting = 0;
+//     nx.zapbotTerra2.targeting = 0;
 //     // config.mesh.laserBumperRgt.position = new BABYLON.Vector3(25, -5, -35);
 //     config.mesh.laserBumperRgt.isVisible = 0;
 
@@ -1588,6 +1658,7 @@ nx.botz.laserScanAnm = function(config){
         // }
 // nx.kiloBotMesh1.startZapping = function(){ //EMBEDDED-FUNCTION-BEHAVIOR-.
 nx.botz.startZapping = function(config){ //EMBEDDED-FUNCTION-BEHAVIOR-.
+    debugger; //obsolete?
     if(!config || !config.mesh || config.mesh.zapping){return;}//one-time-zapping-.
     config.mesh.zapping = 1;
     config.mesh.zapWave.isVisible = 1;
@@ -1628,7 +1699,7 @@ nx.botz.startZapping = function(config){ //EMBEDDED-FUNCTION-BEHAVIOR-.
         // nx.orbyMesh1.glow.innerGlow = false;
         // nx.orbyMesh1.glow.outerGlow = true;
 
-    config.mesh.zapAuraAlpha++
+    config.mesh.zapAuraAlpha++ //todo move into render loop?
     nx.orbyMesh.glow.blurHorizontalSize = 1 +  Math.cos(config.mesh.zapAuraAlpha)*2;
     nx.orbyMesh.glow.blurVerticalSize = 1 +  Math.cos(config.mesh.zapAuraAlpha)*2;
     // morphing
@@ -1644,6 +1715,7 @@ nx.botz.startZapping = function(config){ //EMBEDDED-FUNCTION-BEHAVIOR-.
         } //STOP-LOOPZ!-.
 
         // updateZapPath(zapPath, zapAlpha);
+        debugger; //depricated?
         nx.botz.updateZapPath(zapAlpha);
         //updateLines(mesh, zapPath);
         config.mesh.zapWave = BABYLON.Mesh.CreateTube("config.mesh.zapWave", zapWavePath, 0.8, 60, null, 0, nx.scene, true, BABYLON.Mesh.FRONTSIDE, config.mesh.zapWave);
@@ -1951,6 +2023,7 @@ nx.botz.kiloBotZapsOrby = function(){
         } //STOP-LOOPZ!-.
 
         // updateZapPath(zapPath, zapAlpha);
+        debugger; //depricated? 2
         nx.botz.updateZapPath(zapAlpha);
         //updateLines(mesh, zapPath);
         nx.kiloBotMesh1.zapWave = BABYLON.Mesh.CreateTube("nx.kiloBotMesh1.zapWave", zapWavePath, 0.8, 60, null, 0, nx.scene, true, BABYLON.Mesh.FRONTSIDE, nx.kiloBotMesh1.zapWave);

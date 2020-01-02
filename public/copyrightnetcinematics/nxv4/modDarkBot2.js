@@ -251,14 +251,16 @@ nx.dBot.startMezmoRays = function(fnEnd){
           nx.dBot.mezmoRaySystem = BABYLON.MeshBuilder.CreateLineSystem("mezmoRaySystem", {lines: nx.dBot.mezmoRayLines,updatable:true}, nx.scene);
           nx.dBot.mezmoRaySystem.color = BABYLON.Color3.Green();
           // nx.dBot.mezmoRaySystem.setPivotPoint(new BABYLON.Vector3(-2,2.35,-1.3)); //IMPORTANT same point as LIGHTBALL offset-.
-          nx.dBot.mezmoRaySystem.setPivotPoint(new BABYLON.Vector3(-1.9,2.35,-1.6)); //IMPORTANT same point as LIGHTBALL offset-.
+          // nx.dBot.mezmoRaySystem.setPivotPoint(new BABYLON.Vector3(-1.9,2.35,-1.6)); //IMPORTANT same point as LIGHTBALL offset-.
+          nx.dBot.mezmoRaySystem.setPivotPoint(nx.dBot.lazerBALL1.position); //IMPORTANT same point as LIGHTBALL offset-.
           nx.dBot.mezmoRaySystem.parent = nx.darkBot;
 
           // nx.dBot.mezmoFactory();
           nx.dBot.mezmoRaySystem2 = BABYLON.MeshBuilder.CreateLineSystem("mezmoRaySystem", {lines: nx.dBot.mezmoRayLines2,updatable:true}, nx.scene);
           nx.dBot.mezmoRaySystem2.color = BABYLON.Color3.Green();
           // nx.dBot.mezmoRaySystem2.setPivotPoint(new BABYLON.Vector3(2,2.45,-1.3)); //IMPORTANT same point as LIGHTBALL offset-.
-          nx.dBot.mezmoRaySystem2.setPivotPoint(new BABYLON.Vector3(1.9,2.45,-1.6)); //IMPORTANT same point as LIGHTBALL offset-.
+          // nx.dBot.mezmoRaySystem2.setPivotPoint(new BABYLON.Vector3(1.9,2.45,-1.6)); //IMPORTANT same point as LIGHTBALL offset-.
+          nx.dBot.mezmoRaySystem2.setPivotPoint(nx.dBot.lazerBALL2.position); //IMPORTANT same point as LIGHTBALL offset-.
           nx.dBot.mezmoRaySystem2.parent = nx.darkBot;
       }
       nx.dBot.mezmoAlpha=0;
@@ -266,6 +268,7 @@ nx.dBot.startMezmoRays = function(fnEnd){
       nx.dBot.stopMezmoLazer = 0;
       nx.scene.registerBeforeRender(function mezmoLazerRun() {
         if(++nx.dBot.mezmoDamper%2===0){return}
+        if(nx.dBot.stopMezmoLazer===1){return}
         if(nx.dBot.stopMezmoLazer<0){ nx.dBot.fnEndMezmo(); nx.dBot.endMezmoRays(); nx.scene.unregisterBeforeRender(mezmoLazerRun); return; }
         nx.dBot.mezmoAlpha += 0.02;
         nx.dBot.mezmoRaySystem.rotation.z = nx.dBot.mezmoAlpha;

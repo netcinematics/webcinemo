@@ -420,7 +420,7 @@ nx.GAMEZ = {
 	                // animate({x: -722, y: 1301, z: -1506},{queue:false,duration:2000,easing:'linear',
 	                step: function(now) { 
 	                   if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); return;}//CINEMA-STOP-.
-	                   // nx.zapBotMesh2.position.copyFrom({x:this.x,y:this.y,z:this.z})
+	                   // nx.zapbotTerra2.position.copyFrom({x:this.x,y:this.y,z:this.z})
 	                   nx.kiloBotMesh1.position.copyFrom({x:this.x,y:this.y,z:this.z}) 
 	                }, complete:function(){
 	                    nx.kiloBotMesh1.rotationQuaternion = null
@@ -468,7 +468,7 @@ nx.GAMEZ = {
                 	// nx.kiloBotMesh1.searching = 0;
                 // }
 
-                // nx.camz.freeCam.setTarget(nx.zapBotMesh2.position);
+                // nx.camz.freeCam.setTarget(nx.zapbotTerra2.position);
                 // nx.camz.freeCam.setTarget(nx.anmz.orby.rig.originBox.position);
 
 
@@ -479,7 +479,7 @@ nx.GAMEZ = {
                 // animate({x: -722, y: 1301, z: -1506},{queue:false,duration:2000,easing:'linear',
                 // step: function(now) { 
                 //    if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); return;}//CINEMA-STOP-.
-                //    // nx.zapBotMesh2.position.copyFrom({x:this.x,y:this.y,z:this.z})
+                //    // nx.zapbotTerra2.position.copyFrom({x:this.x,y:this.y,z:this.z})
                 //    if(nx.zapbotMesh){ nx.kiloBotMesh1.position.copyFrom({x:this.x,y:this.y,z:this.z}) }
                 // }, complete:function(){
 
@@ -596,11 +596,11 @@ nx.GAMEZ = {
 					nx.camz.followCam.heightOffset = 40;//piperide-top
 
 					//ADD ZAPBOT-POSITION-.
-					nx.zapbotMesh2.position.copyFrom({x: 580, y: 850, z: -617}); //PLACE ZAPBOT 2
-					nx.zapbotMesh2.rotationQuaternion = null;
-					// nx.zapbotMesh2.rotation.x = 0.2;
-					nx.zapbotMesh2.rotation.y = -1.9;
-					nx.zapbotMesh2.isVisible = true;
+					nx.zapbotTerra2.position.copyFrom({x: 580, y: 850, z: -617}); //PLACE ZAPBOT 2
+					nx.zapbotTerra2.rotationQuaternion = null;
+					// nx.zapbotTerra2.rotation.x = 0.2;
+					nx.zapbotTerra2.rotation.y = -1.9;
+					nx.zapbotTerra2.isVisible = true;
 
 
 					nx.zonez.removeZone(this); //REMOVE-ZONE-ON-CONTACT-.
@@ -616,9 +616,9 @@ nx.GAMEZ = {
   //       			nx.camz.followCam.radius = 70; //piperide-top
 					// nx.camz.followCam.heightOffset = 60;//piperide-top
 
-					if(!nx.zapbotMesh2.searching){ //todo
+					if(!nx.zapbotTerra2.searching){ //todo
 						console.log('search 3 on')
-						nx.zapbotMesh2.searching = 1; 
+						nx.zapbotTerra2.searching = 1; 
 					} //init new laser on 1 //start scanning-.
 					if(nx.kiloBotMesh1.chasing>0){nx.kiloBotMesh1.chasing=0} //stop zapbot 1
 
@@ -659,7 +659,7 @@ nx.GAMEZ = {
         		hit:function(){
         			// if(this.wasHit){return;}else{this.wasHit=1;/*setTimeout(function(){this.wasHit=0},3000);*/} //one time init-.
 
-					if(nx.zapbotMesh2.chasing>0){	nx.kiloBotMesh1.chasing=0 }
+					if(nx.zapbotTerra2.chasing>0){	nx.kiloBotMesh1.chasing=0 }
 
 
         			//CAMSTOPPER-.
@@ -881,25 +881,25 @@ nx.ui.showGameModeView()
 		// if(nx.orby.sparks.easybake){nx.orby.sparks.easybake.stop();}
 		if(nx.orby.easyBakeSparks){nx.orby.easyBakeSparks.stop();}
 		//ZAP-BOTZ--------------------------------------------------------------------
-		// if(!nx.zapbotMesh2.pos1){ //ZAPBOT2 POSITIONING
-		// if(nx.zapbotMesh2.position.x!=5.58){
+		// if(!nx.zapbotTerra2.pos1){ //ZAPBOT2 POSITIONING
+		// if(nx.zapbotTerra2.position.x!=5.58){
 			// debugger;
 			
 				//SCANNING-POSITION: before pos1
-            	nx.zapbotMesh2.position.copyFrom({x: 5.58, y: 259.50496627345956, z: -14.295333333333334})
-            	nx.zapbotMesh2.laserOriginSphere.position.y = 6.5; //fix zapper-.
-            	nx.zapbotMesh2.laserBumperLft.position.y = 0
-				nx.zapbotMesh2.laserBumperRgt.position.y = 0
-            	nx.zapbotMesh2.rotationQuaternion = null;
-            	nx.zapbotMesh2.rotation.y = -3
-            	nx.zapbotMesh2.searching = 1;
+            	nx.zapbotTerra2.position.copyFrom({x: 5.58, y: 259.50496627345956, z: -14.295333333333334})
+            	nx.zapbotTerra2.laserOriginSphere.position.y = 6.5; //fix zapper-.
+            	nx.zapbotTerra2.laserBumperLft.position.y = 0
+				nx.zapbotTerra2.laserBumperRgt.position.y = 0
+            	nx.zapbotTerra2.rotationQuaternion = null;
+            	nx.zapbotTerra2.rotation.y = -3
+            	nx.zapbotTerra2.searching = 1;
 				// 	}
 				// } else {
-					// 	if(nx.zapbotMesh2.position.x=0){
+					// 	if(nx.zapbotTerra2.position.x=0){
 						// 		// debugger;
-						//           	nx.zapbotMesh2.position.copyFrom({x: 0, y: 5, z: 0})
-						//           	// nx.zapbotMesh2.rotation.y = 2.44
-						//           	nx.zapbotMesh2.searching = 0;
+						//           	nx.zapbotTerra2.position.copyFrom({x: 0, y: 5, z: 0})
+						//           	// nx.zapbotTerra2.rotation.y = 2.44
+						//           	nx.zapbotTerra2.searching = 0;
 						// 	}
 						// }
 						
@@ -1102,7 +1102,7 @@ nx.ui.showGameModeView()
 
     						if(nx.scene.spacetrainscanned){ //todo scene metadata?-.
     							//ZAPBOT2 PLACEMENT
-    							nx.zapbotMesh2.position.copyFrom({x:0,y:5,z:0}) //HIDE ZAPBOT so Orby can meet with Darkbot
+    							nx.zapbotTerra2.position.copyFrom({x:0,y:5,z:0}) //HIDE ZAPBOT so Orby can meet with Darkbot
 
     							if(!nx.finalZone){ //one-time-.
 						            nx.finalZone= nx.zonez.camZoneFactory({name:'zonePyramid1',pos:{x: 0, y: 266, z: 0},dim:{h:10,w:44,d:44},alpha:0.22,color:{r:0,g:1,b:0},

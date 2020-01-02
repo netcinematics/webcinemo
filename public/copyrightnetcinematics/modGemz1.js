@@ -6,6 +6,7 @@
 console.log('a IONZ module-loaded')
 // debugger;
 if(!nx){nx={}}
+if(!nx.ionz){nx.ionz={}}
 // nx.module = {};
 
 
@@ -236,7 +237,54 @@ nx.createPipeIonz = function(){
 
 }
 
+/**************************************************END-PIPE-IONZ-****************************************/
+/**************************************************-MOUTH-IONZ-****************************************/
 
+/*******************************************************************-PIPE-Ionz-****************************************************************/
+// nx.pipeIonzActive = [];
+// nx.mouthIonz = [];
+
+nx.ionz.createMouthIonz = function(){
+        nx.aIon0 = BABYLON.Mesh.CreateSphere("aIon0", 1, 4, nx.scene);
+        // nx.aIon0.position.copyFrom(nx.orbyMeshM.position);//important mouth not mesh-.
+        // nx.aIon0.position = new BABYLON.Vector3(nx.orbyMesh.position.x,nx.orbyMesh.position.y,nx.orbyMesh.position.z)
+        nx.aIon0.material = new BABYLON.StandardMaterial("mthIonMat", nx.scene);
+        // nx.aSpaceIon.material.diffuseColor = nx.RGBAtoNormal(133,2,244,1);
+        // nx.aSpaceIon.material = nx.blueMat; //TODO ENERGEM
+        // nx.aSpaceIon.material = new BABYLON.StandardMaterial("blue1", nx.scene);
+        // nx.aSpaceIon.material.diffuseColor = new BABYLON.Color3(0, 0, 1);
+        nx.aIon0.material.diffuseColor = BABYLON.Color3.Blue();
+        nx.aIon0.material.emissiveColor = BABYLON.Color3.Green();
+        nx.aIon0.scaling.copyFrom({x:0.1, y:0.1, z:0.1})
+        nx.aIon0.material.alpha = 0.66;
+        nx.aIon0.parent = nx.orbyMeshM;
+
+        nx.aIon1 = BABYLON.Mesh.CreateSphere("aIon1", 1, 4, nx.scene);
+        nx.aIon1.position = new BABYLON.Vector3(1,1,1)
+        nx.aIon1.material = new BABYLON.StandardMaterial("mthIonMat", nx.scene);
+        nx.aIon1.material.diffuseColor = BABYLON.Color3.Blue();
+        nx.aIon1.material.emissiveColor = BABYLON.Color3.Green();
+        nx.aIon1.material.alpha = 0.66;
+        nx.aIon1.parent = nx.aIon0;
+
+        nx.aIon2 = BABYLON.Mesh.CreateSphere("aIon2", 1, 4, nx.scene);
+        nx.aIon2.position = new BABYLON.Vector3(-1,-1,1)
+        nx.aIon2.material = new BABYLON.StandardMaterial("mthIonMat", nx.scene);
+        nx.aIon2.material.diffuseColor = BABYLON.Color3.Blue();
+        nx.aIon2.material.emissiveColor = BABYLON.Color3.Green();
+        nx.aIon2.material.alpha = 0.66;
+        nx.aIon2.parent = nx.aIon0;
+
+        nx.aIon3 = BABYLON.Mesh.CreateSphere("aIon3", 1, 4, nx.scene);
+        nx.aIon3.position = new BABYLON.Vector3(1,-1,-1)
+        nx.aIon3.material = new BABYLON.StandardMaterial("mthIonMat", nx.scene);
+        nx.aIon3.material.diffuseColor = BABYLON.Color3.Blue();
+        nx.aIon3.material.emissiveColor = BABYLON.Color3.Green();
+        nx.aIon3.material.alpha = 0.66;
+        nx.aIon3.parent = nx.aIon0;
+}
+
+/**************************************************-END-MOUTH-IONZ-****************************************/
 
 // /*********************************CREATE-SOLID-PARTICLES******************************/
 // // var particleFountainInit = 1;
