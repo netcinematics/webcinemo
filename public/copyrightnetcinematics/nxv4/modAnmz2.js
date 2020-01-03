@@ -269,6 +269,422 @@ nx.anm.orbyShockGem = function(endfn){
 	//     },complete:function(){}
 	// });
 }
+
+nx.fireSystem1={}, nx.bluePlasmaSystem1={}, nx.purpleSmokeSystem1={};
+nx.fireSystem2={}, nx.bluePlasmaSystem2={}, nx.purpleSmokeSystem2={};
+nx.fireSystem3={}, nx.bluePlasmaSystem3={}, nx.purpleSmokeSystem3={};
+nx.anm.boomANM = function(){
+
+
+    var fountainFire1 = BABYLON.Mesh.CreateBox("fountain", 2.0, nx.scene);
+    fountainFire1.position = new BABYLON.Vector3(-1,263,-1);
+    fountainFire1.visibility = 0;
+    // Create a particle system
+    var fireSystem1 = new BABYLON.ParticleSystem("particles", 2000, nx.scene);
+
+    //Texture of each particle
+    fireSystem1.particleTexture = new BABYLON.Texture("textures/flare.png", nx.scene);
+
+    // Where the particles come from
+    fireSystem1.emitter = fountainFire1; // the starting object, the emitter
+    fireSystem1.minEmitBox = new BABYLON.Vector3(-0.5, 0.5, -0.5); // Starting all from
+    fireSystem1.maxEmitBox = new BABYLON.Vector3(0.5, 1.5, 0.5); // To...
+
+    // Colors of all particles
+    fireSystem1.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    fireSystem1.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    fireSystem1.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+    // Size of each particle (random between...
+    fireSystem1.minSize = 0.5;
+    fireSystem1.maxSize = 1;
+
+    // Life time of each particle (random between...
+    fireSystem1.minLifeTime = 0.2;
+    fireSystem1.maxLifeTime = 0.4;
+
+    // Emission rate
+    fireSystem1.emitRate = 150;//500;
+
+    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+    fireSystem1.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    // Set the gravity of all particles
+    fireSystem1.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    // Direction of each particle after it has been emitted
+    fireSystem1.direction1 = new BABYLON.Vector3(-4, 0, -4);
+    fireSystem1.direction2 = new BABYLON.Vector3(-4, 0, -4);
+    // fireSystem1.direction1 = new BABYLON.Vector3(0, 8, 0);
+    // fireSystem1.direction2 = new BABYLON.Vector3(0, 8, 0);
+
+    // Angular speed, in radians
+    fireSystem1.minAngularSpeed = 0;
+    fireSystem1.maxAngularSpeed = Math.PI;
+
+    // Speed
+    fireSystem1.minEmitPower = 1;
+    fireSystem1.maxEmitPower = 3;
+    fireSystem1.updateSpeed = 0.005;
+
+    // Start the particle system
+    fireSystem1.start();
+
+
+	nx.fireSystem1 = fireSystem1;
+
+
+    var fountainFire2 = BABYLON.Mesh.CreateBox("fountain", 2.0, nx.scene);
+    fountainFire2.position = new BABYLON.Vector3(-1,263,-1);
+    fountainFire2.visibility = 0;
+    // Create a particle system
+    var fireSystem2 = new BABYLON.ParticleSystem("particles", 2000, nx.scene);
+
+    //Texture of each particle
+    fireSystem2.particleTexture = new BABYLON.Texture("textures/flare.png", nx.scene);
+
+    // Where the particles come from
+    fireSystem2.emitter = fountainFire2; // the starting object, the emitter
+    fireSystem2.minEmitBox = new BABYLON.Vector3(-0.5, 0.5, -0.5); // Starting all from
+    fireSystem2.maxEmitBox = new BABYLON.Vector3(0.5, 1.5, 0.5); // To...
+
+    // Colors of all particles
+    fireSystem2.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    fireSystem2.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    fireSystem2.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+    // Size of each particle (random between...
+    fireSystem2.minSize = 0.5;
+    fireSystem2.maxSize = 1;
+
+    // Life time of each particle (random between...
+    fireSystem2.minLifeTime = 0.2;
+    fireSystem2.maxLifeTime = 0.4;
+
+    // Emission rate
+    fireSystem2.emitRate = 150;//500;
+
+    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+    fireSystem2.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    // Set the gravity of all particles
+    fireSystem2.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    // Direction of each particle after it has been emitted
+    fireSystem2.direction1 = new BABYLON.Vector3(4, 0, 4);
+    fireSystem2.direction2 = new BABYLON.Vector3(4, 0, 4);
+    // fireSystem2.direction1 = new BABYLON.Vector3(0, 8, 0);
+    // fireSystem2.direction2 = new BABYLON.Vector3(0, 8, 0);
+
+    // Angular speed, in radians
+    fireSystem2.minAngularSpeed = 0;
+    fireSystem2.maxAngularSpeed = Math.PI;
+
+    // Speed
+    fireSystem2.minEmitPower = 1;
+    fireSystem2.maxEmitPower = 3;
+    fireSystem2.updateSpeed = 0.005;
+
+    // Start the particle system
+    fireSystem2.start();
+
+
+	nx.fireSystem2 = fireSystem2;
+
+
+
+    var fountainPlasma1 = BABYLON.Mesh.CreateBox("fountain", 2.0, nx.scene);
+    fountainPlasma1.position = new BABYLON.Vector3(-1,263,-1);
+    fountainPlasma1.visibility = 0;
+  var bluePlasmaSystem1 = new BABYLON.ParticleSystem("particles", 2000, nx.scene);
+
+    //Texture of each particle
+    bluePlasmaSystem1.particleTexture = new BABYLON.Texture("textures/sparkle.png", nx.scene);
+    // bluePlasmaSystem1.particleTexture = new BABYLON.Texture("textures/flare.png", nx.scene);
+
+    // Where the particles come from
+    bluePlasmaSystem1.emitter = fountainPlasma1; // the starting object, the emitter
+    // bluePlasmaSystem1.minEmitBox = new BABYLON.Vector3(-2.5, 0, -2.5); // Starting all from
+    // bluePlasmaSystem1.maxEmitBox = new BABYLON.Vector3(2.5, 2, 2.5); // To...
+    bluePlasmaSystem1.minEmitBox = new BABYLON.Vector3(-0.5, 0, -0.5); // Starting all from
+    bluePlasmaSystem1.maxEmitBox = new BABYLON.Vector3(0.5, 2, 0.5); // To...
+
+
+    // Colors of all particles
+    // bluePlasmaSystem1.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // bluePlasmaSystem1.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // bluePlasmaSystem1.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+
+    bluePlasmaSystem1.color1 = new BABYLON.Color4(0, 0.47, 1);
+    bluePlasmaSystem1.color2 = new BABYLON.Color4(0.15, 0.97, 0.35, 0.77);
+    bluePlasmaSystem1.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+
+
+    // Size of each particle (random between...
+    bluePlasmaSystem1.minSize = 0.5;
+    bluePlasmaSystem1.maxSize = 1;
+
+    // Life time of each particle (random between...
+    bluePlasmaSystem1.minLifeTime = 2;//0.2;
+    bluePlasmaSystem1.maxLifeTime = 4;//0.4;
+
+    // Emission rate
+    bluePlasmaSystem1.emitRate = 250;
+
+    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+    bluePlasmaSystem1.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    // Set the gravity of all particles
+    bluePlasmaSystem1.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    // Direction of each particle after it has been emitted
+    bluePlasmaSystem1.direction1 = new BABYLON.Vector3(-10, 0, -10);
+    bluePlasmaSystem1.direction2 = new BABYLON.Vector3(-10, 0, -10);
+
+    // Angular speed, in radians
+    bluePlasmaSystem1.minAngularSpeed = 2;//0;
+    bluePlasmaSystem1.maxAngularSpeed = Math.PI;
+
+    // Speed
+    bluePlasmaSystem1.minEmitPower = 4;//1;
+    bluePlasmaSystem1.maxEmitPower = 8;//3;
+    bluePlasmaSystem1.updateSpeed = 0.005;
+
+    // Start the particle system
+    bluePlasmaSystem1.start();
+    
+	nx.bluePlasmaSystem1 = bluePlasmaSystem1;
+
+    var fountainPlasma2 = BABYLON.Mesh.CreateBox("fountain", 2.0, nx.scene);
+    fountainPlasma2.position = new BABYLON.Vector3(-1,263,-1);
+    fountainPlasma2.visibility = 0;
+  var bluePlasmaSystem2 = new BABYLON.ParticleSystem("particles", 2000, nx.scene);
+
+    //Texture of each particle
+    // bluePlasmaSystem2.particleTexture = new BABYLON.Texture("textures/flare.png", nx.scene);
+    bluePlasmaSystem2.particleTexture = new BABYLON.Texture("textures/sparkle.png", nx.scene);
+
+    // Where the particles come from
+    bluePlasmaSystem2.emitter = fountainPlasma2; // the starting object, the emitter
+    // bluePlasmaSystem2.minEmitBox = new BABYLON.Vector3(-2.5, 0, -2.5); // Starting all from
+    // bluePlasmaSystem2.maxEmitBox = new BABYLON.Vector3(2.5, 2, 2.5); // To...
+    bluePlasmaSystem2.minEmitBox = new BABYLON.Vector3(-0.5, 0, -0.5); // Starting all from
+    bluePlasmaSystem2.maxEmitBox = new BABYLON.Vector3(0.5, 2, 0.5); // To...
+
+
+    // Colors of all particles
+    // bluePlasmaSystem2.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // bluePlasmaSystem2.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // bluePlasmaSystem2.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+
+    bluePlasmaSystem2.color1 = new BABYLON.Color4(0, 0.47, 1);
+    bluePlasmaSystem2.color2 = new BABYLON.Color4(0.15, 0.97, 0.35, 0.77);
+    bluePlasmaSystem2.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+
+
+    // Size of each particle (random between...
+    bluePlasmaSystem2.minSize = 0.5;
+    bluePlasmaSystem2.maxSize = 1;
+
+    // Life time of each particle (random between...
+    bluePlasmaSystem2.minLifeTime = 2;//0.2;
+    bluePlasmaSystem2.maxLifeTime = 4;//0.4;
+
+    // Emission rate
+    bluePlasmaSystem2.emitRate = 250;
+
+    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+    bluePlasmaSystem2.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    // Set the gravity of all particles
+    bluePlasmaSystem2.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    // Direction of each particle after it has been emitted
+    bluePlasmaSystem2.direction1 = new BABYLON.Vector3(10, 0, 10);
+    bluePlasmaSystem2.direction2 = new BABYLON.Vector3(10, 0, 10);
+
+    // Angular speed, in radians
+    bluePlasmaSystem2.minAngularSpeed = 2;//0;
+    bluePlasmaSystem2.maxAngularSpeed = Math.PI;
+
+    // Speed
+    bluePlasmaSystem2.minEmitPower = 4;//1;
+    bluePlasmaSystem2.maxEmitPower = 8;//3;
+    bluePlasmaSystem2.updateSpeed = 0.005;
+
+    // Start the particle system
+    bluePlasmaSystem2.start();
+    
+	nx.bluePlasmaSystem2 = bluePlasmaSystem2;
+
+    var fountainPlasma3 = BABYLON.Mesh.CreateBox("fountain", 2.0, nx.scene);
+    fountainPlasma3.position = new BABYLON.Vector3(-1,263,-1);
+    fountainPlasma3.visibility = 0;
+  var bluePlasmaSystem3 = new BABYLON.ParticleSystem("particles", 2000, nx.scene);
+
+    //Texture of each particle
+    // bluePlasmaSystem3.particleTexture = new BABYLON.Texture("textures/flare.png", nx.scene);
+    bluePlasmaSystem3.particleTexture = new BABYLON.Texture("textures/sparkle.png", nx.scene);
+
+    // Where the particles come from
+    bluePlasmaSystem3.emitter = fountainPlasma3; // the starting object, the emitter
+    // bluePlasmaSystem3.minEmitBox = new BABYLON.Vector3(-2.5, 0, -2.5); // Starting all from
+    // bluePlasmaSystem3.maxEmitBox = new BABYLON.Vector3(2.5, 2, 2.5); // To...
+    bluePlasmaSystem3.minEmitBox = new BABYLON.Vector3(-0.5, 0, -0.5); // Starting all from
+    bluePlasmaSystem3.maxEmitBox = new BABYLON.Vector3(0.5, 2, 0.5); // To...
+
+
+    // Colors of all particles
+    // bluePlasmaSystem3.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // bluePlasmaSystem3.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // bluePlasmaSystem3.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+
+    bluePlasmaSystem3.color1 = new BABYLON.Color4(0, 0.47, 1);
+    bluePlasmaSystem3.color2 = new BABYLON.Color4(0.15, 0.97, 0.35, 0.77);
+    bluePlasmaSystem3.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+
+
+    // Size of each particle (random between...
+    bluePlasmaSystem3.minSize = 0.5;
+    bluePlasmaSystem3.maxSize = 1;
+
+    // Life time of each particle (random between...
+    bluePlasmaSystem3.minLifeTime = 2;//0.2;
+    bluePlasmaSystem3.maxLifeTime = 4;//0.4;
+
+    // Emission rate
+    bluePlasmaSystem3.emitRate = 250;//500;
+
+    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+    bluePlasmaSystem3.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    // Set the gravity of all particles
+    bluePlasmaSystem3.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    // Direction of each particle after it has been emitted
+    bluePlasmaSystem3.direction1 = new BABYLON.Vector3(-10, 0, 10);
+    bluePlasmaSystem3.direction2 = new BABYLON.Vector3(-10, 0, 10);
+
+    // Angular speed, in radians
+    bluePlasmaSystem3.minAngularSpeed = 2;//0;
+    bluePlasmaSystem3.maxAngularSpeed = Math.PI;
+
+    // Speed
+    bluePlasmaSystem3.minEmitPower = 4;//1;
+    bluePlasmaSystem3.maxEmitPower = 8;//3;
+    bluePlasmaSystem3.updateSpeed = 0.005;
+
+    // Start the particle system
+    bluePlasmaSystem3.start();
+    
+	nx.bluePlasmaSystem3 = bluePlasmaSystem3;
+
+
+    var fountainSmoke1 = BABYLON.Mesh.CreateBox("fountain", 2.0, nx.scene);
+    fountainSmoke1.position = new BABYLON.Vector3(10,260,0);
+ var purpleSmokeSystem1 = new BABYLON.ParticleSystem("particles", 2000, nx.scene);
+
+    //Texture of each particle
+    purpleSmokeSystem1.particleTexture = new BABYLON.Texture("textures/cloud.png", nx.scene);
+
+    // Where the particles come from
+    purpleSmokeSystem1.emitter = fountainSmoke1; // the starting object, the emitter
+    purpleSmokeSystem1.minEmitBox = new BABYLON.Vector3(-0.5, 1, -0.5); // Starting all from
+    purpleSmokeSystem1.maxEmitBox = new BABYLON.Vector3(0.5, 1, 0.5); // To...
+
+    // Colors of all particles
+    // purpleSmokeSystem1.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // purpleSmokeSystem1.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // purpleSmokeSystem1.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+    purpleSmokeSystem1.color1 = new BABYLON.Color4(0.49, 0.03, 0.99);
+    purpleSmokeSystem1.color2 = new BABYLON.Color4(0.22, 0.29, 0.99);
+    purpleSmokeSystem1.colorDead = new BABYLON.Color4(0.14, 0.06, 0.06, 1);
+
+
+
+    // Size of each particle (random between...
+    purpleSmokeSystem1.minSize = 0.5;
+    purpleSmokeSystem1.maxSize = 2;
+
+    // Life time of each particle (random between...
+    purpleSmokeSystem1.minLifeTime = 2;//0.2;
+    purpleSmokeSystem1.maxLifeTime = 4;//0.4;
+
+    // Emission rate
+    purpleSmokeSystem1.emitRate = 50;
+
+    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+    // debugger;
+    // purpleSmokeSystem1.blendMode = BABYLON.ParticleSystem.BLENDMODE_MULTIPLY;
+    purpleSmokeSystem1.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    // Set the gravity of all particles
+    purpleSmokeSystem1.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    // Direction of each particle after it has been emitted
+    purpleSmokeSystem1.direction1 = new BABYLON.Vector3(0, 8, 0);
+    purpleSmokeSystem1.direction2 = new BABYLON.Vector3(0, 8, 0);
+
+    // Angular speed, in radians
+    purpleSmokeSystem1.minAngularSpeed = 2;//0;
+    purpleSmokeSystem1.maxAngularSpeed = Math.PI;
+
+    // Speed
+    purpleSmokeSystem1.minEmitPower = 1;//1;
+    purpleSmokeSystem1.maxEmitPower = 3;//3;
+    purpleSmokeSystem1.updateSpeed = 0.022;
+
+    // Start the particle system
+    purpleSmokeSystem1.start();
+
+    nx.purpleSmokeSystem1 = purpleSmokeSystem1;
+
+    //TODO clean up smoke systems
+
+
+
+}
+
+nx.anm.stopBoomANM = function(type){
+	if(type==='fire'){
+		nx.fireSystem1.stop();
+		nx.fireSystem2.stop();
+		nx.fireSystem1.dispose();
+		nx.fireSystem2.dispose();
+		nx.fireSystem1 = null;
+		nx.fireSystem2 = null;
+	}
+	if(type==='plasma'){
+
+		nx.bluePlasmaSystem1.emitRate = 0
+		nx.bluePlasmaSystem2.emitRate = 0
+		nx.bluePlasmaSystem3.emitRate = 0
+		setTimeout(function(){
+			nx.bluePlasmaSystem1.stop();
+			nx.bluePlasmaSystem2.stop();
+			nx.bluePlasmaSystem3.stop();
+			nx.bluePlasmaSystem1.dispose();
+			nx.bluePlasmaSystem2.dispose();
+			nx.bluePlasmaSystem3.dispose();
+			nx.bluePlasmaSystem1 = null;
+			nx.bluePlasmaSystem2 = null;
+			nx.bluePlasmaSystem3 = null;
+		},8000)
+	}
+	if(type==='smoke'){
+		nx.purpleSmokeSystem1.stop();
+		nx.purpleSmokeSystem1.dispose();
+		nx.purpleSmokeSystem1 = null;
+	}
+}
+
 /*******************************-TEMPLATE-ATOMIC-ANM-****************************/
 // nx.anm.darkBot.mezmerize = function(){
 //     $({rx:nx.darkBot.rotation.x, ry:nx.darkBot.rotation.y,rz:nx.darkBot.rotation.z})

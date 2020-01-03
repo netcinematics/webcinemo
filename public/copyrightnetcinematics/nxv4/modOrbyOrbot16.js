@@ -2443,7 +2443,8 @@ nx.orby.loadOrbyMouth = function(endfn){
 
   // debugger; 
 
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyMouth1c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyMouth2a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyMouth1c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot18d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot17d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
@@ -2490,6 +2491,7 @@ nx.orby.loadOrbyMouth = function(endfn){
         nx.lazerboxM = nx.scene.getMeshByName('lazerboxM') ; //lazerbox
         nx.lazerboxM.visibility = 0;
 
+// nx.scene.beginAnimation(nx.orbySkeletonM[0], 22, 35, false, 0.5); // beforeBOOM-. 
 // nx.scene.beginAnimation(nx.orbySkeletonM[0], 4, 4, false, 1); //end shock-. 
 // nx.scene.beginAnimation(nx.orbySkeletonM[0], 3, 22, true, 0.1); //end shock-. 
         // nx.orby.iris = nx.scene.getMeshByName('separatedIRIS') 

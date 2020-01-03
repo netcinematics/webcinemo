@@ -1051,7 +1051,7 @@ nx.ui.showGameModeView()
 
     						// console.log('TEST',currentQuadView)
 
-    						if(nx.scene.finalSequenceFlag){return} //supprese cam switch on finalSeqANM-.
+    						if(nx.scene.climaxSequenceFlag){return} //supprese cam switch on finalSeqANM-.
 
     						//TODO THIS CAN GET STUCK IN SOME WEIRD WAY
     						//VIEW-OVERRIDE - IF ALONG THE WALL-. -----------------TOWER-BAY-
