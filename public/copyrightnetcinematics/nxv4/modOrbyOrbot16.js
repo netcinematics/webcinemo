@@ -46,11 +46,13 @@ jmpCompress.onAnimationEnd = function (){
 nx.orby.lookFactory('proneLookUp')
 var prone = nx.scene.beginAnimation(nx.orbySkeleton[0], 150, 150, false, 1.0);  //laser
 var prone = nx.scene.beginAnimation(nx.orbySkeleton[0], 150, 160, false, 1.0);  //laser-thumb
+var sitUp = nx.scene.beginAnimation(nx.orbySkeleton[0], 520, 550, false, 1.0);  //orby sit up
 
 /*******************************-ANMZ-************************************/
 nx.loadOrbyAssets = function() {
     if(!nx.scene){return;}
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot20a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot18d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot17d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {

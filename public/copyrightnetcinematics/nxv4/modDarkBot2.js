@@ -22,9 +22,11 @@ nx.initDarkBot = function(){
   nx.getMasterManifest(function(){ }); //get await spot in line on manifest to loading-count.
  
   // var darkMezmo = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 0, 95, false, 0.5); //MEXMO 
+  // var lookUp = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 50, 60, false, 0.5); //lookup
 
 // 
   // setTimeout(function(){
+      // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot18a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot17b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot16c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot15c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {

@@ -676,7 +676,7 @@ nx.anm.stopBoomANM = function(type){
 			nx.bluePlasmaSystem1 = null;
 			nx.bluePlasmaSystem2 = null;
 			nx.bluePlasmaSystem3 = null;
-		},8000)
+		},10000)
 	}
 	if(type==='smoke'){
 		nx.purpleSmokeSystem1.stop();
