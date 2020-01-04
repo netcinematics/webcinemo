@@ -5945,28 +5945,28 @@ nx.scene.activeCamera.setTarget(nx.BV32(nx.darkBot.position)) //CAMTGT:
 var darkToesDown = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 60, 65, false, 0.5);
 nx.anm.darkBot.flipAround();
                 }});
-                nx.ui.flashCanvasMSG({txt:"FREESURF Elsewhere!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"But, Darkbot... wait!",txtIcon:'orby',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"FREE~SURF Elsewhere!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"But, DARbot, wait!",txtIcon:'orby',dur:3000,txtInit:function(){
                     nx.anm.finalCam2()
                     nx.anm.orbyMoveBack();
                 },txtEnd:function(){} }); 
                     nx.ui.flashCanvasMSG({txt:"MEZMORIZE!!!",txtIcon:'darkbot',dur:3000,txtInit:function(){
                     nx.anm.darkBot.mezmerize();
                 },txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"There's NO AlphaMoon!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"There's no AlphaMoon?",txtIcon:'orby',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"There's NO Alpha~Moon!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"No Alpha~Moon?",txtIcon:'orby',dur:3000,txtInit:function(){
 nx.scene.activeCamera.position.copyFrom({x: 25.18834885645558, y: 272.12770820221976, z: -46.31559318086609})//campos:overshoulder
 nx.scene.activeCamera.setTarget(nx.BV32({x: 23.86942312760459, y: 271.07665827193995, z: -39.75208454410665})) //CAMTGT:          
                 },txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"You DIDN'T see Darkbot!",txtIcon:'darkbot',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"You DIDN'T see DARbot!",txtIcon:'darkbot',dur:3000,txtInit:function(){
 nx.scene.activeCamera.position.copyFrom({x:-11.81,y:263,z:4.68})//campos:tunnel out
                     nx.scene.activeCamera.setTarget(nx.darkBot.position) //CAMTGT: 
                 },txtEnd:function(){ }});
-                nx.ui.flashCanvasMSG({txt:"I didn't see Darkbot?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"YOU ARE MEZMORIZED?",txtIcon:'darkbot',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"You are not DARbot?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"You are not MEZMORIZED?",txtIcon:'darkbot',dur:3000,txtInit:function(){
                     nx.anm.darkBotCloseUp();
                 },txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Well, not really! But...",txtIcon:'orby',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"Well no, not really. But...",txtIcon:'orby',dur:3000,txtInit:function(){
                     nx.anm.orbyCloseUp();
                 },txtEnd:function(){
                     nx.dBot.stopMezmoLazer=1;//avoid loop
@@ -5977,6 +5977,7 @@ nx.scene.activeCamera.position.copyFrom({x:-11.81,y:263,z:4.68})//campos:tunnel 
                     // nx.darkBot.hoverSpeed = 0.01;
                     nx.darkBot.hoverAmount = 0.005; //tight and slow for closeup
                 } }); 
+
                 nx.ui.flashCanvasMSG({txt:"Dratz!",txtIcon:'darkbot',dur:2000,txtInit:function(){
 nx.scene.activeCamera.position.copyFrom({x: 14.44245722657965, y: 266.0880920516175, z: -11.255431610973964})//campos:overshoulder
 nx.scene.activeCamera.setTarget(nx.BV32({x: 17.62534290345204, y: 265.92460201333586, z: -15.429824170070589})) //CAMTGT:   
@@ -5984,7 +5985,7 @@ nx.scene.activeCamera.setTarget(nx.BV32({x: 17.62534290345204, y: 265.9246020133
 
             nx.scene.beginAnimation(nx.darkBotSkeleton[0], 20, 30, false, 0.5);   //darkLookDown            
                 },txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Junk!?!",txtIcon:'darkbot',dur:4000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"Junk.",txtIcon:'darkbot',dur:4000,txtInit:function(){
 
             nx.scene.beginAnimation(nx.darkBotSkeleton[0], 30, 35, false, 0.25); //darkLookHand
 
@@ -6041,16 +6042,16 @@ var darkHandsOut = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 90, 95, false,
 // }
 
                 },txtEnd:function(){     }});
-                nx.ui.flashCanvasMSG({txt:"NO!",txtIcon:'orby',dur:2000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"NO!!!",txtIcon:'orby',dur:2000,txtInit:function(){
                     nx.orbyMesh.position.copyFrom({x: 0, y: 262.5, z: 0})
                     nx.anm.orbyCloseUp2();
 
                     nx.anm.zapBotConvergence(); 
                 },txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"AHHHH!!!.",txtIcon:'orby',dur:4000,txtInit:function(){},txtEnd:function(){
+                nx.ui.flashCanvasMSG({txt:"WAHHHH!!!",txtIcon:'orby',dur:4000,txtInit:function(){},txtEnd:function(){
                    nx.scene.beginAnimation(nx.orbySkeleton[0], 4, 4, false, 1); //end shock-. 
                 } }); 
-                nx.ui.flashCanvasMSG({txt:"YOU DID NOT SEE,",txtIcon:'darkbot',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"YOU DIDN'T SEE...",txtIcon:'darkbot',dur:3000,txtInit:function(){
 
     nx.dBot.stopMezmoLazer=0;//loop
 
@@ -6071,7 +6072,7 @@ nx.dBot.mezmoRaySystem2.position.copyFrom({x: 3.1, y: 2.888, z: -0.6})
     });
                 },txtEnd:function(){}});
 
-                nx.ui.flashCanvasMSG({txt:"A ZAPBOTARMY!",txtIcon:'darkbot',dur:3000,txtEnd:function(){
+                nx.ui.flashCanvasMSG({txt:"ZAP~BOT~ARMY!",txtIcon:'darkbot',dur:3000,txtEnd:function(){
                     nx.climaxSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
                 }})
 
@@ -6098,7 +6099,7 @@ nx.dBot.mezmoRaySystem2.position.copyFrom({x: 3.1, y: 2.888, z: -0.6})
 
                 var lookCam1 = nx.scene.beginAnimation(nx.orbySkeletonM[0], 3, 10, false, 0.6);
                 lookCam1.onAnimationEnd = function(){
-                    setTimeout(function(){
+                    // setTimeout(function(){
 
                         nx.ui.flashCanvasMSG({txt:"Orby!",txtIcon:'azod',dur:2000,txtInit:function(){
                         },txtEnd:function(){
@@ -6122,7 +6123,7 @@ nx.dBot.mezmoRaySystem2.position.copyFrom({x: 3.1, y: 2.888, z: -0.6})
                 
                  
                         
-                    },1000)
+                    // },1000)
                 }
 
 
@@ -6174,12 +6175,12 @@ nx.dBot.mezmoRaySystem2.position.copyFrom({x: 3.1, y: 2.888, z: -0.6})
 
                             // setTimeout(function(){
                                 // nx.scene.beginAnimation(nx.orbySkeletonM[0], 20, 22, false, 0.6).onAnimationEnd = function(){ //LookMouth
-                                nx.scene.beginAnimation(nx.orbySkeletonM[0], 12, 22, false, 0.6).onAnimationEnd = function(){ //LookMouth
+                                nx.scene.beginAnimation(nx.orbySkeletonM[0], 12, 22, false, 0.5).onAnimationEnd = function(){ //LookMouth
 
                                     var rCur=0,rLast=0,rAdd=0; //TRICKY-ROTATION-SYNTAX-. rCur-rLast = rAdd, for animated-rotations-.
                                     $({ry:nx.orbyMouthM.rotation.z})
                                     .animate({rz:1}
-                                    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+                                    ,{queue:false,duration:4000*nx.RUNTIME,easing:'swing',
                                         step:function(now) { 
                                             if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
                                             rCur = this.ry; rAdd = rCur-rLast; rLast = rCur; //TRICKY-ROTATION-SYNTAX-.
@@ -6315,11 +6316,12 @@ nx.scene.activeCamera.position.copyFrom( {x: 21.362506585775776, y: 267.2809326
 nx.scene.activeCamera.setTarget(nx.BV32({x: 18.459032017437348, y: 266.9825040184168, z: -24.734531953436157})) //CAMTGT: 
 
     // nx.scene.activeCamera.position.copyFrom({x: 4.869535423415581, y: 265.4471126477164, z: -8.227307880825064})//ion closeup
+                nx.dBot.stopMezmoLazer=-1;//endloop
+                nx.dBot.stopHover=1;//stop hover
 
                nx.ui.flashCanvasMSG({txt:"BOOM!",dur:3000,txtInit:function(){
                     //todo same boom sound
                 },txtEnd:function(){
-                    nx.dBot.stopMezmoLazer=-1;//endloop
                 } }); 
 
 // for(var i=1; i<255; i++){
@@ -6351,9 +6353,9 @@ nx.scene.registerBeforeRender(function boomSphereLoop() {
          nx.boomSpheres.push(boomSphere);
     }else if (boomSphereIdx<888){ //Expand FOG out 1-.
         for(var i=0;i<nx.boomSpheres.length;i++){
-            nx.boomSpheres[i].scaling.x += 0.1; //0.888;
-            nx.boomSpheres[i].scaling.y += 0.1; //0.888;
-            nx.boomSpheres[i].scaling.z += 0.1; //0.888;
+            nx.boomSpheres[i].scaling.x += 0.3; //0.888;
+            nx.boomSpheres[i].scaling.y += 0.3; //0.888;
+            nx.boomSpheres[i].scaling.z += 0.3; //0.888;
         }
     }
     // else if (boomSphereIdx<888){
@@ -6365,7 +6367,7 @@ nx.scene.registerBeforeRender(function boomSphereLoop() {
     }
     if(boomSphereIdx>111){ //FADE OUT FOG-.
         for(var i=0;i<nx.boomSpheres.length;i++){
-            nx.boomSpheres[i].visibility -= 0.00888; //0.888;
+            nx.boomSpheres[i].visibility -= 0.0111; //0.888;
         }
     } 
     if (boomSphereIdx===400){ //OneTime-
@@ -6393,13 +6395,21 @@ nx.scene.registerBeforeRender(function boomSphereLoop() {
             else if(nx.boomSeqIdx[1] && nx.boomSeqIdx[1].on){ var NUM = 1; nx.boomSeqIdx[NUM].on=0;
 
 
-
 nx.scene.activeCamera.position.copyFrom({x: 355.07090105536935, y: 606.8207171064599, z: -36.4530847232519}) //CAM SKY VIEW-.
 nx.scene.activeCamera.setTarget(nx.BV32({x: 294.34052934926814, y: 546.9670058773744, z: -29.718254463217416})) //CAMTGT: 
 // nx.scene.activeCamera.position.copyFrom({x: 329.6025472940704, y: 573.622204256834, z: 1.627080639815125}) //CAM SKY VIEW-.
 // nx.scene.activeCamera.setTarget(nx.BV32({x: 19.036975354100676, y: 267.03370435498164, z: -25.359065003051636})) //CAMTGT: 
 
-nx.orbyMesh.position.copyFrom({x:0,y:260,z:0})
+//TODO: check nx.LOW_PERF_MODE - where explosion is simplified when 
+//TODO: anm flying Zapbots
+nx.kiloBotMesh1.position.copyFrom({x:0,y:1,z:0})
+nx.zapbotMega.position.copyFrom({x:0,y:2,z:0})
+nx.zapbotTerra2.position.copyFrom({x:0,y:3,z:0})
+// debugger;
+if(nx.orbyMeshM){ nx.orbyMeshM.visibility=0; nx.orbyMeshM.position.copyFrom({x:0,y:4,z:0}) }
+
+nx.orbyMesh.position.copyFrom({x:0,y:260,z:0}) //bring the real orby back
+nx.orbyMesh.rotationQuaternion = null;
 nx.orbyMesh.rotation.y = -2.222;
 nx.scene.beginAnimation(nx.orbySkeleton[0], 520, 520, false, 1.0);  //orby sit up
 
@@ -6431,9 +6441,9 @@ nx.scene.registerBeforeRender(function boomFOGLoop() {
          nx.boomFOGs.push(boomFOG);
     }else if (boomFOGIDX<444){ //Expand FOG out 1-.
         for(var i=0;i<nx.boomFOGs.length;i++){
-            nx.boomFOGs[i].scaling.x += 0.1; //0.888;
-            nx.boomFOGs[i].scaling.y += 0.1; //0.888;
-            nx.boomFOGs[i].scaling.z += 0.1; //0.888;
+            nx.boomFOGs[i].scaling.x += 0.333; //0.888;
+            nx.boomFOGs[i].scaling.y += 0.333; //0.888;
+            nx.boomFOGs[i].scaling.z += 0.333; //0.888;
         }
     }
     // else if (boomSphereDamper<888){
@@ -6488,16 +6498,36 @@ nx.scene.activeCamera.setTarget(nx.BV32({x: 18.459032017437348, y: 266.982504018
             } //end frame
             else if(nx.boomSeqIdx[3] && nx.boomSeqIdx[3].on){ var NUM = 3; nx.boomSeqIdx[NUM].on=0;
 
-nx.scene.activeCamera.position.copyFrom({x: 21.184477771556978, y: 267.2467810925009, z: -27.679806561368437}) //CLOSE XOOM IN POS
+nx.scene.activeCamera.position.copyFrom({x: 21.184477771556978, y: 267.2467810925009, z: -27.679806561368437}) //CLOSE XOOM IN ORBY POS
 nx.scene.activeCamera.setTarget(nx.BV32({x: 18.459032017437348, y: 266.9825040184168, z: -24.734531953436157})) //CAMTGT: 
+
+
 
 // nx.scene.activeCamera.position.copyFrom({x: 3.7216935223688936, y: 260.62118034016277, z: 4.401226788683731}) //floor look up darkbot
 // nx.scene.activeCamera.setTarget(nx.BV32({x: 7.654121083533111, y: 262.55161490037335, z: -1.5118605453747458})) //CAMTGT: 
 nx.scene.beginAnimation(nx.orbySkeleton[0], 520, 525, false, 0.5).onAnimationEnd = function(){ //orby eye move
     setTimeout(function(){
         nx.scene.beginAnimation(nx.orbySkeleton[0], 525, 550, false, 0.5).onAnimationEnd=function(){ //orby sit up
-            nx.ui.flashCanvasMSG({txt:"It's NOT FREESURFING.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-            nx.boomSeqIdx[NUM+1] = {on:1}; 
+            nx.anm.stopBoomANM('purplesteam')
+            nx.ui.flashCanvasMSG({txt:"NOT FREE~SURFING!",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){
+            } }); 
+            nx.ui.flashCanvasMSG({txt:"Why me?",txtIcon:'darkbot',dur:2000,txtInit:function(){
+                nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+                nx.darkBot.position.copyFrom( {x: 23, y: 260.5, z: -23})
+                nx.darkBot.rotation.y = 2.5;
+                nx.scene.beginAnimation(nx.darkBotSkeleton[0], 55, 55, false, 0.111).onAnimationEnd=function(){}
+            },txtEnd:function(){
+                // nx.boomSeqIdx[NUM+1] = {on:1};
+
+                nx.scene.beginAnimation(nx.darkBotSkeleton[0], 55, 60, false, 0.22).onAnimationEnd=function(){ //lookdwn
+                    nx.ui.flashCanvasMSG({txt:"What?!?",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){
+                        nx.boomSeqIdx[NUM+1] = {on:1}; 
+                    }});
+                }
+
+
+            }});
         }
     },2000);
 }
@@ -6507,57 +6537,144 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 520, 525, false, 0.5).onAnimationEnd
             else if(nx.boomSeqIdx[4] && nx.boomSeqIdx[4].on){ var NUM = 4; nx.boomSeqIdx[NUM].on=0;
 
 
-                nx.darkBot.position.copyFrom( {x: 23, y: 260.5, z: -23})
-                nx.darkBot.rotation.y = 2.5;
-                nx.scene.beginAnimation(nx.darkBotSkeleton[0], 50, 55, false, 0.44).onAnimationEnd=function(){ //lookup
-                    nx.scene.beginAnimation(nx.darkBotSkeleton[0], 55, 60, false, 0.44).onAnimationEnd=function(){ //lookdwn
-                        nx.ui.flashCanvasMSG({txt:"What?!?",txtIcon:'darkbot',dur:2000,txtInit:function(){},txtEnd:function(){
-                            nx.boomSeqIdx[NUM+1] = {on:1}; 
-                        }});
-                    }
-                }
+nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
+nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+                nx.ui.flashCanvasMSG({txt:"It's a COZMO~QUEST for AEON!",txtIcon:'orby',dur:4000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Oh.",txtIcon:'darkbot',dur:2000,txtInit:function(){
+
+                    nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Zawd was on the SPACE~TRAIN.",txtIcon:'orby',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+                },txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"No, it was Space~Patrol.",txtIcon:'darkbot',dur:2000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"That's how Zawd escaped!",txtIcon:'orby',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+                },txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Oh no.",txtIcon:'darkbot',dur:2000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Aeon sent me to find him,",txtIcon:'orby',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+                },txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Dead or Alive.",txtIcon:'orby',dur:3000,txtInit:function(){
+
+                },txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"I deliver a MESSAGE to Zawd.",txtIcon:'orby',dur:3000,txtInit:function(){
+
+                },txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"Little bot you are in DANGER!",txtIcon:'darkbot',dur:4000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"What?!?",txtIcon:'orby',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+                },txtEnd:function(){} }); 
+
+                nx.ui.flashCanvasMSG({txt:"DAR rules Alpha~Moon now.",txtIcon:'darkbot',dur:4000,txtInit:function(){
+                },txtEnd:function(){}});
+
+                nx.ui.flashCanvasMSG({txt:"Who?!?",txtIcon:'orby',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+                },txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"PRINZ~DAR, my bot~master,",txtIcon:'darkbot',dur:4000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"drove Alpha~Moon OFF~GRID.",txtIcon:'darkbot',dur:4000,txtInit:function(){
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"And crashed the SPACE~TRAIN.",txtIcon:'darkbot',dur:3000,txtInit:function(){
+                    // nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                    // nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+                },txtEnd:function(){ }});
+                nx.ui.flashCanvasMSG({txt:"Did he make ZAP~BOTS?",txtIcon:'orby',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+                },txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"He did. Secretly...",txtIcon:'darkbot',dur:4000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"DAR builds a BOT~LAB,",txtIcon:'darkbot',dur:4000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"in the shadow of Alpha~Moon.",txtIcon:'darkbot',dur:4000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"No!!!",txtIcon:'orby',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+                },txtEnd:function(){} }); 
+
+                nx.ui.flashCanvasMSG({txt:"LEAVE NOW little bot.",txtIcon:'darkbot',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Tell AEON,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"WAR on Alpha~Moon.",txtIcon:'darkbot',dur:4000,txtInit:function(){},txtEnd:function(){}});
+                //TODO: SKY TO CLOSEUP
+                nx.ui.flashCanvasMSG({txt:"Will you?",txtIcon:'darkbot',dur:4000,txtInit:function(){},txtEnd:function(){}});
+                //Closeup orby, closeup darbot, closeup orby.
+                nx.ui.flashCanvasMSG({txt:"Orby help Darbot.",txtIcon:'orby',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+                },txtEnd:function(){} }); 
+                //ANM: orby stand up
+                nx.ui.flashCanvasMSG({txt:"And finish COZMO~QUEST.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"NO! LEAVE NOW. Else...",txtIcon:'darkbot',dur:3000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: 14.452084774486465, y: 260.67145429702776, z: -6.182929139935488}) //darcbot look back
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 17.64936702035738, y: 262.84310894792293, z: -12.416394940476001})) //CAMTGT: 
+                },txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Prinz~DAR can MEZMORIZE you.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"Just like he did me.",txtIcon:'darkbot',dur:4000,txtInit:function(){},txtEnd:function(){}});
+                //ANM: orby LEAVE
+                nx.ui.flashCanvasMSG({txt:"Look North,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"in the FROZEN~SEA,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"an ESCAPE~POD is there.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"GO!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){
+
+                        nx.initSEQ({seqID:'aSunsetSequence'})//SEQUENCE
+                }});
+
+//METHODOLOGY- comment in TXT's-.
+//TXT: PRINZDAR and DARBOT
+//They say my father escaped to AlphaMoon?
+//I SENT a Bot to research the train and the escape pod.
+//And? Space Junk!
+//There must be NO SPY~BOTZ!
+//No SpacePatrols.
+//Yes my Bot~Master.
+//How did Aeon know we are at war
+//How did Aeon find this FACTORY
 
             } //end frame
             else if(nx.boomSeqIdx[5] && nx.boomSeqIdx[5].on){ var NUM = 5; nx.boomSeqIdx[NUM].on=0;
 
-nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
-nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
+return;
 
-                nx.ui.flashCanvasMSG({txt:"I'm on a COZMOQUEST for AEON!",txtIcon:'orby',dur:4000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"No way!",txtIcon:'darkbot',dur:2000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Zawd was on that SPACETRAIN.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"No, it was SpacePatrol.",txtIcon:'darkbot',dur:2000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Zawd used it to escape!",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"Impossible.",txtIcon:'darkbot',dur:2000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Aeon sent me to find him.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"Alive or Dead.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"To deliver a MESSAGE.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"You are in DANGER!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Darc controls AlphaMoon now.",txtIcon:'darkbot',dur:4000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Who?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"PrinzDarc crashed the SPACETRAIN",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Because AlphaMoon is OFFGRID?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"Yes.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"ZapBots on AlphaMoon?",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"Yes, and...",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"PrinzDarc builds,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"a ZapBot-Army,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"on the dark-side of AlphaMoon.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"No!!!",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"Little bot, GO NOW!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Tell AEON,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"there's already WAR.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"I finish the COZMOQUEST!",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
-                nx.ui.flashCanvasMSG({txt:"No! You GO now, or...",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Darc will MEZMORIZE YOU,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"just like me.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"Look North, in FROZEN-SEA,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"for Zawd's ESCAPE~POD.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"GO!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"Little bot, GO NOW!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"Tell AEON,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"there is already WAR.",txtIcon:'darkbot',dur:4000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"Will you?",txtIcon:'darkbot',dur:4000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"Orby help Darcbot.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                // nx.ui.flashCanvasMSG({txt:"But, finish COZMO~QUEST first.",txtIcon:'orby',dur:3000,txtInit:function(){},txtEnd:function(){} }); 
+                // nx.ui.flashCanvasMSG({txt:"NO! LEAVE NOW, else...",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"PrinzDarc will MEZMORIZE YOU,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"just like me.",txtIcon:'darkbot',dur:4000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"Wait! Look North,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"in the FROZEN~SEA,",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"find Zawd's ESCAPE~POD.",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
+                // nx.ui.flashCanvasMSG({txt:"GO!",txtIcon:'darkbot',dur:3000,txtInit:function(){},txtEnd:function(){}});
 
 
 
-                        nx.initSEQ({seqID:'aBoomSequence'})//SEQUENCE
 
             } //end frame
             
@@ -6565,7 +6682,8 @@ nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.3821137248
     } else if(seqName==="SunsetSequence"){ //-----------------------------------------------------------------------------Climax-SEQUENCE---.
         nx.startCinematicSequence(function(){ //ANMETHODOLOGY-. All locals have same IDX as SEQIDX.
             if(nx.sunsetSeqIdx[0] && nx.sunsetSeqIdx[0].on){ var NUM = 0; nx.sunsetSeqIdx[NUM].on=0;
-debugger;
+// debugger;
+nx.sunsetSeqIdx[NUM+1] = {on:1}; 
             }//end frame
             else if(nx.sunsetSeqIdx[1] && nx.sunsetSeqIdx[1].on){ var NUM = 1; //nx.sunsetSeqIdx[NUM].on=0;
                 // nx.initFreeCam(); 

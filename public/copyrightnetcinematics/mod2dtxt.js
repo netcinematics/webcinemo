@@ -1436,7 +1436,8 @@ nx.ui.anmMSGFader = function(aSpan){
 // aSpan.fadeIn(5000);
 setTimeout(function(){ //break from animloop-.
 
-  if(nx.ui.canvasFooter.css('display')==='none'){ 
+  // if(nx.ui.canvasFooter.css('display')==='none'){ //BUG FIX : orby sitting after boom
+  if(nx.ui.canvasFooter.css('display')==='none' || nx.ui.canvasFooter.css('display')==='block'){ 
     nx.ui.canvasFooter.fadeIn(1000); 
   } //AUTO-FADE-IN-. FIX-.
 

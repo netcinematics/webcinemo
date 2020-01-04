@@ -138,7 +138,9 @@ nx.anm.orbyCloseUp = function(){
 	nx.scene.activeCamera.position.copyFrom({x: 22.78139708552389, y: 268.698726943571, z: -22.176668518121325})
 	nx.scene.activeCamera.setTarget(nx.BV32({x: 13.773611742026706, y: 265.9147377366588, z: -12.804717085637785})) //CAMTGT: 
     $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
-    .animate({cx:15.24,cy:266.36,cz:-14.34}
+    // .animate({cx:15.24,cy:266.36,cz:-14.34}
+    	// {x: 18.056516428484535, y: 267.21466365716134, z: -17.288065004731642}
+    .animate({cx:18.05,cy:267.21,cz:-17.2888}
     ,{queue:false,duration:2000*nx.RUNTIME,easing:'swing',
 	    step:function(now) { //CAM POS
 	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
@@ -269,7 +271,7 @@ nx.anm.orbyShockGem = function(endfn){
 	//     },complete:function(){}
 	// });
 }
-
+nx.purpleSteamSystem1={};
 nx.fireSystem1={}, nx.bluePlasmaSystem1={}, nx.purpleSmokeSystem1={};
 nx.fireSystem2={}, nx.bluePlasmaSystem2={}, nx.purpleSmokeSystem2={};
 nx.fireSystem3={}, nx.bluePlasmaSystem3={}, nx.purpleSmokeSystem3={};
@@ -588,6 +590,7 @@ nx.anm.boomANM = function(){
 
     var fountainSmoke1 = BABYLON.Mesh.CreateBox("fountain", 2.0, nx.scene);
     fountainSmoke1.position = new BABYLON.Vector3(10,260,0);
+        fountainSmoke1.visibility = 0;
  var purpleSmokeSystem1 = new BABYLON.ParticleSystem("particles", 2000, nx.scene);
 
     //Texture of each particle
@@ -642,9 +645,71 @@ nx.anm.boomANM = function(){
     purpleSmokeSystem1.updateSpeed = 0.022;
 
     // Start the particle system
-    purpleSmokeSystem1.start();
+    // purpleSmokeSystem1.start();
 
     nx.purpleSmokeSystem1 = purpleSmokeSystem1;
+
+
+    var purpleSteamFountain2 = BABYLON.Mesh.CreateBox("fountain", 2.0, nx.scene);
+    purpleSteamFountain2.position = new BABYLON.Vector3(0,263,0);
+    purpleSteamFountain2.visibility = 0;
+ var purpleSteamSystem1 = new BABYLON.ParticleSystem("particles", 2000, nx.scene);
+
+    //Texture of each particle
+    purpleSteamSystem1.particleTexture = new BABYLON.Texture("textures/cloud.png", nx.scene);
+
+    // Where the particles come from
+    purpleSteamSystem1.emitter = purpleSteamFountain2; // the starting object, the emitter
+    purpleSteamSystem1.minEmitBox = new BABYLON.Vector3(-0.5, 1, -0.5); // Starting all from
+    purpleSteamSystem1.maxEmitBox = new BABYLON.Vector3(0.5, 1, 0.5); // To...
+
+    // Colors of all particles
+    // purpleSteamSystem1.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // purpleSteamSystem1.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    // purpleSteamSystem1.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+    purpleSteamSystem1.color1 = new BABYLON.Color4(0.49, 0.03, 0.99);
+    purpleSteamSystem1.color2 = new BABYLON.Color4(0.22, 0.29, 0.99);
+    purpleSteamSystem1.colorDead = new BABYLON.Color4(0.14, 0.06, 0.06, 1);
+
+
+
+    // Size of each particle (random between...
+    purpleSteamSystem1.minSize = 0.5;
+    purpleSteamSystem1.maxSize = 2;
+
+    // Life time of each particle (random between...
+    purpleSteamSystem1.minLifeTime = 2;//0.2;
+    purpleSteamSystem1.maxLifeTime = 4;//0.4;
+
+    // Emission rate
+    purpleSteamSystem1.emitRate = 15;
+
+    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+    // debugger;
+    // purpleSteamSystem1.blendMode = BABYLON.ParticleSystem.BLENDMODE_MULTIPLY;
+    purpleSteamSystem1.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    // Set the gravity of all particles
+    purpleSteamSystem1.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    // Direction of each particle after it has been emitted
+    purpleSteamSystem1.direction1 = new BABYLON.Vector3(0, 8, 0);
+    purpleSteamSystem1.direction2 = new BABYLON.Vector3(0, 8, 0);
+
+    // Angular speed, in radians
+    purpleSteamSystem1.minAngularSpeed = 2;//0;
+    purpleSteamSystem1.maxAngularSpeed = Math.PI;
+
+    // Speed
+    purpleSteamSystem1.minEmitPower = 0.1;//1;
+    purpleSteamSystem1.maxEmitPower = 0.33;//3;
+    purpleSteamSystem1.updateSpeed = 0.022;
+
+    // Start the particle system
+    purpleSteamSystem1.start();
+
+    nx.purpleSteamSystem1 = purpleSteamSystem1;
 
     //TODO clean up smoke systems
 
@@ -660,8 +725,7 @@ nx.anm.stopBoomANM = function(type){
 		nx.fireSystem2.dispose();
 		nx.fireSystem1 = null;
 		nx.fireSystem2 = null;
-	}
-	if(type==='plasma'){
+	} else if(type==='plasma'){
 
 		nx.bluePlasmaSystem1.emitRate = 0
 		nx.bluePlasmaSystem2.emitRate = 0
@@ -677,11 +741,14 @@ nx.anm.stopBoomANM = function(type){
 			nx.bluePlasmaSystem2 = null;
 			nx.bluePlasmaSystem3 = null;
 		},10000)
-	}
-	if(type==='smoke'){
+	} else if(type==='smoke'){
 		nx.purpleSmokeSystem1.stop();
 		nx.purpleSmokeSystem1.dispose();
 		nx.purpleSmokeSystem1 = null;
+	} else if(type==='purplesteam'){
+		nx.purpleSteamSystem1.stop();
+		nx.purpleSteamSystem1.dispose();
+		nx.purpleSteamSystem1 = null;
 	}
 }
 
