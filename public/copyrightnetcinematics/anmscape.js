@@ -718,8 +718,8 @@ nx.createMasterStart = function(){
         // nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE
         // nx.initSEQ({seqID:'affirmSequence'})//AFFIRMATIONSEQUENCE space junk
         // debugger;
-        nx.initSEQ({seqID:'aClimaxSequence'})//zaphimSEQUENCE
-        // nx.initSEQ({seqID:'aBoomSequence'})
+        // nx.initSEQ({seqID:'aClimaxSequence'})//zaphimSEQUENCE
+        nx.initSEQ({seqID:'aBoomSequence'})
         // nx.initSEQ({seqID:'aSunsetSequence'})
         //---------------------------------------------------------------------------------
         

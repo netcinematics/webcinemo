@@ -164,7 +164,7 @@ nx.initDarkBotHover = function(){
   nx.darkBot.hoverAmount = 0.01;
   nx.scene.registerBeforeRender(function darkBotHover() { //hover, search and chase sequence-.
 
-      if(nx.dBot.stopHover===0){return}
+      if(nx.dBot.stopHover===1){return}
       if(nx.dBot.stopHover<0){nx.scene.unregisterBeforeRender(darkBotHover); return}
 
       //TODO NEED TO DAMPEN THIS-.
