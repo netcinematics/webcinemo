@@ -6334,6 +6334,65 @@ nx.scene.activeCamera.setTarget(nx.BV32({x: 18.459032017437348, y: 266.982504018
 // }
 
 // debugger;
+
+nx.orby.loadSpaceWaveRider(function(){
+
+        // nx.orbySpaceWaveRider1.position.copyFrom({x: 0.5, y: 260.8, z: -1})
+        // nx.orbySpaceWaveRider1.position.copyFrom({x: 0.8, y: 260.8, z: -1.5})
+        nx.orbySpaceWaveRider1.position.copyFrom({x: 0.8, y: 261.35, z: -1.5})
+        nx.orbySpaceWaveRider1.rotation.copyFrom({x:0,y:-2.111,z:-1.6});
+
+// return;
+// nx.orbySpaceWaveRider1.setPivotPoint(new BABYLON.Vector3(0, 0, 1)); //spacewaverider pivot
+// nx.orbySpaceWaveRider1.rotation.z = -1.8//UP
+// nx.orbySpaceWaveRider1.rotation.z = 0//DWN
+
+nx.orbySpaceWaveRider1.setPivotPoint(new BABYLON.Vector3(0.5, 0, 0)); 
+// nx.orbySpaceWaveRider1.rotation.z = -1.6
+
+    setTimeout(function(){
+
+                $({rz:nx.orbySpaceWaveRider1.rotation.z})//ROTATE WAVERIDER-.
+                .animate({rz:0
+                },{queue:false,duration:1000*nx.RUNTIME,easing:'linear',
+                step: function(now) {
+                    if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[1]={on:1}; return;}//CINEMA-STOP-.
+                    nx.orbySpaceWaveRider1.rotation.z = this.rz;
+                },complete:function(){
+                    nx.orbySpaceWaveRider1.rotation.z = 0
+                    nx.orbySpaceWaveRider1.position.y = 260.444;
+                    nx.orbySpaceWaveRider1.position.copyFrom({x: 0.2, y: 260.4, z: -0.6});//step pos
+                }});
+            },1500)
+
+        // if(!nx.orbyRiderSkeleton){console.log('NO SKELETON!!!')}
+        // nx.orbyMeshStep.rotationQuaternion = null;
+        // nx.orbyMeshStep.rotation.y = -2.222;
+        // nx.scene.beginAnimation(nx.orbyRiderSkeleton[0], 10, 20, true, 0.5);  //board fall down
+
+});
+
+nx.orby.loadOrbyStep(function(){
+
+        nx.orbyMeshStep.position.copyFrom({x:0,y:260.444,z:0}) //bring the real orby back
+        // nx.orbyMeshStep.position.copyFrom({x:0,y:263.2,z:0}) //bring the real orby back
+        // nx.orbyMeshStep.position.copyFrom({x:0,y:263.2,z:0}) //bring the real orby back
+        nx.orbyMeshStep.rotationQuaternion = null;
+        nx.orbyMeshStep.rotation.y = -2.222;
+
+        nx.scene.beginAnimation(nx.orbySkeletonStep[0], 0, 285, false, 1.0);  //orby tip down board
+
+        setTimeout(function(){
+
+nx.scene.activeCamera.position.copyFrom({x: 13.937411162620812, y: 266.4591634078494, z: -16.59508647967813})
+            
+        },3000)
+
+
+});
+
+return;
+
 nx.orby.loadOrbySitUp(function(){
     setTimeout(function(){
         nx.orbyMeshSitUp.position.copyFrom({x:0,y:262,z:0}) //bring the real orby back
@@ -6342,6 +6401,10 @@ nx.orby.loadOrbySitUp(function(){
         nx.scene.beginAnimation(nx.orbySkeletonSit[0], 180, 180, false, 1.0);  //orby init POS
     },2000)
 });
+
+
+// return;
+
 nx.anm.boomANM(); //boom particle systems
 
 // return;
@@ -6562,7 +6625,9 @@ nx.scene.beginAnimation(nx.orbySkeletonSit[0], 180, 190, false, 1).onAnimationEn
 
 nx.scene.activeCamera.position.copyFrom({x: 8.730703970561441, y: 263.6714542956733, z: -9.903797497356035}) //floor orby
 nx.scene.activeCamera.setTarget(nx.BV32({x: 3.708778975821748, y: 263.382113724841, z: -4.443465922730933})) //CAMTGT: 
-                nx.ui.flashCanvasMSG({txt:"I'm on a COZMO~QUEST!",txtIcon:'orby',dur:4000,txtInit:function(){},txtEnd:function(){} }); 
+                nx.ui.flashCanvasMSG({txt:"I'm on a COZMO~QUEST!",txtIcon:'orby',dur:4000,txtInit:function(){
+                    // nx.scene.beginAnimation(nx.orbySkeletonSit[0], 220, 230, false, 1.0);  //orby init POS
+                },txtEnd:function(){} }); 
                 nx.ui.flashCanvasMSG({txt:"... for AEON...",txtIcon:'orby',dur:4000,txtInit:function(){},txtEnd:function(){} }); 
                 nx.ui.flashCanvasMSG({txt:"Oh great. What else?",txtIcon:'darkbot',dur:2000,txtInit:function(){
 

@@ -2502,18 +2502,46 @@ nx.orby.loadOrbyMouth = function(endfn){
     }); //end orby mouth
 }//end orby mouth
 
+nx.orby.loadOrbyStep = function(endfn){
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep3a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep1a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
+      nx.orbyMeshStep = nx.scene.getMeshByName('spacewaveriderStep')
+      nx.orbyMeshStep.visibility = 0; 
+      nx.orbyMeshBodyStep = nx.scene.getMeshByName('orbymeshStep') ; //orbymesh
+      nx.orbyMeshBodyStep.visibility = 1; 
+      nx.orbySkeletonStep = skeletons;
+      endfn(); //important
+    }); //end orby sit up
+}
 
+nx.orby.loadSpaceWaveRider = function(endfn){
+  BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "spaceWaveRider3a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { 
+  // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "spaceWaveRider1b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { 
+// debugger
+
+    nx.orbySpaceWaveRider1 = nx.scene.getMeshByName('SpaceRiderFREE') 
+    nx.orbyRiderSkeleton = skeletons;
+
+    endfn();
+  });
+}
 
 nx.orby.loadOrbySitUp = function(endfn){
 
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp5a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //broke free armature
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp3a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     //    nx.orbyMesh = newMeshes[0]; //spacewaverider
         // nx.orbyMeshBody = newMeshes[1]; //orbymesh
+        // debugger;
         nx.orbyMeshSitUp = nx.scene.getMeshByName('spacewaveriderS') 
         // nx.orbyMesh.convertToFlatShadedMesh();
         nx.orbyMeshBodySitUp = nx.scene.getMeshByName('orbymeshS') ; //orbymesh
         nx.orbyMeshBodySitUp.visibility = 0;
+
+        // debugger;
         nx.orbySkeletonSit = skeletons;
         // nx.orbyMeshSitUp.position.copyFrom(nx.anmz.orby.rig.originBox.position);
         
@@ -2524,7 +2552,7 @@ nx.orby.loadOrbySitUp = function(endfn){
         nx.orbyMeshSitUp.scaling = new BABYLON.Vector3(1*nx.anmz.orby.scale,1*nx.anmz.orby.scale,1*nx.anmz.orby.scale,)
    
         nx.orbyMeshSitUp.visibility = 0;
-        // nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0); //ANIMATED-SURFBOARD-. Move out to scriptz
+        // nx.scene.beginAnimation(nx.orbySkeletonSit[0], 0, 140, true, 1.0); //ANIMATED-SURFBOARD-. Move out to scriptz
 
         nx.orbyMeshSitUp.glow = new BABYLON.HighlightLayer("orby.glowS", nx.scene, {
             // blueTextureSizeRatio: 0.5,
