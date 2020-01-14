@@ -23,7 +23,7 @@ nx.setMasterManifest(); //signal success and await-.
 nx.anm.zoomCam1 = function(){
 	nx.scene.activeCamera.position.copyFrom({x: 26.734396619055506, y: 266.00000000001614, z: -38.2592512965453})
 	nx.scene.activeCamera.setTarget(nx.BV32({x: 23.5, y: 265.6, z: -28.6})) //CAMTGT: 
-    $({cx:nx.	scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
+    $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
     .animate({cx:24.6,cy:265.7,cz:-32}
     ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
 	    step:function(now) { //CAM POS
@@ -46,7 +46,11 @@ nx.anm.darkBot.flipAround = function(){
 	        nx.darkBot.rotation.y = this.ry;
 	        nx.darkBot.position.y = this.posY;
 	    },complete:function(){
-	    	nx.initDarkBotHover();
+
+			nx.initDarkBotHover();
+			nx.dBot.stopHover = 0;
+			nx.darkBot.hoverAmount = 0.00222;
+
 	    	var darkMezmo = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 1, 20, false, 0.5);
 	    }
 	});
@@ -219,7 +223,8 @@ nx.anm.zapBotConvergence = function(){
 	        nx.zapbotTerra2.position.y = this.cy;
 	        nx.zapbotTerra2.position.z = this.cz;
 	    },complete:function(){
-	    	nx.orby.addGlow('zap')
+	    	nx.orby.addGlowFactory('zap',nx.orbyMesh)
+	    	nx.orby.addGlowFactory('zap',nx.orbyMeshBody)
             nx.scene.beginAnimation(nx.orbySkeleton[0], 1, 4, true, 0.25); //ANIMATED-SURFBOARD-.
 	    }
 	});
@@ -713,7 +718,7 @@ nx.anm.boomANM = function(){
 
     //TODO clean up smoke systems
 
-
+    nx.blowOutZapBots();
 
 }
 
@@ -755,42 +760,101 @@ nx.anm.stopBoomANM = function(type){
 nx.blowOutZapBots = function(){
 
 //TODO NOT BEING USED
+nx.kiloBotMesh1.stopShocking ();
+nx.zapbotMega.stopShocking()
+nx.zapbotTerra2.stopShocking()
 
-debugger;
-	nx.zapBotPath1 = [{"pos":{"x":10.22,"y":262.5,"z":8.88},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":11.27,"y":262.5,"z":9.8},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":12.33,"y":262.5,"z":10.72},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":13.38,"y":262.5,"z":11.64},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":14.44,"y":262.5,"z":12.56},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":15.49,"y":262.5,"z":13.48},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":16.55,"y":262.5,"z":14.4},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":17.6,"y":262.5,"z":15.32},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":18.66,"y":262.5,"z":16.24},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":19.71,"y":262.5,"z":17.16},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":20.77,"y":262.5,"z":18.08},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":21.82,"y":262.5,"z":19},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":22.88,"y":262.5,"z":19.92},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":23.93,"y":262.5,"z":20.84},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":24.99,"y":262.5,"z":21.76},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":26.04,"y":262.5,"z":22.68},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":27.1,"y":262.5,"z":23.6},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":28.15,"y":262.5,"z":24.52},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":29.21,"y":262.5,"z":25.44},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":30.26,"y":263.3,"z":26.36},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":31.32,"y":264.7,"z":27.28},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":32.37,"y":265.9,"z":28.2},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":33.43,"y":266.7,"z":29.12},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":34.48,"y":267.1,"z":30.04},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":35.54,"y":267.5,"z":30.96},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":36.59,"y":267.89,"z":31.88},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":37.65,"y":268.29,"z":32.8},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":38.7,"y":268.69,"z":33.72},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":39.76,"y":269.09,"z":34.64},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":40.82,"y":269.49,"z":35.56},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":41.87,"y":269.89,"z":36.48},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":42.93,"y":268.89,"z":37.4},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":43.98,"y":267.89,"z":38.32},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":45.04,"y":266.89,"z":39.24},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":46.09,"y":265.89,"z":40.16},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":47.15,"y":264.89,"z":41.08},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":48.2,"y":263.89,"z":42},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":49.26,"y":262.89,"z":42.92},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":50.31,"y":261.89,"z":43.84},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":51.37,"y":260.89,"z":44.76},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":52.42,"y":259.89,"z":45.68},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":53.48,"y":258.89,"z":46.6},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":54.53,"y":257.89,"z":47.52},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":55.59,"y":256.89,"z":48.44},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":56.64,"y":255.89,"z":49.36},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":57.7,"y":254.89,"z":50.28},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":58.75,"y":253.89,"z":51.2},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":59.81,"y":252.89,"z":52.12},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":60.86,"y":251.89,"z":53.04},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":61.92,"y":250.89,"z":53.96},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":62.97,"y":249.89,"z":54.88},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":64.03,"y":248.89,"z":55.8},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":65.08,"y":247.89,"z":56.72},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":66.14,"y":246.89,"z":57.64},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":67.19,"y":245.89,"z":58.56},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":68.25,"y":244.89,"z":59.48},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":69.3,"y":243.89,"z":60.4},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":70.36,"y":242.89,"z":61.32},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":71.41,"y":241.89,"z":62.24},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":72.47,"y":240.89,"z":63.16},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":73.52,"y":239.89,"z":64.08},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":74.58,"y":238.89,"z":65},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":75.63,"y":237.89,"z":65.92},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":76.69,"y":236.89,"z":66.84},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":77.74,"y":235.89,"z":67.76},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":78.8,"y":234.89,"z":68.69},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":79.86,"y":233.89,"z":69.61},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":80.91,"y":232.89,"z":70.53},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":81.97,"y":231.89,"z":71.45},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":83.02,"y":230.89,"z":72.37},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":84.08,"y":229.89,"z":73.29},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":85.13,"y":228.89,"z":74.21},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":86.19,"y":227.89,"z":75.13},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":87.24,"y":226.89,"z":76.05},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":88.3,"y":225.89,"z":76.97},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":89.35,"y":224.89,"z":77.89},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":90.41,"y":223.89,"z":78.81},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":91.46,"y":222.89,"z":79.73},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":92.52,"y":221.89,"z":80.65},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":93.57,"y":220.89,"z":81.57},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":94.63,"y":219.89,"z":82.49},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":95.68,"y":218.89,"z":83.41},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":96.74,"y":217.89,"z":84.33},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":97.79,"y":216.89,"z":85.25},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":98.85,"y":215.89,"z":86.17},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":99.9,"y":214.89,"z":87.09},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":100.96,"y":213.89,"z":88.01},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":102.01,"y":212.89,"z":88.93},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":103.07,"y":211.89,"z":89.85},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":104.12,"y":210.89,"z":90.77},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":105.18,"y":209.89,"z":91.69},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":106.23,"y":208.89,"z":92.61},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":107.29,"y":207.89,"z":93.53},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":108.34,"y":206.89,"z":94.45},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":109.4,"y":205.89,"z":95.37},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":110.45,"y":204.89,"z":96.29},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":111.51,"y":203.89,"z":97.21},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":112.56,"y":202.89,"z":98.13},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":113.62,"y":201.89,"z":99.05},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":114.67,"y":200.89,"z":99.97},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":115.73,"y":199.89,"z":100.89},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":116.79,"y":198.89,"z":101.81},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":117.84,"y":197.89,"z":102.73},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":118.9,"y":196.89,"z":103.65},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":119.95,"y":195.89,"z":104.57},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":121.01,"y":194.89,"z":105.49},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":122.06,"y":193.89,"z":106.41},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":123.12,"y":192.89,"z":107.33},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":124.17,"y":191.89,"z":108.25},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":125.23,"y":190.89,"z":109.17},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":126.28,"y":189.89,"z":110.09},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":127.34,"y":188.89,"z":111.01},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":128.39,"y":187.89,"z":111.93},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":129.45,"y":186.89,"z":112.85},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":130.5,"y":185.89,"z":113.77},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":131.56,"y":184.89,"z":114.69},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":132.61,"y":183.89,"z":115.61},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":133.67,"y":182.89,"z":116.53},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":134.72,"y":181.89,"z":117.45},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":135.78,"y":180.89,"z":118.37},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":136.83,"y":179.89,"z":119.29},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":137.89,"y":178.89,"z":120.21},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":138.94,"y":177.89,"z":121.13},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":140,"y":176.89,"z":122.05},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":141.05,"y":175.89,"z":122.97},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":142.11,"y":174.89,"z":123.89},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":143.16,"y":173.89,"z":124.81},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":144.22,"y":172.89,"z":125.73},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":145.27,"y":171.89,"z":126.65},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":146.33,"y":170.89,"z":127.57},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":147.38,"y":169.89,"z":128.5},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":148.44,"y":168.89,"z":129.42},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":149.49,"y":167.89,"z":130.34},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":150.55,"y":166.89,"z":131.26},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":151.6,"y":165.89,"z":132.18},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":152.66,"y":164.89,"z":133.1},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":153.71,"y":163.89,"z":134.02},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":154.77,"y":162.89,"z":134.94},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":155.83,"y":161.89,"z":135.86},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":156.88,"y":160.89,"z":136.78},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":157.94,"y":159.89,"z":137.7},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":158.99,"y":158.89,"z":138.62},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":160.05,"y":157.89,"z":139.54},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":161.1,"y":156.89,"z":140.46},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":162.16,"y":155.89,"z":141.38},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":163.21,"y":154.89,"z":142.3},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":164.27,"y":153.89,"z":143.22},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":165.32,"y":152.89,"z":144.14},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":166.38,"y":151.89,"z":145.06},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":167.43,"y":150.89,"z":145.98},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":168.49,"y":149.89,"z":146.9},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":169.54,"y":148.89,"z":147.82},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":170.6,"y":147.89,"z":148.74},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":171.65,"y":146.89,"z":149.66},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":172.71,"y":145.89,"z":150.58},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":173.76,"y":144.89,"z":151.5},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":174.82,"y":143.89,"z":152.42},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":175.87,"y":142.89,"z":153.34},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":176.93,"y":141.89,"z":154.26},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":177.98,"y":140.89,"z":155.18},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":179.04,"y":139.89,"z":156.1},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":180.09,"y":138.89,"z":157.02},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":181.15,"y":137.89,"z":157.94},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":182.2,"y":136.89,"z":158.86},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":183.26,"y":135.89,"z":159.78},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":184.31,"y":134.89,"z":160.7},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":185.37,"y":133.89,"z":161.62},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":186.42,"y":132.89,"z":162.54},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":187.48,"y":131.89,"z":163.46},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":188.53,"y":130.89,"z":164.38},"rot":{"x":0,"y":-2.29,"z":0}}];
+// nx.kiloBotMesh1.position
+// Vector3 {x: -18.503743511479904, y: 265.5764877735205, z: -16.072452649156094}
+// nx.zapbotMega.position
+// Vector3 {x: -20.519167819340684, y: 266.39019280377414, z: 19.320231975620192}
+// nx.zapbotTerra2.position
+// Vector3 {x: 26.014782132909403, y: 266.3956469174153, z: 18.889698881576113}
+
+
+    $({cx:nx.kiloBotMesh1.position.x,cy:nx.kiloBotMesh1.position.y,cz:nx.kiloBotMesh1.position.z})
+    .animate({cx:-18,cy:265.5,cz:-16}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { //CAM POS
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.kiloBotMesh1.position.x = this.cx;
+	        nx.kiloBotMesh1.position.y = this.cy;
+	        nx.kiloBotMesh1.position.z = this.cz;
+	    },complete:function(){}
+	});
+
+    $({cx:nx.zapbotMega.position.x,cy:nx.zapbotMega.position.y,cz:nx.zapbotMega.position.z})
+    .animate({cx:-240,cy:266.36,cz:240}
+    ,{queue:false,duration:10000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { //CAM POS
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.zapbotMega.position.x = this.cx;
+	        nx.zapbotMega.position.y = this.cy;
+	        nx.zapbotMega.position.z = this.cz;
+	    },complete:function(){}
+	});
+
+    $({cx:nx.zapbotTerra2.position.x,cy:nx.zapbotTerra2.position.y,cz:nx.zapbotTerra2.position.z})
+    .animate({cx:100,cy:266,cz:100}
+    ,{queue:false,duration:8000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { //CAM POS
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.zapbotTerra2.position.x = this.cx;
+	        nx.zapbotTerra2.position.y = this.cy;
+	        nx.zapbotTerra2.position.z = this.cz;
+	    },complete:function(){
+
+	        nx.zapbotTerra2.position.x = 0;
+	        nx.zapbotTerra2.position.y = 0;
+	        nx.zapbotTerra2.position.z = 0;
+
+            // nx.scene.beginAnimation(nx.orbySkeleton[0], 1, 4, true, 0.25); //ANIMATED-SURFBOARD-.
+	    }
+	});
 
 
 
-	// nx.zapbotMega.startShocking()
-	// nx.zapbotTerra2.startShocking()
+
+
+// return;
 
 
 
-	var curPOS;
+// debugger;
+// 	nx.zapBotPath1 = [{"pos":{"x":10.22,"y":262.5,"z":8.88},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":11.27,"y":262.5,"z":9.8},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":12.33,"y":262.5,"z":10.72},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":13.38,"y":262.5,"z":11.64},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":14.44,"y":262.5,"z":12.56},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":15.49,"y":262.5,"z":13.48},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":16.55,"y":262.5,"z":14.4},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":17.6,"y":262.5,"z":15.32},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":18.66,"y":262.5,"z":16.24},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":19.71,"y":262.5,"z":17.16},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":20.77,"y":262.5,"z":18.08},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":21.82,"y":262.5,"z":19},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":22.88,"y":262.5,"z":19.92},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":23.93,"y":262.5,"z":20.84},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":24.99,"y":262.5,"z":21.76},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":26.04,"y":262.5,"z":22.68},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":27.1,"y":262.5,"z":23.6},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":28.15,"y":262.5,"z":24.52},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":29.21,"y":262.5,"z":25.44},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":30.26,"y":263.3,"z":26.36},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":31.32,"y":264.7,"z":27.28},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":32.37,"y":265.9,"z":28.2},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":33.43,"y":266.7,"z":29.12},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":34.48,"y":267.1,"z":30.04},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":35.54,"y":267.5,"z":30.96},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":36.59,"y":267.89,"z":31.88},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":37.65,"y":268.29,"z":32.8},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":38.7,"y":268.69,"z":33.72},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":39.76,"y":269.09,"z":34.64},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":40.82,"y":269.49,"z":35.56},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":41.87,"y":269.89,"z":36.48},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":42.93,"y":268.89,"z":37.4},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":43.98,"y":267.89,"z":38.32},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":45.04,"y":266.89,"z":39.24},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":46.09,"y":265.89,"z":40.16},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":47.15,"y":264.89,"z":41.08},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":48.2,"y":263.89,"z":42},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":49.26,"y":262.89,"z":42.92},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":50.31,"y":261.89,"z":43.84},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":51.37,"y":260.89,"z":44.76},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":52.42,"y":259.89,"z":45.68},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":53.48,"y":258.89,"z":46.6},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":54.53,"y":257.89,"z":47.52},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":55.59,"y":256.89,"z":48.44},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":56.64,"y":255.89,"z":49.36},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":57.7,"y":254.89,"z":50.28},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":58.75,"y":253.89,"z":51.2},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":59.81,"y":252.89,"z":52.12},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":60.86,"y":251.89,"z":53.04},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":61.92,"y":250.89,"z":53.96},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":62.97,"y":249.89,"z":54.88},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":64.03,"y":248.89,"z":55.8},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":65.08,"y":247.89,"z":56.72},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":66.14,"y":246.89,"z":57.64},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":67.19,"y":245.89,"z":58.56},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":68.25,"y":244.89,"z":59.48},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":69.3,"y":243.89,"z":60.4},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":70.36,"y":242.89,"z":61.32},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":71.41,"y":241.89,"z":62.24},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":72.47,"y":240.89,"z":63.16},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":73.52,"y":239.89,"z":64.08},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":74.58,"y":238.89,"z":65},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":75.63,"y":237.89,"z":65.92},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":76.69,"y":236.89,"z":66.84},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":77.74,"y":235.89,"z":67.76},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":78.8,"y":234.89,"z":68.69},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":79.86,"y":233.89,"z":69.61},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":80.91,"y":232.89,"z":70.53},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":81.97,"y":231.89,"z":71.45},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":83.02,"y":230.89,"z":72.37},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":84.08,"y":229.89,"z":73.29},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":85.13,"y":228.89,"z":74.21},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":86.19,"y":227.89,"z":75.13},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":87.24,"y":226.89,"z":76.05},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":88.3,"y":225.89,"z":76.97},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":89.35,"y":224.89,"z":77.89},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":90.41,"y":223.89,"z":78.81},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":91.46,"y":222.89,"z":79.73},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":92.52,"y":221.89,"z":80.65},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":93.57,"y":220.89,"z":81.57},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":94.63,"y":219.89,"z":82.49},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":95.68,"y":218.89,"z":83.41},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":96.74,"y":217.89,"z":84.33},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":97.79,"y":216.89,"z":85.25},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":98.85,"y":215.89,"z":86.17},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":99.9,"y":214.89,"z":87.09},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":100.96,"y":213.89,"z":88.01},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":102.01,"y":212.89,"z":88.93},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":103.07,"y":211.89,"z":89.85},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":104.12,"y":210.89,"z":90.77},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":105.18,"y":209.89,"z":91.69},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":106.23,"y":208.89,"z":92.61},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":107.29,"y":207.89,"z":93.53},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":108.34,"y":206.89,"z":94.45},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":109.4,"y":205.89,"z":95.37},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":110.45,"y":204.89,"z":96.29},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":111.51,"y":203.89,"z":97.21},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":112.56,"y":202.89,"z":98.13},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":113.62,"y":201.89,"z":99.05},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":114.67,"y":200.89,"z":99.97},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":115.73,"y":199.89,"z":100.89},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":116.79,"y":198.89,"z":101.81},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":117.84,"y":197.89,"z":102.73},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":118.9,"y":196.89,"z":103.65},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":119.95,"y":195.89,"z":104.57},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":121.01,"y":194.89,"z":105.49},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":122.06,"y":193.89,"z":106.41},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":123.12,"y":192.89,"z":107.33},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":124.17,"y":191.89,"z":108.25},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":125.23,"y":190.89,"z":109.17},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":126.28,"y":189.89,"z":110.09},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":127.34,"y":188.89,"z":111.01},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":128.39,"y":187.89,"z":111.93},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":129.45,"y":186.89,"z":112.85},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":130.5,"y":185.89,"z":113.77},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":131.56,"y":184.89,"z":114.69},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":132.61,"y":183.89,"z":115.61},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":133.67,"y":182.89,"z":116.53},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":134.72,"y":181.89,"z":117.45},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":135.78,"y":180.89,"z":118.37},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":136.83,"y":179.89,"z":119.29},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":137.89,"y":178.89,"z":120.21},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":138.94,"y":177.89,"z":121.13},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":140,"y":176.89,"z":122.05},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":141.05,"y":175.89,"z":122.97},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":142.11,"y":174.89,"z":123.89},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":143.16,"y":173.89,"z":124.81},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":144.22,"y":172.89,"z":125.73},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":145.27,"y":171.89,"z":126.65},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":146.33,"y":170.89,"z":127.57},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":147.38,"y":169.89,"z":128.5},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":148.44,"y":168.89,"z":129.42},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":149.49,"y":167.89,"z":130.34},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":150.55,"y":166.89,"z":131.26},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":151.6,"y":165.89,"z":132.18},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":152.66,"y":164.89,"z":133.1},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":153.71,"y":163.89,"z":134.02},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":154.77,"y":162.89,"z":134.94},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":155.83,"y":161.89,"z":135.86},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":156.88,"y":160.89,"z":136.78},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":157.94,"y":159.89,"z":137.7},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":158.99,"y":158.89,"z":138.62},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":160.05,"y":157.89,"z":139.54},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":161.1,"y":156.89,"z":140.46},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":162.16,"y":155.89,"z":141.38},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":163.21,"y":154.89,"z":142.3},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":164.27,"y":153.89,"z":143.22},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":165.32,"y":152.89,"z":144.14},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":166.38,"y":151.89,"z":145.06},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":167.43,"y":150.89,"z":145.98},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":168.49,"y":149.89,"z":146.9},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":169.54,"y":148.89,"z":147.82},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":170.6,"y":147.89,"z":148.74},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":171.65,"y":146.89,"z":149.66},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":172.71,"y":145.89,"z":150.58},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":173.76,"y":144.89,"z":151.5},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":174.82,"y":143.89,"z":152.42},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":175.87,"y":142.89,"z":153.34},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":176.93,"y":141.89,"z":154.26},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":177.98,"y":140.89,"z":155.18},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":179.04,"y":139.89,"z":156.1},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":180.09,"y":138.89,"z":157.02},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":181.15,"y":137.89,"z":157.94},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":182.2,"y":136.89,"z":158.86},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":183.26,"y":135.89,"z":159.78},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":184.31,"y":134.89,"z":160.7},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":185.37,"y":133.89,"z":161.62},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":186.42,"y":132.89,"z":162.54},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":187.48,"y":131.89,"z":163.46},"rot":{"x":0,"y":-2.29,"z":0}},{"pos":{"x":188.53,"y":130.89,"z":164.38},"rot":{"x":0,"y":-2.29,"z":0}}];
 
-	var blastIdx1=0;
-	nx.scene.registerBeforeRender(function blastZapBot1LOOP() {
-		//TODO: test removal of ALL LOOPS by adding. and making sure it goes away when it should.
-		console.log('LOOPZ','blastZap1')
-	//NEW-POSROT-ANM-FORMAT- //TODO add in the ROTIdx option-.nx.editz.clearROTs(aPath).?
-	// if(nx.climaxSeqIdx[NUM].runAnm) { nx.climaxSeqIdx[NUM].runAnm = 0; //one-time-trigger;
-	// for(var i=0;i<nx.zapBotPath1;i++){
-		curPOS = nx.zapBotPath1[blastIdx1++].pos;
-	    $({cx:nx.kiloBotMesh1.position.x,cy:nx.kiloBotMesh1.position.y,cz:nx.kiloBotMesh1.position.z})
-	    .animate({cx:curPOS.x,cy:curPOS.y,cz:curPOS.z}
-	    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
-		    step:function(now) { //CAM POS
-		       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.sunsetSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
-		        nx.kiloBotMesh1.position.x = this.cx;
-		        nx.kiloBotMesh1.position.y = this.cy;
-		        nx.kiloBotMesh1.position.z = this.cz;
-		    },complete:function(){
-		    	if(blastIdx1>=nx.zapBotPath1.length){
-        			nx.scene.unregisterBeforeRender(blastZapBot1LOOP); //self-removal-.
-		    	}
-		    }
-		});
-	})
+
+
+// 	// nx.zapbotMega.startShocking()
+// 	// nx.zapbotTerra2.startShocking()
+
+
+
+// 	var curPOS;
+
+// 	var blastIdx1=0;
+// 	nx.scene.registerBeforeRender(function blastZapBot1LOOP() {
+// 		//TODO: test removal of ALL LOOPS by adding. and making sure it goes away when it should.
+// 		console.log('LOOPZ','blastZap1')
+// 	//NEW-POSROT-ANM-FORMAT- //TODO add in the ROTIdx option-.nx.editz.clearROTs(aPath).?
+// 	// if(nx.climaxSeqIdx[NUM].runAnm) { nx.climaxSeqIdx[NUM].runAnm = 0; //one-time-trigger;
+// 	// for(var i=0;i<nx.zapBotPath1;i++){
+// 		curPOS = nx.zapBotPath1[blastIdx1++].pos;
+// 	    $({cx:nx.kiloBotMesh1.position.x,cy:nx.kiloBotMesh1.position.y,cz:nx.kiloBotMesh1.position.z})
+// 	    .animate({cx:curPOS.x,cy:curPOS.y,cz:curPOS.z}
+// 	    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+// 		    step:function(now) { //CAM POS
+// 		       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.sunsetSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+// 		        nx.kiloBotMesh1.position.x = this.cx;
+// 		        nx.kiloBotMesh1.position.y = this.cy;
+// 		        nx.kiloBotMesh1.position.z = this.cz;
+// 		    },complete:function(){
+// 		    	if(blastIdx1>=nx.zapBotPath1.length){
+//         			nx.scene.unregisterBeforeRender(blastZapBot1LOOP); //self-removal-.
+// 		    	}
+// 		    }
+// 		});
+// 	})
 
 
 	//     $({curPOSx:nx.climaxSeqIdx[NUM].curPOS.pos.x,curPOSy:nx.climaxSeqIdx[NUM].curPOS.pos.y,curPOSz:nx.climaxSeqIdx[NUM].curPOS.pos.z}).
@@ -818,6 +882,207 @@ debugger;
 
 }
 
+//TODO rename nx.anm to nx.ANM-.
+nx.anm.runTipStep = function(){
+
+	//ANMETHODOLOGY-.
+	//ANM-IMPOSTOR-LOAD-ACTIVATION-.
+	// nx.anm.waveRiderTip.aMesh = {};
+	// nx.anm.waveRiderTip.aSkel = {};
+	// nx.anm.waveRiderTip = {}; //ANM-WRAPPER: to NameSpace: load() and run(), mesh and skeleton.
+	// nx.anm.waveRiderTip.load = function(){ nx.orby.loadSpaceWaveRider() }();
+
+	// nx.anm.tipStep = {};
+	// nx.anm.tipStep.load = function(){ nx.orby.loadOrbyStep(); }();
+    // nx.orby.loadOrbyStep(function(){
+	nx.anm.tipStep.run = function(){
+        nx.anm.tipStep.stepBoard.position.copyFrom({x:0,y:260.444,z:0}) //TIP BOARD-
+        nx.anm.tipStep.stepBoard.rotationQuaternion = null;
+        nx.anm.tipStep.stepBoard.rotation.y = -2.222;
+        nx.scene.beginAnimation(nx.anm.tipStep.aSkel[0], 0, 70, false, 1.0);  //orby tip down board
+        // setTimeout(function(){
+        //     nx.scene.activeCamera.position.copyFrom({x: 13.937411162620812, y: 266.4591634078494, z: -16.59508647967813})
+        // },3000)
+	}();
+    // });
+
+
+
+
+
+/**********************************************/
+
+	nx.anm.waveRiderTip.run = function(){
+        nx.anm.waveRiderTip.aMesh.position.copyFrom({x: 0.8, y: 261.36, z: -1.5})
+        nx.anm.waveRiderTip.aMesh.rotation.copyFrom({x:0,y:-2.111,z:-1.6});
+        nx.anm.waveRiderTip.aMesh.setPivotPoint(new BABYLON.Vector3(0.8, 0, 0)); 
+        setTimeout(function(){
+            $({rz:nx.anm.waveRiderTip.aMesh.rotation.z})//ROTATE WAVERIDER-.
+            .animate({rz:0
+            },{queue:false,duration:1000*nx.RUNTIME,easing:'linear',
+            step: function(now) {
+                if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[1]={on:1}; return;}//CINEMA-STOP-.
+                nx.anm.waveRiderTip.aMesh.rotation.z = this.rz;
+            },complete:function(){
+                nx.anm.waveRiderTip.aMesh.rotation.z = 0
+            }});
+        },1500)
+	}();
+
+/**********************************************/
+    //TODO refactor anm in script-.
+    // nx.orby.loadOrbyStep(function(){
+    //     nx.orbyMeshStep.position.copyFrom({x:0,y:260.444,z:0}) //TIP BOARD-
+    //     nx.orbyMeshStep.rotationQuaternion = null;
+    //     nx.orbyMeshStep.rotation.y = -2.222;
+    //     nx.scene.beginAnimation(nx.orbySkeletonStep[0], 0, 70, false, 1.0);  //orby tip down board
+    //     // setTimeout(function(){
+    //     //     nx.scene.activeCamera.position.copyFrom({x: 13.937411162620812, y: 266.4591634078494, z: -16.59508647967813})
+    //     // },3000)
+    // });
+
+// return;
+
+//     nx.orby.loadSpaceWaveRider(function(){
+//         nx.orbySpaceWaveRider1.position.copyFrom({x: 0.8, y: 261.36, z: -1.5})
+//         nx.orbySpaceWaveRider1.rotation.copyFrom({x:0,y:-2.111,z:-1.6});
+//         nx.orbySpaceWaveRider1.setPivotPoint(new BABYLON.Vector3(0.8, 0, 0)); 
+//         setTimeout(function(){
+//             $({rz:nx.orbySpaceWaveRider1.rotation.z})//ROTATE WAVERIDER-.
+//             .animate({rz:0
+//             },{queue:false,duration:1000*nx.RUNTIME,easing:'linear',
+//             step: function(now) {
+//                 if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[1]={on:1}; return;}//CINEMA-STOP-.
+//                 nx.orbySpaceWaveRider1.rotation.z = this.rz;
+//             },complete:function(){
+//                 nx.orbySpaceWaveRider1.rotation.z = 0
+//                 setTimeout(function(){
+//                     nx.orbySpaceWaveRider1.position.copyFrom({x: 0.2, y: 260.4, z: -0.6});//step pos
+//                 },2000)
+//             }});
+//         },1500)
+//     });
+
+
+
+
+
+} //end fn
+
+
+nx.anm.darbotTurningAway = function(){
+	// nx.initDarkBotHover();
+
+	//TODO RED EYES
+	nx.scene.beginAnimation(nx.darkBotSkeleton[0], 90, 90, false, 1); //left foot down
+	// nx.scene.beginAnimation(nx.darkBotSkeleton[0], 80, 80, false, 1); //right foot down
+
+	
+	// var darkToesDown = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 60, 65, false, 0.5);
+    $({ry:nx.darkBot.rotation.y,py:nx.darkBot.position.y})
+    .animate({ry:-0.66,py:261.5}
+    ,{queue:false,duration:4000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { 
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.darkBot.position.y = this.py;
+	        nx.darkBot.rotation.y = this.ry;
+	    },complete:function(){
+	        // nx.darkBot.position.y = 262;
+	        // debugger;
+			nx.initDarkBotHover();
+			nx.dBot.stopHover = 0;
+			nx.darkBot.hoverAmount = 0.00111;
+			var darkToesDown = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 65, 65, false, 1);  //both toes down 	
+	    }
+	});
+
+
+
+} //end fn
+
+nx.anm.darbotTurningBack = function(){
+
+	nx.darkBot.hoverAmount = 0.00222;
+	//TODO BLUE EYES - head turn
+    $({ry:nx.darkBot.rotation.y})
+    .animate({ry:1.11}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { 
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.darkBot.rotation.y = this.ry;
+	    },complete:function(){
+
+
+            var headTurn = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 125, 131, false, 1); //DARBOT looking back
+            headTurn.onAnimationEnd=function(){
+
+				nx.scene.activeCamera.setTarget(nx.BV32({x:7.431, y: 264.12, z:-9.92})) //CAMTGT: 
+			    $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
+			    .animate({cx:11.459,cy:264.333,cz:-14.83}
+			    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+				    step:function(now) { //CAM POS
+				       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+				        nx.scene.activeCamera.position.x = this.cx;
+				        nx.scene.activeCamera.position.y = this.cy;
+				        nx.scene.activeCamera.position.z = this.cz;
+						// nx.scene.activeCamera.setTarget(nx.BV32({x: 23.5, y: 265.6, z: -28.6})) //CAMTGT: 
+				    },complete:function(){}
+				});
+
+
+
+
+
+            }
+
+	    }
+	});
+
+
+
+
+// modKeyCtrlz3.js:26 38
+// nx.scene.activeCamera.position
+// Vector3 {x: 7.431442362715731, y: 264.126075321536, z: -9.921719847308072}
+
+
+
+} //end fn
+
+
+
+nx.anm.darBOTZoomCAM= function(){
+
+
+	nx.scene.activeCamera.position.copyFrom({x: 52.24668200228331, y: 239.03092808060438, z: -53.30305626175587})
+	nx.scene.activeCamera.setTarget(nx.BV32({x: 26.37003155613175, y: 262.9172267029071, z: -26.639292811740987})) //CAMTGT: 
+    $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
+    .animate({cx:28.04,cy:261.36,cz:-28.36}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+	    step:function(now) { //CAM POS
+	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	        nx.scene.activeCamera.position.x = this.cx;
+	        nx.scene.activeCamera.position.y = this.cy;
+	        nx.scene.activeCamera.position.z = this.cz;
+			nx.scene.activeCamera.setTarget(nx.BV32({x: 26.37003155613175, y: 262.9172267029071, z: -26.639292811740987})) //CAMTGT: 
+	    },complete:function(){}
+	});
+
+//  {x: 28.04895836818321, y: 261.36649667721736, z: -28.369230020063586}
+//     nx.scene.activeCamera.position.copyFrom({x: 52.24668200228331, y: 239.03092808060438, z: -53.30305626175587})
+// 4modKeyCtrlz3.js:26 38
+// modKeyCtrlz3.js:26 40
+// modKeyCtrlz3.js:26 38
+// 2modKeyCtrlz3.js:26 40
+// 2modKeyCtrlz3.js:26 38
+// modKeyCtrlz3.js:26 40
+// nx.scene.activeCamera.position
+// Vector3 {x: 30.892532080654412, y: 256.79697448688813, z: -31.387625801579212}
+// modKeyCtrlz3.js:26 38
+// nx.scene.activeCamera.position
+// Vector3 {x: 27.35589976335501, y: 259.7388012691049, z: -27.757128774167807}
+
+} //end fn
 /*******************************-TEMPLATE-ATOMIC-ANM-****************************/
 // nx.anm.darkBot.mezmerize = function(){
 //     $({rx:nx.darkBot.rotation.x, ry:nx.darkBot.rotation.y,rz:nx.darkBot.rotation.z})

@@ -51,8 +51,10 @@ var sitUp = nx.scene.beginAnimation(nx.orbySkeleton[0], 520, 550, false, 1.0);  
 /*******************************-ANMZ-************************************/
 nx.loadOrbyAssets = function() {
     if(!nx.scene){return;}
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot20a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot18d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot17d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
@@ -151,7 +153,13 @@ nx.loadOrbyAssets = function() {
         //INIT-ANIM-LOOP
         nx.scene.registerBeforeRender(function() {
             if(!nx.orbyMesh){ if(nx.anmz.orby.audit){console.log('>Wait: no mesh')};  return; } //TODO create this on mesh loaded-callback and remove this.
-            if(!nx.isCinematicMode || nx.isCinematicMode()){ return; } //silent return if(nx.anmz.orby.audit){console.log('>Skip AnmLoop')}
+            if(!nx.isCinematicMode || nx.isCinematicMode()){
+              if(nx.anmz.orby.hoverMode){ //hover for cinematic MODE, todo fix hover for game mode only to both-. remove this?
+                nx.anmz.orby.hoverAlpha += 0.05; //orby-hover-.
+                  nx.orbyMesh.position.y += nx.anmz.orby.hoverAmount * Math.cos(nx.anmz.orby.hoverAlpha);
+              }
+               return;
+            } //silent return if(nx.anmz.orby.audit){console.log('>Skip AnmLoop')}
             // if(nx.anmz.orby.isIdle()){ return; } //silent return if(nx.anmz.orby.audit){console.log('>Skip AnmLoop')}
             else { //Orby-Anmz-.
                 // if(nx.anmz.orby.audit){console.log('>Run AnmLoop')}  
@@ -368,10 +376,10 @@ nx.createOrbyAnmRig = function(){
     //TODO: move up. Also add Wall modes-.
 	nx.anmz.orby.hoverAlpha = 0; //used to make him float up and down-.
 	nx.anmz.orby.zapAlpha = 0; //used to make him convulse on zap-.
+  nx.anmz.orby.hoverAmount = 0.01;
 }
 
 /******************************* - ANIMATIONS - *********************************/
-
 
 nx.orbyAnmLoop = function () {
 
@@ -380,7 +388,7 @@ nx.orbyAnmLoop = function () {
     if(nx.anmz.orby.intermissionFreeze){ return; }//SKIP-ALL-PROCESSING: raycasts and movement logic-. 
     else if(nx.anmz.orby.forceIdle) { //freeze orby movement, but idle for anm-.
     nx.anmz.orby.hoverAlpha += 0.05; //orby-hover-.
-    nx.orbyMesh.position.y += 0.01 * Math.cos(nx.anmz.orby.hoverAlpha);
+    nx.orbyMesh.position.y += nx.anmz.orby.hoverAmount * Math.cos(nx.anmz.orby.hoverAlpha);
 
     } //SKIP-ALL-PROCESSING: raycasts and movement logic-. 
     else if(nx.anmz.orby.isIdle()){ //SKIP-ALL-PROCESSING: raycasts and movement logic-. 
@@ -388,7 +396,7 @@ nx.orbyAnmLoop = function () {
                     // debugger;         
         if(nx.anmz.orby.hoverMode){ //init at landing not while in space-.
             nx.anmz.orby.hoverAlpha += 0.05; //orby-hover-.
-            nx.orbyMesh.position.y += 0.01 * Math.cos(nx.anmz.orby.hoverAlpha);
+            nx.orbyMesh.position.y += nx.anmz.orby.hoverAmount * Math.cos(nx.anmz.orby.hoverAlpha);
         }
 
 
@@ -2402,12 +2410,12 @@ nx.orby.endRainbowRays = function(mode){
 }
 
 
-//USAGE: addGlow('zap'||'ionized'||'stop')
-nx.orby.addGlow = function(glowType){
+//USAGE: addGlow('zap'||'ionized'||'stop', glowfactory instance) - glow any actor/impostor-.
+nx.orby.addGlowFactory = function(glowType, instance){
   if(glowType==='zap'){
     //ANM GLOW BLUR-.
-    if(!nx.orbyMesh.glow){ //one-time-init-.
-        nx.orbyMesh.glow = new BABYLON.HighlightLayer("orby.glow", nx.scene, {
+    if(!instance.glow){ //one-time-init-.
+        instance.glow = new BABYLON.HighlightLayer("orby.glow", nx.scene, {
             // blueTextureSizeRatio: 0.5,
             // alphaBlendingMode: 2,
             blurHorizontalSize: 1,
@@ -2417,27 +2425,45 @@ nx.orby.addGlow = function(glowType){
             // mainTextureRatio: 0.25
         });
 
-        nx.orbyMesh.glow.addMesh(nx.orbyMesh, new BABYLON.Color3(0.44,0.44,1));
-        nx.orbyMesh.glow.addMesh(nx.orbyMeshBody, new BABYLON.Color3(0.44,0.44,1));
+        instance.glow.addMesh(instance, new BABYLON.Color3(0.44,0.44,1));
+        // instance.glow.addMesh(instanceBody, new BABYLON.Color3(0.44,0.44,1));
     } 
-        // nx.orbyMesh.glow.addMesh(config.mesh, new BABYLON.Color3(0.44,0.44,1));
-        // nx.orbyMesh1.glow.removeMesh(config.mesh);
-        // nx.orbyMesh1.glow.blurHorizontalSize = 2;
-        // nx.orbyMesh1.glow.blurVerticalSize = 2;
-        // nx.orbyMesh1.glow.innerGlow = false;
-        // nx.orbyMesh1.glow.outerGlow = true;
+        // instance.glow.addMesh(config.mesh, new BABYLON.Color3(0.44,0.44,1));
+        // instance1.glow.removeMesh(config.mesh);
+        // instance1.glow.blurHorizontalSize = 2;
+        // instance1.glow.blurVerticalSize = 2;
+        // instance1.glow.innerGlow = false;
+        // instance1.glow.outerGlow = true;
 
     // config.mesh.zapAuraAlpha++ //todo move into render loop?
-    // nx.orbyMesh.glow.blurHorizontalSize = 1 +  Math.cos(config.mesh.zapAuraAlpha)*2;
-    // nx.orbyMesh.glow.blurVerticalSize = 1 +  Math.cos(config.mesh.zapAuraAlpha)*2;
+    // instance.glow.blurHorizontalSize = 1 +  Math.cos(config.mesh.zapAuraAlpha)*2;
+    // instance.glow.blurVerticalSize = 1 +  Math.cos(config.mesh.zapAuraAlpha)*2;
 
   }//end zap
   else if (glowType==='stop'){
-    nx.orbyMesh.glow.removeMesh(nx.orbyMesh);
-    nx.orbyMesh.glow.removeMesh(nx.orbyMeshBody);
-    nx.orbyMesh.glow = null;
+    instance.glow.removeMesh(instance);
+    instance.glow.removeMesh(instanceBody);
+    instance.glow = null;
   }
 }//end addglow
+
+
+//DARBOT used to be DOORBOT, before he was promoted by AEON
+//To special-service on ALPHA~MOON
+//Where he reported to Durk and aGuy.
+//aGuy was in charge of the GARDENZ.
+//And Durk took DOORBOT out into space
+//to secretly build a castle
+//in a crater on the far-side of ALPHA~MOON.
+//DOORBOT was given ZAPPERZ and a JETPAK
+//Which he used to build the castle.
+//He became strong.
+//He became DARBOT.
+//Then, in preparation for invasion of ERTH.
+//DAR gave DARBOT two MEZMOS
+//You are the first of A LEGION of MEZMOBOTZ
+//But DAR left it off, just in case 
+//DARBOT turns on his BOT~MASTER
 
 
 
@@ -2502,44 +2528,79 @@ nx.orby.loadOrbyMouth = function(endfn){
     }); //end orby mouth
 }//end orby mouth
 
-nx.orby.loadOrbyStep = function(endfn){
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep3a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
+nx.orby.loadOrbyStep = function(){
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep3d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep1a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
-      nx.orbyMeshStep = nx.scene.getMeshByName('spacewaveriderStep')
-      nx.orbyMeshStep.visibility = 0; 
-      nx.orbyMeshBodyStep = nx.scene.getMeshByName('orbymeshStep') ; //orbymesh
-      nx.orbyMeshBodyStep.visibility = 1; 
-      nx.orbySkeletonStep = skeletons;
-      endfn(); //important
+
+  // nx.anm.tipStep.aMesh = {};
+  // nx.anm.tipStep.aSkel = {};
+
+      nx.anm.tipStep.stepBoard = nx.scene.getMeshByName('spacewaveriderStep')
+      nx.anm.tipStep.stepBoard.visibility = 0; 
+      nx.anm.tipStep.aMesh = nx.scene.getMeshByName('orbymeshStep') ; //orbymesh
+      nx.anm.tipStep.aMesh.visibility = 1; 
+      nx.anm.tipStep.aSkel = skeletons;
+
+      nx.orbyEYEStep = nx.scene.getMeshByName('separatedEYEStep') 
+      nx.orbyIRISStep = nx.scene.getMeshByName('separatedIRIStep') 
+
+      // nx.orbyMeshStep = nx.scene.getMeshByName('spacewaveriderStep')
+      // nx.orbyMeshStep.visibility = 0; 
+      // nx.orbyMeshBodyStep = nx.scene.getMeshByName('orbymeshStep') ; //orbymesh
+      // nx.orbyMeshBodyStep.visibility = 1; 
+      // nx.orbySkeletonStep = skeletons;
+      
+      // endfn(); //important
     }); //end orby sit up
+
+    //anmethodology: anmactivator pattern - load function with an activate handle to trigger local callback in script-.
+    // return function activator(){
+    //   if(stepLoaded){endfn();} //important
+    //   stepActivated=1;
+    // }
 }
 
-nx.orby.loadSpaceWaveRider = function(endfn){
+nx.orby.loadSpaceWaveRider = function(){
   BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "spaceWaveRider3a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { 
   // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "spaceWaveRider1b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { 
 // debugger
 
-    nx.orbySpaceWaveRider1 = nx.scene.getMeshByName('SpaceRiderFREE') 
-    nx.orbyRiderSkeleton = skeletons;
+nx.anm.waveRiderTip.aMesh = nx.scene.getMeshByName('SpaceRiderFREE')
+nx.anm.waveRiderTip.aSkel = skeletons[0];
 
-    endfn();
+
+        // nx.orbyEYEStep.visibility = 0;
+        // nx.orbyIRISStep.visibility = 0;
+
+
+    // nx.orbySpaceWaveRider1 = nx.scene.getMeshByName('SpaceRiderFREE') 
+    // nx.orbyRiderSkeleton = skeletons;
+
+    // endfn();
   });
 }
 
 nx.orby.loadOrbySitUp = function(endfn){
 
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp6a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp5a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //broke free armature
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp3a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     //    nx.orbyMesh = newMeshes[0]; //spacewaverider
         // nx.orbyMeshBody = newMeshes[1]; //orbymesh
         // debugger;
+
         nx.orbyMeshSitUp = nx.scene.getMeshByName('spacewaveriderS') 
         // nx.orbyMesh.convertToFlatShadedMesh();
         nx.orbyMeshBodySitUp = nx.scene.getMeshByName('orbymeshS') ; //orbymesh
         nx.orbyMeshBodySitUp.visibility = 0;
+        
+        nx.orbyEYESit = nx.scene.getMeshByName('separatedEYESit') 
+        nx.orbyIRISSit = nx.scene.getMeshByName('separatedIRISSit') 
+        nx.orbyIRISSit.visibility = 0;
+        nx.orbyEYESit.visibility = 0;
 
         // debugger;
         nx.orbySkeletonSit = skeletons;

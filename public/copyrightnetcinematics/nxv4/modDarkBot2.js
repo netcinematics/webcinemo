@@ -23,11 +23,13 @@ nx.initDarkBot = function(){
  
   // var darkMezmo = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 0, 95, false, 0.5); //MEXMO 
   // var lookUp = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 50, 60, false, 0.5); //lookup
+  //nx.scene.beginAnimation(nx.darkBotSkeleton[0], 90, 90, false, 1); //one foot
 
 // 
   // setTimeout(function(){
+      BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot19a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+      // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot17b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot18a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
-      BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot17b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot16c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot15c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
       // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "darkbot14d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
