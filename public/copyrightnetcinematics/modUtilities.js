@@ -418,6 +418,34 @@ nx.sqPyramid1.material = myMaterial;
 //   });
 /***************************************END-MOBILE***********************************************/
 
+//Animation Factory
+// nx.explosionFactory = function( factory ){
+//     if(factory==='firstBOOM'){
+//        //ANM
+//     } else if(factory==='secondBOOM'){
+//        //ANM
+//     } else if(factory==='thirdBOOM') {
+//        //ANM
+//     }
+// }
+
+
+//Nice CAMZOOM-. anmethodology-.
+                            // nx.scene.activeCamera.position.copyFrom({x: -19.103314840263586, y: 264.64162065035487, z: 17.498424079953157}); //last look darbot
+                            // nx.scene.activeCamera.setTarget(nx.BV32({x: 9.701396307371585, y: 262.0478740155844, z: -12.954317703010812})) //CAMZOOM: 
+                            // $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
+                            // .animate({cx:4.96,cy:262.4,cz:-7.94}
+                            // ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+                            //     step:function(now) { //CAM POS
+                            //        if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+                            //         nx.scene.activeCamera.position.x = this.cx;
+                            //         nx.scene.activeCamera.position.y = this.cy;
+                            //         nx.scene.activeCamera.position.z = this.cz;
+                            //         // nx.scene.activeCamera.setTarget(nx.BV32({x: 23.5, y: 265.6, z: -28.6})) //CAMTGT: 
+                            //     },complete:function(){}
+                            // });
+
+
 
 // .noselect {
 //   -webkit-touch-callout: none;

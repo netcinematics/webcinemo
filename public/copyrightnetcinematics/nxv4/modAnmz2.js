@@ -294,8 +294,10 @@ nx.anm.boomANM = function(){
 
     // Where the particles come from
     fireSystem1.emitter = fountainFire1; // the starting object, the emitter
-    fireSystem1.minEmitBox = new BABYLON.Vector3(-0.5, 0.5, -0.5); // Starting all from
-    fireSystem1.maxEmitBox = new BABYLON.Vector3(0.5, 1.5, 0.5); // To...
+    // fireSystem1.minEmitBox = new BABYLON.Vector3(-0.5, 0.5, -0.5); // Starting all from
+    fireSystem1.minEmitBox = new BABYLON.Vector3(-0.5, 0, -0.5); // Starting all from
+    fireSystem1.maxEmitBox = new BABYLON.Vector3(0.5, 2, 0.5); // To...
+    // fireSystem1.maxEmitBox = new BABYLON.Vector3(0.5, 1.5, 0.5); // To...
 
     // Colors of all particles
     fireSystem1.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
@@ -352,8 +354,10 @@ nx.anm.boomANM = function(){
 
     // Where the particles come from
     fireSystem2.emitter = fountainFire2; // the starting object, the emitter
-    fireSystem2.minEmitBox = new BABYLON.Vector3(-0.5, 0.5, -0.5); // Starting all from
-    fireSystem2.maxEmitBox = new BABYLON.Vector3(0.5, 1.5, 0.5); // To...
+    // fireSystem2.minEmitBox = new BABYLON.Vector3(-0.5, 0.5, -0.5); // Starting all from
+    fireSystem2.minEmitBox = new BABYLON.Vector3(-0.5, 0, -0.5); // Starting all from
+    fireSystem2.maxEmitBox = new BABYLON.Vector3(0.5, 2, 0.5); // To...
+    // fireSystem2.maxEmitBox = new BABYLON.Vector3(0.5, 1.5, 0.5); // To...
 
     // Colors of all particles
     fireSystem2.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
@@ -718,7 +722,7 @@ nx.anm.boomANM = function(){
 
     //TODO clean up smoke systems
 
-    nx.blowOutZapBots();
+
 
 }
 
@@ -751,15 +755,31 @@ nx.anm.stopBoomANM = function(type){
 		nx.purpleSmokeSystem1.dispose();
 		nx.purpleSmokeSystem1 = null;
 	} else if(type==='purplesteam'){
-		nx.purpleSteamSystem1.stop();
-		nx.purpleSteamSystem1.dispose();
-		nx.purpleSteamSystem1 = null;
+
+
+	    $({ms:nx.purpleSteamSystem1.maxSize,er:nx.purpleSteamSystem1.emitRate})
+	    .animate({ms:0.51,er:0}
+	    ,{queue:false,duration:6000*nx.RUNTIME,easing:'linear',
+		    step:function(now) { //CAM POS
+		       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.boomSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+		       nx.purpleSteamSystem1.maxSize = this.ms;
+				nx.purpleSteamSystem1.emitRate = this.er;
+		    },complete:function(){ 
+
+				nx.purpleSteamSystem1.stop();
+				nx.purpleSteamSystem1.dispose();
+				nx.purpleSteamSystem1 = null;
+
+		    }
+		});
+
+
+
 	}
 }
 
-nx.blowOutZapBots = function(){
+nx.blowOutZapBots = function( factory ){ //explosion factory
 
-//TODO NOT BEING USED
 nx.kiloBotMesh1.stopShocking ();
 nx.zapbotMega.stopShocking()
 nx.zapbotTerra2.stopShocking()
@@ -771,46 +791,156 @@ nx.zapbotTerra2.stopShocking()
 // nx.zapbotTerra2.position
 // Vector3 {x: 26.014782132909403, y: 266.3956469174153, z: 18.889698881576113}
 
+    //STOP other booms, if called before they are done-.
+    if(nx.anm.firstBOOM1){nx.anm.firstBOOM1.stop()}
+    if(nx.anm.firstBOOM2){nx.anm.firstBOOM2.stop()}
+    if(nx.anm.firstBOOM3){nx.anm.firstBOOM3.stop()}
+    if(nx.anm.secondBOOM1){nx.anm.secondBOOM1.stop()}
+    if(nx.anm.secondBOOM2){nx.anm.secondBOOM2.stop()}
+    if(nx.anm.secondBOOM3){nx.anm.secondBOOM3.stop()}
+    // if(nx.anm.thirdBOOM){nx.anm.thirdBOOM.stop()}
 
-    $({cx:nx.kiloBotMesh1.position.x,cy:nx.kiloBotMesh1.position.y,cz:nx.kiloBotMesh1.position.z})
-    .animate({cx:-18,cy:265.5,cz:-16}
-    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
-	    step:function(now) { //CAM POS
-	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
-	        nx.kiloBotMesh1.position.x = this.cx;
-	        nx.kiloBotMesh1.position.y = this.cy;
-	        nx.kiloBotMesh1.position.z = this.cz;
-	    },complete:function(){}
-	});
+	if(factory==='firstBOOM'){
 
-    $({cx:nx.zapbotMega.position.x,cy:nx.zapbotMega.position.y,cz:nx.zapbotMega.position.z})
-    .animate({cx:-240,cy:266.36,cz:240}
-    ,{queue:false,duration:10000*nx.RUNTIME,easing:'swing',
-	    step:function(now) { //CAM POS
-	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
-	        nx.zapbotMega.position.x = this.cx;
-	        nx.zapbotMega.position.y = this.cy;
-	        nx.zapbotMega.position.z = this.cz;
-	    },complete:function(){}
-	});
+// console.log('BOOM1')
+nx.zapbotMega.position.copyFrom({x: -3, y: 266.39623515582986, z: 3.0012930340009305});
+nx.zapbotTerra2.position.copyFrom({x: 2.6000000000000014, y: 264.53623515582984, z: 2.5012985377873633});
+nx.kiloBotMesh1.position.copyFrom({x: -3, y: 264.73623515582983, z: -3.001035716022674});
 
-    $({cx:nx.zapbotTerra2.position.x,cy:nx.zapbotTerra2.position.y,cz:nx.zapbotTerra2.position.z})
-    .animate({cx:100,cy:266,cz:100}
-    ,{queue:false,duration:8000*nx.RUNTIME,easing:'swing',
-	    step:function(now) { //CAM POS
-	       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
-	        nx.zapbotTerra2.position.x = this.cx;
-	        nx.zapbotTerra2.position.y = this.cy;
-	        nx.zapbotTerra2.position.z = this.cz;
-	    },complete:function(){
 
-	        nx.zapbotTerra2.position.x = 0;
-	        nx.zapbotTerra2.position.y = 0;
-	        nx.zapbotTerra2.position.z = 0;
+	    $({cx:nx.kiloBotMesh1.position.x,cy:nx.kiloBotMesh1.position.y,cz:nx.kiloBotMesh1.position.z})
+	    .animate({cx:-100,cy:265.5,cz:-100}
+	    ,{queue:false,duration:4000*nx.RUNTIME,easing:'linear',
+		    step:function(now) { //CAM POS
+		       nx.anm.firstBOOM1 = $(this);
+		       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.boomSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+		        nx.kiloBotMesh1.position.x = this.cx;
+		        nx.kiloBotMesh1.position.y = this.cy;
+		        nx.kiloBotMesh1.position.z = this.cz;
+		    },complete:function(){ nx.kiloBotMesh1.position.copyFrom({x:0,y:0,z:0})}
+		});
+	    $({cx:nx.zapbotMega.position.x,cy:nx.zapbotMega.position.y,cz:nx.zapbotMega.position.z})
+	    .animate({cx:-100,cy:266.36,cz:100}
+	    ,{queue:false,duration:4000*nx.RUNTIME,easing:'linear',
+		    step:function(now) { //CAM POS
+		       nx.anm.firstBOOM2 = $(this);
+		       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.boomSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+		        nx.zapbotMega.position.x = this.cx;
+		        nx.zapbotMega.position.y = this.cy;
+		        nx.zapbotMega.position.z = this.cz;
+		    },complete:function(){}
+		});
+	    $({cx:nx.zapbotTerra2.position.x,cy:nx.zapbotTerra2.position.y,cz:nx.zapbotTerra2.position.z})
+	    .animate({cx:100,cy:266,cz:100}
+	    ,{queue:false,duration:4000*nx.RUNTIME,easing:'linear',
+		    step:function(now) { //CAM POS
+		       nx.anm.firstBOOM3 = $(this);
+		       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.boomSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+		        nx.zapbotTerra2.position.x = this.cx;
+		        nx.zapbotTerra2.position.y = this.cy;
+		        nx.zapbotTerra2.position.z = this.cz;
+		    },complete:function(){
+	        	// console.log('ENDBOOM1')
+		    }
+		});
+	} 
+	else if(factory==='secondBOOM'){
+// debugger;
+// console.log('BOOM2')
+		nx.zapbotMega.position.copyFrom({x:-100,y:266,z:100})
+		nx.zapbotTerra2.position.copyFrom({x:60,y:266,z:60})
+		nx.kiloBotMesh1.position.copyFrom({x:-100,y:266,z:-100})
+	//     //ANM: shoot mega out into space-.
+	    $({cx:nx.zapbotMega.position.x,cy:nx.zapbotMega.position.y,cz:nx.zapbotMega.position.z})
+	    .animate({cx:-400,cy:266.36,cz:400}
+	    ,{queue:false,duration:8000*nx.RUNTIME,easing:'linear',
+	        step:function(now) { //CAM POS
+		       // nx.anm.secondBOOM1 = $(this);
+	           if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	            nx.zapbotMega.position.x = this.cx;
+	            nx.zapbotMega.position.y = this.cy;
+	            nx.zapbotMega.position.z = this.cz;
+	        },complete:function(){
+	        	// console.log('ENDBOOM2')
+	            //  nx.zapbotMega.position.x = 0;
+	            // nx.zapbotMega.position.y = 0;
+	            // nx.zapbotMega.position.z = 0;           
+	        }
+	    });
+	//     $
+	    $({cx:nx.zapbotTerra2.position.x,cy:nx.zapbotTerra2.position.y,cz:nx.zapbotTerra2.position.z})
+	    .animate({cx:400,cy:266.36,cz:400}
+	    ,{queue:false,duration:8000*nx.RUNTIME,easing:'swing',
+	        step:function(now) { //CAM POS
+		       nx.anm.secondBOOM2 = $(this);
+	           if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	            nx.zapbotTerra2.position.x = this.cx;
+	            nx.zapbotTerra2.position.y = this.cy;
+	            nx.zapbotTerra2.position.z = this.cz;
+	        },complete:function(){
+	        	// console.log('ENDBOOM2')
+	            //  nx.zapbotMega.position.x = 0;
+	            // nx.zapbotMega.position.y = 0;
+	            // nx.zapbotMega.position.z = 0;           
+	        }
+	    });
+	//     $
+	    $({cx:nx.kiloBotMesh1.position.x,cy:nx.kiloBotMesh1.position.y,cz:nx.kiloBotMesh1.position.z})
+	    .animate({cx:-400,cy:266.36,cz:-400}
+	    ,{queue:false,duration:8000*nx.RUNTIME,easing:'swing',
+	        step:function(now) { //CAM POS
+		       nx.anm.secondBOOM3 = $(this);
+	           if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	            nx.kiloBotMesh1.position.x = this.cx;
+	            nx.kiloBotMesh1.position.y = this.cy;
+	            nx.kiloBotMesh1.position.z = this.cz;
+	        },complete:function(){
+	        	console.log('ENDBOOM2')
+	            //  nx.zapbotMega.position.x = 0;
+	            // nx.zapbotMega.position.y = 0;
+	            // nx.zapbotMega.position.z = 0;           
+	        }
+	    });
+	//     $({cx:nx.zapbotTerra2.position.x,cy:nx.zapbotTerra2.position.y,cz:nx.zapbotTerra2.position.z})
+	//     .animate({cx:140,cy:266.36,cz:140}
+	//     ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+	//         step:function(now) { //CAM POS
+	// 	       nx.anm.secondBOOM2 = $(this);
+	//            if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	//             nx.zapbotTerra2.position.x = this.cx;
+	//             nx.zapbotTerra2.position.y = this.cy;
+	//             nx.zapbotTerra2.position.z = this.cz;
+	//         },complete:function(){
+	//              nx.zapbotTerra2.position.x = 0;
+	//             nx.zapbotTerra2.position.y = 0;
+	//             nx.zapbotTerra2.position.z = 0;           
+	//         }
+	//     });
 
-            // nx.scene.beginAnimation(nx.orbySkeleton[0], 1, 4, true, 0.25); //ANIMATED-SURFBOARD-.
-	    }
-	});
+
+       
+	} 
+	else if(factory==='thirdBOOM') {
+		// debugger;
+console.log('BOOM3')
+	// 	nx.zapbotMega.position.copyFrom({x:-40,y:266,z:40});
+	//     $({cx:nx.zapbotMega.position.x,cy:nx.zapbotMega.position.y,cz:nx.zapbotMega.position.z})
+	//     .animate({cx:-240,cy:260,cz:240}
+	//     ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+	//         step:function(now) { //CAM POS
+	// 	       nx.anm.secondBOOM1 = $(this);
+	//            if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	//             nx.zapbotMega.position.x = this.cx;
+	//             nx.zapbotMega.position.y = this.cy;
+	//             nx.zapbotMega.position.z = this.cz;
+	//         },complete:function(){
+	//             //  nx.zapbotMega.position.x = 0;
+	//             // nx.zapbotMega.position.y = 0;
+	//             // nx.zapbotMega.position.z = 0;           
+	//         }
+	//     });
+	}
+
 
 
 
@@ -1013,10 +1143,11 @@ nx.anm.darbotTurningBack = function(){
 	    },complete:function(){
 
 
-            var headTurn = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 125, 131, false, 1); //DARBOT looking back
+            // var headTurn = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 125, 131, false, 0.25); //DARBOT looking back
+            var headTurn = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 110, 125, false, 0.25); //DARBOT looking back
             headTurn.onAnimationEnd=function(){
 
-				nx.scene.activeCamera.setTarget(nx.BV32({x:7.431, y: 264.12, z:-9.92})) //CAMTGT: 
+				nx.scene.activeCamera.setTarget(nx.BV32({x:7.431, y: 264.12, z:-9.92})) //CAMZOOM: 
 			    $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
 			    .animate({cx:11.459,cy:264.333,cz:-14.83}
 			    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
@@ -1055,6 +1186,7 @@ nx.anm.darBOTZoomCAM= function(){
 
 
 	nx.scene.activeCamera.position.copyFrom({x: 52.24668200228331, y: 239.03092808060438, z: -53.30305626175587})
+	// nx.scene.activeCamera.position.copyFrom({x: 28.04, y: 261.36, z: -28.36}) //LOOK UP AT DARBOT
 	nx.scene.activeCamera.setTarget(nx.BV32({x: 26.37003155613175, y: 262.9172267029071, z: -26.639292811740987})) //CAMTGT: 
     $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
     .animate({cx:28.04,cy:261.36,cz:-28.36}

@@ -51,7 +51,8 @@ var sitUp = nx.scene.beginAnimation(nx.orbySkeleton[0], 520, 550, false, 1.0);  
 /*******************************-ANMZ-************************************/
 nx.loadOrbyAssets = function() {
     if(!nx.scene){return;}
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22e.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot20a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {

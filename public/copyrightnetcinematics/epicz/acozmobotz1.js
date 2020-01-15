@@ -6388,7 +6388,10 @@ nx.scene.activeCamera.setTarget(nx.BV32({x: 18.459032017437348, y: 266.982504018
 
 // return;
 
+// debugger;
+
 nx.anm.boomANM(); //boom particle systems
+nx.blowOutZapBots("firstBOOM");
 
 
 // return;
@@ -6421,8 +6424,9 @@ nx.scene.registerBeforeRender(function boomSphereLoop() {
     //     nx.anm.blowOutZapBots();
 
     // }
-    if (boomSphereIdx===80){ //OneTime- go to sky view
-        nx.boomSeqIdx[NUM+1] = {on:1}; //SIMULTANEOUS-ANM-.
+    if (boomSphereIdx===120){ //OneTime- go to sky view
+        // nx.blowOutZapBots("secondBOOM");
+        nx.boomSeqIdx[NUM+1] = {on:1}; //SIMULTANEOUS-ANM-. Sky view impostor switch-.
     }
     if(boomSphereIdx>111){ //FADE OUT FOG-.
         for(var i=0;i<nx.boomSpheres.length;i++){
@@ -6430,6 +6434,7 @@ nx.scene.registerBeforeRender(function boomSphereLoop() {
         }
     } 
     if (boomSphereIdx===300){ //OneTime-
+        // nx.blowOutZapBots("thirdBOOM")
         nx.boomSeqIdx[NUM+2] = {on:1}; //SIMULTANEOUS-ANM-.
     }
     if(boomSphereIdx>=400) {
@@ -6441,7 +6446,7 @@ nx.scene.registerBeforeRender(function boomSphereLoop() {
         nx.scene.unregisterBeforeRender(boomSphereLoop); //ONE-TIME: remove boomspheres, then self removal of ANMLOOP-.
     }
 
-    console.log(boomSphereIdx)
+    // console.log(boomSphereIdx)
 }); //end boom sphere loop
 
 
@@ -6454,27 +6459,27 @@ nx.scene.registerBeforeRender(function boomSphereLoop() {
             } //end frame
             else if(nx.boomSeqIdx[1] && nx.boomSeqIdx[1].on){ var NUM = 1; nx.boomSeqIdx[NUM].on=0;
 
-
+//SKYVIEW-IMPOSTOR-SWITCH
 nx.scene.activeCamera.position.copyFrom({x: 355.07090105536935, y: 606.8207171064599, z: -36.4530847232519}) //CAM SKY VIEW-.
 nx.scene.activeCamera.setTarget(nx.BV32({x: 294.34052934926814, y: 546.9670058773744, z: -29.718254463217416})) //CAMTGT: 
 // nx.scene.activeCamera.position.copyFrom({x: 329.6025472940704, y: 573.622204256834, z: 1.627080639815125}) //CAM SKY VIEW-.
 // nx.scene.activeCamera.setTarget(nx.BV32({x: 19.036975354100676, y: 267.03370435498164, z: -25.359065003051636})) //CAMTGT: 
-
+nx.blowOutZapBots("secondBOOM");
 //TODO: check nx.LOW_PERF_MODE - where explosion is simplified when 
 //TODO: anm flying Zapbots
-nx.kiloBotMesh1.position.copyFrom({x:0,y:1,z:0})
-nx.zapbotMega.position.copyFrom({x:0,y:2,z:0})
-nx.zapbotTerra2.position.copyFrom({x:0,y:3,z:0})
-if(nx.orbyMeshM){ nx.orbyMeshM.visibility=0; nx.orbyMeshM.position.copyFrom({x:0,y:4,z:0}) }
+// nx.kiloBotMesh1.position.copyFrom({x:0,y:1,z:0})
+// nx.zapbotMega.position.copyFrom({x:0,y:2,z:0})
+// nx.zapbotTerra2.position.copyFrom({x:0,y:3,z:0})
 
 //IMPOSTOR-SWITCH-.
+if(nx.orbyMeshM){ nx.orbyMeshM.visibility=0; nx.orbyMeshM.position.copyFrom({x:0,y:4,z:0}) }
 nx.orbyMeshSitUp.visibility = 1;
 nx.orbyMeshBodySitUp.visibility = 1;
 nx.orbyEYESit.visibility = 1;
 nx.orbyIRISSit.visibility = 1;
-
-
 nx.orby.addGlowFactory('zap',nx.orbyMeshSitUp);
+
+
 
 // debugger;
 
@@ -6496,7 +6501,8 @@ nx.orby.addGlowFactory('zap',nx.orbyMeshSitUp);
 nx.scene.activeCamera.position.copyFrom({x: 113.55146818185493, y: 276.72556853315814, z: -127.49998406859919})
 nx.scene.activeCamera.setTarget(nx.BV32({x: 18.459032017437348, y: 266.9825040184168, z: -24.734531953436157})) //CAMTGT: 
 
-nx.anm.stopBoomANM('fire');
+setTimeout(function(){ nx.anm.stopBoomANM('fire'); }, 2000 );
+
 nx.scene.beginAnimation(nx.darkBotSkeleton[0], 95, 95, false, 0.5); //hands out
 
 
@@ -6539,7 +6545,8 @@ nx.scene.activeCamera.position.copyFrom({x: 21.184477771556978, y: 267.246781092
 nx.scene.activeCamera.setTarget(nx.BV32({x: 18.459032017437348, y: 266.9825040184168, z: -24.734531953436157})) //CAMTGT: 
         setTimeout(function(){
             nx.boomSeqIdx[NUM+1] = {on:1}; 
-        },3000)
+        },4000)
+        nx.anm.stopBoomANM('purplesteam')
 
     }
     if(boomFOGIDX>111){ //FADE OUT FOG-.
@@ -6576,21 +6583,21 @@ nx.scene.activeCamera.setTarget(nx.BV32({x: 18.459032017437348, y: 266.982504018
 
 
 
-    //ANM: shoot mega out into space-.
-    $({cx:nx.zapbotMega.position.x,cy:nx.zapbotMega.position.y,cz:nx.zapbotMega.position.z})
-    .animate({cx:-140,cy:266.36,cz:140}
-    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
-        step:function(now) { //CAM POS
-           if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
-            nx.zapbotMega.position.x = this.cx;
-            nx.zapbotMega.position.y = this.cy;
-            nx.zapbotMega.position.z = this.cz;
-        },complete:function(){
-             nx.zapbotMega.position.x = 0;
-            nx.zapbotMega.position.y = 0;
-            nx.zapbotMega.position.z = 0;           
-        }
-    });
+    // //ANM: shoot mega out into space-.
+    // $({cx:nx.zapbotMega.position.x,cy:nx.zapbotMega.position.y,cz:nx.zapbotMega.position.z})
+    // .animate({cx:-140,cy:266.36,cz:140}
+    // ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+    //     step:function(now) { //CAM POS
+    //        if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+    //         nx.zapbotMega.position.x = this.cx;
+    //         nx.zapbotMega.position.y = this.cy;
+    //         nx.zapbotMega.position.z = this.cz;
+    //     },complete:function(){
+    //          nx.zapbotMega.position.x = 0;
+    //         nx.zapbotMega.position.y = 0;
+    //         nx.zapbotMega.position.z = 0;           
+    //     }
+    // });
 
 
 
@@ -6600,7 +6607,10 @@ nx.scene.activeCamera.setTarget(nx.BV32({x: 18.459032017437348, y: 266.982504018
 // if(nx.orbySkeletonSit){
     nx.darkBot.rotation.y = 2.4;
     nx.scene.beginAnimation(nx.orbySkeletonSit[0], 180, 190, false, 1).onAnimationEnd = function(){ //orby eye move
-    nx.anm.stopBoomANM('purplesteam')
+ 
+    // nx.anm.stopBoomANM('purplesteam')
+    nx.zapbotMega.position.copyFrom({x:0,y:0,z:0});
+    // nx.anm.blowOutZapBots(""); //END anm factory-.
         setTimeout(function(){
             // nx.scene.beginAnimation(nx.orbySkeleton[0], 525, 550, false, 0.5).onAnimationEnd=function(){ //orby sit up
             nx.scene.beginAnimation(nx.orbySkeletonSit[0], 190, 200, false, 1).onAnimationEnd=function(){ //orby sit up
@@ -6716,7 +6726,7 @@ nx.anm.runTipStep(); //Orby tips over board
                 },txtEnd:function(){}});
 
 //over shoulder orby
-                nx.ui.flashCanvasMSG({txt:"Zawd ESCAPED, on that TRAIN.",txtIcon:'orby',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"Zawd ESCAPED on that TRAIN.",txtIcon:'orby',dur:3000,txtInit:function(){
                     nx.scene.activeCamera.position.copyFrom({x: 29.677389119118242, y: 266.81593484631526, z: -34.38350001645826}) //orby
                     nx.scene.activeCamera.setTarget(nx.BV32({x: 27.585794320017225, y: 266.4856448548985, z: -32.019348498851954})) //CAMTGT: 
                 },txtEnd:function(){} }); 
@@ -6857,7 +6867,7 @@ nx.anm.runTipStep(); //Orby tips over board
                 },txtEnd:function(){
                 }});
 //cam long view 3
-                nx.ui.flashCanvasMSG({txt:"And we hide in BLUE~NEBULA.",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"Now we hide in a BLUE~NEBULA.",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
                     nx.scene.activeCamera.position.copyFrom({x: -1537.8138670622432, y: 871.1402957072808, z: 2343.339452885518}) //farview
                     nx.scene.activeCamera.setTarget(nx.BV32({x: -1504.2452023791695, y: 852.3970512279316, z: 2271.253893261189})) //CAMTGT: 
                 },txtEnd:function(){ }});
@@ -6875,7 +6885,11 @@ nx.anm.runTipStep(); //Orby tips over board
                 },txtEnd:function(){}});
                 //close turning back: looling back, blue eyes. zooming in close
                 nx.ui.flashCanvasMSG({txt:"at a CASTLE in a CRATER,",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){},txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"DAR forges a ZAP~BOT~ARMY.",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){},txtEnd:function(){}});
+                nx.ui.flashCanvasMSG({txt:"DAR builds a ZAP~BOT~ARMY.",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
+    nx.scene.activeCamera.position.copyFrom({x: 28.04, y: 261.36, z: -28.36}) //LOOK UP AT DARBOT
+    nx.scene.activeCamera.setTarget(nx.BV32({x: 26.37003155613175, y: 262.9172267029071, z: -26.639292811740987})) //CAMTGT: 
+
+                },txtEnd:function(){}});
                 // nx.ui.flashCanvasMSG({txt:"from his SPACE~CASTLE,",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){},txtEnd:function(){}});
                 // nx.ui.flashCanvasMSG({txt:"",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){},txtEnd:function(){}});
 //extreme closeup
@@ -6899,6 +6913,14 @@ nx.scene.beginAnimation(nx.anm.tipStep.aSkel[0], 90, 100, false, 0.25);  //orby 
                 nx.ui.flashCanvasMSG({txt:"a BOT~WAR is coming.",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
                     nx.scene.activeCamera.position.copyFrom({x: 25.97860742915503, y: 267.6569709876257, z: -28.658377005588207}) //half darkbot face
                     nx.scene.activeCamera.setTarget(nx.BV32({x: 22.841872526876834, y: 267.2806701912518, z: -25.246901552033226})) //CAMTGT: 
+
+var eyeUp = nx.scene.beginAnimation(nx.orbySkeleton[0], 670, 680, false, 0.5);  //orby eye up
+eyeUp.onAnimationEnd = function(){
+  setTimeout(function(){
+    nx.scene.beginAnimation(nx.orbySkeleton[0], 680, 690, false, 0.5); 
+  },2500)
+}
+
                 },txtEnd:function(){
                     nx.boomSeqIdx[NUM+1] = {on:1}; 
                 }});
@@ -6987,7 +7009,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 530, 530, false, 1.0);  //idle orby
 //TODO eyes back to blue turning back. while orby types and floats.
 nx.anm.darbotTurningBack();
 
-                nx.ui.flashCanvasMSG({txt:"GO, and SPACE~BOARD, FAR~AWAY.",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"GO and SPACE~BOARD, FAR~AWAY.",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
                 },txtEnd:function(){
 
 
@@ -7025,8 +7047,9 @@ setTimeout(function(){
                         goPOS.onAnimationEnd = function(){
                             // debugger;
                             setTimeout(function(){
-                                nx.boomSeqIdx[NUM+1] = {on:1};
-                            },1000)
+                                nx.initSEQ({seqID:'aSunsetSequence'})//SEQUENCE
+                                // nx.boomSeqIdx[NUM+1] = {on:1};
+                            },500)
                         }
                             // //gotta look away
                             // nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //idle orby
@@ -7040,7 +7063,7 @@ setTimeout(function(){
 },3000)
 
                 }});                   
-                nx.ui.flashCanvasMSG({txt:"Or be TRAPPED. Like me.",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"Or be TRAPPED here like me.",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
             //TODO CAM ZOOM 2
                 },txtEnd:function(){
 
@@ -7068,12 +7091,12 @@ setTimeout(function(){
 //ANM: orby hovers fwd
 
             } //end frame
-            else if(nx.boomSeqIdx[7] && nx.boomSeqIdx[7].on){ var NUM = 7; nx.boomSeqIdx[NUM].on=0;
+            // else if(nx.boomSeqIdx[7] && nx.boomSeqIdx[7].on){ var NUM = 7; nx.boomSeqIdx[NUM].on=0;
 
 // return;
                 // nx.scene.beginAnimation(nx.darkBotSkeleton[0], 125, 131, false, 1); //DARBOT looking back
 
-                // nx.ui.flashCanvasMSG({txt:"Look North, in the FROZEN~SEA,",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
+                // nx.ui.flashCanvasMSG({txt:"Look North, in the FROZEN~SEAS,",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
                 //     nx.scene.activeCamera.position.copyFrom({x: 13.121748872857042, y: 264.4457207924923, z: -16.113818104540275}) //darcbot final look back
                 //     nx.scene.activeCamera.setTarget(nx.BV32({x: 18.13718482875237, y: 264.775284366732, z: -20.039847065169738})) //CAMTGT: 
                     
@@ -7086,7 +7109,7 @@ setTimeout(function(){
                 // // nx.ui.flashCanvasMSG({txt:"Then HOME to AEON.",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){},txtEnd:function(){}});
                 // nx.ui.flashCanvasMSG({txt:"Go!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){},txtEnd:function(){
 
-                        nx.initSEQ({seqID:'aSunsetSequence'})//SEQUENCE
+                        // nx.initSEQ({seqID:'aSunsetSequence'})//SEQUENCE
                 // }});
 
                 // nx.ui.flashCanvasMSG({txt:"Orby, is it you?",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){},txtEnd:function(){}});
@@ -7133,7 +7156,7 @@ setTimeout(function(){
 
 
 
-            } //end frame
+            // } //end frame
             
         }) //end sequence loop
     } else if(seqName==="SunsetSequence"){ //-----------------------------------------------------------------------------Climax-SEQUENCE---.
@@ -7149,7 +7172,28 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //idle orby
 
 nx.sunsetSeqIdx[NUM+1] = {on:1}; 
             }//end frame
-            else if(nx.sunsetSeqIdx[1] && nx.sunsetSeqIdx[1].on){ var NUM = 1; //nx.sunsetSeqIdx[NUM].on=0;
+            else if(nx.sunsetSeqIdx[1] && nx.sunsetSeqIdx[1].on){ var NUM = 1; nx.sunsetSeqIdx[NUM].on=0;
+
+
+
+                // nx.ui.flashCanvasMSG({txt:"Look North, in the FROZEN~SEAS,",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
+                //     nx.scene.activeCamera.position.copyFrom({x: 13.121748872857042, y: 264.4457207924923, z: -16.113818104540275}) //darcbot final look back
+                //     nx.scene.activeCamera.setTarget(nx.BV32({x: 18.13718482875237, y: 264.775284366732, z: -20.039847065169738})) //CAMTGT: 
+                // },txtEnd:function(){
+
+                    nx.sunsetSeqIdx[NUM+1] = {on:1}; 
+                     // nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //idle orby
+                // }});
+                // nx.ui.flashCanvasMSG({txt:"for ZAWD's ESCAPE~POD.",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){},txtEnd:function(){}});
+
+
+
+
+            }//end frame
+            else if(nx.sunsetSeqIdx[2] && nx.sunsetSeqIdx[2].on){ var NUM = 2; //nx.sunsetSeqIdx[NUM].on=0;
+
+
+
                 // nx.initFreeCam(); 
                 //METHODOLOGY: cinematics frontView, sideView, heroView, birdEyeView, longView, PAIRVIEW, GROUPVIEW-.
 
@@ -7158,6 +7202,7 @@ nx.sunsetSeqIdx[NUM+1] = {on:1};
     //TEMPLATE: POSROT ANM-PATH SEQUENCE FRAME:
     // if(nx.sunsetSeqIdx[3] && nx.sunsetSeqIdx[3].on){ var NUM = 3;
                 if(!nx.sunsetSeqIdx[NUM].init){ nx.sunsetSeqIdx[NUM].init=1; //one time init
+                    // debugger;
                     nx.scene.activeCamera.position.copyFrom({x: 20.55963344538219, y: 263.81614691268715, z: -31.47744778076308}); //CAMPOS: back to zscope2
                     nx.scene.activeCamera.setTarget(nx.BV32({x: 20.94169472338265, y: 263.81803254924404, z: -25.21296959870571})) //CAMTGT: 
                     // nx.camz.freeCam.position.copyFrom({x: 125.91809305164549, y: 252.910231776879, z: -113.34096907171961}); 
@@ -7166,7 +7211,12 @@ nx.sunsetSeqIdx[NUM+1] = {on:1};
                     nx.sunsetSeqIdx[NUM].anmSpeed = 85;
                     nx.orbyMesh.rotationQuaternion = null;
                     //initialize-path and edit-.
-                    nx.sunsetSeqIdx[NUM].leavingPath = [{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.88,"z":0.2}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":-0.77,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.66,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":-0.6,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.48,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":-0.37,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.27,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":-0.17,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.08,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.04,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":0.14,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.24,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":0.34,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.44,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.53,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":0,"y":0.63,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.74,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":0,"y":0.83,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.94,"z":0.18}},{"pos":{"x":20.03,"y":262.5,"z":-14.31},"rot":{"x":-0.01,"y":1.03,"z":0.17}},{"pos":{"x":18.77,"y":262.5,"z":-14.91},"rot":{"x":-0.01,"y":1.14,"z":0.18}},{"pos":{"x":17.45,"y":262.5,"z":-15.39},"rot":{"x":-0.01,"y":1.22,"z":0.19}},{"pos":{"x":16.1,"y":262.5,"z":-15.73},"rot":{"x":0,"y":1.35,"z":0.18}},{"pos":{"x":14.71,"y":262.5,"z":-15.94},"rot":{"x":-0.01,"y":1.44,"z":0.18}},{"pos":{"x":13.11,"y":262.5,"z":-16.02},"rot":{"x":-0.02,"y":1.54,"z":0.18}},{"pos":{"x":11.52,"y":262.5,"z":-15.93},"rot":{"x":-0.01,"y":1.65,"z":0.22}},{"pos":{"x":9.93,"y":262.5,"z":-15.69},"rot":{"x":-0.03,"y":1.75,"z":0.22}},{"pos":{"x":8.39,"y":262.5,"z":-15.29},"rot":{"x":-0.04,"y":1.85,"z":0.22}},{"pos":{"x":6.89,"y":262.5,"z":-14.73},"rot":{"x":0,"y":1.93,"z":0.21}},{"pos":{"x":5.45,"y":262.5,"z":-14.03},"rot":{"x":-0.01,"y":2.04,"z":0.21}},{"pos":{"x":4.18,"y":262.49,"z":-13.01},"rot":{"x":-0.01,"y":2.14,"z":0.2}},{"pos":{"x":2.99,"y":262.49,"z":-11.83},"rot":{"x":-0.01,"y":2.24,"z":0.22}},{"pos":{"x":1.84,"y":262.5,"z":-10.7},"rot":{"x":0,"y":2.34,"z":0.21}},{"pos":{"x":0.79,"y":262.5,"z":-9.49},"rot":{"x":-0.01,"y":2.44,"z":0.21}},{"pos":{"x":-0.15,"y":262.5,"z":-8.19},"rot":{"x":0,"y":2.52,"z":0.2}},{"pos":{"x":-0.97,"y":262.5,"z":-6.82},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-1.8,"y":262.5,"z":-5.45},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-2.62,"y":262.5,"z":-4.08},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-3.48,"y":262.5,"z":-2.73},"rot":{"x":-0.02,"y":2.52,"z":-0.19}},{"pos":{"x":-4.47,"y":262.5,"z":-1.48},"rot":{"x":-0.01,"y":2.44,"z":-0.19}},{"pos":{"x":-5.59,"y":262.5,"z":-0.33},"rot":{"x":-0.02,"y":2.34,"z":-0.19}},{"pos":{"x":-6.81,"y":262.5,"z":0.71},"rot":{"x":-0.01,"y":2.25,"z":-0.2}},{"pos":{"x":-8.1,"y":262.5,"z":1.65},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-9.4,"y":262.5,"z":2.59},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-10.69,"y":262.5,"z":3.53},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-11.99,"y":262.5,"z":4.47},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-13.38,"y":262.5,"z":5.31},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-14.92,"y":262.5,"z":5.98},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-16.47,"y":262.5,"z":6.65},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.02,"y":262.5,"z":7.42},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.97,"y":262.5,"z":8.1},"rot":{"x":-0.01,"y":2.18,"z":0.2}},{"pos":{"x":-19.95,"y":262.5,"z":9.02},"rot":{"x":-0.01,"y":2.29,"z":0.22}},{"pos":{"x":-20.96,"y":262.5,"z":10.39},"rot":{"x":-0.01,"y":2.38,"z":0.21}},{"pos":{"x":-21.84,"y":262.5,"z":12.05},"rot":{"x":-0.02,"y":2.49,"z":0.21}},{"pos":{"x":-22.7,"y":262.5,"z":13.7},"rot":{"x":-0.01,"y":2.59,"z":0.2}},{"pos":{"x":-23.42,"y":262.5,"z":15.32},"rot":{"x":-0.02,"y":2.69,"z":0.2}},{"pos":{"x":-24,"y":262.5,"z":16.72},"rot":{"x":0,"y":2.8,"z":0.2}},{"pos":{"x":-24.42,"y":262.5,"z":17.95},"rot":{"x":0.1,"y":2.87,"z":0.2}},{"pos":{"x":-24.59,"y":262.5,"z":19.21},"rot":{"x":0.2,"y":2.98,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":20.32},"rot":{"x":0.3,"y":3.08,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":21.42},"rot":{"x":0.2,"y":-3.11,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":22.52},"rot":{"x":0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":23.52},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":24.63},"rot":{"x":-0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":25.23},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.39,"z":24.02},"rot":{"x":0.1,"y":-3.01,"z":0.19}}];
+                    // nx.sunsetSeqIdx[NUM].leavingPath = [{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.88,"z":0.2}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":-0.77,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.66,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":-0.6,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.48,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":-0.37,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.27,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":-0.17,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":-0.08,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.04,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":0.14,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.24,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.02,"y":0.34,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.44,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.53,"z":0.18}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":0,"y":0.63,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.74,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":0,"y":0.83,"z":0.19}},{"pos":{"x":21.22,"y":262.5,"z":-13.58},"rot":{"x":-0.01,"y":0.94,"z":0.18}},{"pos":{"x":20.03,"y":262.5,"z":-14.31},"rot":{"x":-0.01,"y":1.03,"z":0.17}},{"pos":{"x":18.77,"y":262.5,"z":-14.91},"rot":{"x":-0.01,"y":1.14,"z":0.18}},{"pos":{"x":17.45,"y":262.5,"z":-15.39},"rot":{"x":-0.01,"y":1.22,"z":0.19}},{"pos":{"x":16.1,"y":262.5,"z":-15.73},"rot":{"x":0,"y":1.35,"z":0.18}},{"pos":{"x":14.71,"y":262.5,"z":-15.94},"rot":{"x":-0.01,"y":1.44,"z":0.18}},{"pos":{"x":13.11,"y":262.5,"z":-16.02},"rot":{"x":-0.02,"y":1.54,"z":0.18}},{"pos":{"x":11.52,"y":262.5,"z":-15.93},"rot":{"x":-0.01,"y":1.65,"z":0.22}},{"pos":{"x":9.93,"y":262.5,"z":-15.69},"rot":{"x":-0.03,"y":1.75,"z":0.22}},{"pos":{"x":8.39,"y":262.5,"z":-15.29},"rot":{"x":-0.04,"y":1.85,"z":0.22}},{"pos":{"x":6.89,"y":262.5,"z":-14.73},"rot":{"x":0,"y":1.93,"z":0.21}},{"pos":{"x":5.45,"y":262.5,"z":-14.03},"rot":{"x":-0.01,"y":2.04,"z":0.21}},{"pos":{"x":4.18,"y":262.49,"z":-13.01},"rot":{"x":-0.01,"y":2.14,"z":0.2}},{"pos":{"x":2.99,"y":262.49,"z":-11.83},"rot":{"x":-0.01,"y":2.24,"z":0.22}},{"pos":{"x":1.84,"y":262.5,"z":-10.7},"rot":{"x":0,"y":2.34,"z":0.21}},{"pos":{"x":0.79,"y":262.5,"z":-9.49},"rot":{"x":-0.01,"y":2.44,"z":0.21}},{"pos":{"x":-0.15,"y":262.5,"z":-8.19},"rot":{"x":0,"y":2.52,"z":0.2}},{"pos":{"x":-0.97,"y":262.5,"z":-6.82},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-1.8,"y":262.5,"z":-5.45},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-2.62,"y":262.5,"z":-4.08},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-3.48,"y":262.5,"z":-2.73},"rot":{"x":-0.02,"y":2.52,"z":-0.19}},{"pos":{"x":-4.47,"y":262.5,"z":-1.48},"rot":{"x":-0.01,"y":2.44,"z":-0.19}},{"pos":{"x":-5.59,"y":262.5,"z":-0.33},"rot":{"x":-0.02,"y":2.34,"z":-0.19}},{"pos":{"x":-6.81,"y":262.5,"z":0.71},"rot":{"x":-0.01,"y":2.25,"z":-0.2}},{"pos":{"x":-8.1,"y":262.5,"z":1.65},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-9.4,"y":262.5,"z":2.59},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-10.69,"y":262.5,"z":3.53},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-11.99,"y":262.5,"z":4.47},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-13.38,"y":262.5,"z":5.31},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-14.92,"y":262.5,"z":5.98},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-16.47,"y":262.5,"z":6.65},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.02,"y":262.5,"z":7.42},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.97,"y":262.5,"z":8.1},"rot":{"x":-0.01,"y":2.18,"z":0.2}},{"pos":{"x":-19.95,"y":262.5,"z":9.02},"rot":{"x":-0.01,"y":2.29,"z":0.22}},{"pos":{"x":-20.96,"y":262.5,"z":10.39},"rot":{"x":-0.01,"y":2.38,"z":0.21}},{"pos":{"x":-21.84,"y":262.5,"z":12.05},"rot":{"x":-0.02,"y":2.49,"z":0.21}},{"pos":{"x":-22.7,"y":262.5,"z":13.7},"rot":{"x":-0.01,"y":2.59,"z":0.2}},{"pos":{"x":-23.42,"y":262.5,"z":15.32},"rot":{"x":-0.02,"y":2.69,"z":0.2}},{"pos":{"x":-24,"y":262.5,"z":16.72},"rot":{"x":0,"y":2.8,"z":0.2}},{"pos":{"x":-24.42,"y":262.5,"z":17.95},"rot":{"x":0.1,"y":2.87,"z":0.2}},{"pos":{"x":-24.59,"y":262.5,"z":19.21},"rot":{"x":0.2,"y":2.98,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":20.32},"rot":{"x":0.3,"y":3.08,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":21.42},"rot":{"x":0.2,"y":-3.11,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":22.52},"rot":{"x":0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":23.52},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":24.63},"rot":{"x":-0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":25.23},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.39,"z":24.02},"rot":{"x":0.1,"y":-3.01,"z":0.19}}];
+                    // nx.sunsetSeqIdx[NUM].leavingPath = [{"pos":{"x":13.61,"y":264,"z":-13.48},"rot":{"x":-0.02,"y":-0.88,"z":0.2}},{"pos":{"x":14.11,"y":262.6,"z":-12.09},"rot":{"x":-0.01,"y":-0.77,"z":0.19}},{"pos":{"x":14.71,"y":262.39,"z":-11.59},"rot":{"x":-0.02,"y":-0.66,"z":0.19}},{"pos":{"x":15.11,"y":262.19,"z":-10.79},"rot":{"x":-0.01,"y":-0.6,"z":0.19}},{"pos":{"x":15.91,"y":263.89,"z":-11.69},"rot":{"x":-0.02,"y":-0.48,"z":0.19}},{"pos":{"x":16.21,"y":263.7,"z":-10.99},"rot":{"x":-0.01,"y":-0.37,"z":0.18}},{"pos":{"x":16.51,"y":263.5,"z":-10.29},"rot":{"x":-0.02,"y":-0.27,"z":0.18}},{"pos":{"x":17.11,"y":263.5,"z":-10.09},"rot":{"x":-0.01,"y":-0.17,"z":0.18}},{"pos":{"x":17.71,"y":263.5,"z":-9.59},"rot":{"x":-0.02,"y":-0.08,"z":0.18}},{"pos":{"x":18.31,"y":263.3,"z":-9.39},"rot":{"x":-0.01,"y":0.04,"z":0.18}},{"pos":{"x":18.91,"y":263.3,"z":-9.59},"rot":{"x":-0.02,"y":0.14,"z":0.18}},{"pos":{"x":19.11,"y":264,"z":-10.89},"rot":{"x":-0.01,"y":0.24,"z":0.18}},{"pos":{"x":20.01,"y":262.7,"z":-9.89},"rot":{"x":-0.02,"y":0.34,"z":0.18}},{"pos":{"x":20.31,"y":262.7,"z":-10.59},"rot":{"x":-0.01,"y":0.44,"z":0.18}},{"pos":{"x":20.61,"y":262.6,"z":-11.19},"rot":{"x":-0.01,"y":0.53,"z":0.18}},{"pos":{"x":21.01,"y":262.6,"z":-11.79},"rot":{"x":0,"y":0.63,"z":0.19}},{"pos":{"x":21.22,"y":262.6,"z":-12.39},"rot":{"x":-0.01,"y":0.74,"z":0.19}},{"pos":{"x":21.22,"y":262.6,"z":-12.99},"rot":{"x":0,"y":0.83,"z":0.19}},{"pos":{"x":21.22,"y":262.6,"z":-13.58},"rot":{"x":-0.01,"y":0.94,"z":0.18}},{"pos":{"x":20.03,"y":262.5,"z":-14.31},"rot":{"x":-0.01,"y":1.03,"z":0.17}},{"pos":{"x":18.77,"y":262.5,"z":-14.91},"rot":{"x":-0.01,"y":1.13,"z":0.18}},{"pos":{"x":17.45,"y":262.5,"z":-15.39},"rot":{"x":-0.01,"y":1.22,"z":0.19}},{"pos":{"x":16.1,"y":262.5,"z":-15.73},"rot":{"x":0,"y":1.35,"z":0.18}},{"pos":{"x":14.71,"y":262.5,"z":-15.94},"rot":{"x":-0.01,"y":1.44,"z":0.18}},{"pos":{"x":13.11,"y":262.5,"z":-16.02},"rot":{"x":-0.02,"y":1.54,"z":0.18}},{"pos":{"x":11.52,"y":262.5,"z":-15.93},"rot":{"x":-0.01,"y":1.65,"z":0.22}},{"pos":{"x":9.93,"y":262.5,"z":-15.69},"rot":{"x":-0.03,"y":1.75,"z":0.22}},{"pos":{"x":8.39,"y":262.5,"z":-15.29},"rot":{"x":-0.04,"y":1.85,"z":0.22}},{"pos":{"x":6.89,"y":262.5,"z":-14.73},"rot":{"x":0,"y":1.93,"z":0.21}},{"pos":{"x":5.45,"y":262.5,"z":-14.03},"rot":{"x":-0.01,"y":2.04,"z":0.21}},{"pos":{"x":4.18,"y":262.49,"z":-13.01},"rot":{"x":-0.01,"y":2.14,"z":0.2}},{"pos":{"x":2.99,"y":262.49,"z":-11.83},"rot":{"x":-0.01,"y":2.24,"z":0.22}},{"pos":{"x":1.84,"y":262.5,"z":-10.7},"rot":{"x":0,"y":2.34,"z":0.21}},{"pos":{"x":0.79,"y":262.5,"z":-9.49},"rot":{"x":-0.01,"y":2.44,"z":0.21}},{"pos":{"x":-0.15,"y":262.5,"z":-8.19},"rot":{"x":0,"y":2.52,"z":0.2}},{"pos":{"x":-0.97,"y":262.5,"z":-6.82},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-1.8,"y":262.5,"z":-5.45},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-2.62,"y":262.5,"z":-4.08},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-3.48,"y":262.5,"z":-2.73},"rot":{"x":-0.02,"y":2.52,"z":-0.19}},{"pos":{"x":-4.47,"y":262.5,"z":-1.48},"rot":{"x":-0.01,"y":2.44,"z":-0.19}},{"pos":{"x":-5.59,"y":262.5,"z":-0.33},"rot":{"x":-0.02,"y":2.34,"z":-0.19}},{"pos":{"x":-6.81,"y":262.5,"z":0.71},"rot":{"x":-0.01,"y":2.25,"z":-0.2}},{"pos":{"x":-8.1,"y":262.5,"z":1.65},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-9.4,"y":262.5,"z":2.59},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-10.69,"y":262.5,"z":3.53},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-11.99,"y":262.5,"z":4.47},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-13.38,"y":262.5,"z":5.31},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-14.92,"y":262.5,"z":5.98},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-16.47,"y":262.5,"z":6.65},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.02,"y":262.5,"z":7.42},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.97,"y":262.5,"z":8.1},"rot":{"x":-0.01,"y":2.18,"z":0.2}},{"pos":{"x":-19.95,"y":262.5,"z":9.02},"rot":{"x":-0.01,"y":2.29,"z":0.22}},{"pos":{"x":-20.96,"y":262.5,"z":10.39},"rot":{"x":-0.01,"y":2.38,"z":0.21}},{"pos":{"x":-21.84,"y":262.5,"z":12.05},"rot":{"x":-0.02,"y":2.49,"z":0.21}},{"pos":{"x":-22.7,"y":262.5,"z":13.7},"rot":{"x":-0.01,"y":2.59,"z":0.2}},{"pos":{"x":-23.42,"y":262.5,"z":15.32},"rot":{"x":-0.02,"y":2.69,"z":0.2}},{"pos":{"x":-24,"y":262.5,"z":16.72},"rot":{"x":0,"y":2.8,"z":0.2}},{"pos":{"x":-24.42,"y":262.5,"z":17.95},"rot":{"x":0.1,"y":2.87,"z":0.2}},{"pos":{"x":-24.59,"y":262.5,"z":19.21},"rot":{"x":0.2,"y":2.98,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":20.32},"rot":{"x":0.3,"y":3.08,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":21.42},"rot":{"x":0.2,"y":-3.11,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":22.52},"rot":{"x":0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":23.52},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":24.63},"rot":{"x":-0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":25.23},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.39,"z":24.02},"rot":{"x":0.1,"y":-3.01,"z":0.19}}];
+                    // nx.sunsetSeqIdx[NUM].leavingPath = [{"pos":{"x":6.31,"y":262.59,"z":-3.99},"rot":{"x":-0.02,"y":-0.88,"z":0.2}},{"pos":{"x":8.31,"y":262.6,"z":-4.1},"rot":{"x":-0.01,"y":-0.77,"z":0.19}},{"pos":{"x":9.61,"y":262.58,"z":-3.6},"rot":{"x":-0.02,"y":-0.66,"z":0.19}},{"pos":{"x":11.91,"y":262.58,"z":-3.7},"rot":{"x":-0.01,"y":-0.6,"z":0.19}},{"pos":{"x":13.31,"y":262.58,"z":-4},"rot":{"x":-0.02,"y":-0.48,"z":0.19}},{"pos":{"x":14.71,"y":262.59,"z":-4.3},"rot":{"x":-0.01,"y":-0.37,"z":0.18}},{"pos":{"x":15.5,"y":262.39,"z":-5},"rot":{"x":-0.02,"y":-0.27,"z":0.18}},{"pos":{"x":16.2,"y":262.59,"z":-5.7},"rot":{"x":-0.01,"y":-0.17,"z":0.18}},{"pos":{"x":16.9,"y":262.59,"z":-6.4},"rot":{"x":-0.02,"y":-0.08,"z":0.18}},{"pos":{"x":17.6,"y":262.59,"z":-7.1},"rot":{"x":-0.01,"y":0.04,"z":0.18}},{"pos":{"x":18.4,"y":262.59,"z":-7.9},"rot":{"x":-0.02,"y":0.14,"z":0.18}},{"pos":{"x":19.3,"y":262.59,"z":-8.8},"rot":{"x":-0.01,"y":0.24,"z":0.18}},{"pos":{"x":20.01,"y":262.59,"z":-9.89},"rot":{"x":-0.02,"y":0.34,"z":0.18}},{"pos":{"x":20.3,"y":262.59,"z":-10.59},"rot":{"x":-0.01,"y":0.44,"z":0.18}},{"pos":{"x":20.61,"y":262.6,"z":-11.19},"rot":{"x":-0.01,"y":0.53,"z":0.18}},{"pos":{"x":21.01,"y":262.6,"z":-11.79},"rot":{"x":0,"y":0.63,"z":0.19}},{"pos":{"x":21.22,"y":262.6,"z":-12.39},"rot":{"x":-0.01,"y":0.74,"z":0.19}},{"pos":{"x":21.22,"y":262.6,"z":-12.99},"rot":{"x":0,"y":0.83,"z":0.19}},{"pos":{"x":21.22,"y":262.6,"z":-13.58},"rot":{"x":-0.01,"y":0.94,"z":0.18}},{"pos":{"x":20.03,"y":262.5,"z":-14.31},"rot":{"x":-0.01,"y":1.03,"z":0.17}},{"pos":{"x":18.77,"y":262.5,"z":-14.91},"rot":{"x":-0.01,"y":1.12,"z":0.18}},{"pos":{"x":17.45,"y":262.5,"z":-15.39},"rot":{"x":-0.01,"y":1.22,"z":0.19}},{"pos":{"x":16.1,"y":262.5,"z":-15.73},"rot":{"x":0,"y":1.35,"z":0.18}},{"pos":{"x":14.71,"y":262.5,"z":-15.94},"rot":{"x":-0.01,"y":1.44,"z":0.18}},{"pos":{"x":13.11,"y":262.5,"z":-16.02},"rot":{"x":-0.02,"y":1.54,"z":0.18}},{"pos":{"x":11.52,"y":262.5,"z":-15.93},"rot":{"x":-0.01,"y":1.65,"z":0.22}},{"pos":{"x":9.93,"y":262.5,"z":-15.69},"rot":{"x":-0.03,"y":1.75,"z":0.22}},{"pos":{"x":8.39,"y":262.5,"z":-15.29},"rot":{"x":-0.04,"y":1.85,"z":0.22}},{"pos":{"x":6.89,"y":262.5,"z":-14.73},"rot":{"x":0,"y":1.93,"z":0.21}},{"pos":{"x":5.45,"y":262.5,"z":-14.03},"rot":{"x":-0.01,"y":2.04,"z":0.21}},{"pos":{"x":4.18,"y":262.49,"z":-13.01},"rot":{"x":-0.01,"y":2.14,"z":0.2}},{"pos":{"x":2.99,"y":262.49,"z":-11.83},"rot":{"x":-0.01,"y":2.24,"z":0.22}},{"pos":{"x":1.84,"y":262.5,"z":-10.7},"rot":{"x":0,"y":2.34,"z":0.21}},{"pos":{"x":0.79,"y":262.5,"z":-9.49},"rot":{"x":-0.01,"y":2.44,"z":0.21}},{"pos":{"x":-0.15,"y":262.5,"z":-8.19},"rot":{"x":0,"y":2.52,"z":0.2}},{"pos":{"x":-0.97,"y":262.5,"z":-6.82},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-1.8,"y":262.5,"z":-5.45},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-2.62,"y":262.5,"z":-4.08},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-3.48,"y":262.5,"z":-2.73},"rot":{"x":-0.02,"y":2.52,"z":-0.19}},{"pos":{"x":-4.47,"y":262.5,"z":-1.48},"rot":{"x":-0.01,"y":2.44,"z":-0.19}},{"pos":{"x":-5.59,"y":262.5,"z":-0.33},"rot":{"x":-0.02,"y":2.34,"z":-0.19}},{"pos":{"x":-6.81,"y":262.5,"z":0.71},"rot":{"x":-0.01,"y":2.25,"z":-0.2}},{"pos":{"x":-8.1,"y":262.5,"z":1.65},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-9.4,"y":262.5,"z":2.59},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-10.69,"y":262.5,"z":3.53},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-11.99,"y":262.5,"z":4.47},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-13.38,"y":262.5,"z":5.31},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-14.92,"y":262.5,"z":5.98},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-16.47,"y":262.5,"z":6.65},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.02,"y":262.5,"z":7.42},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.97,"y":262.5,"z":8.1},"rot":{"x":-0.01,"y":2.18,"z":0.2}},{"pos":{"x":-19.95,"y":262.5,"z":9.02},"rot":{"x":-0.01,"y":2.29,"z":0.22}},{"pos":{"x":-20.96,"y":262.5,"z":10.39},"rot":{"x":-0.01,"y":2.38,"z":0.21}},{"pos":{"x":-21.84,"y":262.5,"z":12.05},"rot":{"x":-0.02,"y":2.49,"z":0.21}},{"pos":{"x":-22.7,"y":262.5,"z":13.7},"rot":{"x":-0.01,"y":2.59,"z":0.2}},{"pos":{"x":-23.42,"y":262.5,"z":15.32},"rot":{"x":-0.02,"y":2.69,"z":0.2}},{"pos":{"x":-24,"y":262.5,"z":16.72},"rot":{"x":0,"y":2.8,"z":0.2}},{"pos":{"x":-24.42,"y":262.5,"z":17.95},"rot":{"x":0.1,"y":2.87,"z":0.2}},{"pos":{"x":-24.59,"y":262.5,"z":19.21},"rot":{"x":0.2,"y":2.98,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":20.32},"rot":{"x":0.3,"y":3.08,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":21.42},"rot":{"x":0.2,"y":-3.11,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":22.52},"rot":{"x":0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":23.52},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":24.63},"rot":{"x":-0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":25.23},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.39,"z":24.02},"rot":{"x":0.1,"y":-3.01,"z":0.19}}];
+                    nx.sunsetSeqIdx[NUM].leavingPath = [{"pos":{"x":6.31,"y":262.58,"z":-3.99},"rot":{"x":-0.02,"y":-0.88,"z":0.2}},{"pos":{"x":8.31,"y":262.6,"z":-4.1},"rot":{"x":-0.01,"y":-0.77,"z":0.19}},{"pos":{"x":10,"y":262.58,"z":-3.6},"rot":{"x":-0.02,"y":-0.66,"z":0.19}},{"pos":{"x":11.41,"y":262.58,"z":-3.7},"rot":{"x":-0.01,"y":-0.6,"z":0.19}},{"pos":{"x":13.01,"y":262.58,"z":-4},"rot":{"x":-0.02,"y":-0.48,"z":0.19}},{"pos":{"x":14.11,"y":262.58,"z":-4.3},"rot":{"x":-0.01,"y":-0.37,"z":0.18}},{"pos":{"x":15.2,"y":262.58,"z":-4.91},"rot":{"x":-0.02,"y":-0.27,"z":0.18}},{"pos":{"x":16.2,"y":262.58,"z":-5.7},"rot":{"x":-0.01,"y":-0.17,"z":0.18}},{"pos":{"x":16.89,"y":262.58,"z":-6.4},"rot":{"x":-0.02,"y":-0.08,"z":0.18}},{"pos":{"x":17.6,"y":262.58,"z":-7.1},"rot":{"x":-0.01,"y":0.04,"z":0.18}},{"pos":{"x":18.39,"y":262.58,"z":-7.9},"rot":{"x":-0.02,"y":0.14,"z":0.18}},{"pos":{"x":19.09,"y":262.58,"z":-8.71},"rot":{"x":-0.01,"y":0.24,"z":0.18}},{"pos":{"x":19.7,"y":262.58,"z":-9.5},"rot":{"x":-0.02,"y":0.34,"z":0.18}},{"pos":{"x":20.39,"y":262.69,"z":-10.3},"rot":{"x":-0.01,"y":0.44,"z":0.18}},{"pos":{"x":20.71,"y":262.6,"z":-10.8},"rot":{"x":-0.01,"y":0.53,"z":0.18}},{"pos":{"x":21.11,"y":262.6,"z":-11.59},"rot":{"x":0,"y":0.63,"z":0.19}},{"pos":{"x":21.32,"y":262.6,"z":-12.39},"rot":{"x":-0.01,"y":0.74,"z":0.19}},{"pos":{"x":21.22,"y":262.6,"z":-12.99},"rot":{"x":0,"y":0.83,"z":0.19}},{"pos":{"x":21.01,"y":262.6,"z":-13.58},"rot":{"x":-0.01,"y":0.94,"z":0.18}},{"pos":{"x":20.03,"y":262.5,"z":-14.31},"rot":{"x":-0.01,"y":1.03,"z":0.17}},{"pos":{"x":18.77,"y":262.5,"z":-14.91},"rot":{"x":-0.01,"y":1.12,"z":0.18}},{"pos":{"x":17.45,"y":262.5,"z":-15.39},"rot":{"x":-0.01,"y":1.22,"z":0.19}},{"pos":{"x":16.1,"y":262.5,"z":-15.73},"rot":{"x":0,"y":1.35,"z":0.18}},{"pos":{"x":14.71,"y":262.5,"z":-15.94},"rot":{"x":-0.01,"y":1.44,"z":0.18}},{"pos":{"x":13.11,"y":262.5,"z":-16.02},"rot":{"x":-0.02,"y":1.54,"z":0.18}},{"pos":{"x":11.52,"y":262.5,"z":-15.93},"rot":{"x":-0.01,"y":1.65,"z":0.22}},{"pos":{"x":9.93,"y":262.5,"z":-15.69},"rot":{"x":-0.03,"y":1.75,"z":0.22}},{"pos":{"x":8.39,"y":262.5,"z":-15.29},"rot":{"x":-0.04,"y":1.85,"z":0.22}},{"pos":{"x":6.89,"y":262.5,"z":-14.73},"rot":{"x":0,"y":1.93,"z":0.21}},{"pos":{"x":5.45,"y":262.5,"z":-14.03},"rot":{"x":-0.01,"y":2.04,"z":0.21}},{"pos":{"x":4.18,"y":262.49,"z":-13.01},"rot":{"x":-0.01,"y":2.14,"z":0.2}},{"pos":{"x":2.99,"y":262.49,"z":-11.83},"rot":{"x":-0.01,"y":2.24,"z":0.22}},{"pos":{"x":1.84,"y":262.5,"z":-10.7},"rot":{"x":0,"y":2.34,"z":0.21}},{"pos":{"x":0.79,"y":262.5,"z":-9.49},"rot":{"x":-0.01,"y":2.44,"z":0.21}},{"pos":{"x":-0.15,"y":262.5,"z":-8.19},"rot":{"x":0,"y":2.52,"z":0.2}},{"pos":{"x":-0.97,"y":262.5,"z":-6.82},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-1.8,"y":262.5,"z":-5.45},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-2.62,"y":262.5,"z":-4.08},"rot":{"x":0,"y":2.59,"z":0}},{"pos":{"x":-3.48,"y":262.5,"z":-2.73},"rot":{"x":-0.02,"y":2.52,"z":-0.19}},{"pos":{"x":-4.47,"y":262.5,"z":-1.48},"rot":{"x":-0.01,"y":2.44,"z":-0.19}},{"pos":{"x":-5.59,"y":262.5,"z":-0.33},"rot":{"x":-0.02,"y":2.34,"z":-0.19}},{"pos":{"x":-6.81,"y":262.5,"z":0.71},"rot":{"x":-0.01,"y":2.25,"z":-0.2}},{"pos":{"x":-8.1,"y":262.5,"z":1.65},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-9.4,"y":262.5,"z":2.59},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-10.69,"y":262.5,"z":3.53},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-11.99,"y":262.5,"z":4.47},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-13.38,"y":262.5,"z":5.31},"rot":{"x":0,"y":2.19,"z":0}},{"pos":{"x":-14.92,"y":262.5,"z":5.98},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-16.47,"y":262.5,"z":6.65},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.02,"y":262.5,"z":7.42},"rot":{"x":0,"y":2.14,"z":0}},{"pos":{"x":-18.97,"y":262.5,"z":8.1},"rot":{"x":-0.01,"y":2.18,"z":0.2}},{"pos":{"x":-19.95,"y":262.5,"z":9.02},"rot":{"x":-0.01,"y":2.29,"z":0.22}},{"pos":{"x":-20.96,"y":262.5,"z":10.39},"rot":{"x":-0.01,"y":2.38,"z":0.21}},{"pos":{"x":-21.84,"y":262.5,"z":12.05},"rot":{"x":-0.02,"y":2.49,"z":0.21}},{"pos":{"x":-22.7,"y":262.5,"z":13.7},"rot":{"x":-0.01,"y":2.59,"z":0.2}},{"pos":{"x":-23.42,"y":262.5,"z":15.32},"rot":{"x":-0.02,"y":2.69,"z":0.2}},{"pos":{"x":-24,"y":262.5,"z":16.72},"rot":{"x":0,"y":2.8,"z":0.2}},{"pos":{"x":-24.42,"y":262.5,"z":17.95},"rot":{"x":0.1,"y":2.87,"z":0.2}},{"pos":{"x":-24.59,"y":262.5,"z":19.21},"rot":{"x":0.2,"y":2.98,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":20.32},"rot":{"x":0.3,"y":3.08,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":21.42},"rot":{"x":0.2,"y":-3.11,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":22.52},"rot":{"x":0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":23.52},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":24.63},"rot":{"x":-0.1,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.5,"z":25.23},"rot":{"x":0,"y":-3.01,"z":0.19}},{"pos":{"x":-24.57,"y":262.39,"z":24.02},"rot":{"x":0.1,"y":-3.01,"z":0.19}}];
+
+
                     // nx.sunsetSeqIdx[NUM].leavingPath = nx.editz.transformToEuler(nx.sunsetSeqIdx[NUM].leavingPath);
                     // var instPath = nx.createPathEditor({aName:'leavingPath', ANMPath:nx.sunsetSeqIdx[NUM].leavingPath}); //-WORKING-PATH-EDITOR-.
                 } //end init sequence-.
@@ -7174,12 +7224,12 @@ nx.sunsetSeqIdx[NUM+1] = {on:1};
                     nx.sunsetSeqIdx[NUM].curPOS = nx.sunsetSeqIdx[NUM].leavingPath[nx.sunsetSeqIdx[NUM].stepIdx];
                     nx.sunsetSeqIdx[NUM].nxtPOS = nx.sunsetSeqIdx[NUM].leavingPath[++nx.sunsetSeqIdx[NUM].stepIdx];
                     nx.sunsetSeqIdx[NUM].initAnm = 1;
-                    if( nx.sunsetSeqIdx[NUM].leavingPath.length*0.75<=nx.sunsetSeqIdx[NUM].stepIdx){ //ANMETHODOLOGY: PERCENT-DONE-ANM through an animation
-                        if(!nx.sunsetSeqIdx[NUM].beforeFinalWord){ nx.sunsetSeqIdx[NUM].beforeFinalWord = 1; //ANMETHODOLOGY: one-time-pattern -.
-                            nx.sunsetSeqIdx[NUM+1] = {on:1}; //SIMULTANEOUS-ANM-. 
-                        }
+                    // if( nx.sunsetSeqIdx[NUM].leavingPath.length*0.75<=nx.sunsetSeqIdx[NUM].stepIdx){ //ANMETHODOLOGY: PERCENT-DONE-ANM through an animation
+                    //     if(!nx.sunsetSeqIdx[NUM].beforeFinalWord){ nx.sunsetSeqIdx[NUM].beforeFinalWord = 1; //ANMETHODOLOGY: one-time-pattern -.
+                    //         nx.sunsetSeqIdx[NUM+1] = {on:1}; //SIMULTANEOUS-ANM-. 
+                    //     }
                         
-                    }
+                    // }
                     if(!nx.sunsetSeqIdx[NUM].nxtPOS){  //END-ANM 
                         nx.sunsetSeqIdx[NUM].on=0; //important
                         nx.sunsetSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
@@ -7219,41 +7269,112 @@ nx.sunsetSeqIdx[NUM+1] = {on:1};
             //anmethodology: sequential anmframes-.
             // else 
             // if(nx.sunsetSeqIdx[7] && nx.sunsetSeqIdx[7].on){ var NUM = 7; nx.sunsetSeqIdx[NUM].on=0;
-            if(nx.sunsetSeqIdx[2] && nx.sunsetSeqIdx[2].on){ nx.sunsetSeqIdx[2].on=0;
+            if(nx.sunsetSeqIdx[3] && nx.sunsetSeqIdx[3].on){ var NUM=3; nx.sunsetSeqIdx[NUM].on=0;
+// debugger;
+                        //ZOOM-IN ON ORBY
+                    $({camPOSx:nx.scene.activeCamera.position.x,camPOSy:nx.scene.activeCamera.position.y,camPOSz:nx.scene.activeCamera.position.z}).
+                    animate({camPOSx:-12,camPOSy:264,camPOSz:10},{queue:false,duration:2000,easing:'swing',
+                    step: function(now) { //ANM:-CAM POS ZOOM IN
+                        if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); return;}//CINEMA-STOP-.
+                        nx.scene.activeCamera.position.copyFrom({x:this.camPOSx, y: this.camPOSy, z: this.camPOSz}); //low view crash position ZOOMCAM
+                    }, complete:function(){
+
+                //TODO orby eye look up-.
+
+                        setTimeout(function(){
 
 
-                //todo sonic BZZZRT.
+                nx.ui.flashCanvasMSG({txt:"Look North, in the FROZEN~SEAS,",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
+                    nx.scene.activeCamera.position.copyFrom({x: -19.103314840263586, y: 264.64162065035487, z: 17.498424079953157}); //last look darbot
+                    nx.scene.activeCamera.setTarget(nx.BV32({x: 9.701396307371585, y: 262.0478740155844, z: -12.954317703010812})) //CAMZOOM:                      
 
-                nx.ui.flashCanvasMSG({txt:"Wait!",txtIcon:'darkbot',txtAlign:'right',dur:2000,
-                    txtInit:function(){ //FOR nesting ui animation logic within txt initialization-.
+                    // nx.scene.activeCamera.position.copyFrom({x: 13.121748872857042, y: 264.4457207924923, z: -16.113818104540275}) //darcbot final look back
+                    // nx.scene.activeCamera.setTarget(nx.BV32({x: 18.13718482875237, y: 264.775284366732, z: -20.039847065169738})) //CAMTGT: 
+                },txtEnd:function(){
 
-                        // {x: -12.884075193767769, y: 262.81138053081025, z: 10.180620045717156}
-                        $({camPOSx:nx.scene.activeCamera.position.x,camPOSy:nx.scene.activeCamera.position.y,camPOSz:nx.scene.activeCamera.position.z}).
-                        animate({camPOSx:-12,camPOSy:264,camPOSz:10},{queue:false,duration:2000,easing:'swing',
-                        step: function(now) { //ANM:-CAM POS ZOOM IN
-                            if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); return;}//CINEMA-STOP-.
-                            nx.scene.activeCamera.position.copyFrom({x:this.camPOSx, y: this.camPOSy, z: this.camPOSz}); //low view crash position ZOOMCAM
-                        }, complete:function(){ } 
-                        });//end anm
+                    // nx.sunsetSeqIdx[NUM+1] = {on:1}; 
+                     // nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //idle orby
+                }});
+                nx.ui.flashCanvasMSG({txt:"for ZAWD's ESCAPE~POD.",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){},txtEnd:function(){}});
 
-                    },
-                    txtEnd:function(){                    }
-                }); 
-                nx.ui.flashCanvasMSG({txt:"Zawd's Pod,",txtIcon:'darkbot',txtAlign:'right',dur:3000,
-                    txtInit:function(){                     },
-                    txtEnd:function(){                         //ANM-ROTATE-FWD-.
-                    }
-                }); 
-                nx.ui.flashCanvasMSG({txt:"it may have fallen NORTH.",txtIcon:'darkbot',txtAlign:'right',dur:2000,
-                // nx.ui.flashCanvasMSG({txt:"It may be NORTH.",dur:2000,
-                // nx.ui.flashCanvasMSG({txt:"Maybe it fell NORTH.",dur:2000,
-                // nx.ui.flashCanvasMSG({txt:"Perhaps it fell NORTH.",dur:2000,
-                // nx.ui.flashCanvasMSG({txt:"It might have fallen NORTH.",dur:2000,
-                    txtInit:function(){ 
-                    },
-                    txtEnd:function(){ 
-                    }
-                }); 
+
+
+
+
+
+                            nx.ui.flashCanvasMSG({txt:"GO!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
+                                nx.scene.activeCamera.position.copyFrom({x: -19.103314840263586, y: 264.64162065035487, z: 17.498424079953157}); //last look darbot
+                                nx.scene.activeCamera.setTarget(nx.BV32({x: 9.701396307371585, y: 262.0478740155844, z: -12.954317703010812})) //CAMZOOM:                      
+
+                                //TODO final turn away STAND~WATCH
+                                $({ry:nx.darkBot.rotation.y})
+                                .animate({ry:-0.444}
+                                ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+                                    step:function(now) { 
+                                       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+                                        nx.darkBot.rotation.y = this.ry;
+                                    },complete:function(){
+                                        debugger;
+                                        nx.sunsetSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
+                                }});
+
+
+
+                            },txtEnd:function(){
+
+                            }});
+
+
+                        },2000)
+                            // nx.scene.activeCamera.position.copyFrom({x: -19.103314840263586, y: 264.64162065035487, z: 17.498424079953157}); //last look darbot
+                            // nx.scene.activeCamera.setTarget(nx.BV32({x: 9.701396307371585, y: 262.0478740155844, z: -12.954317703010812})) //CAMZOOM: 
+                            // $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
+                            // .animate({cx:4.96,cy:262.4,cz:-7.94}
+                            // ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+                            //     step:function(now) { //CAM POS
+                            //        if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+                            //         nx.scene.activeCamera.position.x = this.cx;
+                            //         nx.scene.activeCamera.position.y = this.cy;
+                            //         nx.scene.activeCamera.position.z = this.cz;
+                            //         // nx.scene.activeCamera.setTarget(nx.BV32({x: 23.5, y: 265.6, z: -28.6})) //CAMTGT: 
+                            //     },complete:function(){}
+                            // });
+
+
+
+
+                    }});//end anm
+
+
+
+// Vector3 {x: 4.9656330159758095, y: 262.474510635142, z: -7.947602886995867} 
+// nx.scene.activeCamera.position
+// Vector3 {x: 9.701396307371585, y: 262.0478740155844, z: -12.954317703010812}
+
+
+                // nx.ui.flashCanvasMSG({txt:"Wait!",txtIcon:'darkbot',txtAlign:'right',dur:2000,
+                //     txtInit:function(){ //FOR nesting ui animation logic within txt initialization-.
+
+
+
+                //     },
+                //     txtEnd:function(){                    }
+                // }); 
+                // nx.ui.flashCanvasMSG({txt:"Zawd's Pod,",txtIcon:'darkbot',txtAlign:'right',dur:3000,
+                //     txtInit:function(){                     },
+                //     txtEnd:function(){                         //ANM-ROTATE-FWD-.
+                //     }
+                // }); 
+                // nx.ui.flashCanvasMSG({txt:"it may have fallen NORTH.",txtIcon:'darkbot',txtAlign:'right',dur:2000,
+                // // nx.ui.flashCanvasMSG({txt:"It may be NORTH.",dur:2000,
+                // // nx.ui.flashCanvasMSG({txt:"Maybe it fell NORTH.",dur:2000,
+                // // nx.ui.flashCanvasMSG({txt:"Perhaps it fell NORTH.",dur:2000,
+                // // nx.ui.flashCanvasMSG({txt:"It might have fallen NORTH.",dur:2000,
+                //     txtInit:function(){ 
+                //     },
+                //     txtEnd:function(){ 
+                //     }
+                // }); 
                 // nx.ui.flashCanvasMSG({txt:"Then LEAVE AlphaMoon FOREVER!",dur:2000,
                 // // nx.ui.flashCanvasMSG({txt:"Maybe it fell NORTH.",dur:2000,
                 // // nx.ui.flashCanvasMSG({txt:"Perhaps it fell NORTH.",dur:2000,
@@ -7266,20 +7387,30 @@ nx.sunsetSeqIdx[NUM+1] = {on:1};
 
                 //todo sonic bzzrt.
 
-                nx.ui.flashCanvasMSG({txt:"BZZZRRT.",txtIcon:'darkbot',txtAlign:'right',dur:2000,
-                    txtInit:function(){ 
-                        //ANM-ROTATE-BWD-.
-                    },
-                    txtEnd:function(){ 
-                        nx.sunsetSeqIdx[2] = {on:1}; //NEXT-ANM-. 
-                        // nx.sunsetSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
-                    }
-                }); 
+                // nx.ui.flashCanvasMSG({txt:"BZZZRRT.",txtIcon:'darkbot',txtAlign:'right',dur:2000,
+                //     txtInit:function(){ 
+                //         //ANM-ROTATE-BWD-.
+                //     },
+                //     txtEnd:function(){ 
+                //         nx.sunsetSeqIdx[2] = {on:1}; //NEXT-ANM-. 
+                //         // nx.sunsetSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
+                //     }
+                // }); 
 
                 //ANM: down the pyramid
             }//end frame
-            else if(nx.sunsetSeqIdx[3] && nx.sunsetSeqIdx[3].on){ var NUM = 3; nx.sunsetSeqIdx[NUM].on=0;
+            else if(nx.sunsetSeqIdx[4] && nx.sunsetSeqIdx[4].on){ var NUM = 4; nx.sunsetSeqIdx[NUM].on=0;
                 //ANM: past the spacetrain and toward the edge
+
+
+
+// Vector3 {x: -8.163233749509239, y: 263.2548569995948, z: 35.127470156707616}
+// modKeyCtrlz3.js:26 38
+// nx.scene.activeCamera.position
+// Vector3 {x: -14.277057795975354, y: 262.88134490975176, z: 31.05206091149274}
+    nx.scene.activeCamera.position.copyFrom({x: -8.163233749509239, y: 263.2548569995948, z: 35.127470156707616}); //last look darbot
+    nx.scene.activeCamera.setTarget(nx.BV32( {x: -14.277057795975354, y: 262.88134490975176, z: 31.05206091149274})) //CAMZOOM: 
+   
 
 
                             // nx.sunsetSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
@@ -7313,7 +7444,7 @@ nx.sunsetSeqIdx[NUM+1] = {on:1};
 
                         // nx.sunsetSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
             }//end frame
-            else if(nx.sunsetSeqIdx[4] && nx.sunsetSeqIdx[4].on){ var NUM = 4; //nx.sunsetSeqIdx[NUM].on=0;
+            else if(nx.sunsetSeqIdx[5] && nx.sunsetSeqIdx[5].on){ var NUM = 5; //nx.sunsetSeqIdx[NUM].on=0;
                 //ANM: up and fwd and rot and dwn
                 if(!nx.sunsetSeqIdx[NUM].init){ nx.sunsetSeqIdx[NUM].init=1; //one time init
 
@@ -7464,7 +7595,7 @@ nx.sunsetSeqIdx[NUM+1] = {on:1};
 
                         // nx.sunsetSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
             }//end frame
-            else if(nx.sunsetSeqIdx[5] && nx.sunsetSeqIdx[5].on){ var NUM = 5; //nx.sunsetSeqIdx[NUM].on=0;
+            else if(nx.sunsetSeqIdx[6] && nx.sunsetSeqIdx[6].on){ var NUM = 6; //nx.sunsetSeqIdx[NUM].on=0;
                 //ANM: up and fwd and rot and dwn
                 if(!nx.sunsetSeqIdx[NUM].init){ nx.sunsetSeqIdx[NUM].init=1; //one time init
 
@@ -7634,7 +7765,7 @@ nx.sunsetSeqIdx[NUM+1] = {on:1};
 
                         // nx.sunsetSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
             }//end frame
-            else if(nx.sunsetSeqIdx[6] && nx.sunsetSeqIdx[6].on){ var NUM = 6; nx.sunsetSeqIdx[NUM].on=0;
+            else if(nx.sunsetSeqIdx[7] && nx.sunsetSeqIdx[7].on){ var NUM = 7; nx.sunsetSeqIdx[NUM].on=0;
                 //ANM: past the spacetrain and toward the edge
                 nx.ui.flashCanvasMSG({txt:"~END~",dur:8000,persist:true,
                     txtInit:function(){ },
