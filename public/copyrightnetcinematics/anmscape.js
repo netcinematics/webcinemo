@@ -699,7 +699,7 @@ nx.createMasterStart = function(){
         // debugger;
         
         //---------------------------------MASTER~SCRIPT------------------------------------------------
-        // nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
+        nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
         // nx.runSCENE({id:"VortexSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
 
         // nx.spaceSeqIdx[0] = {on:1}; 
@@ -711,16 +711,18 @@ nx.createMasterStart = function(){
         //GAME 1 INIT / RUN --------------------------------------------------------------------------------------
         // nx.initGAME({gameID:"SpaceIonz"}); //softload GO IONZ!
         // nx.initSEQ({seqID:'landingSequence'}); //softload Landing Seq!
-        // nx.initGAME({gameID:'Showdown'}); //space pipe game
+        nx.initGAME({gameID:'Showdown'}); //space pipe game
         // nx.initSEQ({seqID:'sneakSEQ'}); //softload Landing Seq!
         // nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
         // nx.initSEQ({seqID:'crashSequence'})//CRASHSEQUENCE
         // nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE
         // nx.initSEQ({seqID:'affirmSequence'})//AFFIRMATIONSEQUENCE space junk
         // debugger;
-        nx.initSEQ({seqID:'aClimaxSequence'})//zaphimSEQUENCE
+        // nx.initSEQ({seqID:'aClimaxSequence'})//zaphimSEQUENCE
         // nx.initSEQ({seqID:'aBoomSequence'})
         // nx.initSEQ({seqID:'aSunsetSequence'})
+        // nx.initSEQ({seqID:'aZoomOutSequence'})
+        // nx.initSEQ({seqID:'aCreditRollSequence'})
         //---------------------------------------------------------------------------------
         
         

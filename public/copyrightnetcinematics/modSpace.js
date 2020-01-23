@@ -11,7 +11,7 @@
     // nx.sub = {num0:0,num1:0} 
     /******************************-MODULE-**********************************/
 nx.createAcozmoScope1 = function(){
-    
+    if(nx.state.acozmoScope1){return}
     nx.state.acozmoScope1 = 1;
         //top of track
         nx.scopeMat = new BABYLON.StandardMaterial("gMat", nx.scene);
