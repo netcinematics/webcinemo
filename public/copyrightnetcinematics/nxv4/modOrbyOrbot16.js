@@ -54,7 +54,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 700, 708, false, 0.33);  //look back
 /*******************************-ANMZ-************************************/
 nx.loadOrbyAssets = function() {
     if(!nx.scene){return;}
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot24a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot24b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22e.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
@@ -2534,7 +2534,7 @@ nx.orby.loadOrbyMouth = function(endfn){
 }//end orby mouth
 
 nx.orby.loadOrbyStep = function(){
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep3d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep4b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep1a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
 
   // nx.anm.tipStep.aMesh = {};
@@ -2587,7 +2587,7 @@ nx.anm.waveRiderTip.aSkel = skeletons[0];
 
 nx.orby.loadOrbySitUp = function(endfn){
 
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp6a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp6b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp5a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //broke free armature
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
@@ -2619,6 +2619,7 @@ nx.orby.loadOrbySitUp = function(endfn){
    
         nx.orbyMeshSitUp.visibility = 0;
         // nx.scene.beginAnimation(nx.orbySkeletonSit[0], 0, 140, true, 1.0); //ANIMATED-SURFBOARD-. Move out to scriptz
+        // nx.scene.beginAnimation(nx.orbySkeletonSit[0], 237, 237, true, 1.0); //Stand Up POS
 
         nx.orbyMeshSitUp.glow = new BABYLON.HighlightLayer("orby.glowS", nx.scene, {
             // blueTextureSizeRatio: 0.5,

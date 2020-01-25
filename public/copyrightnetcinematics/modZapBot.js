@@ -578,7 +578,7 @@ nx.botz.initKiloBot = function(){
         //isFLASHING
         if(nx.kiloBotMesh1._isFlashing===1){
             // if(kiloBotLoopIdx%20){ //red - %Frequency-Modulator-.
-            if(kiloBotLoopIdx%50){ //red - %Frequency-Modulator-.
+            if(kiloBotLoopIdx%33){ //red - %Frequency-Modulator-. //50
                 nx.kiloBotMesh1.sirenLight.material = nx.kiloBotMesh1.redMat;
             } else { //blue
                 nx.kiloBotMesh1.sirenLight.material = nx.kiloBotMesh1.blueMat;

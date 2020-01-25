@@ -1103,7 +1103,6 @@ nx.anm.runTipStep = function(){
 nx.anm.darbotTurningAway = function(){
 	// nx.initDarkBotHover();
 
-	//TODO RED EYES
 	nx.scene.beginAnimation(nx.darkBotSkeleton[0], 90, 90, false, 1); //left foot down
 	// nx.scene.beginAnimation(nx.darkBotSkeleton[0], 80, 80, false, 1); //right foot down
 
@@ -1123,6 +1122,17 @@ nx.anm.darbotTurningAway = function(){
 			nx.dBot.stopHover = 0;
 			nx.darkBot.hoverAmount = 0.00111;
 			var darkToesDown = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 65, 65, false, 1);  //both toes down 	
+
+	        $({cr:0,cb:1}).animate({cr:1,cb:0},{queue:false,duration:4444*nx.RUNTIME,easing:'swing',
+	            step:function(now) { //EYE COLOR
+	               if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+	                nx.darkBot.botEyeColor1.emissiveColor = new BABYLON.Color3(this.cr, 0, this.cb);
+	            },complete:function(){ }
+	        });
+
+
+
+
 	    }
 	});
 
@@ -1133,7 +1143,6 @@ nx.anm.darbotTurningAway = function(){
 nx.anm.darbotTurningBack = function(){
 
 	nx.darkBot.hoverAmount = 0.00222;
-	//TODO BLUE EYES - head turn
     $({ry:nx.darkBot.rotation.y})
     .animate({ry:1.11}
     ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
@@ -1142,34 +1151,27 @@ nx.anm.darbotTurningBack = function(){
 	        nx.darkBot.rotation.y = this.ry;
 	    },complete:function(){
 
-
-            // var headTurn = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 125, 131, false, 0.25); //DARBOT looking back
-            var headTurn = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 110, 125, false, 0.25); //DARBOT looking back
-            headTurn.onAnimationEnd=function(){
-
-				nx.scene.activeCamera.setTarget(nx.BV32({x:7.431, y: 264.12, z:-9.92})) //CAMZOOM: 
-			    $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
-			    .animate({cx:11.459,cy:264.333,cz:-14.83}
-			    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
-				    step:function(now) { //CAM POS
-				       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
-				        nx.scene.activeCamera.position.x = this.cx;
-				        nx.scene.activeCamera.position.y = this.cy;
-				        nx.scene.activeCamera.position.z = this.cz;
-						// nx.scene.activeCamera.setTarget(nx.BV32({x: 23.5, y: 265.6, z: -28.6})) //CAMTGT: 
-				    },complete:function(){}
-				});
-
-
-
-
-
-            }
-
 	    }
 	});
 
+	// var headTurn = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 125, 131, false, 0.25); //DARBOT looking back
+	var headTurn = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 110, 125, false, 0.25); //DARBOT looking back
+	headTurn.onAnimationEnd=function(){
 
+		nx.scene.activeCamera.setTarget(nx.BV32({x:7.431, y: 264.12, z:-9.92})) //CAMZOOM: 
+	    $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
+	    .animate({cx:11.459,cy:264.333,cz:-14.83}
+	    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+		    step:function(now) { //CAM POS
+		       if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+		        nx.scene.activeCamera.position.x = this.cx;
+		        nx.scene.activeCamera.position.y = this.cy;
+		        nx.scene.activeCamera.position.z = this.cz;
+				// nx.scene.activeCamera.setTarget(nx.BV32({x: 23.5, y: 265.6, z: -28.6})) //CAMTGT: 
+		    },complete:function(){}
+		});
+
+	}
 
 
 // modKeyCtrlz3.js:26 38

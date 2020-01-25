@@ -53,7 +53,11 @@ nx.initDarkBot = function(){
           nx.darkBot.position.copyFrom({x: 23, y: 262, z: -23});
           nx.darkBot.rotation.y = -0.7;
 
-
+          nx.darkBot.botEyeColor1 = nx.darkBot._material.subMaterials[12];
+          nx.darkBot.blueMat = nx.darkBot.botEyeColor1.emissiveColor;
+          nx.darkBot.redMat = new BABYLON.Color3(1, 0, 0);
+          // nx.darkBot.botEyeColor1.emissiveColor = nx.darkBot.redMat; //Change Eye Color-.
+          // nx.darkBot.botEyeColor1.emissiveColor = nx.darkBot.blueMat;
           
           nx.darkBotSkeleton = skeletons;
           // var darkMezmo = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 0, 30, false, 1); 

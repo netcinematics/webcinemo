@@ -757,12 +757,14 @@ nx.ui.showTitleScreen = function( config ){
 
   //SET-TITLE-SCREEN-CONTENT-.
   var lvlNUM=(config.meta.lvlNUM)?config.meta.lvlNUM:''; 
+  var lvlMode=(config.meta.lvlMode)?config.meta.lvlMode:''; 
   var lvlTXT=(config.meta.lvlTXT)?config.meta.lvlTXT:''; 
   var lvlSubTXT=(config.meta.lvlSubTXT)?config.meta.lvlSubTXT:''; 
   var lvlIMG=(config.meta.lvlIMG)?config.meta.lvlIMG:''; 
   var lvlTIPS=(config.meta.lvlTIPS)?config.meta.lvlTIPS:''; 
   //POPULATE-VIEW-.
   if(!nx.lvlNUM){nx.lvlNUM = $('#lvlNUM')}; nx.lvlNUM.html(lvlNUM);
+  if(!nx.lvlMode){nx.lvlMode = $('#lvlMode')}; nx.lvlMode.html(lvlMode);
   if(!nx.lvlTXT){nx.lvlTXT = $('#lvlTitleTXT')}; nx.lvlTXT.html(lvlTXT);
   if(!nx.lvlSubTXT){nx.lvlSubTXT = $('#lvlSubTXT')}; nx.lvlSubTXT.html(lvlSubTXT);
   if(!nx.lvlIMG){nx.lvlIMG = $('#lvlIMG img')}; nx.lvlIMG.attr('src', lvlIMG);

@@ -699,7 +699,7 @@ nx.createMasterStart = function(){
         // debugger;
         
         //---------------------------------MASTER~SCRIPT------------------------------------------------
-        nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
+        // nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
         // nx.runSCENE({id:"VortexSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
 
         // nx.spaceSeqIdx[0] = {on:1}; 
@@ -709,9 +709,9 @@ nx.createMasterStart = function(){
         // nx.runSCENE({id:"TestWorldSEQ"}); //SCENEZFactory-.
         // nx.initSEQ({seqID:SCENEitem.id,frame:SCENEitem.frame}); 
         //GAME 1 INIT / RUN --------------------------------------------------------------------------------------
-        // nx.initGAME({gameID:"SpaceIonz"}); //softload GO IONZ!
+        nx.initGAME({gameID:"SpaceIonz"}); //softload GO IONZ!
         // nx.initSEQ({seqID:'landingSequence'}); //softload Landing Seq!
-        nx.initGAME({gameID:'Showdown'}); //space pipe game
+        // nx.initGAME({gameID:'Showdown'}); //space pipe game
         // nx.initSEQ({seqID:'sneakSEQ'}); //softload Landing Seq!
         // nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
         // nx.initSEQ({seqID:'crashSequence'})//CRASHSEQUENCE

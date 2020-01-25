@@ -52,15 +52,26 @@ nx.GAMEZ = {
 		// if(nx.cinemaPlayAll){
 		// 	nx.initSEQ({seqID:'DoorSEQ'}); /*doorseq todo coil sequence*/ 
 		// }else{
+// <i class="fa fa-atom"></i> &nbsp;&nbsp; 
+// <i class="fa fa-chess-rook"></i> &nbsp;&nbsp;  
+// <i class="fa fa-shield-alt"></i>
+
+// <img style="width:1.11em" src="./img/dragCtrl1.png">
+
+
 		//SHOW-TITLE-SCREEN-.
 		nx.ui.showTitleScreen({
             // meta:{lvlNUM:1,lvlTXT:'COLLECT~SPACEIONZ!',lvlSubTXT:'Land on SpacePad.',
-		    meta:{lvlNUM:1,lvlTXT:'ORBY vs ZAPBOTZ!',lvlSubTXT:'Land on SpacePlatform.',
-			lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`<ul>
-				<li>MOVIE: PLAY~ONE or PLAY~ALL. </li>
-                <li>GAME: COLLECT SPACE~IONZ, WASD or TOUCH <img style="width:1.11em" src="./img/dragCtrl1.png">  </li>
-				<li>BOOK: follow EPIC~ADVENTURE! </li>
+		    meta:{lvlMode:'ACT',lvlNUM:1,lvlTXT:'ORBY vs ZAPBOTZ!',lvlSubTXT:'on ALPHA~MOON',
+			// lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`<ul>
+            lvlIMG:'./copyrightnetcinematics/img/zapbot1.png',lvlTIPS:`<ul style="list-style: none;">
+                <li><i class="fa fa-atom"></i>&nbsp;&nbsp;Quest 1: Find COSMO~CAR crash.</li>
+                <li><i class="fa fa-chess-rook"></i>&nbsp;&nbsp;Quest 2: Scan CRASH, and call AEON.</li>
+                <li><i class="fa fa-shield-alt"></i>&nbsp;&nbsp;Quest 3: Give ZAWD the MESSAGE.</li>
 			</ul>`},
+                // <li>MOVIE: PLAY~ONE or PLAY~ALL. </li>
+    //             <li>GAME: COLLECT SPACE~IONZ, WASD or TOUCH <img style="width:1.11em" src="./img/dragCtrl1.png">  </li>
+                // <li>BOOK: follow EPIC~ADVENTURE! </li>
 		    btn1fn:function(){
 				nx.scene.activeCamera.position.copyFrom({x: -2507.4568834597867, y: 3964.6208496093823, z: -1499.4712168505087});
 				nx.orbyMesh.position = new BABYLON.Vector3(-2500,3933,-1500); //START ACTORPOS
@@ -320,13 +331,16 @@ nx.GAMEZ = {
     }},
     'Showdown':{gameID:'Showdown',name:'ZapBot Showdown!',initfn:function(){
 
-				// debugger; //broke wurld?
+				debugger; //broke wurld?
+
+     //TODO: replace with ADDQUESTMSG!!!
 
 		//SHOW-TITLE-SCREEN-.
 		nx.ui.showTitleScreen({
 		    meta:{lvlNUM:2,lvlTXT:'KILOBOT~SHOWDOWN!',
 		    lvlSubTXT:"Dont get SHOCKED.",
-			lvlIMG:'./copyrightnetcinematics/img/zapbot1.png',lvlTIPS:`<ul>
+            // lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`<ul>
+            lvlIMG:'./copyrightnetcinematics/img/zapbot1.png',lvlTIPS:`<ul>
 				<li>TRICK to escape ZAPBOT LazerLock.</li>
 				<li>Find SpaceTrain Wreck.</li>
 				<li>Collect SpaceIonz!</li>

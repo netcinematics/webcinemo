@@ -141,6 +141,37 @@ cv3 = function (r,g,b) {
             }
 
 
+//COOL QUEST ICONS
+<article id="lvlTitleTXT" style="display:flex;flex-direction:row;justify-content:center;flex-wrap: wrap;"><i class="fa fa-atom"></i> &nbsp;&nbsp; <i class="fa fa-chess-rook"></i> &nbsp;&nbsp;  <i class="fa fa-shield-alt"></i>  &nbsp;&nbsp; <i class="fa fa-moon"></i>  &nbsp;&nbsp;  <i class="fa fa-skull"></i>  &nbsp;&nbsp;  <i class="fa fa-sun"></i>  &nbsp;&nbsp;  <i class="fa fa-fire"></i>  &nbsp;&nbsp;  <i class="fa fa-meteor"></i>  &nbsp;&nbsp;  <i class="fa fa-dungeon"></i>   &nbsp;&nbsp;  <i class="fa fa-dragon"></i>  &nbsp;&nbsp;  <i class="fa fa-dice-d20"></i>  &nbsp;&nbsp;  <i class="fa fa-book-dead"></i>  &nbsp;&nbsp;  <i class="fa fa-biohazard"></i>    &nbsp;&nbsp;  <i class="fa fa-award"></i>  &nbsp;&nbsp;  <i class="fa fa-hourglass-half"></i>  &nbsp;&nbsp;  <i class="fa fa-medal"></i>  &nbsp;&nbsp;</article>
+
+
+
+        $({cr:0,cb:1}).animate({cr:1,cb:0},{queue:false,duration:4444*nx.RUNTIME,easing:'swing',
+            step:function(now) { //EYE COLOR
+               if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+                nx.darkBot.botEyeColor1.emissiveColor = new BABYLON.Color3(this.cr, 0, this.cb);
+            },complete:function(){ }
+        });
+
+
+        //ANM: color darkbot eyes from blue to red
+        // nx.darkBot.botEyeColor1.emissiveColor = nx.darkBot.redMat;
+        // nx.darkBot.botEyeColor1.emissiveColor = nx.darkBot.blueMat;
+
+setTimeout(function(){
+
+        $({cr:0,cb:1})
+        .animate({cr:1,cb:0}
+        ,{queue:false,duration:4444*nx.RUNTIME,easing:'swing',
+            step:function(now) { //EYE COLOR
+               if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+                nx.darkBot.botEyeColor1.emissiveColor = new BABYLON.Color3(this.cr, 0, this.cb);
+            },complete:function(){
+            }
+        });
+    },4000)
+
+
 
         nx.greenMat = new BABYLON.StandardMaterial("green1", nx.scene);
         nx.greenMat.diffuseColor = new BABYLON.Color3(0, 1, 0);
