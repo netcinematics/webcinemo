@@ -775,10 +775,11 @@ nx.ui.showTitleScreen = function( config ){
   if(lvlIMGSize){ $(nx.lvlIMG[0]).css('width',lvlIMGSize) }
   
 
-debugger;
+// debugger;
 
   //SHOW-TITLE-SCREEN-.
   nx.canva$.fadeOut(1000,function(){
+    // debugger;
     $('#titleViewFrame').show();
     // $('#mainTitleViewFrame').show();
     // $('#mainTitleViewFrame').fadeIn(6000);
@@ -814,11 +815,15 @@ debugger;
   if(!nx.lvlMovieBtn2){nx.lvlMovieBtn2 = $('#lvlMovieBtn2')}
   nx.lvlMovieBtn2.unbind('click');//must do for singular handler-.
   nx.lvlMovieBtn2.click(function(){
-    debugger;
+    // debugger;
       //HIDE-TITLE-SCREEN-.
-      $('#mainTitleViewFrame').fadeOut(1000)
-      nx.canva$.fadeIn(1000)
-      nx.engine.resize();
+      $('#titleViewFrame').fadeOut(1000)
+      // $('#mainTitleViewFrame').fadeOut(1000)
+      // nx.canva$.fadeIn(1000)
+      nx.canva$.fadeIn(1000,function(){
+        nx.engine.resize();
+      })
+      // nx.engine.resize();
       if(config.btn2fn){config.btn2fn();} //callback-.
       nx.cinemaPlayAll=1; //play all auto title cards
   });
