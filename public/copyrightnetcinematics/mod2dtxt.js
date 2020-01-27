@@ -754,21 +754,24 @@ nx.ui.showTitleScreen = function( config ){
 
 // USAGE: meta : {lvlNUM:1,lvlTXT:'COLLECT~SPACEIONZ!',lvlSubTXT:'Find SpaceTrain Wreck!',
 //   lvlIMG:'',lvlTIPS:['','','']}
-
+// debugger;
   //SET-TITLE-SCREEN-CONTENT-.
-  var lvlNUM=(config.meta.lvlNUM)?config.meta.lvlNUM:''; 
+  // var lvlNUM=(config.meta.lvlNUM)?config.meta.lvlNUM:''; 
   var lvlMode=(config.meta.lvlMode)?config.meta.lvlMode:''; 
   var lvlTXT=(config.meta.lvlTXT)?config.meta.lvlTXT:''; 
   var lvlSubTXT=(config.meta.lvlSubTXT)?config.meta.lvlSubTXT:''; 
   var lvlIMG=(config.meta.lvlIMG)?config.meta.lvlIMG:''; 
   var lvlTIPS=(config.meta.lvlTIPS)?config.meta.lvlTIPS:''; 
+  var lvlIconSize=(config.meta.lvlIconSize)?config.meta.lvlIconSize:'4.444em';
   //POPULATE-VIEW-.
-  if(!nx.lvlNUM){nx.lvlNUM = $('#lvlNUM')}; nx.lvlNUM.html(lvlNUM);
+  // if(!nx.lvlNUM){nx.lvlNUM = $('#lvlNUM')}; nx.lvlNUM.html(lvlNUM);
   if(!nx.lvlMode){nx.lvlMode = $('#lvlMode')}; nx.lvlMode.html(lvlMode);
   if(!nx.lvlTXT){nx.lvlTXT = $('#lvlTitleTXT')}; nx.lvlTXT.html(lvlTXT);
   if(!nx.lvlSubTXT){nx.lvlSubTXT = $('#lvlSubTXT')}; nx.lvlSubTXT.html(lvlSubTXT);
   if(!nx.lvlIMG){nx.lvlIMG = $('#lvlIMG img')}; nx.lvlIMG.attr('src', lvlIMG);
   if(!nx.lvlTIPS){nx.lvlTIPS = $('#lvlTIPS')}; nx.lvlTIPS.html(lvlTIPS);
+  // if(!nx.lvlIconIMG){nx.lvlIconIMG = $('#lvlIMG')}; 
+  if(lvlIconSize){ $(nx.lvlIMG[0]).css('width','10em') }
   
 
   //SHOW-TITLE-SCREEN-.
@@ -784,18 +787,24 @@ nx.ui.showTitleScreen = function( config ){
 
 
 
-  
+  //DISABLE GAME BTNS-.
+  // <i class="fa fa-lock" style="
+  //   font-size: 0.888em;
+  //   padding-right: 0.2em;
+  //   color: darkslategrey;
+  //   "></i>
+
 
   //WIRE-TITLE-SCREEN-BTNS-.
   if(!nx.lvlGameBtn1){nx.lvlGameBtn1 = $('#lvlGameBtn1')}
-  nx.lvlGameBtn1.unbind('click');//must do for singular handler-.
-  nx.lvlGameBtn1.click(function(){
-    //HIDE-TITLE-SCREEN-.
-    $('#titleViewFrame').fadeOut(1000)
-    nx.canva$.fadeIn(1000)
-    nx.engine.resize();
-    if(config.btn1fn){config.btn1fn();} //callback-.
-  });
+  // nx.lvlGameBtn1.unbind('click');//must do for singular handler-.
+  // nx.lvlGameBtn1.click(function(){
+  //   //HIDE-TITLE-SCREEN-.
+  //   $('#titleViewFrame').fadeOut(1000)
+  //   nx.canva$.fadeIn(1000)
+  //   nx.engine.resize();
+  //   if(config.btn1fn){config.btn1fn();} //callback-.
+  // });
   
   
   if(!nx.lvlMovieBtn2){nx.lvlMovieBtn2 = $('#lvlMovieBtn2')}
@@ -806,6 +815,7 @@ nx.ui.showTitleScreen = function( config ){
       nx.canva$.fadeIn(1000)
       nx.engine.resize();
       if(config.btn2fn){config.btn2fn();} //callback-.
+      nx.cinemaPlayAll=1; //play all auto title cards
   });
 
   

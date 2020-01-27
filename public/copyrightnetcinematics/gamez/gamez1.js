@@ -62,13 +62,19 @@ nx.GAMEZ = {
 		//SHOW-TITLE-SCREEN-.
 		nx.ui.showTitleScreen({
             // meta:{lvlNUM:1,lvlTXT:'COLLECT~SPACEIONZ!',lvlSubTXT:'Land on SpacePad.',
-		    meta:{lvlMode:'ACT',lvlNUM:1,lvlTXT:'ORBY vs ZAPBOTZ!',lvlSubTXT:'on ALPHA~MOON',
+		    meta:{lvlMode:'ACT~1',lvlNUM:0,lvlTXT:'ORBY vs ZAPBOTZ!',lvlSubTXT:'on ALPHA~MOON',lvlIconSize:'10em',
 			// lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`<ul>
-            lvlIMG:'./copyrightnetcinematics/img/zapbot1.png',lvlTIPS:`<ul style="list-style: none;">
-                <li><i class="fa fa-atom"></i>&nbsp;&nbsp;Quest 1: Find COSMO~CAR crash.</li>
-                <li><i class="fa fa-chess-rook"></i>&nbsp;&nbsp;Quest 2: Scan CRASH, and call AEON.</li>
-                <li><i class="fa fa-shield-alt"></i>&nbsp;&nbsp;Quest 3: Give ZAWD the MESSAGE.</li>
-			</ul>`},
+            lvlIMG:'./copyrightnetcinematics/img/alphamoontop1.png',lvlTIPS:`
+            <ul class='scrollColor1' style="list-style:none;height:80%;font-size:1em;overflow-y:scroll;overflow-x:wrap;
+                border:1px solid steelblue;border-radius:13px;padding:1em;
+                box-shadow: 0 0 6px 0px darkviolet, inset 2px 1px 6px 0px steelblue;line-height:2em;">
+                <li><i class="fa fa-globe"></i>&nbsp;&nbsp;QUEST 1: Land on ALPHA~MOON.</li>
+                <li><i class="fa fa-search"></i>&nbsp;&nbsp;QUEST 2: Find COSMO~CAR crash.</li>
+                <li><i class="fa fa-atom"></i>&nbsp;&nbsp;QUEST 3: SCAN and call AEON.</li>
+                <li>...</li>
+            </ul>`},
+                // <li><i class="fa fa-chess-rook"></i>&nbsp;&nbsp;QUEST 3: SCAN, and call AEON.</li>
+                // <li><i class="fa fa-shield-alt"></i>&nbsp;&nbsp;QUEST 3: Give ZAWD the MESSAGE.</li>
                 // <li>MOVIE: PLAY~ONE or PLAY~ALL. </li>
     //             <li>GAME: COLLECT SPACE~IONZ, WASD or TOUCH <img style="width:1.11em" src="./img/dragCtrl1.png">  </li>
                 // <li>BOOK: follow EPIC~ADVENTURE! </li>
@@ -374,6 +380,7 @@ nx.GAMEZ = {
 				},2000);
 			},
 		    btn2fn:function(){
+                debugger; //is this wrong?
 				nx.initSEQ({seqID:'sneakSEQ'}); //softload sneakSeq!
 				// nx.initSEQ({seqID:'landingSequence'}); //softload Landing Seq!
 			},

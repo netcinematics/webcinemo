@@ -396,16 +396,16 @@ var nx = {}; //NetcinematiX NameSpace-.
     .anmBtn{ font-family:fantasy; text-shadow: 2px 2px 3px steelblue;}
     .steelBlueBtnDlg { background-color: rgba(150,180,200,0.95); color:#222; border:  #748696 solid 2px; font-size: 22px; border: 4px solid #71abdc;
         border-radius: 100%; height: 45px; width: 45px; cursor: pointer; user-select: none; text-shadow: 0 1px 0 rgba(255,255,255,.8); outline: none; }
-    #titleViewFrame{ height:100%; width:100%; background:black; z-index:1000; }
+    #titleViewFrame{ height:100%; width:100%; background:black; z-index:1000; font-family:verdana; }
     #titleViewFrame{display:flex;color:yellow;align-items:center;justify-content:center;}
     .lblItem{max-width:50%; background:steelblue; opacity: 0.2}
-    .enterBtn{position:absolute;top:50%;width:100%;z-index:100; }
+    .enterBtn{position:absolute;top:80%;width:100%;z-index:100; }
     .enterBtn section{ width:100px; margin:0 auto; }
     .enterBtn button{ width:100px;height: 50px; box-shadow: 0px -1px 13px steelblue; cursor:hand; }
 
 </style>
 
-<section id=titleViewFrame>
+<section id=titleViewFrame class="scrollColor1" style="overflow-y:scroll;overflow-x:hidden;">
   <article class="enterBtn">
       <section>
           <button id=beginBtn aria-label="begin" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>~PLAY!~</span></button>
@@ -452,14 +452,14 @@ var nx = {}; //NetcinematiX NameSpace-.
           <span id="lvlMovieBtn1" class="minMenuIcon btnSelector" 
           style="padding:0 0.5em 0.2em;color:royalblue;">
           <i class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span></span></section> -->
-        <section style="display:flex;justify-content:center;flex:1">
+        <section id="lvlSuperTXT" style="display:flex;justify-content:center;flex:1">
           <span id="lvlTypeICON" class="minMenuIcon" 
           style="padding:0 0.5em 0.2em;color:darkviolet;">
-          <i id=lvlMission class="fa fa-map"></i><span id=lvlMode style="margin-left: 0.5em;">ACT</span>
+          <i id=lvlMission class="fa fa-map"></i><span id=lvlMode style="margin-left: 0.5em;">ACT~</span>
           <!-- <i id=lvlGAM class="fa fa-gamepad"></i><span style="margin-left: 0.5em;">GAME</span> -->
           <!-- <i id=lvlMOV class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span> -->
           <!-- <i id=lvlTXT class="fa fa-book-open"></i><span style="margin-left: 0.5em;">BOOK</span> -->
-          <span id=lvlNUM>1</span></span>
+          <span id=lvlNUM></span></span>
         </section>
         <!-- <section style="display:none;justify-content:center;flex:1">
           <span id="lvlBookBtn1" class="minMenuIcon" 
@@ -476,24 +476,41 @@ var nx = {}; //NetcinematiX NameSpace-.
 
     <style>
         /* anmmethodology preferred-media-query-format */
-        @media screen and (min-width: 350px){ #lvlTitleTXT {font-size: 1.5em; }  }
-        @media screen and (min-width: 550px){ #lvlTitleTXT {font-size: 2.2em; }  }
-        @media screen and (min-width: 800px){ #lvlTitleTXT {font-size: 3.3em; }  }
-        @media screen and (min-width: 1000px){ #lvlTitleTXT {font-size: 4.4em; }  }
+        /* cross device TITLETXT */
+        @media screen and (min-width: 350px){ #lvlTitleTXT {font-size: 2.444em; }  }
+        @media screen and (min-width: 550px){ #lvlTitleTXT {font-size: 3em; }  }
+        @media screen and (min-width: 800px){ #lvlTitleTXT {font-size: 3.5em; }  }
+        @media screen and (min-width: 1000px){ #lvlTitleTXT {font-size: 4.5em; }  }
+        @media screen and (min-width: 1250px){ #lvlTitleTXT {font-size: 5em; }  }
+        @media screen and (min-width: 1500px){ #lvlTitleTXT {font-size: 5.5em; }  }
+        /* cross device SUBTITLETXT */
+        @media screen and (min-width: 350px){ #lvlSubTXT {font-size: 1.2em; }  }
+        @media screen and (min-width: 550px){ #lvlSubTXT {font-size: 1.4em; }  }
+        @media screen and (min-width: 800px){ #lvlSubTXT {font-size: 1.6em; }  }
+        @media screen and (min-width: 1000px){ #lvlSubTXT {font-size: 1.8em; }  }
+        @media screen and (min-width: 1250px){ #lvlSubTXT {font-size: 2em; }  }
+        @media screen and (min-width: 1500px){ #lvlSubTXT {font-size: 2.2em; }  }
+        /* cross device SUPERTITLETXT */
+        @media screen and (min-width: 350px){ #lvlSuperTXT {font-size: 0.8em; }  }
+        @media screen and (min-width: 550px){ #lvlSuperTXT {font-size: 1em; }  }
+        @media screen and (min-width: 800px){ #lvlSuperTXT {font-size: 1em; }  }
+        @media screen and (min-width: 1000px){ #lvlSuperTXT {font-size: 1em; }  }
+        @media screen and (min-width: 1250px){ #lvlSuperTXT {font-size: 1em; }  }
+        @media screen and (min-width: 1500px){ #lvlSuperTXT {font-size: 1em; }  }
       </style>
-    <article id=lvlTitleTXT style='display:flex;flex-direction:row;justify-content:center;'>
+    <article id=lvlTitleTXT style='display:flex;flex-direction:row;justify-content:center;font-family:fantasy;'>
       COLLECT~ENERGEMZ!
     </article>
     <article id=lvlIMG>
-      <img style='width:4.44em;border-radius:13px;border:solid 1px yellow;' src="./copyrightnetcinematics/img/energem2.png">
+      <img style='width:4.44em;border-radius:13px;border:solid 1px yellow;box-shadow:0px 0px 20px 2px darkviolet;' src="./copyrightnetcinematics/img/energem2.png">
     </article>
     <article id=lvlSubTXT style='display:flex;flex-direction:row;justify-content:center;'>
       Find the SpaceTrain Wreck!
     </article>
     <article id=lvlActionBtnsFrame style='margin-top:3%;display:flex;margin-bottom:3%;width:70%;justify-content:space-evenly;color: darkviolet;line-height: 3em;'>
-        <button id=lvlMovieBtn2 style='flex:1;max-width:5.55em;min-width:4.44em;' aria-label="skip" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>MOVIE</span></button>&nbsp;OR&nbsp;
-        <button id=lvlGameBtn1 style='flex:1;max-width:5.55em;min-width:4.44em;' aria-label="play" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>GAME</span></button>&nbsp;OR&nbsp;
-        <button id=lvlBookBtn3 style='flex:1;max-width:5.55em;min-width:4.44em;' aria-label="epic" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>BOOK</span></button>
+        <button id=lvlMovieBtn2 style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px yellow;' aria-label="skip" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-video" style="font-size:1em;padding-right:0.2em;color:#082b44;text-shadow:1px 1px #4169e1;"></i><span class=anmBtn style='font-size:1em;'>VIDEO</span></button>&nbsp;OR&nbsp;
+        <button id=lvlGameBtn1 style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="play" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-lock" style="font-size:1em;padding-right:0.2em;color:#41075a;text-shadow:1px 1px #9400D3;"></i><span class=anmBtn style='font-size:1em;'>GAME</span></button>&nbsp;OR&nbsp;
+        <button id=lvlBookBtn3 style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="epic" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-lock" style="font-size:1em;padding-right:0.2em;color:#003902;text-shadow:1px 1px #228B22;"></i><span class=anmBtn style='font-size:1em'>BOOK</span></button>
     </article>
     <style>#lvlTIPS ul{margin:0;}
      @media screen and (max-width: 350px){ #lvlTIPS {font-size:0.8em !important; line-height:1.44em !important; }  }
@@ -511,13 +528,15 @@ var nx = {}; //NetcinematiX NameSpace-.
     </style>
     <section id=lvlFooter style='display:flex;width:100%;justify-content:space-between;margin-bottom:2.44%;font-size:1.22em;'>
       <article id=lvlSubMSG1 style='position:absolute;bottom:5.5%;font-size:0.7em;'>
-        NEW EPISODES! 
+        <!-- APP  -->
       </article>
       <article id=lvlSubMSG2 style='padding-top:2%;min-width:2em;margin:0 auto;'>
         ~
       </article>
       <article id=lvlSubMSG3 style='line-height:1.88em;padding-top:1%;position:absolute;bottom:6.5%;right:4%;font-size:0.7em'>
-        JOIN&nbsp;&nbsp;|&nbsp;&nbsp;LOGIN&nbsp;&nbsp;|&nbsp;&nbsp;APP
+        <!-- JOIN&nbsp;&nbsp;|&nbsp;&nbsp;LOGIN&nbsp;&nbsp;|&nbsp;&nbsp;APP -->
+        <!-- BUY -->
+        <!-- FIXED BOTTOM VIEW 1 -->
       </article>
     </section>
 
@@ -883,9 +902,25 @@ text-shadow: 1px 1px 10px #a20358;
         #anmTxtM13{ margin-top:0.8em; }
 </style>
 <span id=anmTxtM1></span><span id=anmTxtM2>A</span><span id=anmTxtM3>C</span><span id=anmTxtM4>O</span><span id=anmTxtM5>Z</span><span id=anmTxtM6>M</span><span id=anmTxtM7>O</span><span id=anmTxtM8>S</span><span id=anmTxtM9>T</span><span id=anmTxtM10>O</span><span id=anmTxtM11>R</span><span id=anmTxtM12>Y</span><span id=anmTxtM13>!</span>
-      </section>
-    </section>
-  </section>
+      </section><!-- end titleframe -->
+
+
+      <section id="pauseBtn2" class="steelNeonIconBtn" style='display:none;position:absolute;top:1.8em;right:0.5em;z-index:111'><i class="fa fa-pause-circle"></i></section>
+
+
+      <style>
+        .sonicOn{box-shadow: 0px 0px 4px lime;}
+        .sonicOff{ /* highlight btn toggle*/
+          box-shadow: 0px 0px 6px red !important;
+        }
+      </style>
+      <section id="audioToggle1" class="steelNeonIconBtn sonicOn" style='display:none;position:absolute;top:3.5em;right:0.5em;z-index:1111'><i class="fa fa-volume-off"></i></section>
+
+      <section id="refreshBtn1" class="steelNeonIconBtn" style='display:none;position:absolute;top:5.2em;right:0.5em;z-index:111'><i class="fa fa-redo"></i></section>
+
+
+    </section><!-- end franchise -->
+  </section><!-- end view 1 -->
 
   <div id="viewRow2">
           <canvas id=renderCanvas style='height:100%'></canvas>
@@ -902,7 +937,7 @@ text-shadow: 1px 1px 10px #a20358;
 
 
 
-    <section id="pauseBtn2" class="steelNeonIconBtn" style='display:none;position:absolute;top:1.8em;right:0.1em;z-index:111'><i class="fa fa-pause-circle"></i></section>
+<!--     <section id="pauseBtn2" class="steelNeonIconBtn" style='display:none;position:absolute;top:1.8em;right:0.1em;z-index:111'><i class="fa fa-pause-circle"></i></section>
 
 
     <style>
@@ -913,7 +948,7 @@ text-shadow: 1px 1px 10px #a20358;
     </style>
     <section id="audioToggle1" class="steelNeonIconBtn sonicOn" style='display:none;position:absolute;top:3.5em;right:0.1em;z-index:1111'><i class="fa fa-volume-off"></i></section>
 
-    <section id="refreshBtn1" class="steelNeonIconBtn" style='display:none;position:absolute;top:5.2em;right:0.1em;z-index:111'><i class="fa fa-redo"></i></section>
+    <section id="refreshBtn1" class="steelNeonIconBtn" style='display:none;position:absolute;top:5.2em;right:0.1em;z-index:111'><i class="fa fa-redo"></i></section> -->
 
 
   </div>
@@ -947,7 +982,8 @@ text-shadow: 1px 1px 10px #a20358;
 }
 </style>
     <section style="display:flex;justify-content:center;flex:1"><span id="navMovieBtn1" class="minMenuIcon btnSelector" 
-      style="padding:0 0.5em 0.2em;color:royalblue;"><i class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span></span></section>
+      style="padding:0 0.5em 0.2em;color:royalblue;"><i class="fa fa-video"></i><span style="margin-left: 0.5em;">VIDEO</span></span></section>
+      <!-- style="padding:0 0.5em 0.2em;color:royalblue;"><i class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span></span></section> -->
   <!-- <span style="display:flexbox; flex:1">MOVIE</span> -->
     <section style="display:flex;justify-content:center;flex:1"><span id="navGameBtn1" class="minMenuIcon" 
       style="padding:0 0.5em 0.2em;color:darkviolet;"><i class="fa fa-gamepad"></i><span style="margin-left: 0.5em;">GAME</span></span></section>
@@ -1122,6 +1158,14 @@ text-shadow: 1px 1px 10px #a20358;
 </style>
 
 <style>
+
+/*stand alone scroll color class */
+.scrollColor1::-webkit-scrollbar-track { background-color: #010213;  border-radius: 13px; }
+.scrollColor1::-webkit-scrollbar { width: 0.555em; }
+.scrollColor1::-webkit-scrollbar-thumb { background-color: #04223c; border-radius: 13px;
+  background-image: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0.6) 26%, transparent 26%, transparent 51%, rgba(255, 255, 255, -0.4) 51%, rgba(255, 255, 255, 0.6) 74%, transparent 74%, transparent);
+}
+
 
 #scrollDoc1 { min-height: 450px; line-height: 1.8;}
 .scrollBar1 {height:97%; overflow-y:scroll; background:#010111; border: 1px steelblue solid; border-radius:13px; padding:0.5em; }
@@ -1597,6 +1641,20 @@ margin-right: 0.5em;
             We wanted to tell a story that all readers would want to read. Telling it in a way that every human can access, and thats why we created a platform for
 
             every person to be able to make their own adventures. 
+
+            <style>
+              #caterpillarFrame{display:flex;border:1px solid darkmagenta;border-radius:13px;flex-wrap:wrap;padding:1em;}
+              #caterpillarFrame article{display:flex;border:1px solid blueviolet;border-radius:13px;box-shadow:0px 0px 3px 0px steelblue;min-height:33em;min-width:19em;flex-direction:column;justify-content:space-around;align-items:center;flex:1;margin:0.2em;}
+            </style>
+
+            <section id=caterpillarFrame>
+              <article>1</article>
+              <article>2</article>
+              <article>3</article>
+              <article>4</article>
+              <article>5</article>
+            </section><!--end caterpilar frame-->
+
 
             <i class='typeSubTxt'>Follow online in ~ZetaOortCloud!</i>
             <p class='typeAction'><span>EPIC:</span><span class='txtItem'>ACOZMO.net!</span></p>
