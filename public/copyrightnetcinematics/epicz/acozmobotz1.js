@@ -5531,8 +5531,8 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                             <li class="completedQuest"><i class="fa fa-search"></i>&nbsp;&nbsp;<i class="fa fa-check-circle"></i> 2: Find COSMO~CAR crash.</li>
                             <li><i class="fa fa-atom"></i>&nbsp;&nbsp;QUEST 3: SCAN and call AEON.</li>
                             <li><i class="fa fa-dice-d20"></i>&nbsp;&nbsp;QUEST 4: Collect 100 Ionz.</li>
-                            <li><i class="fa fa-shield-alt"></i>&nbsp;&nbsp;QUEST 5: Find ZAWD, give MESSAGE.</li>
                         </ul>`},
+                            // <li><i class="fa fa-shield-alt"></i>&nbsp;&nbsp;QUEST 5: Find ZAWD, give MESSAGE.</li>
                             // <li>MOVIE: PLAY~ONE or PLAY~ALL. </li>
                 //             <li>GAME: COLLECT SPACE~IONZ, WASD or TOUCH <img style="width:1.11em" src="./img/dragCtrl1.png">  </li>
                             // <li>BOOK: follow EPIC~ADVENTURE! </li>

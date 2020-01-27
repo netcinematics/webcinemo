@@ -396,8 +396,8 @@ var nx = {}; //NetcinematiX NameSpace-.
     .anmBtn{ font-family:fantasy; text-shadow: 2px 2px 3px steelblue;}
     .steelBlueBtnDlg { background-color: rgba(150,180,200,0.95); color:#222; border:  #748696 solid 2px; font-size: 22px; border: 4px solid #71abdc;
         border-radius: 100%; height: 45px; width: 45px; cursor: pointer; user-select: none; text-shadow: 0 1px 0 rgba(255,255,255,.8); outline: none; }
-    #titleViewFrame{ height:100%; width:100%; background:black; z-index:1000; font-family:verdana; }
-    #titleViewFrame{display:flex;color:yellow;align-items:center;justify-content:center;}
+    #mainTitleViewFrame{ height:100%; width:100%; background:black; z-index:1000; font-family:verdana; }
+    #mainTitleViewFrame{display:flex;color:yellow;align-items:center;justify-content:center;}
     .lblItem{max-width:50%; background:steelblue; opacity: 0.2}
     .enterBtn{position:absolute;top:80%;width:100%;z-index:100; }
     .enterBtn section{ width:100px; margin:0 auto; }
@@ -405,7 +405,8 @@ var nx = {}; //NetcinematiX NameSpace-.
 
 </style>
 
-<section id=titleViewFrame class="scrollColor1" style="overflow-y:scroll;overflow-x:hidden;">
+<!-- <section id=mainTitleViewFrame class="scrollColor1" style="overflow-y:scroll;overflow-x:hidden;"> -->
+<section id=mainTitleViewFrame >
   <article class="enterBtn">
       <section>
           <button id=beginBtn aria-label="begin" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>~PLAY!~</span></button>
@@ -442,7 +443,11 @@ var nx = {}; //NetcinematiX NameSpace-.
     </article>
    
   </section> <!--end app title view-->
-  <section id=lvlTitleView style='display:none !important;width:88%;height:100%;margin-top:20%;margin-bottom:10%;
+
+
+
+
+  <!--section id=lvlTitleView style='display:none !important;width:88%;height:100%;margin-top:20%;margin-bottom:10%;
     display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;'> 
 
 
@@ -474,7 +479,6 @@ var nx = {}; //NetcinematiX NameSpace-.
         @media screen and (min-width: 1500px){ #lvlSuperTXT span {font-size: 1em; }  }
       </style>
 
-
     <header style='display:flex;flex-direction:row;font-size:2em;margin-top:1%; margin-bottom:2%'>
       <article id=lvlTypeICONFrame>
 
@@ -482,7 +486,6 @@ var nx = {}; //NetcinematiX NameSpace-.
           <span id="lvlTypeICON" class="minMenuIcon" 
           style="padding:0 0.5em 0.2em;color:darkviolet;">
             <i id=lvlMission class="fa fa-map"></i><span id=lvlMode style="margin-left: 0.5em;">ACT~</span>
-          <!-- <span id=lvlNUM></span> -->
           </span>
         </section>
 
@@ -497,7 +500,6 @@ var nx = {}; //NetcinematiX NameSpace-.
     <article id=lvlSubTXT style='display:flex;flex-direction:row;justify-content:center;'>
       Find the SpaceTrain Wreck!
     </article>
-    <!-- <hr style="color:yellow"> -->
     <style> .actionBtnLock{ background-color:#575d6b !important; } </style>
     <style>/*#lvlActionBTNS button{font-size:1.2em;}*/
     @media screen and (max-width: 350px){ #lvlActionBTNS button {font-size:0.8em !important; }
@@ -513,58 +515,35 @@ var nx = {}; //NetcinematiX NameSpace-.
         <button id=lvlGameBtn1 class='actionBtnLock steelBlueBtnDlg' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="play"><i class="fa fa-lock" style="padding-right:0.2em;color:#24053f;text-shadow:1px 1px #9400D3;"></i><span class=anmBtn style=''>GAME</span></button>
         &nbsp;OR&nbsp;
         <button id=lvlBookBtn3 class='actionBtnLock steelBlueBtnDlg' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="epic"><i class="fa fa-lock" style="padding-right:0.2em;color:#072d0c;text-shadow:1px 1px #228B22;"></i><span class=anmBtn style=''>BOOK</span></button>
-    </article><!--anmethodology: INLINE-DEVICE-OVERRIDES -->
-    <style>#lvlTIPS ul{margin:0;max-height: 5em; color:steelblue;} .completedQuest{color:green !important;}
-/*    @media screen and (max-width: 350px){ #lvlTIPS ul li {font-size:0.8em !important; line-height:1.888em !important; }  }
+    </article>
+    <style>
+    /*anmethodology: INLINE-DEVICE-OVERRIDES */
+    #lvlTIPS ul{margin:0;max-height: 5em; color:steelblue;} .completedQuest{color:green !important;}
+    @media screen and (max-width: 350px){ #lvlTIPS ul li {font-size:0.8em !important; line-height:1.888em !important; }  }
     @media screen and (min-width: 350px){ #lvlTIPS ul li {font-size:1em !important; line-height:1.666em !important; }  }
-    @media screen and (min-width: 550px){ #lvlTIPS ul li {font-size:1.1em !important; line-height:1.444em !important; }  }*/
+    @media screen and (min-width: 550px){ #lvlTIPS ul li {font-size:1.1em !important; line-height:1.555em !important; }  }
+    @media screen and (min-width: 850px){ #lvlTIPS ul li {font-size:1.2em !important; line-height:1.999em !important; }  }
     </style>
     <article id=lvlTIPS style='margin-bottom:1%;line-height:2.44em;'>
-     <!--  <ul>
-        <li>GAME: use WASD or TOUCH controls: <img style='width:1.11em' src="./img/dragCtrl1.png">  </li>
-        <li>MOVIE: PLAYONE scene or PLAYALL MOVIE. </li>
-        <li>BOOK: follow the EPIC~ADVENTURE! </li>
-      </ul> -->
     </article>
     
     <style>@media screen and (max-width: 350px){ #lvlFooter {font-size:0.8em !important; }  }
     </style>
     <section id=lvlFooter style='display:flex;width:100%;justify-content:space-between;margin-bottom:2.44%;font-size:1.22em;'>
       <article id=lvlSubMSG1 style='position:absolute;bottom:5.5%;font-size:0.7em;'>
-        <!-- APP  -->
       </article>
       <article id=lvlSubMSG2 style='padding-top:2%;min-width:2em;margin:0 auto;'>
         ~
       </article>
       <article id=lvlSubMSG3 style='line-height:1.88em;padding-top:1%;position:absolute;bottom:6.5%;right:4%;font-size:0.7em'>
-        <!-- JOIN&nbsp;&nbsp;|&nbsp;&nbsp;LOGIN&nbsp;&nbsp;|&nbsp;&nbsp;APP -->
-        <!-- BUY -->
-        <!-- FIXED BOTTOM VIEW 1 -->
       </article>
     </section>
 
-
-  </section> <!--end app title view-->
-  <!--section id=levelTitleView> 
-      <article id=version>
-        VERSION:
-      </article>
-      <article id=goHome>
-        HOME
-      </article>
-      <article id=getApp>
-        APP
-      </article>
-      <article id=episode>
-        EPISODE:
-      </article>
-      <article id=price>
-        ~FREE~
-      </article>
-    </section--> <!--end app title view-->
+  </section--> 
+  <!--end app title view-->
    
   
-</section>
+</section><!-- end title view frame -->
   
   
 <!-- <script async type="text/javascript"> -->
@@ -582,7 +561,7 @@ var nx = {}; //NetcinematiX NameSpace-.
         // nx.ui.nextCamBtn = $('#nextCamBtn')
         // nx.ui.camTxt = $('#camTxt')
         // nx.ui.tenKeyTxt = $('#tenKeyTxt')
-        nx.ui.titleViewFrame = $('#titleViewFrame');
+        nx.ui.mainTitleViewFrame = $('#mainTitleViewFrame');
         nx.ui.mainTitleView = $('#mainTitleView');
         nx.ui.lvlTitleView = $('#lvlTitleView');
         // var sonicBtn = $('#sonicBtn');
@@ -601,7 +580,8 @@ var nx = {}; //NetcinematiX NameSpace-.
                 // nx.ui.nextCamBtn.show(1000)
                 // nx.ui.camTxt.show(1000)
                 // nx.ui.tenKeyTxt.show(1000)
-                nx.ui.titleViewFrame.fadeOut(1000)
+                debugger;
+                nx.ui.mainTitleViewFrame.fadeOut(1000)
             },1)
 
             if(nx.mobile){  //MOBILE-ONLY disable sleeping-.
@@ -884,10 +864,10 @@ text-shadow: 1px 1px 10px #a20358;
 
 </style>
 
-<div id=trifoldDrawerView>
-  <section id=viewRow1 class='topFrameThinView' style="width:100%;height:0;z-index:100;text-align:center;font-family: verdana;">
+<div id='trifoldDrawerView'>
+  <section id='viewRow1' class='topFrameThinView' style="width:100%;height:0;z-index:100;text-align:center;font-family: verdana;">
     <section class='franchiseTitleFrame'>
-      <section id=superTitleTxt style='font-size:0.7em; margin-top:0.1em; width:100%'>Dr~ACOZMO's</section>
+      <section id='superTitleTxt' style='font-size:0.7em; margin-top:0.1em; width:100%'>Dr~ACOZMO's</section>
       <section id='seriesTitleTxt' style='display: flex; justify-content: center; font-size: 1.6em;text-shadow: 1px 1px 4px yellow, -1px -1px 4px #ec89f3;'>
 <style>
         #anmTxtM1{ margin-top:0.8em; }
@@ -904,8 +884,22 @@ text-shadow: 1px 1px 10px #a20358;
         #anmTxtM12{ margin-top:0.7em; }
         #anmTxtM13{ margin-top:0.8em; }
 </style>
-<span id=anmTxtM1></span><span id=anmTxtM2>A</span><span id=anmTxtM3>C</span><span id=anmTxtM4>O</span><span id=anmTxtM5>Z</span><span id=anmTxtM6>M</span><span id=anmTxtM7>O</span><span id=anmTxtM8>S</span><span id=anmTxtM9>T</span><span id=anmTxtM10>O</span><span id=anmTxtM11>R</span><span id=anmTxtM12>Y</span><span id=anmTxtM13>!</span>
-      </section><!-- end titleframe -->
+<span id='anmTxtM1'>&nbsp;</span>
+<span id='anmTxtM2'>A</span>
+<span id='anmTxtM3'>C</span>
+<span id='anmTxtM4'>O</span>
+<span id='anmTxtM5'>Z</span>
+<span id='anmTxtM6'>M</span>
+<span id='anmTxtM7'>O</span>
+<span id='anmTxtM8'>S</span>
+<span id='anmTxtM9'>T</span>
+<span id='anmTxtM10'>O</span>
+<span id='anmTxtM11'>R</span>
+<span id='anmTxtM12'>Y</span>
+<span id='anmTxtM13'>!</span>
+      </section>
+
+      <!-- end titleframe -->
 
 
       <section id="pauseBtn2" class="steelNeonIconBtn" style='display:none;position:absolute;top:1.8em;right:0.5em;z-index:111'><i class="fa fa-pause-circle"></i></section>
@@ -926,15 +920,118 @@ text-shadow: 1px 1px 10px #a20358;
   </section><!-- end view 1 -->
 
   <div id="viewRow2">
-          <canvas id=renderCanvas style='height:100%'></canvas>
+          <canvas id='renderCanvas' style='height:100%'></canvas>
           <style>.mainSpan{margin:0 0.5em;display:flex;align-self: center; flex: 4;  }</style>
           <style>.frameSpan{position:relative;display:flex;height:2em;line-height:1em;border-radius:10px;padding:0.2em;background:black;width:100%;}</style>
-          <footer id=canvasFooter style='width:80%;/*margin:-3em auto 0;*/z-index:100;font-family:verdana;display:none;/*background: black;border: 1px solid orange;border-radius:13px;*/height:2em;position:absolute;bottom:1em;width: 100%;'>
+
+<style>
+    #titleViewFrame{ height:100%; width:100%; background:black; z-index:1000; font-family:verdana; }
+    #titleViewFrame{display:flex;color:yellow;align-items:center;justify-content:center;}
+</style>
+
+<section id='titleViewFrame' class="scrollColor1" style="overflow-y:scroll;overflow-x:hidden;">
+  <section id='lvlTitleView' style='display:none !important;width:88%;height:100%;margin-top:20%;margin-bottom:10%;
+    display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;'> 
+
+
+    <style>
+        /* anmmethodology preferred-media-query-format */
+        /* cross device TITLETXT */
+        @media screen and (max-width: 350px){ #lvlTitleTXT {font-size: 1.8em; }  }
+        @media screen and (min-width: 350px){ #lvlTitleTXT {font-size: 2.111em; }  }
+        @media screen and (min-width: 450px){ #lvlTitleTXT {font-size: 2.222em; }  }
+        @media screen and (min-width: 550px){ #lvlTitleTXT {font-size: 3em; }  }
+        @media screen and (min-width: 800px){ #lvlTitleTXT {font-size: 3.5em; }  }
+        @media screen and (min-width: 1000px){ #lvlTitleTXT {font-size: 4.5em; }  }
+        @media screen and (min-width: 1250px){ #lvlTitleTXT {font-size: 5em; }  }
+        @media screen and (min-width: 1500px){ #lvlTitleTXT {font-size: 5.5em; }  }
+        /* cross device SUBTITLETXT */
+        @media screen and (min-width: 350px){ #lvlSubTXT {font-size: 1.2em; }  }
+        @media screen and (min-width: 550px){ #lvlSubTXT {font-size: 1.4em; }  }
+        @media screen and (min-width: 800px){ #lvlSubTXT {font-size: 1.6em; }  }
+        @media screen and (min-width: 1000px){ #lvlSubTXT {font-size: 1.8em; }  }
+        @media screen and (min-width: 1250px){ #lvlSubTXT {font-size: 2em; }  }
+        @media screen and (min-width: 1500px){ #lvlSubTXT {font-size: 2.2em; }  }
+        /* cross device SUPERTITLETXT */
+        @media screen and (max-width: 350px){ #lvlSuperTXT span {font-size: 0.6em; }  }
+        @media screen and (min-width: 350px){ #lvlSuperTXT span {font-size: 0.7em; }  }
+        @media screen and (min-width: 550px){ #lvlSuperTXT span {font-size: 0.8em; }  }
+        @media screen and (min-width: 800px){ #lvlSuperTXT span {font-size: 0.9em; }  }
+        @media screen and (min-width: 1000px){ #lvlSuperTXT span {font-size: 1em; }  }
+        @media screen and (min-width: 1250px){ #lvlSuperTXT span {font-size: 1em; }  }
+        @media screen and (min-width: 1500px){ #lvlSuperTXT span {font-size: 1em; }  }
+      </style>
+
+    <header style='display:flex;flex-direction:row;font-size:2em;margin-top:1%; margin-bottom:2%'>
+      <article id='lvlTypeICONFrame'>
+
+        <section id="lvlSuperTXT" style="display:flex;justify-content:center;flex:1;">
+          <span id="lvlTypeICON" class="minMenuIcon" 
+          style="padding:0 0.5em 0.2em;color:darkviolet;">
+            <i id='lvlMission' class="fa fa-map"></i><span id='lvlMode' style="margin-left: 0.5em;">ACT~</span>
+          </span>
+        </section>
+
+      </article>
+    </header>
+    <article id='lvlTitleTXT' style='display:flex;flex-direction:row;justify-content:center;font-family:fantasy;'>
+      COLLECT~ENERGEMZ!
+    </article>
+    <article id='lvlIMG'>
+      <img style='width:4.44em;border-radius:13px;border:solid 1px yellow;box-shadow:0px 0px 20px 2px darkviolet;' src="./copyrightnetcinematics/img/energem2.png">
+    </article>
+    <article id='lvlSubTXT' style='display:flex;flex-direction:row;justify-content:center;'>
+      Find the SpaceTrain Wreck!
+    </article>
+    <style> .actionBtnLock{ background-color:#575d6b !important; } </style>
+    <style>/*#lvlActionBTNS button{font-size:1.2em;}*/
+    @media screen and (max-width: 350px){ #lvlActionBTNS button {font-size:0.8em !important; }
+    @media screen and (min-width: 450px){ #lvlActionBTNS button {font-size:1em !important; }
+    @media screen and (min-width: 850px){ #lvlActionBTNS button {font-size:1.2em !important; }
+    @media screen and (max-width: 350px){ #lvlActionBTNS button span {font-size:0.8em !important; }
+    @media screen and (min-width: 450px){ #lvlActionBTNS button span {font-size:1em !important; }
+    @media screen and (min-width: 850px){ #lvlActionBTNS button span {font-size:1.2em !important; }
+    </style>
+    <article id='lvlActionBTNS' style='margin-top:3%;display:flex;margin-bottom:3%;width:70%;justify-content:space-evenly;color: darkviolet;line-height: 3em;'>
+        <button id='lvlMovieBtn2' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px yellow;' aria-label="skip" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-video" style="padding-right:0.2em;color:#082b44;text-shadow:1px 1px #4169e1;"></i><span class=anmBtn style=''>VIDEO</span></button>
+        &nbsp;OR&nbsp;
+        <button id='lvlGameBtn1' class='actionBtnLock steelBlueBtnDlg' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="play"><i class="fa fa-lock" style="padding-right:0.2em;color:#24053f;text-shadow:1px 1px #9400D3;"></i><span class=anmBtn style=''>GAME</span></button>
+        &nbsp;OR&nbsp;
+        <button id='lvlBookBtn3' class='actionBtnLock steelBlueBtnDlg' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="epic"><i class="fa fa-lock" style="padding-right:0.2em;color:#072d0c;text-shadow:1px 1px #228B22;"></i><span class=anmBtn style=''>BOOK</span></button>
+    </article>
+    <style>
+    /*anmethodology: INLINE-DEVICE-OVERRIDES */
+    #lvlTIPS ul{margin:0;max-height: 5em; color:steelblue;} .completedQuest{color:green !important;}
+    @media screen and (max-width: 350px){ #lvlTIPS ul li {font-size:0.8em !important; line-height:1.888em !important; }  }
+    @media screen and (min-width: 350px){ #lvlTIPS ul li {font-size:1em !important; line-height:1.666em !important; }  }
+    @media screen and (min-width: 550px){ #lvlTIPS ul li {font-size:1.1em !important; line-height:1.555em !important; }  }
+    @media screen and (min-width: 850px){ #lvlTIPS ul li {font-size:1.2em !important; line-height:1.999em !important; }  }
+    </style>
+    <article id='lvlTIPS' style='margin-bottom:1%;line-height:2.44em;'>
+    </article>
+    
+    <style>@media screen and (max-width: 350px){ #lvlFooter {font-size:0.8em !important; }  }
+    </style>
+    <section id='lvlFooter' style='display:flex;width:100%;justify-content:space-between;margin-bottom:2.44%;font-size:1.22em;'>
+      <article id='lvlSubMSG1' style='position:absolute;bottom:5.5%;font-size:0.7em;'>
+      </article>
+      <article id='lvlSubMSG2' style='padding-top:2%;min-width:2em;margin:0 auto;'>
+        ~
+      </article>
+      <article id='lvlSubMSG3' style='line-height:1.88em;padding-top:1%;position:absolute;bottom:6.5%;right:4%;font-size:0.7em'>
+      </article>
+    </section>
+  </section> 
+</section> 
+
+
+
+          <footer id='canvasFooter' style='width:80%;/*margin:-3em auto 0;*/z-index:100;font-family:verdana;display:none;height:2em;position:absolute;bottom:1em;width: 100%;'>
           
             <span id="backingSpan" style="position:relative;display:flex;height:2.4em;border-radius:12px;background:black;width:82%;max-width:612px;margin:0 auto;border: 1px solid steelblue;"></span>
           
           </footer>
-          <!-- <footer id=canvasFooter style='background:#252425;width:60%;margin:0 auto;border:1px solid orange;color: orange;border-radius: 13px;padding: 0.5em;padding-left: 1em; margin-top: -2.5em; z-index: 100; text-align: center;height: 1.4em; line-height: 1.4em;'><span>Dr~Acozmo!</span></footer> -->
+          <!-- <footer id='canvasFooter' style='background:#252425;width:60%;margin:0 auto;border:1px solid orange;color: orange;border-radius: 13px;padding: 0.5em;padding-left: 1em; margin-top: -2.5em; z-index: 100; text-align: center;height: 1.4em; line-height: 1.4em;'><span>Dr~Acozmo!</span></footer> -->
 
     <!-- <section id="playBtn1" class="steelNeonIconBtn" style='display:none;position:absolute;top:3.4em;right:0.1em;z-index:111'><i class="fa fa-play-circle"></i></section> -->
 
@@ -957,7 +1054,7 @@ text-shadow: 1px 1px 10px #a20358;
   </div>
   <div id="viewRow3">
 
-<section id=minMenuView style='display:flex;max-height:2em;flex:1;line-height:2em;align-content:space-between;margin:0 0.5em;padding-top:0.3em'>
+<section id='minMenuView' style='display:flex;max-height:2em;flex:1;line-height:2em;align-content:space-between;margin:0 0.5em;padding-top:0.3em'>
   <!-- <nav style="color: rgb(0, 0, 255); display: flex; max-height: 2em; flex: 1 1 0%;"> -->
 <style>
 .minMenuIcon{
@@ -1000,8 +1097,8 @@ text-shadow: 1px 1px 10px #a20358;
     <section id="minMaxBtn2" class="minMenuIcon" style=" flex:0.2;z-index:100; display:none; margin-top:-0.3em;"><i class="fa fa-window-minimize"></i></section>
   <!-- <span style="display:flexbox; flex:1">APP</span> -->
 </section><!-- end minimized menu -->
-<!-- <section id=txtModeView style=' width: 100%;display: flex;flex-direction: column; height:100%;'> --> <!-- begin TXTMODEVIEW -->
-<!-- <section id=txtModeView style=' width: 100%; display:none; flex-direction: column; height:100%;'>  -->
+<!-- <section id='txtModeView' style=' width: 100%;display: flex;flex-direction: column; height:100%;'> --> <!-- begin TXTMODEVIEW -->
+<!-- <section id='txtModeView' style=' width: 100%; display:none; flex-direction: column; height:100%;'>  -->
   <!-- begin TXTMODEVIEW -->
      <!-- txtmode content -->
 <!-- ************************************************************************viewCTRLUI********************************** -->
@@ -1269,7 +1366,7 @@ box-shadow: 0px 0px 6px lime ;
     <section style='display:flex;flex-direction:column;width:100%;height:100%;'>
 
       <div style='flex:1;'>
-        <button id=ctrlBtn3 class='ctrlBtn'>JUMP!</button>
+        <button id='ctrlBtn3' class='ctrlBtn'>JUMP!</button>
       </div>
 
       <div style='flex:4;border:solid 1px steelblue;border-radius:13px;margin: 0.1em 0;
@@ -1284,8 +1381,8 @@ box-shadow: 0px 0px 6px lime ;
           align-content: center;
           align-items: center;'>
 
-                 <article id=camCtrlFrame>
-                    <div id=camCtrl class="ui-widget-content">
+                 <article id='camCtrlFrame'>
+                    <div id='camCtrl' class="ui-widget-content">
                       <p><img src="./img/dragCtrl1.png"> </p>
                     </div>
                  </article>
@@ -1295,7 +1392,7 @@ box-shadow: 0px 0px 6px lime ;
       </div>
 
       <div style='flex:1;'>
-        <button id=ctrlBtn4 class='ctrlBtn'>FAST!</button>
+        <button id='ctrlBtn4' class='ctrlBtn'>FAST!</button>
       </div>
 
     </section>
@@ -1317,7 +1414,7 @@ box-shadow: 0px 0px 6px lime ;
                   #idxViewNav{display:flex;}
                   #idxViewNav span{display:flex;flex:1;justify-content:center;text-decoration:underline;cursor:pointer;}
                 </style>
-                <nav id=idxViewNav> <span><i></i>INDEX</span> <span><i></i>EPIX</span> <span><i></i>HERO</span> <span><i></i>QUEST</span> <span><i></i>CHEST</span> </nav>
+                <nav id='idxViewNav'> <span><i></i>INDEX</span> <span><i></i>EPIX</span> <span><i></i>HERO</span> <span><i></i>QUEST</span> <span><i></i>CHEST</span> </nav>
               <hr style='border: 1px solid black;box-shadow: 1px 1px 3px 0px darkviolet;width:98%;'>
             </header>
 
@@ -1331,11 +1428,11 @@ box-shadow: 0px 0px 6px lime ;
 
 
                 <style>
-                  #caterpillarFrame{display:flex;border:1px solid darkmagenta;border-radius:13px;flex-wrap:wrap;padding:1em;}
-                  #caterpillarFrame article{display:flex;border:1px solid blueviolet;border-radius:13px;box-shadow:0px 0px 3px 0px steelblue;min-height:33em;min-width:19em;flex-direction:column;justify-content:space-around;align-items:center;flex:1;margin:0.2em;}
+                  .caterpillarFrame{display:flex;border:1px solid darkmagenta;border-radius:13px;flex-wrap:wrap;padding:1em;}
+                  .caterpillarFrame article{display:flex;border:1px solid blueviolet;border-radius:13px;box-shadow:0px 0px 3px 0px steelblue;min-height:33em;min-width:19em;flex-direction:column;justify-content:space-around;align-items:center;flex:1;margin:0.2em;}
                 </style>
 
-                <section id=caterpillarFrame>
+                <section class='caterpillarFrame'>
                   <article>1</article>
                   <article>2</article>
                   <article>3</article>

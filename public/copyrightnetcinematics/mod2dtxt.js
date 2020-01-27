@@ -775,11 +775,14 @@ nx.ui.showTitleScreen = function( config ){
   if(lvlIMGSize){ $(nx.lvlIMG[0]).css('width',lvlIMGSize) }
   
 
+debugger;
+
   //SHOW-TITLE-SCREEN-.
   nx.canva$.fadeOut(1000,function(){
     $('#titleViewFrame').show();
-    // $('#titleViewFrame').fadeIn(6000);
-    // $('#titleViewFrame').attr('opacity',0).css('display','flex').hide().fadeIn(3000);
+    // $('#mainTitleViewFrame').show();
+    // $('#mainTitleViewFrame').fadeIn(6000);
+    // $('#mainTitleViewFrame').attr('opacity',0).css('display','flex').hide().fadeIn(3000);
     $('#lvlTitleView').css("display", "flex").hide().fadeIn(2000);
     // $('#lvlTitleView').css("display", "flex").show();//.hide().fadeIn(6000);
   });
@@ -801,7 +804,7 @@ nx.ui.showTitleScreen = function( config ){
   // nx.lvlGameBtn1.unbind('click');//must do for singular handler-.
   // nx.lvlGameBtn1.click(function(){
   //   //HIDE-TITLE-SCREEN-.
-  //   $('#titleViewFrame').fadeOut(1000)
+  //   $('#mainTitleViewFrame').fadeOut(1000)
   //   nx.canva$.fadeIn(1000)
   //   nx.engine.resize();
   //   if(config.btn1fn){config.btn1fn();} //callback-.
@@ -811,8 +814,9 @@ nx.ui.showTitleScreen = function( config ){
   if(!nx.lvlMovieBtn2){nx.lvlMovieBtn2 = $('#lvlMovieBtn2')}
   nx.lvlMovieBtn2.unbind('click');//must do for singular handler-.
   nx.lvlMovieBtn2.click(function(){
+    debugger;
       //HIDE-TITLE-SCREEN-.
-      $('#titleViewFrame').fadeOut(1000)
+      $('#mainTitleViewFrame').fadeOut(1000)
       nx.canva$.fadeIn(1000)
       nx.engine.resize();
       if(config.btn2fn){config.btn2fn();} //callback-.
@@ -822,7 +826,7 @@ nx.ui.showTitleScreen = function( config ){
   
   // setTimeout(function(){ //todo
   //SHOW TITLE SCREEN //todo
-  //   $('#titleViewFrame').fadeOut(2000)
+  //   $('#mainTitleViewFrame').fadeOut(2000)
   //   nx.canva$.fadeIn(2000)
   //   nx.engine.resize()
   // },10000*nx.RUNTIME); 
