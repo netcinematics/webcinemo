@@ -76,7 +76,8 @@ nx.ui.navAppBtn1 = $('#navAppBtn1');
 nx.ui.minMaxBtn1 = $('#minMaxBtn1'); //max
 nx.ui.minMaxBtn2 = $('#minMaxBtn2'); //min
 nx.ui.isTXTViewMinimized = 1; //initially minimized-.
-nx.ui.activeView = nx.ui.idxView;     //default view while minimized.
+// nx.ui.activeView = nx.ui.idxView;     //default view while minimized.
+nx.ui.activeView = nx.ui.bookModeView;     //default view while minimized.
 
 nx.ui.canvasFooter = $('#canvasFooter');
 nx.ui.backingSpan = $('#backingSpan');
@@ -762,7 +763,7 @@ nx.ui.showTitleScreen = function( config ){
   var lvlSubTXT=(config.meta.lvlSubTXT)?config.meta.lvlSubTXT:''; 
   var lvlIMG=(config.meta.lvlIMG)?config.meta.lvlIMG:''; 
   var lvlTIPS=(config.meta.lvlTIPS)?config.meta.lvlTIPS:''; 
-  var lvlIconSize=(config.meta.lvlIconSize)?config.meta.lvlIconSize:'4.444em';
+  var lvlIMGSize=(config.meta.lvlIMGSize)?config.meta.lvlIMGSize:'4.444em';
   //POPULATE-VIEW-.
   // if(!nx.lvlNUM){nx.lvlNUM = $('#lvlNUM')}; nx.lvlNUM.html(lvlNUM);
   if(!nx.lvlMode){nx.lvlMode = $('#lvlMode')}; nx.lvlMode.html(lvlMode);
@@ -771,7 +772,7 @@ nx.ui.showTitleScreen = function( config ){
   if(!nx.lvlIMG){nx.lvlIMG = $('#lvlIMG img')}; nx.lvlIMG.attr('src', lvlIMG);
   if(!nx.lvlTIPS){nx.lvlTIPS = $('#lvlTIPS')}; nx.lvlTIPS.html(lvlTIPS);
   // if(!nx.lvlIconIMG){nx.lvlIconIMG = $('#lvlIMG')}; 
-  if(lvlIconSize){ $(nx.lvlIMG[0]).css('width','10em') }
+  if(lvlIMGSize){ $(nx.lvlIMG[0]).css('width',lvlIMGSize) }
   
 
   //SHOW-TITLE-SCREEN-.
@@ -910,6 +911,7 @@ nx.ui.showAppModeView = function(){
   debugger;
 }
 nx.ui.showIdxModeView = function(){
+  debugger; //shouldn't happen
   nx.ui.activeView.hide(1000);
   nx.ui.idxView.show(3000);
 
@@ -1591,6 +1593,8 @@ nx.ui.initialViewFrames = function(){
     $('#txtModeView').css('display', 'flex').hide();
     $('#gameModeView').css('display', 'flex').hide();
     $('#movieModeView').css('display', 'flex').hide();
+    $('#bookModeView').css('display', 'flex').hide();
+    // $('#bookModeView').hide();
     // $('#movieModeFrame').show();
     $('#bookBtn1').hide();
     $('#gameBtn2').hide();
@@ -2587,8 +2591,17 @@ nx.ui.navGameBtn1.on("click" , function(e){
   nx.ui.showGameModeView();
 }); 
 nx.ui.navBookBtn1.on("click" , function(e){
+
+  //old - remove TODO
   if(nx.ui.activeView===nx.ui.bookModeView){nx.ui.toggleMinMax((nx.ui.isTXTViewMinimized)?1:0); return;} //minimize-.
   nx.ui.showBookModeView();
+  //new
+  // if(nx.ui.activeView===nx.ui.idxView){nx.ui.toggleMinMax((nx.ui.isTXTViewMinimized)?1:0); return;} //minimize-.
+  // nx.ui.showIdxModeView();
+
+
+
+
   //todo make this showBookMode();
   //And then
 }); 
@@ -2604,7 +2617,6 @@ nx.ui.navAppBtn1.on("click" , function(e){
 nx.ui.minMaxBtn1.on("click" , function(e){ //maximizeBtn
   nx.ui.toggleMinMax(1);
   // debugger;
-  // nx.ui.showBookModeView();
 
   // //allow previously active view to size itself-.
   // if(nx.ui.activeView===nx.ui.idxView){
@@ -2618,7 +2630,6 @@ nx.ui.minMaxBtn1.on("click" , function(e){ //maximizeBtn
   // }else if(nx.ui.activeView===nx.ui.gameModeView){
   //   nx.ui.showGameModeView();
   // }else if(nx.ui.activeView===nx.ui.bookModeView){
-  //   nx.ui.showBookModeView();
   // }else if(nx.ui.activeView===nx.ui.appModeView){
   //   nx.ui.showAppModeView();
   // }else{
@@ -2634,7 +2645,6 @@ nx.ui.minMaxBtn1.on("click" , function(e){ //maximizeBtn
 nx.ui.minMaxBtn2.on("click" , function(e){ //minimizebtn
   nx.ui.toggleMinMax(0); //minimize-.
   // debugger;
-  // nx.ui.showBookModeView();
   // nx.ui.isTXTViewMinimized = 1;   //is minimized-.
   // // $('#txtModeView').hide();
   // // $('#gameModeView').hide();
@@ -2683,13 +2693,15 @@ nx.ui.minMaxBtn2.on("click" , function(e){ //minimizebtn
 nx.ui.toggleMinMax = function(maximize){ 
   if(maximize){ //-------------------------------------------------------
     //allow previously active view to size itself-.
-    if(nx.ui.activeView===nx.ui.idxView){
-      nx.ui.showIdxModeView();
-    }else if(nx.ui.activeView===nx.ui.heroView){
-      nx.ui.showHeroModeView();
-    }else if(nx.ui.activeView===nx.ui.questView){
-      nx.ui.showQuestModeView();
-    }else if(nx.ui.activeView===nx.ui.movieModeView){
+    // if(nx.ui.activeView===nx.ui.idxView){
+    //   nx.ui.showIdxModeView();
+    // }else 
+    // if(nx.ui.activeView===nx.ui.heroView){
+    //   nx.ui.showHeroModeView();
+    // }//else if(nx.ui.activeView===nx.ui.questView){
+    //   nx.ui.showQuestModeView();
+    // }else if(nx.ui.activeView===nx.ui.movieModeView){
+    if(nx.ui.activeView===nx.ui.movieModeView){
       nx.ui.showMovieModeView();
     }else if(nx.ui.activeView===nx.ui.gameModeView){
       nx.ui.showGameModeView();
@@ -2916,9 +2928,9 @@ nx.ui.toggleMinMax = function(maximize){
       //***********************************************************************************CTRL-VIEW***************************/
 
       nx.ui.lowNavBtn1.on("click" , function(e){         // console.log('epic')
+        // if(nx.ui.activeView===nx.ui.idxView){nx.ui.toggleMinMax((nx.ui.isTXTViewMinimized)?1:0); return;} //minimize-.
+        // nx.ui.showIdxModeView();
         // if(nx.ui.activeView===nx.ui.idxView && !nx.ui.isTXTViewMinimized){return;}
-        if(nx.ui.activeView===nx.ui.idxView){nx.ui.toggleMinMax((nx.ui.isTXTViewMinimized)?1:0); return;} //minimize-.
-        nx.ui.showIdxModeView();
         // nx.ui.showBookModeView();
         // nx.ui.idxView.show(2000);
         // if(nx.ui.activeView!=nx.ui.idxView){nx.ui.activeView.slideUp(3000);}
@@ -3062,7 +3074,7 @@ nx.ui.toggleMinMax = function(maximize){
 
 //COLUMN SELECTOR
   nx.ui.autoTab = function(idx){ //switchTabs-.
-    debugger; //?
+    debugger; //? not used
     if(!idx){return;}
     if(idx==1 && nx.ui.activeView != nx.ui.idxView){
         nx.ui.idxView.show(2000);

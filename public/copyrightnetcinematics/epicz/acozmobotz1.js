@@ -5508,22 +5508,27 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
 
 
                 if(nx.cinemaPlayAll){ //auto call the movie.
-                    nx.ui.flashCanvasMSG({txt:'ACT~2: COSMO~CAR CRASH!',dur:2000,txtInit:function(){
+                    nx.ui.flashCanvasMSG({txt:'ACT~2: COSMO~CAR~CRASH!',dur:2000,txtInit:function(){
                     }}); 
 
                     // nx.initSEQ({seqID:7}); /* affirmation seq todo orby skip game scane sequence*/
                     nx.scanTrainSeqIdx[NUM+1]={on:1};  //next frame-.
                 }else{
 
+// debugger;
                     //SHOW-TITLE-SCREEN-.
                     nx.ui.showTitleScreen({
                         // meta:{lvlNUM:1,lvlTXT:'COLLECT~SPACEIONZ!',lvlSubTXT:'Land on SpacePad.',
-                        meta:{lvlMode:'ACT~2',lvlNUM:0,lvlTXT:'COSMO~CAR CRASH!',lvlSubTXT:'COLLECT 100 Ionz.',lvlIconSize:'4.444em',
+                        meta:{lvlMode:'ACT~2',lvlNUM:0,lvlTXT:'COSMO~CAR~CRASH!',lvlSubTXT:'COLLECT 100 Ionz.',lvlIMGSize:'4.444em',
                         // lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`<ul>
+                        // <ul style="list-style:none;height:79%;overflow:scroll;border:1px solid steelblue;border-radius: 13px;padding-left:0.444em;padding-right:0.444em;
+                        // box-shadow: 0 0 6px 0px darkviolet;">
                         lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`
-                        <ul style="list-style:none;height:79%;font-size:1.2em;overflow:scroll;border:1px solid steelblue;border-radius: 13px;padding-left:0.444em;padding-right:0.444em;box-shadow: 0 0 6px 0px darkviolet;">
-                            <li><i class="fa fa-globe"></i>&nbsp;&nbsp;<i class="fa fa-check-circle"></i> 1: Land on ALPHA~MOON.</li>
-                            <li><i class="fa fa-search"></i>&nbsp;&nbsp;<i class="fa fa-check-circle"></i> 2: Find COSMO~CAR crash.</li>
+                        <ul class='scrollColor1' style="list-style:none;height:80%;font-size:1em;overflow-y:scroll;overflow-x:wrap;
+                        border:1px solid steelblue;border-radius:13px;padding:1em;
+                        box-shadow: 0 0 6px 0px darkviolet, inset 2px 1px 6px 0px steelblue;line-height:2em;">
+                            <li class="completedQuest"><i class="fa fa-globe"></i>&nbsp;&nbsp;<i class="fa fa-check-circle"></i> 1: Land on ALPHA~MOON.</li>
+                            <li class="completedQuest"><i class="fa fa-search"></i>&nbsp;&nbsp;<i class="fa fa-check-circle"></i> 2: Find COSMO~CAR crash.</li>
                             <li><i class="fa fa-atom"></i>&nbsp;&nbsp;QUEST 3: SCAN and call AEON.</li>
                             <li><i class="fa fa-dice-d20"></i>&nbsp;&nbsp;QUEST 4: Collect 100 Ionz.</li>
                             <li><i class="fa fa-shield-alt"></i>&nbsp;&nbsp;QUEST 5: Find ZAWD, give MESSAGE.</li>

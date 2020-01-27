@@ -7,7 +7,7 @@
 <link rel="manifest" href="./manifest.json">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="HandheldFriendly" content="true" /> <!--fix rwd sizing bug-->
   <!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"> -->
 
@@ -444,40 +444,14 @@ var nx = {}; //NetcinematiX NameSpace-.
   </section> <!--end app title view-->
   <section id=lvlTitleView style='display:none !important;width:88%;height:100%;margin-top:20%;margin-bottom:10%;
     display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;'> 
-    <header style='display:flex;flex-direction:row;font-size:2em;margin-top:1%; margin-bottom:2%'>
-      <article id=lvlTypeICONFrame>
-
-        <!--TERNARY-HIDE-SHOW-->
-        <!-- <section style="display:none;justify-content:center;flex:1">
-          <span id="lvlMovieBtn1" class="minMenuIcon btnSelector" 
-          style="padding:0 0.5em 0.2em;color:royalblue;">
-          <i class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span></span></section> -->
-        <section id="lvlSuperTXT" style="display:flex;justify-content:center;flex:1">
-          <span id="lvlTypeICON" class="minMenuIcon" 
-          style="padding:0 0.5em 0.2em;color:darkviolet;">
-          <i id=lvlMission class="fa fa-map"></i><span id=lvlMode style="margin-left: 0.5em;">ACT~</span>
-          <!-- <i id=lvlGAM class="fa fa-gamepad"></i><span style="margin-left: 0.5em;">GAME</span> -->
-          <!-- <i id=lvlMOV class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span> -->
-          <!-- <i id=lvlTXT class="fa fa-book-open"></i><span style="margin-left: 0.5em;">BOOK</span> -->
-          <span id=lvlNUM></span></span>
-        </section>
-        <!-- <section style="display:none;justify-content:center;flex:1">
-          <span id="lvlBookBtn1" class="minMenuIcon" 
-          style="padding:0 0.5em 0.2em;color:forestgreen;">
-          <i class="fa fa-book-open"></i><span style="margin-left: 0.5em;">BOOK</span></span></section>
- -->
-
-      </article>
-      <!-- <article id=lvlTypeNUMFrame>
-         1:
-      </article> -->
-    </header>
 
 
     <style>
         /* anmmethodology preferred-media-query-format */
         /* cross device TITLETXT */
-        @media screen and (min-width: 350px){ #lvlTitleTXT {font-size: 2.444em; }  }
+        @media screen and (max-width: 350px){ #lvlTitleTXT {font-size: 1.8em; }  }
+        @media screen and (min-width: 350px){ #lvlTitleTXT {font-size: 2.111em; }  }
+        @media screen and (min-width: 450px){ #lvlTitleTXT {font-size: 2.222em; }  }
         @media screen and (min-width: 550px){ #lvlTitleTXT {font-size: 3em; }  }
         @media screen and (min-width: 800px){ #lvlTitleTXT {font-size: 3.5em; }  }
         @media screen and (min-width: 1000px){ #lvlTitleTXT {font-size: 4.5em; }  }
@@ -491,13 +465,29 @@ var nx = {}; //NetcinematiX NameSpace-.
         @media screen and (min-width: 1250px){ #lvlSubTXT {font-size: 2em; }  }
         @media screen and (min-width: 1500px){ #lvlSubTXT {font-size: 2.2em; }  }
         /* cross device SUPERTITLETXT */
-        @media screen and (min-width: 350px){ #lvlSuperTXT {font-size: 0.8em; }  }
-        @media screen and (min-width: 550px){ #lvlSuperTXT {font-size: 1em; }  }
-        @media screen and (min-width: 800px){ #lvlSuperTXT {font-size: 1em; }  }
-        @media screen and (min-width: 1000px){ #lvlSuperTXT {font-size: 1em; }  }
-        @media screen and (min-width: 1250px){ #lvlSuperTXT {font-size: 1em; }  }
-        @media screen and (min-width: 1500px){ #lvlSuperTXT {font-size: 1em; }  }
+        @media screen and (max-width: 350px){ #lvlSuperTXT span {font-size: 0.6em; }  }
+        @media screen and (min-width: 350px){ #lvlSuperTXT span {font-size: 0.7em; }  }
+        @media screen and (min-width: 550px){ #lvlSuperTXT span {font-size: 0.8em; }  }
+        @media screen and (min-width: 800px){ #lvlSuperTXT span {font-size: 0.9em; }  }
+        @media screen and (min-width: 1000px){ #lvlSuperTXT span {font-size: 1em; }  }
+        @media screen and (min-width: 1250px){ #lvlSuperTXT span {font-size: 1em; }  }
+        @media screen and (min-width: 1500px){ #lvlSuperTXT span {font-size: 1em; }  }
       </style>
+
+
+    <header style='display:flex;flex-direction:row;font-size:2em;margin-top:1%; margin-bottom:2%'>
+      <article id=lvlTypeICONFrame>
+
+        <section id="lvlSuperTXT" style="display:flex;justify-content:center;flex:1;">
+          <span id="lvlTypeICON" class="minMenuIcon" 
+          style="padding:0 0.5em 0.2em;color:darkviolet;">
+            <i id=lvlMission class="fa fa-map"></i><span id=lvlMode style="margin-left: 0.5em;">ACT~</span>
+          <!-- <span id=lvlNUM></span> -->
+          </span>
+        </section>
+
+      </article>
+    </header>
     <article id=lvlTitleTXT style='display:flex;flex-direction:row;justify-content:center;font-family:fantasy;'>
       COLLECT~ENERGEMZ!
     </article>
@@ -507,24 +497,37 @@ var nx = {}; //NetcinematiX NameSpace-.
     <article id=lvlSubTXT style='display:flex;flex-direction:row;justify-content:center;'>
       Find the SpaceTrain Wreck!
     </article>
-    <article id=lvlActionBtnsFrame style='margin-top:3%;display:flex;margin-bottom:3%;width:70%;justify-content:space-evenly;color: darkviolet;line-height: 3em;'>
-        <button id=lvlMovieBtn2 style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px yellow;' aria-label="skip" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-video" style="font-size:1em;padding-right:0.2em;color:#082b44;text-shadow:1px 1px #4169e1;"></i><span class=anmBtn style='font-size:1em;'>VIDEO</span></button>&nbsp;OR&nbsp;
-        <button id=lvlGameBtn1 style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="play" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-lock" style="font-size:1em;padding-right:0.2em;color:#41075a;text-shadow:1px 1px #9400D3;"></i><span class=anmBtn style='font-size:1em;'>GAME</span></button>&nbsp;OR&nbsp;
-        <button id=lvlBookBtn3 style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="epic" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-lock" style="font-size:1em;padding-right:0.2em;color:#003902;text-shadow:1px 1px #228B22;"></i><span class=anmBtn style='font-size:1em'>BOOK</span></button>
-    </article>
-    <style>#lvlTIPS ul{margin:0;}
-     @media screen and (max-width: 350px){ #lvlTIPS {font-size:0.8em !important; line-height:1.44em !important; }  }
+    <!-- <hr style="color:yellow"> -->
+    <style> .actionBtnLock{ background-color:#575d6b !important; } </style>
+    <style>/*#lvlActionBTNS button{font-size:1.2em;}*/
+    @media screen and (max-width: 350px){ #lvlActionBTNS button {font-size:0.8em !important; }
+    @media screen and (min-width: 450px){ #lvlActionBTNS button {font-size:1em !important; }
+    @media screen and (min-width: 850px){ #lvlActionBTNS button {font-size:1.2em !important; }
+    @media screen and (max-width: 350px){ #lvlActionBTNS button span {font-size:0.8em !important; }
+    @media screen and (min-width: 450px){ #lvlActionBTNS button span {font-size:1em !important; }
+    @media screen and (min-width: 850px){ #lvlActionBTNS button span {font-size:1.2em !important; }
     </style>
-    <article id=lvlTIPS style='margin-bottom:1%;color:steelblue;line-height:2.44em;'>
-      <ul>
+    <article id=lvlActionBTNS style='margin-top:3%;display:flex;margin-bottom:3%;width:70%;justify-content:space-evenly;color: darkviolet;line-height: 3em;'>
+        <button id=lvlMovieBtn2 style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px yellow;' aria-label="skip" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-video" style="padding-right:0.2em;color:#082b44;text-shadow:1px 1px #4169e1;"></i><span class=anmBtn style=''>VIDEO</span></button>
+        &nbsp;OR&nbsp;
+        <button id=lvlGameBtn1 class='actionBtnLock steelBlueBtnDlg' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="play"><i class="fa fa-lock" style="padding-right:0.2em;color:#24053f;text-shadow:1px 1px #9400D3;"></i><span class=anmBtn style=''>GAME</span></button>
+        &nbsp;OR&nbsp;
+        <button id=lvlBookBtn3 class='actionBtnLock steelBlueBtnDlg' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="epic"><i class="fa fa-lock" style="padding-right:0.2em;color:#072d0c;text-shadow:1px 1px #228B22;"></i><span class=anmBtn style=''>BOOK</span></button>
+    </article><!--anmethodology: INLINE-DEVICE-OVERRIDES -->
+    <style>#lvlTIPS ul{margin:0;max-height: 5em; color:steelblue;} .completedQuest{color:green !important;}
+/*    @media screen and (max-width: 350px){ #lvlTIPS ul li {font-size:0.8em !important; line-height:1.888em !important; }  }
+    @media screen and (min-width: 350px){ #lvlTIPS ul li {font-size:1em !important; line-height:1.666em !important; }  }
+    @media screen and (min-width: 550px){ #lvlTIPS ul li {font-size:1.1em !important; line-height:1.444em !important; }  }*/
+    </style>
+    <article id=lvlTIPS style='margin-bottom:1%;line-height:2.44em;'>
+     <!--  <ul>
         <li>GAME: use WASD or TOUCH controls: <img style='width:1.11em' src="./img/dragCtrl1.png">  </li>
         <li>MOVIE: PLAYONE scene or PLAYALL MOVIE. </li>
         <li>BOOK: follow the EPIC~ADVENTURE! </li>
-      </ul>
+      </ul> -->
     </article>
     
-    <style>
-        @media screen and (max-width: 350px){ #lvlFooter {font-size:0.8em !important; }  }
+    <style>@media screen and (max-width: 350px){ #lvlFooter {font-size:0.8em !important; }  }
     </style>
     <section id=lvlFooter style='display:flex;width:100%;justify-content:space-between;margin-bottom:2.44%;font-size:1.22em;'>
       <article id=lvlSubMSG1 style='position:absolute;bottom:5.5%;font-size:0.7em;'>
@@ -1305,138 +1308,168 @@ box-shadow: 0px 0px 6px lime ;
 </section> 
 <!-- ************************************************************************viewCTRLUI********************************** -->
 
-        <section id="idxView" class='scrollBar1 typeTxt1' style='display:none;width: 95%;margin: 0.8em auto;'> 
-
-            <article id="scrollDoc1">
-              <hr>
-                <span style='font-size:1em; font-family:verdana;'>~Series, epic: scene</span>
-                <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> supercozms </span>
-              <hr>
-
-              
-                <p id=epicMENUapp class='typeAction'><span><i class="fa fa-mobile"></i></span>&nbsp;&nbsp;<span>ACOSMICAPP:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUtitlescreenSEQ class='typeAction'><span><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;OrbyOrbot in</span><span class='txtLink'>ACOZMOBOTZ!</span></p>
-                <p id=epicMENUchapter1 class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>CHAPTER 1:&nbsp;&nbsp;</span><span class='txtLink'>Land on AlphaMoon!</span></p>
-                <p id=epicMENUacozmoscopeSEQ class='typeAction'><span><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;Enter the Acozmoscope</span><span class='txtLink'>ACOZMOSCOPE</span></p>
-                <p id=epicMENUvortexSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>SPACEVORTEX&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUorionSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Left of Orion&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUnebulaSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Purple Nebula&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUorbyIntroSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>OrbyOrbot!?!&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUspaceIonzGAM class='typeAction'><span><i class="fa fa-gamepad"></i></span>&nbsp;&nbsp;<span>SPACE~IONZ!&nbsp;&nbsp;</span><span class='txtLink'>COLLECT!</span></p>
-                <p id=epicMENUshowdownSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Showdown&nbsp;&nbsp;</span><span class='txtLink'>ZAPBOTZ!</span></p>
-                <p id=epicMENUpipeRideGAM class='typeAction'><span><i class="fa fa-gamepad"></i></span>&nbsp;&nbsp;<span>Surf Cosmos&nbsp;&nbsp;</span><span class='txtLink'>SPACEPIPE!</span></p>
-                <p id=epicMENUdrakbotSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Warning!&nbsp;&nbsp;</span><span class='txtLink'>DRAKBOT
-                  !</span></p>
-                <p id=epicMENUcrashSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUspacejunkSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUorbyriseupSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUchapter2 class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUscantrainSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUexploreGAM class='typeAction'><span><i class="fa fa-gamepad"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUchapter3 class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUconfront class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUarrest class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUescape class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUsunset class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUfinale class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUendchapter class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-                <p id=epicMENUcreditroll class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-              <hr>
+        <section id="bookModeView" class='typeTxt1' style='display:none;flex-direction:column;flex:1;width: 95%;height:1em;margin: 0.8em auto;'> 
 
 
-              <hr>
-                <span style='font-size:1em; font-family:verdana;'>~Series, epic: scene</span>
-                <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> supercozms </span>
-                <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> minicozms </span>
-                <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> neitherwurldz </span>
-              <hr>
-              <p id=playNowBtn1 class='typeAction'><span>GAME: &nbsp;&nbsp;<span><i class="fa fa-book-open"></i></span></span><span class='txtLink'>LEGEND!</span></p>
-              <p id=playNowBtn2 class='typeAction'><span>GAME: &nbsp;&nbsp;<span><i class="fa fa-gamepad"></i></span></span><span class='txtLink'>EXPLORE!</span></p>
-              <p id=movieNowBtn class='typeAction'><span>MOVIE: &nbsp;&nbsp;<span><i class="fa fa-video"></i></span></span><span class='txtLink'>WATCH MOVIE!</span></p>
-              <p id=adventureNowBtn class='typeAction'><span>ADVENTURE:&nbsp;&nbsp;<span><i class="fa fa-book-open"></i></span></span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
-              <hr>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMO's</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOQUEST</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOBOTZ</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>on ACOZMO.net</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOCOZM</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>Cyber ACOZMOCOZM</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOCOA</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOGON</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOZON</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOZOA</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ANEOCOZMO</span></p>
-              <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMONOVA</span></p>
-              <p class='typeAction'><span>SERIES:</span><span class='txtLink'>digital-cyber-cozm's</span></p>
-              <p class='typeAction'><span>ISSUE:</span><span class='txtLink'>ANOTHERCOZMO</span></p>
-              <p class='typeAction'><span>EPIC:</span><span class='txtLink'>ACOZMO.net!</span></p>
-              <p class='typeAction'><span>AGE:</span><span class='txtLink'>Age of Zawd.</span></p>
-              <p class='typeCinemo'><span>SECTOR:</span><span class='txtLink'>Zeta Oort Clouds</span></p>
-              <p><img class='txtPicture' src='./copyrightnetcinematics/img/hero/orbycover2.png'/></p>
-              <p class='typeAction'><span>EPISODE:</span><span class='txtLink'>SAVE~BETA~MOON!</span></p>
-              <p class='typeMission'><span>MISSION:</span><span class='txtLink'>...save BetaMoon</span></p>
-              <p class='typeAction'><span>ACTION:</span><span class='txtLink'>...land on BetaMoon</span></p>
-              <p class='typeCinemo'><span>STORY:</span><span class='txtLink'>BetaMoon Landing!</span></p>
-              <p class='typeAction'><span>QUEST:</span><span class='txtLink'>Find the lost ENERGEM!</span></p>
-              <p class='typeAction'><span>SCENE:</span><span class='txtLink'>Land on BETA~MOON!</span></p>
-              <p class='typeAction'><span>HERO:</span><span class='txtLink'>TXTLINK</span></p>
-              <i class='typeSubTxt'>Follow online in Zeta~OortCloud!</i>
-              <hr style='box-shadow: 1px 1px 5px steelblue;'>
-              <i class='typeSubTxt'>Origin!Story</i>
-              <p>1960's Earth - Alpha~OortCloud. <hr style='box-shadow: 1px 1px 3px yellow;'>Dr. Acozmo connects to a far-distant-world using quantum enganglement of photons. "We entagled Alpha to Zeta~OortCloud"-DR.ACOZMO.  Then is kids digitize them to the web 50 years later! <hr style='box-shadow: 1px 1px 3px  #f307f3;;'> "No one believes it is an actual far-distant-world." the twinz. <br>"We made contact on the very first signal..."<br>"... it was OrbyOrbot!" - DR.ACOZMO
-              </p>  
-              <p><hr style='box-shadow: 1px 1px 3px  #f307f3;;'>Enter ANIMOTOONZ!</p>
-              <hr style='box-shadow: 1px 1px 15px white;'>
-              <p>Everything in existance vibrates. Dr. Acozmo digitizes vibrations from photons and gravity waves and puts them on the internet.</p>
-              <p>Using 1960's Television Antenna and a rotary phone he dials up a distant Acosmocozm and renders it to the 3DWeb.</p>
-              <p>A kagillion to discover.</p> 
-              <p class='typeBio'>
-                <article>
-                    <header>
-                        <i>~BIO:</i>
-                        <span>Orby Or Bot<span>
-                        <i> - The Ordinary Robot</i>
-                    </header>  
-                        <section>
-                            <hr>
-                            <span>~ Orby Learns to Fly ~</span>
-                            <hr>
-                            Orby practices surfing on his mothers ironing board in the garage. 
-                            He falls and bumps his head, and the metal board crashes into a stack of microwave ovens his dad used for melting elements. Technicolor stars shoot out! Blue and gold electro-chemical-bursts through broken glass!
-                            The ironing board is ionized, and gold positronz stream in, as it glows with a hum! 
-                            The electric plug explodes!  With quick thinking, Orby punches the "Cancel" button. 
-                            And the positively ionized ironing board drops to a charred smoldering lump.
-                            Weeks later, Orby is looking for a science-fair project.
-                            He makes a space-kite because he wants to fly like his dad, who flies in space.
-                            Orby sneaks into the garage late at night. In the dark, he summons the courage to press the "quick cook button". The microwave springs to life. But without the golden positronz as before, the SpaceBoard hovers for the first time!
-                            <hr>
-                            <TXT Dr.Acozmo> 
-                            Free of negatronz, the explosion reversed the microwave-field and will only push out positronz! 
-                            Which is how the SpaceBoard floats. With different energem SpaceDust (positronz, negatronz) - the board rides differently. Faster or higher with different colors and particle waves.
-                            <hr>
-                            DO NOT TRY THIS AT HOME. IT WONT WORK. AND ALSO BECAUSE... like the ironing board - Orby is made of aminium.
-                            Which the inverted microwave only works to lighten the weight of aminium, not a hooman! 
-                            <hr>
-                            Orby takes one step onto the SpaceBoard. His foot touches, and in a glow of positronz - he is slowly ionized!
-                            Orby might be electrocuted! But, he scans his clampy and glowing robot hands. 
-                            He is ok! So, with his second flat foot, he steps up onto the SpaceBoard! 
-                            <AUD tada></AUD>
-                            <PIC Orby strikes a pose>
-                            <AUD adventure music>
-                              He opens the garage with a green laser. Then slowly down the driveway he hovers. Until he loses his balance and crashes into the garbage cans.
-                            <hr>
-                            <i>~Orby Learns to Fly...</i>
-                            <hr>
-                        </section>
-                    </article>
-              </p>
-              <p class='typeWarn'>WARN! Avoid ZapBotz!</p>
-              <p class='typeBio'><header><span>BIO!</span><i>ZapBotz!</i></header>
-                <section class='typeMysteryTxt'>- Where do they come from?</section>
-                <section class='typeMysteryTxt'>- What are they doing?</section>
-              </p>
-            </article>
-        </section><!-- end idxView -->
+            <header style="flex: 1;border:solid 1px #152837;max-height:3.8em;border-radius:13px;margin-bottom:0.444em;">
+              <hr style='border: 1px solid black;box-shadow: 1px 1px 3px 0px darkviolet;width:98%;'>
+                <style>
+                  #idxViewNav{display:flex;}
+                  #idxViewNav span{display:flex;flex:1;justify-content:center;text-decoration:underline;cursor:pointer;}
+                </style>
+                <nav id=idxViewNav> <span><i></i>INDEX</span> <span><i></i>EPIX</span> <span><i></i>HERO</span> <span><i></i>QUEST</span> <span><i></i>CHEST</span> </nav>
+              <hr style='border: 1px solid black;box-shadow: 1px 1px 3px 0px darkviolet;width:98%;'>
+            </header>
+
+            <!-- <section id="idxView" class='scrollBar1 typeTxt1' style='display:flex;'> 
+              TEST
+            </section> -->
+
+            <section id="idxView" class='scrollBar1 typeTxt1' style='display:flex;'> 
+              <article id="scrollDoc1" style="height:1em;">
+
+
+
+                <style>
+                  #caterpillarFrame{display:flex;border:1px solid darkmagenta;border-radius:13px;flex-wrap:wrap;padding:1em;}
+                  #caterpillarFrame article{display:flex;border:1px solid blueviolet;border-radius:13px;box-shadow:0px 0px 3px 0px steelblue;min-height:33em;min-width:19em;flex-direction:column;justify-content:space-around;align-items:center;flex:1;margin:0.2em;}
+                </style>
+
+                <section id=caterpillarFrame>
+                  <article>1</article>
+                  <article>2</article>
+                  <article>3</article>
+                  <article>4</article>
+                  <article>5</article>
+                </section>
+
+
+
+                
+                  <p id=epicMENUapp class='typeAction'><span><i class="fa fa-mobile"></i></span>&nbsp;&nbsp;<span>ACOSMICAPP:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUtitlescreenSEQ class='typeAction'><span><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;OrbyOrbot in</span><span class='txtLink'>ACOZMOBOTZ!</span></p>
+                  <p id=epicMENUchapter1 class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>CHAPTER 1:&nbsp;&nbsp;</span><span class='txtLink'>Land on AlphaMoon!</span></p>
+                  <p id=epicMENUacozmoscopeSEQ class='typeAction'><span><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;Enter the Acozmoscope</span><span class='txtLink'>ACOZMOSCOPE</span></p>
+                  <p id=epicMENUvortexSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>SPACEVORTEX&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUorionSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Left of Orion&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUnebulaSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Purple Nebula&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUorbyIntroSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>OrbyOrbot!?!&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUspaceIonzGAM class='typeAction'><span><i class="fa fa-gamepad"></i></span>&nbsp;&nbsp;<span>SPACE~IONZ!&nbsp;&nbsp;</span><span class='txtLink'>COLLECT!</span></p>
+                  <p id=epicMENUshowdownSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Showdown&nbsp;&nbsp;</span><span class='txtLink'>ZAPBOTZ!</span></p>
+                  <p id=epicMENUpipeRideGAM class='typeAction'><span><i class="fa fa-gamepad"></i></span>&nbsp;&nbsp;<span>Surf Cosmos&nbsp;&nbsp;</span><span class='txtLink'>SPACEPIPE!</span></p>
+                  <p id=epicMENUdrakbotSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>Warning!&nbsp;&nbsp;</span><span class='txtLink'>DRAKBOT
+                    !</span></p>
+                  <p id=epicMENUcrashSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUspacejunkSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUorbyriseupSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUchapter2 class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUscantrainSEQ class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUexploreGAM class='typeAction'><span><i class="fa fa-gamepad"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUchapter3 class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUconfront class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUarrest class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUescape class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUsunset class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUfinale class='typeAction'><span><i class="fa fa-video"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUendchapter class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                  <p id=epicMENUcreditroll class='typeAction'><span><i class="fa fa-book-open"></i></span>&nbsp;&nbsp;<span>ADVENTURE:&nbsp;&nbsp;</span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <hr>
+
+
+                <hr>
+                  <span style='font-size:1em; font-family:verdana;'>~Series, epic: scene</span>
+                  <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> supercozms </span>
+                  <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> minicozms </span>
+                  <span style='float:right; font-size:0.9em; margin-top:0.1em; font-family:georgia; color:var(--neonpurple);'> neitherwurldz </span>
+                <hr>
+                <p id=playNowBtn1 class='typeAction'><span>GAME: &nbsp;&nbsp;<span><i class="fa fa-book-open"></i></span></span><span class='txtLink'>LEGEND!</span></p>
+                <p id=playNowBtn2 class='typeAction'><span>GAME: &nbsp;&nbsp;<span><i class="fa fa-gamepad"></i></span></span><span class='txtLink'>EXPLORE!</span></p>
+                <p id=movieNowBtn class='typeAction'><span>MOVIE: &nbsp;&nbsp;<span><i class="fa fa-video"></i></span></span><span class='txtLink'>WATCH MOVIE!</span></p>
+                <p id=adventureNowBtn class='typeAction'><span>ADVENTURE:&nbsp;&nbsp;<span><i class="fa fa-book-open"></i></span></span><span class='txtLink'>FOLLOW ADVENTURE!</span></p>
+                <hr>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMO's</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOQUEST</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOBOTZ</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>on ACOZMO.net</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOCOZM</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>Cyber ACOZMOCOZM</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOCOA</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOGON</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOZON</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMOZOA</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ANEOCOZMO</span></p>
+                <p class='typeAction'><span>PLATFORM:</span><span class='txtLink'>ACOZMONOVA</span></p>
+                <p class='typeAction'><span>SERIES:</span><span class='txtLink'>digital-cyber-cozm's</span></p>
+                <p class='typeAction'><span>ISSUE:</span><span class='txtLink'>ANOTHERCOZMO</span></p>
+                <p class='typeAction'><span>EPIC:</span><span class='txtLink'>ACOZMO.net!</span></p>
+                <p class='typeAction'><span>AGE:</span><span class='txtLink'>Age of Zawd.</span></p>
+                <p class='typeCinemo'><span>SECTOR:</span><span class='txtLink'>Zeta Oort Clouds</span></p>
+                <p><img class='txtPicture' src='./copyrightnetcinematics/img/hero/orbycover2.png'/></p>
+                <p class='typeAction'><span>EPISODE:</span><span class='txtLink'>SAVE~BETA~MOON!</span></p>
+                <p class='typeMission'><span>MISSION:</span><span class='txtLink'>...save BetaMoon</span></p>
+                <p class='typeAction'><span>ACTION:</span><span class='txtLink'>...land on BetaMoon</span></p>
+                <p class='typeCinemo'><span>STORY:</span><span class='txtLink'>BetaMoon Landing!</span></p>
+                <p class='typeAction'><span>QUEST:</span><span class='txtLink'>Find the lost ENERGEM!</span></p>
+                <p class='typeAction'><span>SCENE:</span><span class='txtLink'>Land on BETA~MOON!</span></p>
+                <p class='typeAction'><span>HERO:</span><span class='txtLink'>TXTLINK</span></p>
+                <i class='typeSubTxt'>Follow online in Zeta~OortCloud!</i>
+                <hr style='box-shadow: 1px 1px 5px steelblue;'>
+                <i class='typeSubTxt'>Origin!Story</i>
+                <p>1960's Earth - Alpha~OortCloud. <hr style='box-shadow: 1px 1px 3px yellow;'>Dr. Acozmo connects to a far-distant-world using quantum enganglement of photons. "We entagled Alpha to Zeta~OortCloud"-DR.ACOZMO.  Then is kids digitize them to the web 50 years later! <hr style='box-shadow: 1px 1px 3px  #f307f3;;'> "No one believes it is an actual far-distant-world." the twinz. <br>"We made contact on the very first signal..."<br>"... it was OrbyOrbot!" - DR.ACOZMO
+                </p>  
+                <p><hr style='box-shadow: 1px 1px 3px  #f307f3;;'>Enter ANIMOTOONZ!</p>
+                <hr style='box-shadow: 1px 1px 15px white;'>
+                <p>Everything in existance vibrates. Dr. Acozmo digitizes vibrations from photons and gravity waves and puts them on the internet.</p>
+                <p>Using 1960's Television Antenna and a rotary phone he dials up a distant Acosmocozm and renders it to the 3DWeb.</p>
+                <p>A kagillion to discover.</p> 
+                <p class='typeBio'>
+                  <article>
+                      <header>
+                          <i>~BIO:</i>
+                          <span>Orby Or Bot<span>
+                          <i> - The Ordinary Robot</i>
+                      </header>  
+                          <section>
+                              <hr>
+                              <span>~ Orby Learns to Fly ~</span>
+                              <hr>
+                              Orby practices surfing on his mothers ironing board in the garage. 
+                              He falls and bumps his head, and the metal board crashes into a stack of microwave ovens his dad used for melting elements. Technicolor stars shoot out! Blue and gold electro-chemical-bursts through broken glass!
+                              The ironing board is ionized, and gold positronz stream in, as it glows with a hum! 
+                              The electric plug explodes!  With quick thinking, Orby punches the "Cancel" button. 
+                              And the positively ionized ironing board drops to a charred smoldering lump.
+                              Weeks later, Orby is looking for a science-fair project.
+                              He makes a space-kite because he wants to fly like his dad, who flies in space.
+                              Orby sneaks into the garage late at night. In the dark, he summons the courage to press the "quick cook button". The microwave springs to life. But without the golden positronz as before, the SpaceBoard hovers for the first time!
+                              <hr>
+                              <TXT Dr.Acozmo> 
+                              Free of negatronz, the explosion reversed the microwave-field and will only push out positronz! 
+                              Which is how the SpaceBoard floats. With different energem SpaceDust (positronz, negatronz) - the board rides differently. Faster or higher with different colors and particle waves.
+                              <hr>
+                              DO NOT TRY THIS AT HOME. IT WONT WORK. AND ALSO BECAUSE... like the ironing board - Orby is made of aminium.
+                              Which the inverted microwave only works to lighten the weight of aminium, not a hooman! 
+                              <hr>
+                              Orby takes one step onto the SpaceBoard. His foot touches, and in a glow of positronz - he is slowly ionized!
+                              Orby might be electrocuted! But, he scans his clampy and glowing robot hands. 
+                              He is ok! So, with his second flat foot, he steps up onto the SpaceBoard! 
+                              <AUD tada></AUD>
+                              <PIC Orby strikes a pose>
+                              <AUD adventure music>
+                                He opens the garage with a green laser. Then slowly down the driveway he hovers. Until he loses his balance and crashes into the garbage cans.
+                              <hr>
+                              <i>~Orby Learns to Fly...</i>
+                              <hr>
+                          </section>
+                      </article>
+                </p>
+                <p class='typeWarn'>WARN! Avoid ZapBotz!</p>
+                <p class='typeBio'><header><span>BIO!</span><i>ZapBotz!</i></header>
+                  <section class='typeMysteryTxt'>- Where do they come from?</section>
+                  <section class='typeMysteryTxt'>- What are they doing?</section>
+                </p>
+              </article>
+            </section>  <!--end idx view -->
+        </section><!-- end bookView -->
 
 
         <section id=heroView class="typeTxt1" style='display:none'> <!-- begin heroView -->
@@ -1676,7 +1709,7 @@ margin-right: 0.5em;
           </article>
         </section>
 
-        <section id="bookModeView" class=typeTxt1 style='display:none'>
+<!--         <section id="bookModeView" class=typeTxt1 style='display:none'>
           <article>
             <hr>
               <span style='font-size:1em; font-family:verdana;'>~adventure</span>
@@ -1688,7 +1721,7 @@ margin-right: 0.5em;
               <section class='typeMysteryTxt'>- Where do they come from?</section>
               <section class='typeMysteryTxt'>- What are they doing?</section>
             </p>
-        </section> 
+        </section>  -->
 
       </section> <!-- end epicview content -->
 
@@ -2414,9 +2447,9 @@ min-height: 30px;
 
 </section> --> <!-- end movieModeFrame -->
 
-<section id=invisibleSpace style='display:flex;max-height:2em;flex:1;margin:0.4em 0;width:100%;'>&nbsp;</section>
+<section id=invisibleSpace style='display:flex;max-height:0.1em;flex:1;margin:0.4em 0;width:100%;'>&nbsp;</section>
     <!-- bottom bar navBar --> <!--     margin-top: 0.4em; ALIGNS VERTICAL ON MOVIE VIEW -->
-    <section id=navBar style='color:yellow;display:flex;display:none;max-height:2em;flex:1;margin:0.4em 0;position:absolute;bottom:0.5em;width:100%;'>
+    <section id=navBar style='display:flex;max-height:2em;flex:1;margin:0;position:absolute;bottom:0;width:100%; background: black;'>
     <!-- <section id=navBar style='color:yellow;display:flex;max-height:2em;flex:1;margin:0.4em 0;width:100%;'> -->
 <!-- <section id="bookBtn1" class="blackNeonIconBtn" style=''><i class="fa fa-book"></i></section> -->
 <!-- <section id="gameBtn1" class="blackNeonIconBtn" style='display:none'><i class="fa fa-gamepad"></i></section> -->

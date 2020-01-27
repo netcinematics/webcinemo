@@ -62,7 +62,7 @@ nx.GAMEZ = {
 		//SHOW-TITLE-SCREEN-.
 		nx.ui.showTitleScreen({
             // meta:{lvlNUM:1,lvlTXT:'COLLECT~SPACEIONZ!',lvlSubTXT:'Land on SpacePad.',
-		    meta:{lvlMode:'ACT~1',lvlNUM:0,lvlTXT:'ORBY vs ZAPBOTZ!',lvlSubTXT:'on ALPHA~MOON',lvlIconSize:'10em',
+		    meta:{lvlMode:'ACT~1',lvlNUM:0,lvlTXT:'ORBY vs ZAPBOTZ!',lvlSubTXT:'on ALPHA~MOON',lvlIMGSize:'10em',
 			// lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`<ul>
             lvlIMG:'./copyrightnetcinematics/img/alphamoontop1.png',lvlTIPS:`
             <ul class='scrollColor1' style="list-style:none;height:80%;font-size:1em;overflow-y:scroll;overflow-x:wrap;
