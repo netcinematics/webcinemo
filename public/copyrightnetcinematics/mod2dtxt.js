@@ -82,6 +82,9 @@ nx.ui.activeView = nx.ui.bookModeView;     //default view while minimized.
 nx.ui.canvasFooter = $('#canvasFooter');
 nx.ui.backingSpan = $('#backingSpan');
 
+
+
+nx.ui.epicLinkBtn = $('#epicLinkBtn');
 //todo
 
 /*******************************************-TXTSCRIPT-****************************************************/
@@ -208,19 +211,24 @@ nx.ui.backingSpan = $('#backingSpan');
 
     nx.ui.initScrollTxtHeight = function(){     
 // debugger;
+
+//TODO possibly fix initial FLICKER here-.
+
       var rowHeight = nx.ui.viewRow3.height();
       var navHeight = $('#navBar').height();
       //503 - 36 = 467; //todo new height
-      var scrollFrameHeight = rowHeight - navHeight -131;//75;
+      var scrollFrameHeight = rowHeight - navHeight -131+50-5;//75;
+      // var scrollFrameHeight = rowHeight - navHeight -131;//75;
       // var scrollFrameHeight = rowHeight - navHeight - 75;
-      var scrollItemHeight = scrollFrameHeight - 32;//87;
+      var scrollItemHeight = scrollFrameHeight - 32+50-15 - 40;//87;
+      // var scrollItemHeight = scrollFrameHeight - 32;//87;
       // var scrollItemHeight = scrollFrameHeight; - 31;
 
 
 // debugger;
 
-      $('.precisionScrollFrame').css({'height':scrollFrameHeight+'px'});
-      $('.precisionScrollItem').css({'height':scrollItemHeight+'px'});
+      if(scrollFrameHeight>0){ $('.precisionScrollFrame').css({'height':scrollFrameHeight+'px'});  }
+      if(scrollItemHeight>0){ $('.precisionScrollItem').css({'height':scrollItemHeight+'px'});  }
 
   }
 
@@ -606,6 +614,17 @@ initGameModeTXTs();
   //   nx.engine.resize(); 
   // });
 
+  nx.ui.epicLinkBtn.click(function(){
+    // debugger;
+
+    nx.ui.showEpicModeView();
+
+    // nx.ui.showGameModeView();
+    // $('#movieBtn1').show(500);
+    // $(this).hide(500); 
+    // nx.engine.resize(); 
+  });
+
 /*************************************************************-CAM-BTNs-****************************************/
   $('#camBtn1').click(function(){
     nx.initFollowCam();
@@ -636,7 +655,7 @@ nx.ui.showMovieModeView = function(){
 
 // debugger;
   // console.log('TEST2 rerender');
-
+// debugger;
   var currMaxPct = nx.ui.viewRow3.css('max-height');
   var currMax = parseFloat(currMaxPct.substr(0,currMaxPct.indexOf('%')));
   var tgtMax = 28;
@@ -706,7 +725,7 @@ nx.ui.showGameModeView = function(){
   // $('#movieModeView').hide(); 
   // $('#movieModeFrame').fadeOut(3000);
   
-
+// debugger;
   var currMaxPct = nx.ui.viewRow3.css('max-height');
   var currMax = parseFloat(currMaxPct.substr(0,currMaxPct.indexOf('%')));
   var tgtMax = 28;
@@ -780,11 +799,14 @@ nx.ui.showTitleScreen = function( config ){
   //SHOW-TITLE-SCREEN-.
   nx.canva$.fadeOut(1000,function(){
     // debugger;
-    $('#titleViewFrame').show();
+    // $('#titleViewFrame').show();
+    // $('#titleViewFrame').show();
     // $('#mainTitleViewFrame').show();
     // $('#mainTitleViewFrame').fadeIn(6000);
     // $('#mainTitleViewFrame').attr('opacity',0).css('display','flex').hide().fadeIn(3000);
-    $('#lvlTitleView').css("display", "flex").hide().fadeIn(2000);
+    // $('#titleViewFrame').css("display", "flex").hide().fadeIn(2000);
+    nx.ui.titleViewFrame.css("display", "flex").hide().fadeIn(2000);
+    // $('#lvlTitleView').css("display", "flex").hide().fadeIn(2000);
     // $('#lvlTitleView').css("display", "flex").show();//.hide().fadeIn(6000);
   });
   // $('#mainTitleView').css("display", "flex"); //todo
@@ -871,6 +893,8 @@ nx.ui.showBookModeView = function(){
   // $('#movieModeView').hide();
   // $('#movieModeFrame').hide();
 
+// debugger;
+
   var currMaxPct = nx.ui.viewRow3.css('max-height');
   var currMax = parseFloat(currMaxPct.substr(0,currMaxPct.indexOf('%')));
   var tgtMax = 80;
@@ -917,8 +941,10 @@ nx.ui.showBookModeView = function(){
 }
 
 nx.ui.showAppModeView = function(){
-  debugger;
+  debugger; //TODO add app stuff here. APP|JOIN|SUBS|BUY
 }
+
+//TODO remove these-.
 nx.ui.showIdxModeView = function(){
   debugger; //shouldn't happen
   nx.ui.activeView.hide(1000);
@@ -950,6 +976,7 @@ nx.ui.showIdxModeView = function(){
 
         if(nx.engine){    nx.engine.resize(); }
   }});
+  debugger;
   nx.ui.isTXTViewMinimized=0;
   nx.ui.viewRow3.css({'flex':'4 0 0'});
   nx.ui.viewRow2.css({'flex':'1 0 0'});
@@ -973,7 +1000,8 @@ nx.ui.showIdxModeView = function(){
   if(nx.engine){ nx.engine.resize(); }
 }
 
-nx.ui.showHeroModeView = function(){
+nx.ui.showEpicModeView = function(){
+  //anmethodology, BEST-BOOK-UX-.
   nx.ui.activeView.hide(1000);
   nx.ui.heroView.show(3000);
 
@@ -984,7 +1012,7 @@ nx.ui.showHeroModeView = function(){
   nx.ui.btnSelector.addClass('btnSelector')
   nx.ui.activeView = nx.ui.heroView;
 
-
+// debugger;
   var currMaxPct = nx.ui.viewRow3.css('max-height');
   var currMax = parseFloat(currMaxPct.substr(0,currMaxPct.indexOf('%')));
   var tgtMax = 80;
@@ -1028,6 +1056,7 @@ nx.ui.showHeroModeView = function(){
 }
 
 nx.ui.showQuestModeView = function(){
+  debugger; //removable?
   // nx.ui.movieModeView.hide();
   // nx.ui.gameModeView.hide();
   // nx.ui.bookModeView.hide();
@@ -1046,7 +1075,7 @@ nx.ui.showQuestModeView = function(){
   nx.ui.btnSelector.addClass('btnSelector')
   nx.ui.activeView = nx.ui.questView;
 
-
+debugger;
   var currMaxPct = nx.ui.viewRow3.css('max-height');
   var currMax = parseFloat(currMaxPct.substr(0,currMaxPct.indexOf('%')));
   var tgtMax = 80;
@@ -1174,6 +1203,10 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       if(config && !config.txtClass){ txtClass = 'hero8' }
     }
   }
+
+  // txtClass += ' talkTXT20_DB';
+  txtClass += ' thinkTXT20_DB';
+  // txtClass += ' bubble thought';
 
   if (txtType){
     txtAlign='center';
@@ -1564,6 +1597,32 @@ setTimeout(function(){ //break from animloop-.
 
       },t)
 }
+
+
+//JERKY QUEUE STACK
+// <footer id="canvasFooter" style="z-index: 100;font-family: verdana;height: 6em;position: absolute;bottom: 0em;width: 100%;/* align-content: center; */display: flex;/* flex-direction: column; *//* justify-content: end; */align-items: flex-end;flex-wrap: wrap;max-width: 620px;/* margin: 0 auto; */align-self: center;">
+//           <span id="backingSpan2" style="/* position:relative; */display:flex;height: 2.4em;border-radius:12px;background:black;width: 100%;max-width:612px;/* margin:0 auto; */border: 1px solid steelblue;margin-bottom: 0.5em;"><span class="frameSpan hero4 thinkTXT20_DB" style="">
+        
+//         <span class="mainSpan" style=";
+//           margin-right:0em;padding-right:0em;justify-content:center;">
+//             <span style="">Little~Bot2</span></span>
+//         <img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;
+//         align-self:center;cursor:pointer;border:2px solid black;box-shadow: 0px 0 5px steelblue;" src="./copyrightnetcinematics/img/darkbot2.png" alt="logo" aria-label="logo">
+//         <div class="heroName" style="position:absolute;bottom:-1.5em;right:0.4em;
+//           color:#e69be8;font-size:0.5em;text-shadow:2px 2px 2px black,-2px 2px 2px black;font-weight:bold;">DarkBot2</div>
+//         </span></span>
+//             <span id="backingSpan" style="position: relative; display: flex; height: 2.4em; border-radius: 12px; background: black; width: 100%; max-width: 612px; border: 1px solid steelblue; align-self: end;"><span class="frameSpan hero4 thinkTXT20_DB" style="">
+        
+//         <span class="mainSpan" style=";
+//           margin-right:0em;padding-right:0em;justify-content:center;">
+//             <span style="">Little~Bot, so far from home.</span></span>
+//         <img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;
+//         align-self:center;cursor:pointer;border:2px solid black;box-shadow: 0px 0 5px steelblue;" src="./copyrightnetcinematics/img/darkbot2.png" alt="logo" aria-label="logo">
+//         <div class="heroName" style="position:absolute;bottom:-1.5em;right:0.4em;
+//           color:#e69be8;font-size:0.5em;text-shadow:2px 2px 2px black,-2px 2px 2px black;font-weight:bold;">DarkBot</div>
+//         </span></span>
+          
+//           </footer>
 
 
 // nx.ui.initFlashCanvas = function(){
@@ -2631,7 +2690,7 @@ nx.ui.minMaxBtn1.on("click" , function(e){ //maximizeBtn
   // if(nx.ui.activeView===nx.ui.idxView){
   //   nx.ui.showIdxModeView();
   // }else if(nx.ui.activeView===nx.ui.heroView){
-  //   nx.ui.showHeroModeView();
+  //   nx.ui.showEpicModeView();
   // }else if(nx.ui.activeView===nx.ui.questView){
   //   nx.ui.showQuestModeView();
   // }else if(nx.ui.activeView===nx.ui.movieModeView){
@@ -2706,7 +2765,7 @@ nx.ui.toggleMinMax = function(maximize){
     //   nx.ui.showIdxModeView();
     // }else 
     // if(nx.ui.activeView===nx.ui.heroView){
-    //   nx.ui.showHeroModeView();
+    //   nx.ui.showEpicModeView();
     // }//else if(nx.ui.activeView===nx.ui.questView){
     //   nx.ui.showQuestModeView();
     // }else if(nx.ui.activeView===nx.ui.movieModeView){
@@ -2750,11 +2809,11 @@ nx.ui.toggleMinMax = function(maximize){
     // nx.ui.playBtn1.hide();
     // nx.ui.pauseBtn2.hide();
   
-  
+  // debugger;
   
     var currMaxPct = nx.ui.viewRow3.css('max-height');
     var currMax = parseFloat(currMaxPct.substr(0,currMaxPct.indexOf('%')));
-    var tgtMax = 8;
+    var tgtMax = 5;//8;
     //ANM-MIN-TO-MAX-TOGGLE-.
     $({'minMax':currMax}).animate({'minMax':tgtMax},{queue:false,duration:3000,easing:'swing',
       step: function(now) { 
@@ -2935,7 +2994,7 @@ nx.ui.toggleMinMax = function(maximize){
 
       // });
       //***********************************************************************************CTRL-VIEW***************************/
-
+//TODO REMOVE ALL THESE
       nx.ui.lowNavBtn1.on("click" , function(e){         // console.log('epic')
         // if(nx.ui.activeView===nx.ui.idxView){nx.ui.toggleMinMax((nx.ui.isTXTViewMinimized)?1:0); return;} //minimize-.
         // nx.ui.showIdxModeView();
@@ -2955,7 +3014,7 @@ nx.ui.toggleMinMax = function(maximize){
         // nx.ui.showBookModeView();
         // if(nx.ui.activeView===nx.ui.heroView){return;}
         if(nx.ui.activeView===nx.ui.heroView){nx.ui.toggleMinMax((nx.ui.isTXTViewMinimized)?1:0); return;} //minimize-.
-        nx.ui.showHeroModeView();
+        nx.ui.showEpicModeView();
         // nx.ui.heroView.show(2000);
         // nx.ui.activeView.slideUp(3000);
         // // nx.ui.activeView.hide(2000);

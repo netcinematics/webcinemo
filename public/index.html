@@ -191,10 +191,22 @@ border: #748696 solid 1px;
 
 </style>
 
-
-
-
-
+<style>
+/*TXTBUBBLES*/
+/*.talkTXT80_DB {}*/
+.talkTXT20_DB:after { 
+  content:'';position:absolute;top:0;left:20%;width:0;height:0;border:1.111em solid rgba(44, 44, 44, 0);
+    border-bottom-color:#6d00bb;border-top:0;margin-left:-0.444em;margin-top:-1.111em;}
+.talkTXT80_DB:after { 
+  content:'';position:absolute;top:0;left:80%;width:0;height:0;border:1.111em solid rgba(44, 44, 44, 0);
+    border-bottom-color:#6d00bb;border-top:0;margin-left:-0.444em;margin-top:-1.111em;}
+.thinkTXT20_DB:before { 
+  content:'';position:absolute;top:-0.222em;left:22%;width:0.444em;height:0.444em;margin-top:-2.222em;
+  border: 1px solid steelblue;border-radius: 100%;background-color: #6d00bb;}
+.thinkTXT20_DB:after { 
+  content:'';position:absolute;top:-0.222em;left:20%;width:0.888em;height:0.888em;margin-top:-1.111em;
+  border: 1px solid steelblue;border-radius: 100%;background-color: #6d00bb;}
+</style>
 
 <style> /*----------------------------------------------------------Mobile-FIRST-RWD--*/
     @media only screen and (max-width: 350px) { /*mobile styles*/
@@ -563,7 +575,10 @@ var nx = {}; //NetcinematiX NameSpace-.
         // nx.ui.tenKeyTxt = $('#tenKeyTxt')
         nx.ui.mainTitleViewFrame = $('#mainTitleViewFrame');
         nx.ui.mainTitleView = $('#mainTitleView');
+        nx.ui.titleViewFrame = $('#titleViewFrame');
         nx.ui.lvlTitleView = $('#lvlTitleView');
+        nx.ui.navBar = $('#navBar');
+        nx.ui.navBar.hide();
         // var sonicBtn = $('#sonicBtn');
 
 
@@ -577,6 +592,8 @@ var nx = {}; //NetcinematiX NameSpace-.
                 nx.ui.rightCmp.hide(1000)
                 nx.ui.beginBtn.fadeOut(1000)
                 nx.ui.nextBtn.hide(1000) //hidden
+                nx.ui.navBar.show(1000);
+
                 // nx.ui.nextCamBtn.show(1000)
                 // nx.ui.camTxt.show(1000)
                 // nx.ui.tenKeyTxt.show(1000)
@@ -638,11 +655,17 @@ var nx = {}; //NetcinematiX NameSpace-.
             /*flex: 3;*/
             /*flex: 0;*/
              /*min-height: 180px;*/
-             min-height: 3.7em;
-    margin: 0.5em;
+             /*min-height: 3.7em;*/
+             min-height: 0;
+    /*margin: 0.5em;*/
+    margin: 0;
     margin-top: 0.2em;
-     border:solid 1px steelblue;
-     border-radius:13px;
+
+
+
+        border-top: solid 1px steelblue;
+     /*border:solid 1px steelblue;*/
+     /*border-radius:13px;*/
 
 
          max-height: 12em; /*minmax max setting*/
@@ -926,11 +949,11 @@ text-shadow: 1px 1px 10px #a20358;
 
 <style>
     #titleViewFrame{ height:100%; width:100%; background:black; z-index:1000; font-family:verdana; }
-    #titleViewFrame{display:flex;color:yellow;align-items:center;justify-content:center;}
+    #titleViewFrame{display:none;color:yellow;align-items:center;justify-content:center;}
 </style>
 
-<section id='titleViewFrame' class="scrollColor1" style="overflow-y:scroll;overflow-x:hidden;">
-  <section id='lvlTitleView' style='display:none !important;width:88%;height:100%;margin-top:20%;margin-bottom:10%;
+<section id='titleViewFrame' class="scrollColor1" style="display:none; overflow-y:scroll;overflow-x:hidden;">
+  <section id='lvlTitleView' style='display:flex !important;width:88%;height:100%;margin-top:20%;margin-bottom:10%;
     display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;'> 
 
 
@@ -980,7 +1003,7 @@ text-shadow: 1px 1px 10px #a20358;
     <article id='lvlIMG'>
       <img style='width:4.44em;border-radius:13px;border:solid 1px yellow;box-shadow:0px 0px 20px 2px darkviolet;' src="./copyrightnetcinematics/img/energem2.png">
     </article>
-    <article id='lvlSubTXT' style='display:flex;flex-direction:row;justify-content:center;'>
+    <article id='lvlSubTXT' style='display:flex;flex-direction:row;justify-content:center;color: #ff3b00;'>
       Find the SpaceTrain Wreck!
     </article>
     <style> .actionBtnLock{ background-color:#575d6b !important; } </style>
@@ -1001,7 +1024,7 @@ text-shadow: 1px 1px 10px #a20358;
     </article>
     <style>
     /*anmethodology: INLINE-DEVICE-OVERRIDES */
-    #lvlTIPS ul{margin:0;max-height: 5em; color:steelblue;} .completedQuest{color:green !important;}
+    #lvlTIPS ul{margin:0;max-height: 5em; color:steelblue;} .completedQuest{color:forestgreen !important;}
     @media screen and (max-width: 350px){ #lvlTIPS ul li {font-size:0.8em !important; line-height:1.888em !important; }  }
     @media screen and (min-width: 350px){ #lvlTIPS ul li {font-size:1em !important; line-height:1.666em !important; }  }
     @media screen and (min-width: 550px){ #lvlTIPS ul li {font-size:1.1em !important; line-height:1.555em !important; }  }
@@ -1010,6 +1033,67 @@ text-shadow: 1px 1px 10px #a20358;
     <article id='lvlTIPS' style='margin-bottom:1%;line-height:2.44em;'>
     </article>
     
+
+
+<style>
+
+.lvlMarquee {
+ overflow: hidden;
+ position: relative;
+ border:solid 1px limegreen ;
+ border-radius:13px;
+ height: 50px;  
+ width: 20em;
+}
+.lvlMarquee span {
+ position: absolute;
+ height: 100%;
+ width: 100%;
+ line-height: 50px;
+ margin: 0;
+ text-align: center;
+ font-size: 1em;
+ color: forestgreen;
+}
+</style>
+
+
+<aside class="lvlMarquee">
+  <span class="lvlMarqueeTXT">~ subscribe at acozmo.io ~ </span>
+</aside>
+
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function(){
+
+      /*debugger;*/
+
+      nx.ui.lvlMarquee = $('.lvlMarquee');
+      nx.ui.lvlMarqueeTXT = $('.lvlMarqueeTXT');
+      var marqueeStop = 0;
+      var marqueeLimit = 5;
+      var msg = '';
+      var marqueeMSG = ['~ subscribe @ acozmo.io ~','for new episodes']
+      function moveMarquee(movement){
+        if(movement){
+          marqueeStop++;
+          msg = (marqueeStop%2)? marqueeMSG[0] : marqueeMSG[1] ;
+          nx.ui.lvlMarqueeTXT.html(msg)
+          nx.ui.lvlMarqueeTXT.fadeIn(2000)
+          if(marqueeStop<marqueeLimit){
+            setTimeout(function(){ moveMarquee(0); },3000)
+          }
+        }
+        else{
+          nx.ui.lvlMarqueeTXT.fadeOut(2000)
+          setTimeout(function(){ moveMarquee(1); },3000)
+        }
+      }
+      setTimeout(function(){ moveMarquee(0); },5000)
+
+
+    });
+</script>
+
     <style>@media screen and (max-width: 350px){ #lvlFooter {font-size:0.8em !important; }  }
     </style>
     <section id='lvlFooter' style='display:flex;width:100%;justify-content:space-between;margin-bottom:2.44%;font-size:1.22em;'>
@@ -1054,8 +1138,8 @@ text-shadow: 1px 1px 10px #a20358;
   </div>
   <div id="viewRow3">
 
-<section id='minMenuView' style='display:flex;max-height:2em;flex:1;line-height:2em;align-content:space-between;margin:0 0.5em;padding-top:0.3em'>
-  <!-- <nav style="color: rgb(0, 0, 255); display: flex; max-height: 2em; flex: 1 1 0%;"> -->
+<!-- begin min menu -->
+<!-- section id='minMenuView' style='display:flex;max-height:2em;flex:1;line-height:2em;align-content:space-between;margin:0;padding-top:0.3em'>
 <style>
 .minMenuIcon{
   color:steelblue; 
@@ -1063,40 +1147,31 @@ text-shadow: 1px 1px 10px #a20358;
     font-size: 1em;
     background-color: black;
     border-radius: 20px;
-    /* height: 32px; */
     height: 20px;
-    /*width: 10px;*/
     cursor: default;
     user-select: none;
     outline: none;
     text-align: center;
     text-shadow: 0 1px 0 purple;
-    /* line-height: 30px; */
     line-height: 23px;
     color: steelblue;
     cursor: pointer;
-    /* margin: 0 3em; */
     padding-bottom: 0.3em;
-/*    margin: 1px 0.5em;
-    margin-top: 0.2em;*/
 }
 </style>
     <section style="display:flex;justify-content:center;flex:1"><span id="navMovieBtn1" class="minMenuIcon btnSelector" 
       style="padding:0 0.5em 0.2em;color:royalblue;"><i class="fa fa-video"></i><span style="margin-left: 0.5em;">VIDEO</span></span></section>
-      <!-- style="padding:0 0.5em 0.2em;color:royalblue;"><i class="fa fa-video"></i><span style="margin-left: 0.5em;">MOVIE</span></span></section> -->
-  <!-- <span style="display:flexbox; flex:1">MOVIE</span> -->
     <section style="display:flex;justify-content:center;flex:1"><span id="navGameBtn1" class="minMenuIcon" 
       style="padding:0 0.5em 0.2em;color:darkviolet;"><i class="fa fa-gamepad"></i><span style="margin-left: 0.5em;">GAME</span></span></section>
-  <!-- <span style="display:flexbox; flex:1">GAME</span> -->
     <section style="display:flex;justify-content:center;flex:1"><span id="navBookBtn1" class="minMenuIcon" 
       style="padding:0 0.5em 0.2em;color:forestgreen;"><i class="fa fa-book-open"></i><span style="margin-left: 0.5em;">BOOK</span></span></section>
-  <!-- <span style="display:flexbox; flex:1">BOOK</span> -->
     <section style="display:flex;justify-content:center;flex:0.7"><span id="navAppBtn1" class="minMenuIcon" 
       style="padding:0 0.5em 0.2em;color:#d26505;"><i class="fa fa-mobile"></i><span style="margin-left: 0.5em;">APP</span></span></section>
     <section id="minMaxBtn1" class="minMenuIcon" style=" flex:0.2;z-index:100;"><i class="fa fa-window-maximize"></i></section>
-    <section id="minMaxBtn2" class="minMenuIcon" style=" flex:0.2;z-index:100; display:none; margin-top:-0.3em;"><i class="fa fa-window-minimize"></i></section>
-  <!-- <span style="display:flexbox; flex:1">APP</span> -->
-</section><!-- end minimized menu -->
+    <section id="minMaxBtn2" class="minMenuIcon" style=" flex:0.2;z-index:100; display:none; margin-top:-0.3em;">
+    <i class="fa fa-window-minimize"></i></section>
+</section-->
+<!-- end minimized menu -->
 <!-- <section id='txtModeView' style=' width: 100%;display: flex;flex-direction: column; height:100%;'> --> <!-- begin TXTMODEVIEW -->
 <!-- <section id='txtModeView' style=' width: 100%; display:none; flex-direction: column; height:100%;'>  -->
   <!-- begin TXTMODEVIEW -->
@@ -1414,7 +1489,13 @@ box-shadow: 0px 0px 6px lime ;
                   #idxViewNav{display:flex;}
                   #idxViewNav span{display:flex;flex:1;justify-content:center;text-decoration:underline;cursor:pointer;}
                 </style>
-                <nav id='idxViewNav'> <span><i></i>INDEX</span> <span><i></i>EPIX</span> <span><i></i>HERO</span> <span><i></i>QUEST</span> <span><i></i>CHEST</span> </nav>
+                <nav id='idxViewNav'> 
+                <span><i></i>INDEX</span> 
+                <span id='epicLinkBtn'><i></i>EPIC</span> 
+                <span ><i></i>HERO</span> 
+                <span><i></i>CHEST</span> 
+                <span><i></i>QUEST</span> 
+                </nav>
               <hr style='border: 1px solid black;box-shadow: 1px 1px 3px 0px darkviolet;width:98%;'>
             </header>
 
@@ -1433,11 +1514,13 @@ box-shadow: 0px 0px 6px lime ;
                 </style>
 
                 <section class='caterpillarFrame'>
-                  <article>1</article>
-                  <article>2</article>
-                  <article>3</article>
-                  <article>4</article>
-                  <article>5</article>
+                  <article>
+      1
+                    </article> <!--end item 1-->
+                  <article>2</article> <!--end item 2-->
+                  <article>3</article> <!--end item 3-->
+                  <article>4</article> <!--end item 4-->
+                  <article>5</article> <!--end item 5-->
                 </section>
 
 
@@ -2544,32 +2627,65 @@ min-height: 30px;
 
 </section> --> <!-- end movieModeFrame -->
 
-<section id=invisibleSpace style='display:flex;max-height:0.1em;flex:1;margin:0.4em 0;width:100%;'>&nbsp;</section>
-    <!-- bottom bar navBar --> <!--     margin-top: 0.4em; ALIGNS VERTICAL ON MOVIE VIEW -->
-    <section id=navBar style='display:flex;max-height:2em;flex:1;margin:0;position:absolute;bottom:0;width:100%; background: black;'>
-    <!-- <section id=navBar style='color:yellow;display:flex;max-height:2em;flex:1;margin:0.4em 0;width:100%;'> -->
-<!-- <section id="bookBtn1" class="blackNeonIconBtn" style=''><i class="fa fa-book"></i></section> -->
-<!-- <section id="gameBtn1" class="blackNeonIconBtn" style='display:none'><i class="fa fa-gamepad"></i></section> -->
-      <nav id=topNav><hr style='margin-left: auto; margin-right: 0;'>
-        <a id=lowNavBtn1>epic</a><a id=lowNavBtn2 class=''>hero</a>
+/*<section id=invisibleSpace style='display:flex;max-height:0.1em;flex:1;margin:0.4em 0;width:100%;'>&nbsp;</section>*/
+
+    <section id=navBar style='display:flex;max-height:2em;flex:1;margin:0;
+    position:absolute;bottom:0;width:100%;background:black;max-height:2.444em;'>
+
+      <!--nav id=topNav><hr style='margin-left: auto; margin-right: 0;'>
+        <a id=lowNavBtn1>epic</a>
+        <a id=lowNavBtn2 class=''>hero</a>
          <a id=lowNavBtn3>quest</a>
         <hr style='margin-left: 0; margin-right: auto;'>
       </nav>
       <nav id=lowNav><hr style='margin-left: auto; margin-right: 0;'>
         <a id=ctaBtn1>try</a><a id=ctaBtn2>like</a>
-        <a id=ctaBtn4>buy</a><!-- buy -->
+        <a id=ctaBtn4>buy</a>
         <hr style='margin-left: 0; margin-right: auto;'>
-      </nav>
+      </nav-->
+
+
+
+<!-- begin min menu -->
+<section id='minMenuView' style='display:flex;max-height:2em;flex:1;line-height:2em;
+  align-content:space-between;margin:0;padding-top:0em;padding-bottom: 1em;'>
+<style>
+.minMenuIcon{
+  color:steelblue; 
+    font-family: verdana;
+    font-size: 1.5em;
+    background-color: black;
+    border-radius: 20px;
+    height: 20px;
+    cursor: default;
+    user-select: none;
+    outline: none;
+    text-align: center;
+    text-shadow: 0 1px 0 purple;
+    line-height: 23px;
+    color: steelblue;
+    cursor: pointer;
+    padding-bottom: 0.3em;
+}
+</style>
+    <section style="display:flex;justify-content:center;flex:1"><span id="navMovieBtn1" class="minMenuIcon btnSelector" 
+      style="padding:0 0.5em 0.2em;color:royalblue;"><i class="fa fa-video"></i><span style="margin-left: 0.5em;">VIDEO</span></span></section>
+    <section style="display:flex;justify-content:center;flex:1"><span id="navGameBtn1" class="minMenuIcon" 
+      style="padding:0 0.5em 0.2em;color:darkviolet;"><i class="fa fa-gamepad"></i><span style="margin-left: 0.5em;">GAME</span></span></section>
+    <section style="display:flex;justify-content:center;flex:1"><span id="navBookBtn1" class="minMenuIcon" 
+      style="padding:0 0.5em 0.2em;color:forestgreen;"><i class="fa fa-book-open"></i><span style="margin-left: 0.5em;">BOOK</span></span></section>
+    <section style="display:flex;justify-content:center;flex:0.7"><span id="navAppBtn1" class="minMenuIcon" 
+      style="padding:0 0.5em 0.2em;color:#d26505;"><i class="fa fa-mobile"></i><span style="margin-left: 0.5em;">APP</span></span></section>
+    <section id="minMaxBtn1" class="minMenuIcon" style=" flex:0.2;z-index:100;"><i class="fa fa-window-maximize"></i></section>
+    <section id="minMaxBtn2" class="minMenuIcon" style=" flex:0.2;z-index:100; display:none; margin-top:-0.3em;">
+    <i class="fa fa-window-minimize"></i></section>
+</section>
+<!-- end minimized menu -->
+
+
 <!-- <section id="gameBtn2" class="blackNeonIconBtn" style='display:none'><i class="fa fa-gamepad"></i></section> -->
 <!-- <section id="movieBtn1" class="blackNeonIconBtn" style=''><i class="fa fa-film"></i></section> -->
     </section>
-
-
-    <!-- low hover footer nav bar on ENTIRE CAME CTRL -->
-    <!-- <section id=rgtGameLabel style='color:steelblue; font-size: 0.5em;  margin-top: -1.5em;  text-align: center;'>DRAG CAM</section> -->
-   
-
-
     </div><!-- end game frame? -->
 
   </div>

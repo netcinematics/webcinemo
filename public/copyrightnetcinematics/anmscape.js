@@ -715,10 +715,10 @@ nx.createMasterStart = function(){
         // nx.initSEQ({seqID:'sneakSEQ'}); //softload Landing Seq!
         // nx.initSEQ({seqID:'DoorSEQ'})//DOORSEQUENCE
         // nx.initSEQ({seqID:'crashSequence'})//CRASHSEQUENCE
-        nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE //ACT~2
+        // nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE //ACT~2
         // nx.initSEQ({seqID:'affirmSequence'})//AFFIRMATIONSEQUENCE space junk
         // debugger;
-        // nx.initSEQ({seqID:'aClimaxSequence'})//zaphimSEQUENCE
+        nx.initSEQ({seqID:'aClimaxSequence'})// ACT~3
         // nx.initSEQ({seqID:'aBoomSequence'})
         // nx.initSEQ({seqID:'aSunsetSequence'})
         // nx.initSEQ({seqID:'aZoomOutSequence'})
