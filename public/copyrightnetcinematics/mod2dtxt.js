@@ -1323,7 +1323,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtNode.config = config;
       nx.ui.flashMSGQueue.push(txtNode); //add to queue always
       if(nx.ui.flashMSGPlaying){ return; } //if playing leave in queue else play now
-      else { nx.ui.anmMSGFader(txtNode) }
+      // else { nx.ui.anmMSGFader(txtNode) }
+      else { nx.ui.anmMSGStacker(txtNode) }
 
   } 
   else if(config.btns && config.btns.movieFn && config.btns.gameFn && config.btns.bookFn){
@@ -1391,7 +1392,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtNode.config = config;
       nx.ui.flashMSGQueue.push(txtNode); //add to queue always
       if(nx.ui.flashMSGPlaying){ return; } //if playing leave in queue else play now
-      else { nx.ui.anmMSGFader(txtNode) }
+      // else { nx.ui.anmMSGFader(txtNode) }
+      else { nx.ui.anmMSGStacker(txtNode) }
   }
   else if (config.btn && config.btnfn ){ //TODO change .fn to .btnfn
     // nx.ui.canvasFooter.append('<button style="border-radius:13px;background:#b2bdea;box-shadow: inset -1px 0px 4px black;padding:0.4em;cursor: pointer; margin-top: -3px;">'+config.btn+'</button>').on('click',config.fn);
@@ -1429,27 +1431,84 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       // nx.ui.flashMSGQueue.push(aTTLBTN); //add to queue always
 
       if(nx.ui.flashMSGPlaying){ return; } //if playing leave in queue else play now
-      else { nx.ui.anmMSGFader(titleButton) } //play now
+      // else { nx.ui.anmMSGFader(titleButton) } //play now
+      else { nx.ui.anmMSGStacker(titleButton) } //play now
 
 
     } else {
       nx.ui.flashMSGQueue.push(aBtn); //add to queue always
 
       if(nx.ui.flashMSGPlaying){ return; } //if playing leave in queue else play now
-      else { nx.ui.anmMSGFader(aBtn) } //play now
+      // else { nx.ui.anmMSGFader(aBtn) } //play now
+      else { nx.ui.anmMSGStacker(aBtn) } //play now
 
 
     }
 
-    // if(nx.ui.flashMSGPlaying){ return; } //if playing leave in queue else play now
-    // else { nx.ui.anmMSGFader(aBtn) } //play now
-
-
-
   }
-}
+} //end flash canvas msg
+/*****************************************END-FLASH-CANVAS-MSG********************************/
 
 
+/*****************************************ANM-MSG-FADER********************************/
+nx.ui.anmMSGStacker = function(aSpan){
+
+
+    if(nx.cinemaStop){ nx.ui.flashMSGPlaying = 0; nx.ui.flashMSGQueue = []; return; } //pause functionality-.
+
+
+    var t = 4000;
+    if(aSpan.config && aSpan.config.dur){  t = aSpan.config.dur } //custom timing factory-.
+    // console.log('MSGFader start:',aSpan.config.txt)
+    nx.ui.flashMSGPlaying=1;
+      setTimeout(function(){ //break from animloop-.
+        // if(nx.ui.canvasFooter.css('display')==='none'){ //BUG FIX : orby sitting after boom
+        if(nx.ui.canvasFooter.css('display')==='none' || nx.ui.canvasFooter.css('display')==='block'){ 
+          // console.log('TXT special case, auto fade in.')
+          nx.ui.canvasFooter.fadeIn(1000); 
+        } //AUTO-FADE-IN-. FIX-.
+        aSpan.fadeOut(1).appendTo(nx.ui.backingSpan).fadeIn(2000);
+        // $('<div class="" style="color:white;width:79%;max-width:599px;margin:0 auto;border:1px solid orange;line-height:1em;height:2em;display:flex;align-items:center;justify-content:center;border-radius:10px">A bunch of text so that I can test line wrap...</div>').fadeOut(1).appendTo('#canvasFooter').fadeIn(3000)
+      },1); //avoid a fade in flicker, by separating from animloop
+
+      if(aSpan.is('button')){
+        nx.ui.flashMSGQueue.splice($.inArray(aSpan, nx.ui.flashMSGQueue),1);//remove from queue //HOT FIX TEST.
+        return;
+      }//do not fade out btn
+
+      if(aSpan && aSpan.config && aSpan.config.txtInit){ aSpan.config.txtInit(); }//txtINIT: call back for sequence handling-.
+      setTimeout(function(){
+                       if(aSpan.config && aSpan.config.persist){return;} //PERSIST VISIBILITY-.
+                        $({'alpha':1}). //------------------------------------------------------FADE MSG OUT-.
+                        animate({'alpha':0},{queue:false,duration:1000,easing:'linear',
+                        step: function(now) { 
+                            aSpan.css('opacity',this.alpha)
+                        }, complete:function(){
+                              // console.log('txtSPANhide - after dur')
+                              nx.ui.flashMSGPlaying=0;
+                              aSpan.remove();  //remove from dom
+                              nx.ui.flashMSGQueue.splice($.inArray(aSpan, nx.ui.flashMSGQueue),1);//remove from queue
+                              if(nx.ui.flashMSGQueue.length){   //recurse-.
+                                  console.log('spanRecurse')
+                                    // nx.ui.anmMSGFader(nx.ui.flashMSGQueue[0])
+                                    nx.ui.anmMSGStacker(nx.ui.flashMSGQueue[0])
+                              } else {
+                                console.log('canvasDONEHideFast')
+                                nx.ui.canvasFooter.fadeOut('fast');
+                              }
+                              if(aSpan && aSpan.config && aSpan.config.txtEnd){ //txtEnd: call back for sequence handling-.
+                                aSpan.config.txtEnd() 
+                              }
+                            // console.log('endfadein')
+                            } //NEXT-SUB-SEQUENCE-. 
+                        });
+      },t)
+} //END - anmMSGSTACKER-.
+/*****************************************END-ANM-MSG-STACKER********************************/
+
+
+
+/*****************************************ANM-MSG-FADER********************************/
 nx.ui.anmMSGFader = function(aSpan){
 
 
@@ -1596,7 +1655,8 @@ setTimeout(function(){ //break from animloop-.
 
 
       },t)
-}
+} //END - anmMSGFader-.
+/*****************************************END-ANM-MSG-FADER********************************/
 
 
 //JERKY QUEUE STACK

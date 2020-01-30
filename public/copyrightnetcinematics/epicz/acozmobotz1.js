@@ -6446,7 +6446,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                 //nx.anm.darkBot.mezmerize() //ANM-ATOMZ
 // debugger;
                 //TODO rename nx.ui.flashTXT() nx.ui.flashMain()  nx.ui.flashTitle nx.ui.flashChapter nx.ui.flashMission-. nx.ui.flashMSG-.
-                nx.ui.flashCanvasMSG({txt:"Little~Bot, so far from home.",persist:true,txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"Little~Bot, so far from home.",persist:false,txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
                     nx.anm.zoomCam1();
                 },txtEnd:function(){}});
 
