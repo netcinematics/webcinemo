@@ -803,8 +803,10 @@ setTimeout(function(){
             }else if(nx.vortexSeqIdx[1] && nx.vortexSeqIdx[1].on){ var NUM = 1; nx.vortexSeqIdx[NUM].on=0;  //ONE-TIME-RUNTIME-INIT-.
 
                 nx.ui.setMovieModeTXT({title:'',txt:"OrbyOrbot Origin!",type:'movie',clickFn:function(){
-                        nx.ui.flashMSGQueue = [];
-                        nx.ui.flashMSGPlaying = 0;
+                        // nx.ui.flashMSGQueue = [];
+                        // nx.ui.flashMSGPlaying = 0;
+                        debugger; //todo probably fix this
+                        nx.ui.stopFlashMSG(); //unnecessary
                         nx.stopMovie({fadeCurtain:1});
                         nx.initSEQ({seqID:1});            
                 }}); 
@@ -6446,19 +6448,20 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                 //nx.anm.darkBot.mezmerize() //ANM-ATOMZ
 // debugger;
                 //TODO rename nx.ui.flashTXT() nx.ui.flashMain()  nx.ui.flashTitle nx.ui.flashChapter nx.ui.flashMission-. nx.ui.flashMSG-.
-                nx.ui.flashCanvasMSG({txt:"Little~Bot, so far from home.",persist:false,txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"Little~Bot, so far from home.",persist:1,txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
                     nx.anm.zoomCam1();
                 },txtEnd:function(){}});
 
 
 
-                nx.ui.flashCanvasMSG({txt:"ALPHA~MOON is OFF~GRID!",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"ALPHA~MOON is OFF~GRID!",persist:1,txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
                 },txtEnd:function(){
 nx.scene.activeCamera.position.copyFrom({x: 3.968097052342768, y: 261.90380344016035, z: 18.883871374518645})//campos1
 nx.scene.activeCamera.setTarget(nx.BV32(nx.darkBot.position)) //CAMTGT: 
 var darkToesDown = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 60, 65, false, 0.5);
 nx.anm.darkBot.flipAround();
                 }});
+return;
                 nx.ui.flashCanvasMSG({txt:"FREE~BOARD...FAR~AWAY!",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){},txtEnd:function(){}});
                 nx.ui.flashCanvasMSG({txt:"DARKBOT WAIT!",txtIcon:'orby',dur:3000,txtInit:function(){
                     nx.anm.finalCam2()
@@ -6466,7 +6469,6 @@ nx.anm.darkBot.flipAround();
                 },txtEnd:function(){
  //TODO ACTION darkbot mad                   
                 } }); 
-return;
                     nx.ui.flashCanvasMSG({txt:"MEZMORIZE!!!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
                     nx.anm.darkBot.mezmerize();
                 },txtEnd:function(){}});
