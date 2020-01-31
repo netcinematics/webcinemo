@@ -1474,15 +1474,23 @@ nx.ui.anmMSGStacker = function(aSpan){
 //C - OnEnd first TXT, splice, newFirstTXT, move down to firstTXT, if2Que, 1 sec show2
 //D - 1sec show2, hidefirst bubble, set secondTXT 
 // debugger;
-    if(nx.ui.stackMSGPlaying && nx.ui.flashMSGQueue.length===2){ //Begin TXT-Stacking-.
-      nx.ui.firstTXT = nx.ui.flashMSGQueue[0];
-      nx.ui.secondTXT = nx.ui.flashMSGQueue[1];
+    if(nx.ui.stackMSGPlaying && nx.ui.flashMSGQueue.length===2){ //Begin TXT-Stacking- for this TXT.
+      // nx.ui.firstTXT = nx.ui.flashMSGQueue[0];
+      // nx.ui.secondTXT = nx.ui.flashMSGQueue[1];
+
+      //todo probably order of span array most precise.
+      nx.ui.stackTXT = $('#canvasFooter > span')
+      nx.ui.topTXT = nx.ui.stackTXT[0]
+      nx.ui.btmTXT = nx.ui.stackTXT[1]
+
+
+
       setTimeout(function(){ //1sec, show2, as secondTXT
-        nx.ui.backingSpan2.fadeIn(1000)
-        nx.ui.secondTXT.attr('bottom','3.5em');//.show();
-        nx.ui.secondTXT.fadeOut(1).appendTo(nx.ui.backingSpan2).fadeIn(2000);
+        // nx.ui.backingSpan2.fadeIn(1000)
+        // nx.ui.secondTXT.attr('bottom','3.5em');//.show();
+        // nx.ui.secondTXT.fadeOut(1).appendTo(nx.ui.backingSpan2).fadeIn(2000);
         if(!nx.ui.flashMSGPlaying){} //move down now. else pick up onEnd
-      },3000)
+      },3000) //delay between simultaneous TXTs
 
     }else{
       nx.ui.stackMSGPlaying=1;
@@ -1492,7 +1500,7 @@ nx.ui.anmMSGStacker = function(aSpan){
         } //AUTO-FADE-IN-. FIX-.
         aSpan.fadeOut(1).appendTo(nx.ui.backingSpan).fadeIn(2000);
       },1); //avoid a fade in flicker, by separating from animloop
-      var t = 4000;
+      var t = 4000; //-----FADE-OUT-MECHANISM-.
       if(aSpan && aSpan.config && aSpan.config.txtInit){ aSpan.config.txtInit(); }//txtINIT: call back for sequence handling-.
       setTimeout(function(){
                        if(aSpan.config && aSpan.config.persist){return;} //PERSIST VISIBILITY-.
@@ -2965,12 +2973,14 @@ nx.ui.toggleMinMax = function(maximize){
 
         }, complete:function(){
   
+          nx.ui.viewRow3.css({'max-height':'2.5em'}); //small FIX
+          // nx.ui.viewRow3.css('max-height');
+
           // nx.ui.viewRow3.css({'flex':3});
           // nx.ui.viewRow2.css({'flex':3});
   
           if(nx.engine){    nx.engine.resize(); }
     }});
-    // nx.ui.viewRow3.css({'max-height':'2em'}); //small
   
   
     nx.ui.minMaxBtn1.show(1000); //showMax
