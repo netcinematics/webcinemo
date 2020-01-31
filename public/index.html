@@ -195,16 +195,25 @@ border: #748696 solid 1px;
 /*TXTBUBBLES*/
 /*.talkTXT80_DB {}*/
 .talkTXT20_DB:after { 
-  content:'';position:absolute;top:0;left:20%;width:0;height:0;border:1.111em solid rgba(44, 44, 44, 0);
-    border-bottom-color:#6d00bb;border-top:0;margin-left:-0.444em;margin-top:-1.111em;}
+  content:'';position:absolute;top:0;left:20%;width:0;height:0;border:0.888em solid rgba(44, 44, 44, 0);
+    border-bottom-color:#6d00bb;border-top:0;margin-left:-0.444em;margin-top:-0.888em;}
 .talkTXT80_DB:after { 
-  content:'';position:absolute;top:0;left:80%;width:0;height:0;border:1.111em solid rgba(44, 44, 44, 0);
+  content:'';position:absolute;top:0;left:80%;width:0;height:0;border:0.888em solid rgba(44, 44, 44, 0);
+    border-bottom-color:#6d00bb;border-top:0;margin-left:-0.444em;margin-top:-0.888em;}
+.talkTXTLFT_DB:after { 
+  content:'';position:absolute;top:1em;left:-1em;width:0;height:0;border:1.111em solid rgba(44, 44, 44, 0);
     border-bottom-color:#6d00bb;border-top:0;margin-left:-0.444em;margin-top:-1.111em;}
 .thinkTXT20_DB:before { 
   content:'';position:absolute;top:-0.222em;left:22%;width:0.444em;height:0.444em;margin-top:-2.222em;
   border: 1px solid steelblue;border-radius: 100%;background-color: #6d00bb;}
 .thinkTXT20_DB:after { 
   content:'';position:absolute;top:-0.222em;left:20%;width:0.888em;height:0.888em;margin-top:-1.111em;
+  border: 1px solid steelblue;border-radius: 100%;background-color: #6d00bb;}
+.thinkTXTLFT_DB:before { 
+  content:'';position:absolute;top:1.777em;left:-1.2em;width:0.444em;height:0.444em;margin-top:-2.222em;
+  border: 1px solid steelblue;border-radius: 100%;background-color: #6d00bb;}
+.thinkTXTLFT_DB:after { 
+  content:'';position:absolute;top:1.777em;left:-1em;width:0.888em;height:0.888em;margin-top:-1.111em;
   border: 1px solid steelblue;border-radius: 100%;background-color: #6d00bb;}
 </style>
 
@@ -1110,12 +1119,15 @@ text-shadow: 1px 1px 10px #a20358;
 
 
 
-          <footer id='canvasFooter' style='width:80%;z-index:100;font-family:verdana;display:none;height:2.5em;position:absolute;bottom:0em;width: 100%;'>
+          <footer id='canvasFooter' style='width:80%;z-index:100;font-family:verdana;display:none;height:6.2em;position:absolute;bottom:0em;width: 100%; display: flex; flex-direction: column;'>
 
-            <span id="backingSpan2" style="position:relative;display:flex;height:2.4em;border-radius:12px;background:black;width:82%;max-width:612px;margin:0 auto;border: 1px solid steelblue;margin-bottom:0.7em;"></span>
-          
-          
-            <span id="backingSpan" style="position:relative;display:flex;height:2.4em;border-radius:12px;background:black;width:82%;max-width:612px;margin:0 auto;border: 1px solid steelblue;"></span>
+            <span id="backingSpan2" style="position:relative;display:flex;height:2.4em;width:82%;max-width:612px;margin:0 auto;margin-bottom:0.7em;border-radius:12px;"></span>
+          <!-- 
+            <span id="backingSpan2" style="position:relative;display:flex;height:2.4em;width:82%;max-width:612px;margin:0 auto;margin-bottom:0.7em;border-radius:12px;background:black;border: 1px solid steelblue;"></span>
+           -->
+          <!-- 
+            <span id="backingSpan" style="position:relative;display:none;height:2.4em;border-radius:12px;background:black;width:82%;max-width:612px; margin: auto auto 0.5em;border: 1px solid steelblue;"></span> -->
+            <span id="backingSpan" style="position:relative;display:none;height:2.4em;width:82%;max-width:612px; margin: auto auto 0.5em;"></span>
           
           </footer>
           <!-- <footer id='canvasFooter' style='background:#252425;width:60%;margin:0 auto;border:1px solid orange;color: orange;border-radius: 13px;padding: 0.5em;padding-left: 1em; margin-top: -2.5em; z-index: 100; text-align: center;height: 1.4em; line-height: 1.4em;'><span>Dr~Acozmo!</span></footer> -->
@@ -1139,7 +1151,7 @@ text-shadow: 1px 1px 10px #a20358;
 
 
   </div>
-  <div id="viewRow3" style="height:2.5em">
+  <div id="viewRow3" style="max-height:2.5em">
 
 <!-- begin min menu -->
 <!-- section id='minMenuView' style='display:flex;max-height:2em;flex:1;line-height:2em;align-content:space-between;margin:0;padding-top:0.3em'>

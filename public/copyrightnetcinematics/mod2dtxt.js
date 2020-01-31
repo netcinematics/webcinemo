@@ -81,8 +81,10 @@ nx.ui.activeView = nx.ui.bookModeView;     //default view while minimized.
 
 nx.ui.canvasFooter = $('#canvasFooter');
 nx.ui.backingSpan = $('#backingSpan');
+nx.ui.backingSpan.css('display', 'flex').hide();
 nx.ui.backingSpan2 = $('#backingSpan2');
-nx.ui.backingSpan2.hide();
+nx.ui.backingSpan2.css('display', 'flex').hide();
+// nx.ui.backingSpan2.hide();
 
 
 
@@ -1211,7 +1213,10 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
   }
 
   // txtClass += ' talkTXT20_DB';
-  txtClass += ' thinkTXT20_DB';
+  txtClass += ' talkTXT80_DB';
+  // txtClass += ' talkTXTLFT_DB';
+  // txtClass += ' thinkTXT20_DB';
+  // txtClass += ' thinkTXTLFT_DB';
   // txtClass += ' bubble thought';
 
   if (txtType){
@@ -1326,7 +1331,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
 
       txtNode = $(aTXTBitz);
 
-      txtNode.config = config;
+      txtNode.config = config; //important pass render values forward to stacker
       nx.ui.flashMSGQueue.push(txtNode); //add to queue always
       if(nx.ui.flashMSGPlaying){ return; } //if playing leave in queue else play now
       // else { nx.ui.anmMSGFader(txtNode) }
@@ -1474,32 +1479,86 @@ nx.ui.anmMSGStacker = function(aSpan){
 //C - OnEnd first TXT, splice, newFirstTXT, move down to firstTXT, if2Que, 1 sec show2
 //D - 1sec show2, hidefirst bubble, set secondTXT 
 // debugger;
-    if(nx.ui.stackMSGPlaying && nx.ui.flashMSGQueue.length===2){ //Begin TXT-Stacking- for this TXT.
-      // nx.ui.firstTXT = nx.ui.flashMSGQueue[0];
-      // nx.ui.secondTXT = nx.ui.flashMSGQueue[1];
+//     if(false){ //Begin TXT-Stacking- for this TXT.
+//     // if(aSpan && aSpan.config && aSpan.config.pos && aSpan.config.pos==='top'){ //Begin TXT-Stacking- for this TXT.
+//     // if(nx.ui.stackMSGPlaying && nx.ui.flashMSGQueue.length===2){ //Begin TXT-Stacking- for this TXT.
+//       // nx.ui.firstTXT = nx.ui.flashMSGQueue[0];
+//       // nx.ui.secondTXT = nx.ui.flashMSGQueue[1];
 
-      //todo probably order of span array most precise.
-      nx.ui.stackTXT = $('#canvasFooter > span')
-      nx.ui.topTXT = nx.ui.stackTXT[0]
-      nx.ui.btmTXT = nx.ui.stackTXT[1]
+//       //todo probably order of span array most precise.
+//       // nx.ui.stackTXT = $('#canvasFooter > span')
+//       // nx.ui.topTXT = nx.ui.flashMSGQueue[0]
+//       // nx.ui.btmTXT = nx.ui.flashMSGQueue[1]
 
 
 
-      setTimeout(function(){ //1sec, show2, as secondTXT
-        // nx.ui.backingSpan2.fadeIn(1000)
-        // nx.ui.secondTXT.attr('bottom','3.5em');//.show();
-        // nx.ui.secondTXT.fadeOut(1).appendTo(nx.ui.backingSpan2).fadeIn(2000);
-        if(!nx.ui.flashMSGPlaying){} //move down now. else pick up onEnd
-      },3000) //delay between simultaneous TXTs
+//       // setTimeout(function(){ //1sec, show2, as secondTXT
+//       //   // nx.ui.topTXT.attr('bottom','3.5em');//.show();
+//       //   aSpan.fadeOut(1).appendTo(nx.ui.backingSpan2).fadeIn(2000);
+//       //   nx.ui.backingSpan2.fadeIn(1000)
+//       //   // nx.ui.topTXT.fadeIn(1000)
+      if(nx.ui.stackMSGPlaying){ return; } //move down now. else pick up onEnd
+        // if(!nx.ui.flashMSGPlaying){ return; } //move down now. else pick up onEnd
+//       // },3000) //delay between simultaneous TXTs
 
-    }else{
+//     }else{
       nx.ui.stackMSGPlaying=1;
       setTimeout(function(){ //break from animloop-.
         if(nx.ui.canvasFooter.css('display')==='none' || nx.ui.canvasFooter.css('display')==='block'){ 
           nx.ui.canvasFooter.fadeIn(1000); 
         } //AUTO-FADE-IN-. FIX-.
-        aSpan.fadeOut(1).appendTo(nx.ui.backingSpan).fadeIn(2000);
-      },1); //avoid a fade in flicker, by separating from animloop
+        if(aSpan && aSpan.config && aSpan.config.pos && aSpan.config.pos==='top'){ 
+          aSpan.fadeOut(1).appendTo(nx.ui.backingSpan2).fadeIn(2000);
+          nx.ui.backingSpan2.fadeIn(1000,function(){ //done
+            var btmSpan = nx.ui.flashMSGQueue[1];
+            btmSpan.fadeOut(1).appendTo(nx.ui.backingSpan).fadeIn(2000);
+            nx.ui.backingSpan.fadeIn(1000);
+            var t = 4000; //-----FADE-OUT-MECHANISM-.  //-------------TOP TXT
+            if(btmSpan && btmSpan.config && btmSpan.config.txtInit){ btmSpan.config.txtInit(); }//txtINIT: call back for sequence handling-.
+            setTimeout(function(){
+                             if(btmSpan.config && btmSpan.config.persist){return;} //PERSIST VISIBILITY-.
+                              $({'alpha':1}). //------------------------------------------------------FADE OUT MSG-.
+                              animate({'alpha':0},{queue:false,duration:1000,easing:'linear',
+                              step: function(now) { 
+                                  btmSpan.css('opacity',this.alpha)
+                              }, complete:function(){
+                                    // console.log('txtSPANhide - after dur')
+                                    nx.ui.flashMSGPlaying=0;
+                                    btmSpan.remove();  //remove from dom
+                                    nx.ui.flashMSGQueue.splice($.inArray(btmSpan, nx.ui.flashMSGQueue),1);//remove from queue
+                                    if(nx.ui.flashMSGQueue.length){   //recurse-.
+                                        console.log('spanRecurse')
+                                          // nx.ui.anmMSGFader(nx.ui.flashMSGQueue[0])
+                                          // nx.ui.anmMSGStacker(nx.ui.flashMSGQueue[0])
+                                    } else {
+                                      console.log('canvasDONEHideFast')
+                                      nx.ui.canvasFooter.fadeOut('fast');
+                                    }
+                                    if(btmSpan && btmSpan.config && btmSpan.config.txtEnd){ //txtEnd: call back for sequence handling-.
+                                      btmSpan.config.txtEnd() 
+                                    }
+                                  // console.log('endfadein')
+                                  } //NEXT-SUB-SEQUENCE-. 
+                              });
+            },t)
+
+
+
+
+
+          })
+
+
+
+        }else{
+          aSpan.fadeOut(1).appendTo(nx.ui.backingSpan).fadeIn(2000);
+          nx.ui.backingSpan.fadeIn(1000)          
+        }
+
+
+        // aSpan.fadeOut(1).appendTo(nx.ui.backingSpan).fadeIn(2000);
+        // nx.ui.backingSpan.fadeIn(1000)
+      },100); //avoid a fade in flicker, by separating from animloop
       var t = 4000; //-----FADE-OUT-MECHANISM-.
       if(aSpan && aSpan.config && aSpan.config.txtInit){ aSpan.config.txtInit(); }//txtINIT: call back for sequence handling-.
       setTimeout(function(){
@@ -1516,7 +1575,7 @@ nx.ui.anmMSGStacker = function(aSpan){
                               if(nx.ui.flashMSGQueue.length){   //recurse-.
                                   console.log('spanRecurse')
                                     // nx.ui.anmMSGFader(nx.ui.flashMSGQueue[0])
-                                    nx.ui.anmMSGStacker(nx.ui.flashMSGQueue[0])
+                                    // nx.ui.anmMSGStacker(nx.ui.flashMSGQueue[0])
                               } else {
                                 console.log('canvasDONEHideFast')
                                 nx.ui.canvasFooter.fadeOut('fast');
@@ -1529,7 +1588,7 @@ nx.ui.anmMSGStacker = function(aSpan){
                         });
       },t)
 
-    }
+    // }
 
 
 

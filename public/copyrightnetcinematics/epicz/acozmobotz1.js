@@ -6448,28 +6448,28 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                 //nx.anm.darkBot.mezmerize() //ANM-ATOMZ
 // debugger;
                 //TODO rename nx.ui.flashTXT() nx.ui.flashMain()  nx.ui.flashTitle nx.ui.flashChapter nx.ui.flashMission-. nx.ui.flashMSG-.
-                nx.ui.flashCanvasMSG({txt:"Little~Bot, so far from home.",persist:1,txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"Little~Bot, so far from home.",pos:'top',persist:0,txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
                     nx.anm.zoomCam1();
                 },txtEnd:function(){}});
 
 
 
-                nx.ui.flashCanvasMSG({txt:"ALPHA~MOON is OFF~GRID!",persist:1,txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"ALPHA~MOON is OFF~GRID!",persist:0,txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){
                 },txtEnd:function(){
 nx.scene.activeCamera.position.copyFrom({x: 3.968097052342768, y: 261.90380344016035, z: 18.883871374518645})//campos1
 nx.scene.activeCamera.setTarget(nx.BV32(nx.darkBot.position)) //CAMTGT: 
 var darkToesDown = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 60, 65, false, 0.5);
 nx.anm.darkBot.flipAround();
                 }});
+                nx.ui.flashCanvasMSG({txt:"FREE~BOARD...FAR~AWAY!",pos:'top',txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){},txtEnd:function(){}});
 return;
-                nx.ui.flashCanvasMSG({txt:"FREE~BOARD...FAR~AWAY!",txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){},txtEnd:function(){}});
                 nx.ui.flashCanvasMSG({txt:"DARKBOT WAIT!",txtIcon:'orby',dur:3000,txtInit:function(){
                     nx.anm.finalCam2()
                     nx.anm.orbyMoveBack();
                 },txtEnd:function(){
  //TODO ACTION darkbot mad                   
                 } }); 
-                    nx.ui.flashCanvasMSG({txt:"MEZMORIZE!!!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"MEZMORIZE!!!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
                     nx.anm.darkBot.mezmerize();
                 },txtEnd:function(){}});
                 nx.ui.flashCanvasMSG({txt:"There is NO AlphaMoon!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){},txtEnd:function(){}});
