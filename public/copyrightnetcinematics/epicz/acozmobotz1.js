@@ -6462,7 +6462,7 @@ var darkToesDown = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 60, 65, false,
 nx.anm.darkBot.flipAround();
                 }});
                 nx.ui.flashCanvasMSG({txt:"FREE~BOARD...FAR~AWAY!",pos:'top',txtIcon:'darkbot',txtAlign:'right',dur:4000,txtInit:function(){},txtEnd:function(){}});
-return;
+// return;
                 nx.ui.flashCanvasMSG({txt:"DARKBOT WAIT!",txtIcon:'orby',dur:3000,txtInit:function(){
                     nx.anm.finalCam2()
                     nx.anm.orbyMoveBack();
@@ -6504,7 +6504,7 @@ nx.scene.activeCamera.setTarget(nx.BV32({x: 17.62534290345204, y: 265.9246020133
 
             nx.scene.beginAnimation(nx.darkBotSkeleton[0], 20, 30, false, 0.5);   //darkLookDown            
                 },txtEnd:function(){}});
-                nx.ui.flashCanvasMSG({txt:"THIS~MEZMO... Space~Junk!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"THIS~MEZMO is Space~Junk!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
 
             nx.scene.beginAnimation(nx.darkBotSkeleton[0], 30, 35, false, 0.25); //darkLookHand
 
@@ -6570,8 +6570,8 @@ var darkHandsOut = nx.scene.beginAnimation(nx.darkBotSkeleton[0], 90, 95, false,
                 nx.ui.flashCanvasMSG({txt:"WAHHHH!!!",txtIcon:'orby',dur:4000,txtInit:function(){},txtEnd:function(){
                    nx.scene.beginAnimation(nx.orbySkeleton[0], 4, 4, false, 1); //end shock-. 
                 } }); 
-                // nx.ui.flashCanvasMSG({txt:"THERE IS NO...",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
-                nx.ui.flashCanvasMSG({txt:"ERASE his MEMORIES.",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
+                nx.ui.flashCanvasMSG({txt:"THERE IS NO...",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
+                // nx.ui.flashCanvasMSG({txt:"ERASE his MEMORIES.",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtInit:function(){
 
     nx.dBot.stopMezmoLazer=0;//loop
 
@@ -6592,8 +6592,8 @@ nx.dBot.mezmoRaySystem2.position.copyFrom({x: 3.1, y: 2.888, z: -0.6})
     });
                 },txtEnd:function(){}});
 
-                // nx.ui.flashCanvasMSG({txt:"ZAP~BOT~ARMY!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtEnd:function(){
-                nx.ui.flashCanvasMSG({txt:"Then he will WORK in DARCS~DUNGEON.",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtEnd:function(){
+                nx.ui.flashCanvasMSG({txt:"ZAP~BOT~ARMY!",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtEnd:function(){
+                // nx.ui.flashCanvasMSG({txt:"Then he will WORK in DARCS~DUNGEON.",txtIcon:'darkbot',txtAlign:'right',dur:3000,txtEnd:function(){
                     nx.climaxSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
                 }})
 
