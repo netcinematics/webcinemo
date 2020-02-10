@@ -1274,11 +1274,24 @@ nx.anm.seriesSuperTitleSmall = function(){
     }});
 }
 
+nx.anm.seriesSuperTitleBig = function(tgtSize,tgtPad){
+	var currTXTSize = parseInt(nx.ui.seriesSuperTitleTxt.css('font-size'))/16; //convert-to-ems-.
+	var currTOPPad = parseInt(nx.ui.seriesSuperTitleTxt.css('padding-top'))/16; //convert-to-ems-.
+    $({size:currTXTSize,pad:currTOPPad}) //SIZE-TITLE-TXT-down-. with top padding-.
+    .animate({size:tgtSize,pad:tgtPad}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+        step:function(now) { //CAM POS
+           if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+           nx.ui.seriesSuperTitleTxt.css({'font-size':this.size+'em','padding-top':this.pad+'em'})
+        },complete:function(){
+    }});
+}
 
-nx.anm.seriesTitleBig = function(){
 
+nx.anm.seriesTitleBig = function(tgtSize,tgtPad){
     $({size:1.6,pad:0}) //SIZE-TITLE-TXT-UP-.
-    .animate({size:mainTitleCSS['font-size'],pad:mainTitleCSS['padding-top']}
+    .animate({size:tgtSize,pad:tgtPad}
+    // .animate({size:mainTitleCSS['font-size'],pad:mainTitleCSS['padding-top']}
     ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
         step:function(now) { //CAM POS
            if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
@@ -1291,6 +1304,8 @@ nx.anm.seriesTitleBig = function(){
 nx.anm.runTitleScreenANM = function(endFn){
 
 
+
+	
     // nx.ui.flashCanvasMSG({txt:"ORBY~ORBOT!",persist:0, txtType:'hero',txtIcon:'orby',dur:4000,
     // txtEnd:function(){
 
@@ -1308,34 +1323,39 @@ nx.anm.runTitleScreenANM = function(endFn){
 
 
 
-
-        var mainTitleCSS = '';
-        // var ttlTXT = $('#seriesTitleTxt');
-        //10-VIEW: RESPONSIVE-FUNNEL SETTINGS-.
+        //10-VIEW: RESPONSIVE PARTITIONING~SYSTEM SETTINGS-. anmethodology-.
         //------------------------------------------TITLE-SIZER-.
+        nx.ui.winW = $(window).width(); //dynamic editing-.
+        nx.ui.winH = $(window).height(); 
+		nx.anm.seriesTitleClear();
+		nx.ui.txtMSG2.show(1000)
+		nx.ui.txtMSG3.show(1000)
+
+		//-------------------------------dynamic editing-.
+        var prtNum = 0;
+        var mainTitleCSS = {}; //SET SERIES TITLE SIZE AND TOP PADDING-.
         if(nx.ui.screenOrientation==='portrait'){ //------------------------------------------------------PORTRAIT
-            if(nx.ui.winWidth > 800){mainTitleCSS =       {'font-size':'4','padding-top':'1.3'}; 
-            }else if(nx.ui.winWidth > 550){mainTitleCSS = {'font-size':'3','padding-top':'1'}; 
-            }else if(nx.ui.winWidth > 350){mainTitleCSS = {'font-size':'2','padding-top':'1.8'};  
-            }else /*winWidth < 350*/{mainTitleCSS = {'font-size':'1.8','padding-top':'2.2'};  
-            }
-        } else { //---------------------------------------------------------------------------------LANDSCAPE-.
-            if(nx.ui.winWidth > 800){
-                if(nx.ui.winHeight > 550) {mainTitleCSS = {'font-size':'3.2','padding-top':'1'};     //LAPTOP
-                }else/*phonesmall*/ {mainTitleCSS = {'font-size':'3','padding-top':'0.3'};   } //PHONE
-            }else if(nx.ui.winWidth > 550){mainTitleCSS = {'font-size':'2.9','padding-top':'0.1'};  
-            }else if(nx.ui.winWidth > 350){mainTitleCSS = {'font-size':'1.8','padding-top':'0.8'}; 
-            }else /*winWidth < 350*/{mainTitleCSS = {'font-size':'2.6','padding-top':'0.4'};  }        
+            if(nx.ui.winW > 800){      prtNum=1; mainTitleCSS={'font-size':'6','padding-top':'0.4'}; 
+            }else if(nx.ui.winW > 550){prtNum=2; mainTitleCSS={'font-size':'5','padding-top':'0.6'}; 
+            }else if(nx.ui.winW > 350){prtNum=3; mainTitleCSS={'font-size':'2.8','padding-top':'0.8'};  
+            }else /*winW < 350*/{      prtNum=4; mainTitleCSS={'font-size':'2.444','padding-top':'2.2'};  }
+        } else { //landscape---------------------------------------------------------------------------LANDSCAPE-.
+            if(nx.ui.winW > 800){
+                if(nx.ui.winH > 550) { prtNum=5; mainTitleCSS={'font-size':'6','padding-top':'0.4'};     //LAPTOP
+                }else/*phonesmall*/ {  prtNum=6; mainTitleCSS={'font-size':'6','padding-top':'0.3'};   } //PHONE-TALL-.
+            }else if(nx.ui.winW > 550){prtNum=7; mainTitleCSS={'font-size':'5','padding-top':'0.333'};  }
         }
+        console.log('WIN:',nx.ui.winW,nx.ui.winH,'SIZED',prtNum,mainTitleCSS)
+    	nx.anm.seriesTitleBig(mainTitleCSS['font-size'],mainTitleCSS['padding-top']);
+    	nx.anm.seriesSuperTitleBig(1,1);
 
-
-        $({size:1.6,pad:0}) //SIZE-TITLE-TXT-UP-.
-        .animate({size:mainTitleCSS['font-size'],pad:mainTitleCSS['padding-top']}
-        ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
-            step:function(now) { //CAM POS
-               if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
-               nx.ui.seriesTitleTxt.css({'font-size':this.size+'em', 'padding-top':this.pad+'em'})
-            },complete:function(){
+        // $({size:1.6,pad:0}) //SIZE-TITLE-TXT-UP-.
+        // .animate({size:mainTitleCSS['font-size'],pad:mainTitleCSS['padding-top']}
+        // ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+        //     step:function(now) { //CAM POS
+        //        if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+        //        nx.ui.seriesTitleTxt.css({'font-size':this.size+'em', 'padding-top':this.pad+'em'})
+        //     },complete:function(){
 
 
 
@@ -1357,8 +1377,8 @@ nx.anm.runTitleScreenANM = function(endFn){
 
             	// },3000)
 
-            }
-        });
+        //     }
+        // });
 
 
 
@@ -1379,47 +1399,10 @@ nx.anm.runTitleScreenANM = function(endFn){
                 // nx.ui.flashCanvasMSG({txt:"In his FIRST SPACE~QUEST!",dur:3000,
                 // txtEnd:function(){
 
-
+                nx.anm.runTitleScreenMSGs(endFn);
 
 // debugger;
 
-				nx.ui.txtMSG1.show(3000,function(){
-					setTimeout(function(){
-						
-					    $({lftSlide:-33}).animate({lftSlide:13} //show MSG 2
-					    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
-					        step:function(now) { if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
-					        	nx.ui.txtMSG2.css("left",this.lftSlide+'%');
-					        },complete:function(){
-						// nx.ui.txtMSG2.show(3000,function(){
-							setTimeout(function(){
-								// nx.ui.txtMSG3.show(3000,function(){
-							    $({rgtSlide:-44}).animate({rgtSlide:2} //show MSG 3
-							    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
-							        step:function(now) { if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
-							        	nx.ui.txtMSG3.css("right",this.rgtSlide+'%');
-							        },complete:function(){
-
-
-									//TODO zapbots move in.
-										setTimeout(function(){
-											nx.ui.txtMSG4.show(3000,function(){
-												//TODO show DARKBOT
-												nx.ui.goBtn1.unbind( "click" );
-												nx.ui.goBtnFrame1.show(3000);
-												nx.ui.goBtn1.click(function(){
-													// nx.anm.seriesTitleClear();
-													endFn();
-												});
-											});
-										},500)
-		    					}}); //end txt slide in
-								// });
-							},500)
-						// });
-		    			}}); //end txt slide in
-					},500)
-				});
 
 
                 // }});      //end TXT 1st space quest
@@ -1427,6 +1410,103 @@ nx.anm.runTitleScreenANM = function(endFn){
         });  //end anm zoom cam
 
     // }});  //end TXT - orby orbot.
+
+
+} //end title screen anm
+
+nx.anm.runTitleScreenMSGs = function(endFn){
+	
+
+
+
+    //10-VIEW: RESPONSIVE PARTITIONING~SYSTEM SETTINGS-. anmethodology-.
+    //VISPR-SYSTEM visual partition grids. anmethodology-.
+    //Select 10 View dimensions, you will not use all of them.
+    //Start by defining minimum size screen support dimensions 350 x 350
+    //Then work your way from IN size OUT. Small to Big. Mobile to Desktop.
+    //BUT, also start with PORTRAIT then do LANDSCAPE view dimensions.
+    //Styling at the SMALLEST of each EXPANDABLE PARTITION. (minimum view bounds)
+    //Use the PR-GRID itself as a guide for stepping through every DIMENSION.
+    //SOME DIMENSIONS are not necessary (eg. very long and thin)
+    //SQUARE views default to LANDSCAPE-.
+    //AUDIT CODE at bottom to see exactly what rendered where.
+    //Dynamic Factory Function to test all views from the console. 
+    //TEST by running each PR Dimension and making adjustments in code.
+    //First TEST minimum-view-bounds, then at maximum-view-bounds.
+    //Done-.
+    //------------------------------------------TITLE-SIZER-.
+    nx.ui.winW = $(window).width(); //dynamic editing-.
+    nx.ui.winH = $(window).height(); 
+    var prtNum = 0;
+    var tgtPOS = {}; //SET MST TXT POSITIONS 
+    if(nx.ui.screenOrientation==='portrait'){ //------------------------------------------------------PORTRAIT
+        if(nx.ui.winW > 800){      prtNum=1; tgtPOS={msg1h:'39',msg1w:'11',msg2h:'13',msg2w:'22',msg3h:'20',msg3w:'8',msg4h:'9',msg4w:'8'}; 
+        }else if(nx.ui.winW > 550){prtNum=2; tgtPOS={msg1h:'39',msg1w:'6',msg2h:'13',msg2w:'11',msg3h:'25',msg3w:'-5',msg4h:'9',msg4w:'8'}; 
+        }else if(nx.ui.winW > 350){prtNum=3; tgtPOS={msg1h:'37',msg1w:'-2',msg2h:'13',msg2w:'-3',msg3h:'29',msg3w:'-14',msg4h:'8',msg4w:'1'};  
+        }else /*winW < 350*/{      prtNum=4; tgtPOS={msg1h:'37',msg1w:'-2',msg2h:'13',msg2w:'-3',msg3h:'28',msg3w:'-14',msg4h:'8',msg4w:'1'};  }
+    } else { //landscape---------------------------------------------------------------------------LANDSCAPE-.
+        if(nx.ui.winW > 1400){ prtNum=9; tgtPOS={msg1h:'39',msg1w:'28',msg2h:'10',msg2w:'31',msg3h:'21',msg3w:'23',msg4h:'9',msg4w:'29'}; }    //LAPTOP
+        else if(nx.ui.winW > 1000){ prtNum=8; tgtPOS={msg1h:'39',msg1w:'21',msg2h:'10',msg2w:'29',msg3h:'21',msg3w:'18',msg4h:'9',msg4w:'25'};  }   //LAPTOP
+        else if(nx.ui.winW > 800){
+            if(nx.ui.winH > 550) { prtNum=5; tgtPOS={msg1h:'39',msg1w:'14',msg2h:'10',msg2w:'21',msg3h:'21',msg3w:'8',msg4h:'9',msg4w:'19'};  }   //LAPTOP
+            else/*phonesmall*/ {  prtNum=6; tgtPOS={msg1h:'36',msg1w:'10',msg2h:'13',msg2w:'23',msg3h:'21',msg3w:'8',msg4h:'9',msg4w:'19'};   } //PHONE-TALL-.
+        }else /*if(nx.ui.winW > 550)*/{prtNum=7; tgtPOS={msg1h:'36',msg1w:'8',msg2h:'11',msg2w:'11',msg3h:'27',msg3w:'-9',msg4h:'9',msg4w:'6'};  }
+    }
+    console.log('MSG:',nx.ui.winW,nx.ui.winH,'SIZED',prtNum,tgtPOS)
+	// nx.anm.seriesTitleBig(tgtPOS['font-size'],tgtPOS['padding-top']);
+	// nx.anm.seriesSuperTitleBig(1,1);
+
+
+
+	nx.ui.txtMSG1.css({"left":tgtPOS.msg1w+'%',"bottom":tgtPOS.msg1h+'%'}).show(3000,function(){
+		setTimeout(function(){
+			
+		    // $({lftSlide:-333}).animate({lftSlide:13} //show MSG 2
+		    nx.ui.txtMSG2.css("bottom",tgtPOS.msg2h+'%');
+		    $({lftSlide:-333}).animate({lftSlide:tgtPOS.msg2w} //show MSG 2
+		    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+		        step:function(now) { if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+		        	nx.ui.txtMSG2.css("left",this.lftSlide+'%');
+		        },complete:function(){
+			// nx.ui.txtMSG2.show(3000,function(){
+				setTimeout(function(){
+					// nx.ui.txtMSG3.show(3000,function(){
+				    // $({rgtSlide:-444}).animate({rgtSlide:2} //show MSG 3
+		    		nx.ui.txtMSG3.css("bottom",tgtPOS.msg3h+'%');
+				    $({rgtSlide:-444}).animate({rgtSlide:tgtPOS.msg3w} //show MSG 3
+				    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+				        step:function(now) { if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+				        	nx.ui.txtMSG3.css("right",this.rgtSlide+'%');
+				        },complete:function(){
+
+
+						//TODO zapbots move in.
+
+						//TODO - maybe movethis out to endFN to make it specific to  that?
+							setTimeout(function(){
+		    					nx.ui.txtMSG4.css("bottom",tgtPOS.msg4h+'%');
+		    					nx.ui.txtMSG4.css("right",tgtPOS.msg4w+'%');
+								nx.ui.txtMSG4.show(3000,function(){
+									//TODO show DARKBOT
+									nx.ui.goBtn1.unbind( "click" );
+									nx.ui.goBtnFrame1.show(1000);
+									nx.ui.goBtn1.click(function(){
+								
+										nx.anm.seriesTitleSmall();
+    									nx.anm.seriesSuperTitleSmall();
+										// nx.anm.seriesTitleClear();
+										endFn();
+									});
+								});
+							},200)
+					}}); //end txt slide in
+					// });
+				},200)
+			// });
+			}}); //end txt slide in
+		},200)
+	});
+
 
 
 }

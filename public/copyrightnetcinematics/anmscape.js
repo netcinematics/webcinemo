@@ -883,13 +883,13 @@ nx.createMasterStart = function(){
         // debugger;
         
         //---------------------------------MASTER~SCRIPT------------------------------------------------
-        nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
+        // nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
         // nx.runSCENE({id:"VortexSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
 
         // nx.spaceSeqIdx[0] = {on:1}; 
         // nx.spaceSeqIdx[2] = {on:1};
          //TODO this is best for COMBINED SYNTAX. second parameter is FRAME , 0
-         // nx.runCinematicSequence("SpaceSequence") //very beginning todo runEpic then runEpic and initEpic and endEpic
+         nx.runCinematicSequence("SpaceSequence") //very beginning todo runEpic then runEpic and initEpic and endEpic
         // nx.runSCENE({id:"TestWorldSEQ"}); //SCENEZFactory-.
         // nx.initSEQ({seqID:SCENEitem.id,frame:SCENEitem.frame}); 
         //GAME 1 INIT / RUN --------------------------------------------------------------------------------------

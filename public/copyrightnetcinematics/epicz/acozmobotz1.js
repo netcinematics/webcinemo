@@ -569,11 +569,11 @@ nx.runCinematicSequence = function(seqName){ //LOOPZ
 
   
                               //on first frame   //TODO add with another space zooom anm-.
-                nx.ui.flashCanvasMSG({txt:"Dr.ACOZMO!",txtIcon:'drbecky', txtType:'hero', persist:0, dur:4222});                 //on first frame   //TODO add with another space zooom anm-.
-                nx.ui.flashCanvasMSG({txt:'Yes, Dr.BECKY?',txtIcon:'dracozmo', txtType:'hero',persist:0,dur:4222,txtAlign:'right'});                 //on first frame   //TODO add with another space zooom anm-.
+                nx.ui.flashCanvasMSG({txt:"Dr.ACOZMO!",txtIcon:'drbecky', txtType:'intro', persist:0, dur:4222});                 //on first frame   //TODO add with another space zooom anm-.
+                nx.ui.flashCanvasMSG({txt:'Yes, Dr.BECKY?',txtIcon:'dracozmo', txtType:'intro',persist:0,dur:4222,txtAlign:'right'});                 //on first frame   //TODO add with another space zooom anm-.
                 nx.ui.flashCanvasMSG({txt:'A MESSAGE in SPACE!!',txtIcon:'drbecky',dur:4888});                 //on first frame   //TODO add with another space zooom anm-.
                 nx.ui.flashCanvasMSG({txt:"Let's DECODE it.",txtIcon:'dracozmo',dur:3000,txtAlign:'right'});                 //on first frame   //TODO add with another space zooom anm-.
-                nx.ui.flashCanvasMSG({txt:'LOOK in the ACOZMOSCOPE!',txtIcon:'drbecky',dur:5000,//});                 //on first frame   //TODO add with another space zooom anm-.
+                nx.ui.flashCanvasMSG({txt:'SPACE~DIGITIZED!',txtIcon:'drbecky',dur:5000,//});                 //on first frame   //TODO add with another space zooom anm-.
 
 
                 //TXT:
@@ -628,7 +628,7 @@ nx.runCinematicSequence = function(seqName){ //LOOPZ
 
                                  //on first frame   //TODO add with another space zooom anm-.
                 // nx.ui.flashCanvasMSG({txt:"Let's DECODE it!",txtIcon:'dracozmo',dur:4222,txtAlign:'right'});
-                nx.ui.flashCanvasMSG({txt:"SPACE~DIGITIZED!!!",txtIcon:'dracozmo',dur:4222,txtAlign:'right'});
+                nx.ui.flashCanvasMSG({txt:"LOOK in the ACOZMOSCOPE!",txtIcon:'dracozmo',dur:4222,txtAlign:'right'});
                 //-------ANM: CAM-ZOOM-TOWARD BINOCULAR-.
                 $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z}). 
                 animate({cx:1755.67,cy:4430.05,cz:-3832.40},{queue:false,duration:4000*nx.RUNTIME,easing:'linear',
@@ -971,7 +971,7 @@ setTimeout(function(){
 
 setTimeout(function(){
 
-                nx.ui.flashCanvasMSG({txt:'DETANGLED from Gemini.',txtIcon:'dracozmo',dur:4000,txtAlign:'right'});                 //on first frame   //TODO add with another space zooom anm-.
+                nx.ui.flashCanvasMSG({txt:'DETANGLE from Gemini.',txtIcon:'dracozmo',dur:4000,txtAlign:'right'});                 //on first frame   //TODO add with another space zooom anm-.
             },3000)
 
 
@@ -1035,8 +1035,11 @@ setTimeout(function(){
                                 // var focTGT =  {x: -2650, y: 3855, z: -1644} //end orby pos
                                 // nx.scene.activeCamera.setTarget(new BABYLON.Vector3(-2485,3933,-1935.01));
 
-                nx.ui.flashCanvasMSG({txt:'TRIANGULATE!',txtIcon:'dracozmo',dur:4000,txtAlign:'right'});                 //on first frame   //TODO add with another space zooom anm-.
-                nx.ui.flashCanvasMSG({txt:'"FIND my MESSAGE in SPACE."',txtIcon:'azod',txtAlign:'right',dur:5000});                 //on first frame   //TODO add with another space zooom anm-.
+                nx.ui.flashCanvasMSG({txt:'TRIANGULATE!',txtIcon:'dracozmo',dur:4000,txtAlign:'right'});
+
+                setTimeout(function(){
+                    nx.ui.flashCanvasMSG({txt:'"FIND my MESSAGE in SPACE."',txtIcon:'azod',txtAlign:'right',dur:5000});                 //on first frame   //TODO add with another space zooom anm-.
+                },2000)                 //on first frame   //TODO add with another space zooom anm-.
 
 
 
@@ -1124,6 +1127,10 @@ setTimeout(function(){
                 // console.log('efreecam1')
                 
                 
+            nx.anm.seriesTitleSmall();
+            nx.anm.seriesSuperTitleSmall();
+
+
                 // initCAMPOS = new BABYLON.Vector3(-2012,3433,-2306); //ANM: INICAMPOS2
 
                 console.log('SPACECAM FREECAM set POS - looking up?');
@@ -1294,7 +1301,7 @@ nx.removeOrion1();
                     heroSCALE:0,fx:currFOC.x,fy:currFOC.y,fz:currFOC.z //PNT: orby end
                 }).animate({
                     heroSCALE:1,fx:endFOC.x,fy:endFOC.y,fz:endFOC.z
-                },{queue:false,duration:8000*nx.RUNTIME,easing:'swing',
+                },{queue:false,duration:6000*nx.RUNTIME,easing:'swing',
                 step: function(now) { 
                    if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[2]={on:1}; return;}//CINEMA-STOP-.
                     nx.orbyMesh.scaling.copyFrom({x:this.heroSCALE,y:this.heroSCALE,z:this.heroSCALE});
@@ -1437,8 +1444,8 @@ setTimeout(function(){
                                 nx.spaceSeqIdx[4] = {on:1}
                             });
 
-                            // // nx.ui.flashCanvasMSG({txt:"OrbyOrbot!",txtAlign:'hero',txtIcon:'orby',dur:4000});      //on orby freeze
-                            // nx.ui.flashCanvasMSG({txt:"ORBY~ORBOT!",persist:0, txtType:'hero',txtIcon:'orby',dur:4000,
+                            // // nx.ui.flashCanvasMSG({txt:"OrbyOrbot!",txtAlign:'intro',txtIcon:'orby',dur:4000});      //on orby freeze
+                            // nx.ui.flashCanvasMSG({txt:"ORBY~ORBOT!",persist:0, txtType:'intro',txtIcon:'orby',dur:4000,
                             // txtEnd:function(){
 
                             //     //CAM - good RESPONSIVE Portrait POS
@@ -1544,7 +1551,7 @@ setTimeout(function(){
 //Will Orby find ZEON? //LFT
 //Who is DarkBot?  //LFT
 
-                    // nx.ui.setMovieModeTXT({txt:"OrbyOrbot!",type:'hero',align:'center'}); 
+                    // nx.ui.setMovieModeTXT({txt:"OrbyOrbot!",type:'intro',align:'center'}); 
                     
                     // setTimeout(function(){
                     //     // nx.scene.stopAnimation(nx.orbySkeleton[0])      //---------------------ANM: FREEZE-ORBY-.
@@ -2377,8 +2384,8 @@ nx.ui.flashCanvasMSG({txt:'GO Orby!',txtIcon:'azod',txtAlign:'right',txtEnd:func
                     // nx.ui.flashCanvasMSG({txt:'Quest 1: Zapbots on AlphaMoon!',txtType:'quest',persist:true,dur:4000});         //on look at zapbot 
                     // nx.ui.flashCanvasMSG({txt:'Success: Land on AlphaMoon!',txtType:'success',persist:true,dur:4000});         //on look at zapbot 
                     // nx.ui.flashCanvasMSG({txt:'Item: SpaceGem!',txtType:'item',persist:true,dur:4000});         //on look at zapbot 
-                    // nx.ui.flashCanvasMSG({txt:'OrbyOrbot!',txtType:'hero',txtIcon:'orby',dur:4000});         //on look at zapbot 
-                    // nx.ui.flashCanvasMSG({txt:'ZAPBOT!',txtType:'hero',txtIcon:'zapbot',persist:true,dur:4000});         //on look at zapbot 
+                    // nx.ui.flashCanvasMSG({txt:'OrbyOrbot!',txtType:'intro',txtIcon:'orby',dur:4000});         //on look at zapbot 
+                    // nx.ui.flashCanvasMSG({txt:'ZAPBOT!',txtType:'intro',txtIcon:'zapbot',persist:true,dur:4000});         //on look at zapbot 
                     // nx.ui.flashCanvasMSG({txt:'ZAPBOTZ!?!',txtIcon:'orby',dur:4000});         //on look at zapbot 
                     // nx.ui.flashCanvasMSG({txt:'ZAPBOT!',txtIcon:'orby',dur:4000});         //on look at zapbot 
                    
@@ -2522,7 +2529,7 @@ nx.ui.flashCanvasMSG({txt:'GO Orby!',txtIcon:'azod',txtAlign:'right',txtEnd:func
                         // nx.initSEQ({seqID:'DoorSEQ'}); /*doorseq todo coil sequence*/ 
                     }else{
                         // debugger;
-                            nx.ui.flashCanvasMSG({txt:"ZAPBOTZ on ALPHAMOON!?!",txtType:'hero',txtIcon:'orby',dur:4000,
+                            nx.ui.flashCanvasMSG({txt:"ZAPBOTZ on ALPHAMOON!?!",txtType:'intro',txtIcon:'orby',dur:4000,
                             txtEnd:function(){
 
                                 nx.initFreeCam();  //CAMERA: LONG-CAM - over landingpad-.
@@ -2585,7 +2592,7 @@ nx.orbyMesh.rotation.copyFrom( {x: 0, y: 4, z: 0})
                 //todo if nx.cinemaPlayAll?
                 // nx.ui.showMovieModeView();
 
-                // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtAlign:'hero',txtIcon:'darkbot',dur:1000}); 
+                // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtAlign:'intro',txtIcon:'darkbot',dur:1000}); 
                 // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtType:'villian',txtIcon:'darkbot',dur:1000}); 
                 // nx.ui.flashCanvasMSG({txt:'DarkBot!',dur:1000}); 
 
@@ -3139,7 +3146,7 @@ debugger; //unused todo, cut for zapbot introductions
                 //todo if nx.cinemaPlayAll?
                 // nx.ui.showMovieModeView();
 
-                // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtAlign:'hero',txtIcon:'darkbot',dur:1000}); 
+                // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtAlign:'intro',txtIcon:'darkbot',dur:1000}); 
                 // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtType:'villian',txtIcon:'darkbot',dur:1000}); 
                 // nx.ui.flashCanvasMSG({txt:'DarkBot!',dur:1000}); 
 
@@ -3269,7 +3276,7 @@ setTimeout(function(){
                         // nx.camz.freeCam.setTarget( nx.darkBot.position ); 
 // return
                         // nx.ui.flashCanvasMSG({txt:'DarkBot!'});  
-                // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtAlign:'hero',txtIcon:'darkbot',dur:1000}); 
+                // nx.ui.flashCanvasMSG({txt:'DarkBot!',txtAlign:'intro',txtIcon:'darkbot',dur:1000}); 
 
 
 

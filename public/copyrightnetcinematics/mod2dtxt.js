@@ -1137,6 +1137,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
   var txtAlign=(config && config.txtAlign)?config.txtAlign:'left'; //center, right-.
   var txtClass=(config && config.txtClass)?config.txtClass:'hero10'; //narrator color
   var txtType=(config && config.txtType)?config.txtType:0;
+  var imgSize = (config && config.imgSize)?config.imgSize:(txtType==='intro')?'3em':'2.2em';
   // var txtLong = (config & config.txtLong)?'.txtLong':'';
   var txtName = '', txtNameColor='#e69be8';
   var iconBorder = '';
@@ -1150,7 +1151,6 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtName='Orby';
       iconBorder = '2px solid purple';
       src = './copyrightnetcinematics/img/orby1.png'; 
-      var imgSize = (txtType==='hero')?'3em':'2.2em';
       heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero9'; }
@@ -1160,7 +1160,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       iconBorder = '2px solid black';
       src = './copyrightnetcinematics/img/zapbot2.png'; 
 
-      var imgSize = (txtType==='hero')?'3em':'2.2em';
+      // var imgSize = (txtType==='intro')?'3em':'2.2em';
       heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;
         align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0 0 12px darkred;"
       src="${src}" alt="logo" aria-label="logo">`
@@ -1170,7 +1170,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtName='Jaxa';
       iconBorder = '2px solid purple';
       src = './copyrightnetcinematics/img/jaxxLogo1.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero8' }
     }else if(txtIcon==='darkbot'){
@@ -1178,7 +1178,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       lblRgt = '0.4em';lblBtm='-1.5em';
       iconBorder = '2px solid black';
       src = './copyrightnetcinematics/img/darkbot2.png'; 
-      var imgSize = (txtType==='hero')?'3em':'2.2em';
+      // var imgSize = (txtType==='intro')?'3em':'2.2em';
       heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;
         align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0px 0 5px steelblue;"
       src="${src}" alt="logo" aria-label="logo">`
@@ -1187,7 +1187,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtName='Dr.Acozmo';
       iconBorder = '2px solid #024c04';
       src = './copyrightnetcinematics/img/dracozmo3.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;
         align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0px 0 12px 399c98;"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero2' }
@@ -1197,7 +1197,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtNameColor='#e69be8';
       iconBorder = '2px solid purple';
       src = './copyrightnetcinematics/img/drbecky3.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero7' }
       if(txtAlign==='right'){txtClass+=' talkRGT_DB';}else{txtClass+=' talkLFT_DB';}
@@ -1205,7 +1205,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtName='Azod';
       iconBorder = '2px solid purple';
       src = './copyrightnetcinematics/img/azod1.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero8' }
     }
@@ -1229,7 +1229,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtClass='hero10';
       // src = ''; 
       // if(config && !config.txtClass){ txtClass = 'hero10'; }
-    }else if(txtType==='hero'){
+    }else if(txtType==='intro'){
       stateIcon = (heroLogo)?heroLogo:'<i class="fa fa-user" style=""></i>';
       // src = './img/hero/orby1.png'; 
       // if(config && !config.txtClass){ txtClass = 'hero1'; }
@@ -1309,7 +1309,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
           ${(txtAlign==='right')?'margin-right:0em; padding-right:0em':(stateIcon)?'':(config.align==='center')?'':'margin-left:0'};
           justify-content:center;">
             ${(stateIcon)?stateIcon:''}
-          <span style="${(stateIcon)?'margin-left:0.5em;':''} ${(txtType==='hero')?'font-size:1.8em':''}">${config.txt}</span></span>
+          <span style="${(stateIcon)?'margin-left:0.5em;':''} ${(txtType==='intro')?'font-size:1.8em':''}">${config.txt}</span></span>
         ${(heroLogo && txtAlign==='right')?heroLogo:''}
         ${(txtName && !stateIcon)?`<div class='heroName' style='position:absolute;bottom:${lblBtm};${(txtAlign==='right')?`right:${lblRgt}`:`left:${lblLft}`};
           color:${txtNameColor};font-size:0.5em;text-shadow:2px 2px 2px black,-2px 2px 2px black;font-weight:bold;'>${txtName}</div>`:''}
@@ -1318,15 +1318,15 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
     // var aTXTBitz =
     //   `<span class='frameSpan ${txtClass}' style="">
     //     ${(heroLogo && txtAlign==='left')?heroLogo:''}
-    //     <span class='mainSpan' style="${(txtAlign==='hero')?'display:flex;align-items:center;':''};
+    //     <span class='mainSpan' style="${(txtAlign==='intro')?'display:flex;align-items:center;':''};
     //       ${(txtAlign==='right')?'margin-right:-6em;padding-right:4em':'margin-left:-4em'};justify-content:center;">
-    //         ${(heroLogo && txtAlign==='hero')?heroLogo:''} &nbsp; ${config.txt}</span>
+    //         ${(heroLogo && txtAlign==='intro')?heroLogo:''} &nbsp; ${config.txt}</span>
     //     ${(heroLogo && txtAlign==='right')?heroLogo:''}
-    //     ${(txtName && txtAlign!='hero')?`<div class='heroName' style='position:absolute;bottom:${lblBtm};${(txtAlign==='right')?`right:${lblRgt}`:`left:${lblLft}`};
+    //     ${(txtName && txtAlign!='intro')?`<div class='heroName' style='position:absolute;bottom:${lblBtm};${(txtAlign==='right')?`right:${lblRgt}`:`left:${lblLft}`};
     //       color:${txtNameColor};font-size:0.5em;text-shadow:2px 2px 2px black,-2px 2px 2px black;font-weight:bold;'>${txtName}</div>`:''}
     //     </span>
     //     `;
-        // <span class='mainSpan' style="${(txtAlign==='hero')?'display: flex;align-items:center;':''};justify-content:${(txtAlign==='hero'?'center':(txtAlign==='right')?'flex-end':'flex-start')};">${(heroLogo && txtAlign==='hero')?heroLogo:''} &nbsp; ${config.txt}</span>
+        // <span class='mainSpan' style="${(txtAlign==='intro')?'display: flex;align-items:center;':''};justify-content:${(txtAlign==='intro'?'center':(txtAlign==='right')?'flex-end':'flex-start')};">${(heroLogo && txtAlign==='intro')?heroLogo:''} &nbsp; ${config.txt}</span>
 
 
 // var aTXTBitz = `<div class="${txtClass}" style="color:white;width:79%;max-width:599px;margin:0 auto;border:1px solid orange;line-height:1em;height:2em;display:flex;align-items:center;justify-content:center;border-radius:10px">A bunch of text so that I can test line wrap...</div>`;
@@ -1394,8 +1394,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       // `<span class='frameSpan ${txtClass}' style="display:flex;height:1.8em;border-radius:10px;padding:0.2em;background:black;width:80%;margin: 0 auto;">
       `<span class='frameSpan ${txtClass}' style="">
         ${(heroLogo && txtAlign==='left')?heroLogo:''}
-        <span class='mainSpan' style="${(txtAlign==='hero')?'display: flex;align-items:center;':''};justify-content:center;">
-        ${(heroLogo && txtAlign==='hero')?heroLogo:''} &nbsp; <span class='btnTgt'></span></span>
+        <span class='mainSpan' style="${(txtAlign==='intro')?'display: flex;align-items:center;':''};justify-content:center;">
+        ${(heroLogo && txtAlign==='intro')?heroLogo:''} &nbsp; <span class='btnTgt'></span></span>
         ${(heroLogo && txtAlign==='right')?heroLogo:''}
        </span>
       `);
@@ -3026,7 +3026,7 @@ nx.ui.toggleMinMax = function(maximize){
         // nx.ui.btnSelector.addClass('btnSelector')
         // nx.ui.activeView = nx.ui.idxView;
       });
-      nx.ui.lowNavBtn2.on("click" , function(e){        // console.log('hero')
+      nx.ui.lowNavBtn2.on("click" , function(e){        // console.log('intro')
         // nx.ui.showBookModeView();
         // if(nx.ui.activeView===nx.ui.heroView){return;}
         if(nx.ui.activeView===nx.ui.heroView){nx.ui.toggleMinMax((nx.ui.isTXTViewMinimized)?1:0); return;} //minimize-.
@@ -3328,7 +3328,7 @@ $('#movieModeHeader').fadeIn(3000);$('#movieModeFooter').fadeIn(3000)
       // if(config && !config.txtClass){ txtClass = 'hero1'; }
     }else if(type==='chapter'){ //todo change mission to quest
     }else if(type==='quest'){ //todo change mission to quest
-    }else if(type==='hero'){ //todo change mission to quest
+    }else if(type==='intro'){ //todo change mission to quest
       // src = './img/hero/orby1.png'; 
       // if(config && !config.txtClass){ txtClass = 'hero1'; }
     }else if(type==='orby'){
@@ -3374,7 +3374,7 @@ $('#movieModeHeader').fadeIn(3000);$('#movieModeFooter').fadeIn(3000)
 
     var aTXTBitz = 
       // (type==='chapter')?`<button id="epic${nx.epicTXTIdx}" class="mediaBtn movieStyle epicItem1 sceneSelector"><i class="fa fa-check-circle" style="float:left;"></i><span><i class="fa fa-film"></i>&nbsp;${title} ${txt}</span></button>` 
-      (type==='hero')?`<button id="epic${nx.epicTXTIdx}" class="mediaBtn heroStyleBtn">
+      (type==='intro')?`<button id="epic${nx.epicTXTIdx}" class="mediaBtn heroStyleBtn">
         <span style="display:flex;align-content:center;justify-content:center;">
           <i class="fa fa-user" style="margin-right:0.5em;"></i><span style="margin-top:1px;">${title} ${txt}</span></span></button>` 
       :(type==='chapter')?`<button id="epic${nx.epicTXTIdx}" class="mediaBtn chapterStyleBtn">
