@@ -141,7 +141,7 @@ var createSpace = function () {
 }
 
 /*********************************-CREATE-LIGHTS-******************************/
-var spot1, light1, light2;
+// var spot1, light1, light2;
 var createLights = function() {
     // debugger; //obsolete?
     // var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,10,0), nx.scene);
@@ -153,13 +153,197 @@ var createLights = function() {
     // light2.intensity = 0.5;
 
     //SPACELIGHT - used for nebula!
-    var light3 = new BABYLON.PointLight("pl", new BABYLON.Vector3(0, 200, 0), nx.scene);
+    nx.lightDefaultBlue = new BABYLON.PointLight("pl", new BABYLON.Vector3(0, 200, 0), nx.scene);
     // light3.diffuse = new BABYLON.Color3(0.8, 0.5, 1);
-    light3.diffuse = new BABYLON.Color3(0.444, 0.444, 1);
-    light3.specular = new BABYLON.Color3(0, 0, 1);
-    light3.intensity = 0.44; //80
+    nx.lightDefaultBlue.diffuse = new BABYLON.Color3(0.444, 0.444, 1);
+    nx.lightDefaultBlue.specular = new BABYLON.Color3(0, 0, 1);
+    nx.lightDefaultBlue.intensity = 0.44; //80
+
+
+
+    nx.editorLIGHTBOXMATRIX();
+
+
 
 }
+
+
+//TXT: 
+//flashback: orby vacuuming floors, with apron and mom
+//mom, am I an ordinary robot?
+//no, not at all!
+//But 'Orbot' means "Ordinary Robot"
+//Orby, if you don't want to be ordinary,
+//then dont be Ordinary.
+//the choice is yours.
+//Orby... "ExtraOrdinary" Robot!
+//That's it! 
+
+nx.editorLIGHTBOXMATRIX = function(/*tgt*/){
+    //USAGE: 3 lights orbit TGT. 
+    //toggle each individual light on off to set angle. with nx.LightMOVE = 0 || 1;
+    //then set position distance and intensity in anmscript.
+
+
+
+    // debugger;
+    nx.light0 = new BABYLON.PointLight("Omni0", new BABYLON.Vector3(0, 10, 0), nx.scene);
+    nx.light1 = new BABYLON.PointLight("Omni1", new BABYLON.Vector3(0, 0, 10), nx.scene);
+    nx.light2 = new BABYLON.PointLight("Omni2", new BABYLON.Vector3(10, 0, 0), nx.scene);
+    //
+    // nx.light3 = new BABYLON.DirectionalLight("Dir0", new BABYLON.Vector3(1, -4, 1),  nx.scene);
+    // nx.light3.position = new BABYLON.Vector3(-10, 60, -40); // (-10, 60, -40);
+    // nx.light3.intensity = 1.15;
+
+    //SET EXCLUDE MESHES
+    // light0.excludedMeshes.push(spheres[7], spheres[18]);    
+    // light1.includedOnlyMeshes.push(spheres[2], spheres[4])
+
+    // debugger;
+    setTimeout(function(){
+//Todo need a better promise:
+        nx.light0.includedOnlyMeshes.push(nx.orbyMesh,nx.orbyMeshBody,nx.lazerbox,nx.orby.iris,nx.orby.eye,nx.orby.mouthCover)
+        nx.light1.includedOnlyMeshes.push(nx.orbyMesh,nx.orbyMeshBody,nx.lazerbox,nx.orby.iris,nx.orby.eye,nx.orby.mouthCover)
+        nx.light2.includedOnlyMeshes.push(nx.orbyMesh,nx.orbyMeshBody,nx.lazerbox,nx.orby.iris,nx.orby.eye,nx.orby.mouthCover)
+// - from light start or
+// - from nebula create
+// - if the other exists 
+// - then exclude nebula from character lights-. 
+    // if(nx.nebula1){ 
+    //     nx.light0.excludedMeshes.push(nx.nebula1,nx.nebula2,nx.nebula3,nx.nebula4,nx.nebula5,nx.nebula6,nx.nebula7,nx.nebula8,nx.nebula9);   
+    //     nx.light1.excludedMeshes.push(nx.nebula1,nx.nebula2,nx.nebula3,nx.nebula4,nx.nebula5,nx.nebula6,nx.nebula7,nx.nebula8,nx.nebula9);   
+    //     nx.light2.excludedMeshes.push(nx.nebula1,nx.nebula2,nx.nebula3,nx.nebula4,nx.nebula5,nx.nebula6,nx.nebula7,nx.nebula8,nx.nebula9);   
+    // }
+
+},5000)
+
+    //SETLIGHT:POSITION-INTENSITY
+    nx.light0.position.copyFrom({x: 10, y: 0, z: -100})
+    nx.light0.intensity = 0.8
+    nx.light1.position.copyFrom({x: -10, y: 0, z: 15})
+    nx.light1.intensity = 0.8
+    // nx.light2.position.copyFrom({x: -66, y: 0, z: -88})
+    // nx.light2.position.copyFrom({x: -66, y: 55, z: -88})
+    nx.light2.position.copyFrom({x: -44, y: 44, z: -88})
+    nx.light2.intensity = 0.8
+
+    setTimeout(function(){
+
+        nx.light0.parent = nx.orbyMesh;
+        nx.light1.parent = nx.orbyMesh;
+        nx.light2.parent = nx.orbyMesh;
+        // nx.light3.parent = nx.orbyMesh;
+        nx.lightStrobe=1;
+        var recursiveSOLARStrobe = function(start,end){
+            if(!nx.lightStrobe){return;}
+            $({vol:start}).animate({vol:end},{queue:false,duration:4444,easing:'linear',
+            step: function(now) {  nx.light0.intensity = this.vol; 
+            },complete:function(){ recursiveSOLARStrobe(end,start)  }
+            });
+        }
+        recursiveSOLARStrobe(0.444,1.222)
+
+    },4000)
+
+    // =====================================================================================
+    // =====================================================================================
+    // Creating nx.light sphere
+
+
+
+    // 
+    var lightSphere0 = BABYLON.Mesh.CreateSphere("Sphere0", 16, 2, nx.scene);
+    // OPTIMISATION WITH INSTANCE (methode clone)
+    //var lightSphere1 = lightSphere0.clone("Sphere1");
+    //var lightSphere2 = lightSphere0.clone("Sphere2");
+    var lightSphere1 = BABYLON.Mesh.CreateSphere("Sphere1", 16, 2, nx.scene);
+    var lightSphere2 = BABYLON.Mesh.CreateSphere("Sphere2", 16, 2, nx.scene);
+    // =====================================================================================
+    // =====================================================================================
+    // Lights colors
+    //
+    nx.light0.diffuse = new BABYLON.Color3(1, 0, 0);
+    nx.light0.specular = new BABYLON.Color3(1, 0, 0);
+    //
+    nx.light1.diffuse = new BABYLON.Color3(0, 1, 0);
+    nx.light1.specular = new BABYLON.Color3(0, 1, 0);
+    //
+    nx.light2.diffuse = new BABYLON.Color3(0, 0, 1);
+    nx.light2.specular = new BABYLON.Color3(0, 0, 1);
+    
+    // nx.light3.diffuse = new BABYLON.Color3(1, 1, 1);
+    // nx.light3.specular = new BABYLON.Color3(1, 1, 1);
+    // =====================================================================================
+    // =====================================================================================
+    // Create the array material for the nx.lightSphere
+    //
+    var materialArraySphere = [];
+    var i=0;
+    while(i < 3) {
+        materialArraySphere[i] = new BABYLON.StandardMaterial("materialArraySphere_"+i, nx.scene);
+        materialArraySphere[i].diffuseColor = new BABYLON.Color3(0.5,0.5, 0.5);
+        materialArraySphere[i].specularColor = new BABYLON.Color3(0, 0, 1);
+        materialArraySphere[i].specularPower = 32;
+        materialArraySphere[i].ambientColor = new BABYLON.Color3(0, 0, 1);
+        i++;
+    }
+    // set the color
+    materialArraySphere[0].emissiveColor = new BABYLON.Color3(1, 0, 0); // red
+    materialArraySphere[1].emissiveColor = new BABYLON.Color3(0, 1, 0); // green
+    materialArraySphere[2].emissiveColor = new BABYLON.Color3(0, 0, 1); // blue
+    // Add materialArraySphere in the nx.lightSphere 
+    lightSphere0.material = materialArraySphere[0];
+    lightSphere1.material = materialArraySphere[1];
+    lightSphere2.material = materialArraySphere[2];
+
+
+    lightSphere0.parent = nx.light0;
+    lightSphere1.parent = nx.light1;
+    lightSphere2.parent = nx.light2;
+    
+    
+    // =====================================================================================
+    // =====================================================================================
+    // Animation for rotate the LightSpheres
+    setTimeout(function(){
+
+        var alpha = 0;
+        nx.blueLights = 1;
+        nx.redLight = 1;
+        nx.scene.beforeRender = function () {
+
+            // if(nx.blueLights>0){ //Anmethodology: TURN-OFF-THE-LIGHT-WHEN-YOU-LEAVE-.
+            //     nx.blueLights++;//ONE-TIME-SWITCH-.
+            //     if(nx.blueLights===1){
+            //         nx.light1.position.copyFrom({x: -8.236692217703503, y: 2, z: 11.34141107813707});
+            //         nx.light2.position.copyFrom({x: -5.670705539068535, y: -2, z: -16.473384435407006});
+            //     }
+            // }
+            // if(nx.redLight){
+            //     nx.light0.position = new BABYLON.Vector3(10 * Math.sin(alpha), 0, 20 * Math.cos(alpha));
+            // }
+            // nx.light1.position = new BABYLON.Vector3(10 * Math.sin(alpha), 2, -20 * Math.cos(alpha));
+            // nx.light2.position = new BABYLON.Vector3(10 * Math.cos(alpha), -2, 20 * Math.sin(alpha));
+            //
+
+            // if(!nx.orbyMesh){return;}
+            // nx.light0.position.add(new BABYLON.Vector3(nx.orbyMesh.position.x,nx.orbyMesh.position.y,nx.orbyMesh.position.z))
+            // nx.light1.position.add(new BABYLON.Vector3(nx.orbyMesh.position.x,nx.orbyMesh.position.y,nx.orbyMesh.position.z))
+            // nx.light2.position.add(new BABYLON.Vector3(nx.orbyMesh.position.x,nx.orbyMesh.position.y,nx.orbyMesh.position.z))
+            // nx.light3.position.add(new BABYLON.Vector3(nx.orbyMesh.position.x,nx.orbyMesh.position.y,nx.orbyMesh.position.z))
+
+
+            // lightSphere0.position = nx.light0.position;
+            // lightSphere1.position = nx.light1.position;
+            // lightSphere2.position = nx.light2.position;
+            //
+            alpha += 0.003;
+        };
+    },1000)
+
+}
+
+
 /*********************************-CREATE-CAMERA-******************************/
 var createDefaultCamera = function(cam) {
     // cam = cam || 'default'; 
@@ -699,7 +883,7 @@ nx.createMasterStart = function(){
         // debugger;
         
         //---------------------------------MASTER~SCRIPT------------------------------------------------
-        // nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
+        nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
         // nx.runSCENE({id:"VortexSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
 
         // nx.spaceSeqIdx[0] = {on:1}; 
@@ -718,7 +902,7 @@ nx.createMasterStart = function(){
         // nx.initSEQ({seqID:'scanTrainSequence'})//ScanTrainSEQUENCE //ACT~2
         // nx.initSEQ({seqID:'affirmSequence'})//AFFIRMATIONSEQUENCE space junk
         // debugger;
-        nx.initSEQ({seqID:'aClimaxSequence'})// ACT~3
+        // nx.initSEQ({seqID:'aClimaxSequence'})// ACT~3
         // nx.initSEQ({seqID:'aBoomSequence'})
         // nx.initSEQ({seqID:'aSunsetSequence'})
         // nx.initSEQ({seqID:'aZoomOutSequence'})

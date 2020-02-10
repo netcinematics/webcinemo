@@ -91,6 +91,13 @@ Flick3r
 
 "electricity 3" https://freesound.org/people/PureAudioNinja/sounds/341611/, license: 1.0/ CC0 - PUBLIC DOMAIN
 
+"grieg" Attribution: Hall of the Mountain King Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+https://creativecommons.org/licenses/by/3.0/
+Alterations: reverb, phaser, cuts and mashup.
+https://commons.wikimedia.org/wiki/File:Hall_of_the_Mountain_King_(ISRC_USUAN1200072).mp3
+
+
 
 //ATTRIBUTION-FOR-VISUAL-AND-AUDIO-DERIVATIVES.
 - https://creativecommons.org/licenses/by/3.0/#
@@ -149,7 +156,6 @@ GREENWORKS - MIT: https://github.com/greenheartgames/greenworks/blob/master/LICE
 
 RequestAnimationFrame - MIT: https://gist.github.com/paulirish/1579671
 
-
 BABYLON - CSG: - https://github.com/CraigFeldspar/BabylonCSG/blob/master/LICENSE.md
 Copyright (c) 2011 Evan Wallace (http://madebyevan.com/) Adapted to BABYLON.js by Benjamin Guignabert (https://github.com/CraigFeldspar)
 
@@ -161,7 +167,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 CSS - Speech Bubble: https://auralinna.blog/post/2017/how-to-make-a-css-speech-bubble-with-borders-and-drop-shadow
-CSS - Thought Bubble: 
+CSS - Thought Bubble: http://blogs.sitepointstatic.com/examples/tech/css3-speech-bubbles/index.html
+CSS - Reference: https://leaverou.github.io/bubbly/ 
 
 ARTISTICALLY STYLIZED POLICY
 

@@ -128,6 +128,7 @@ nx.ui.epicLinkBtn = $('#epicLinkBtn');
 
 //*****************************************************************************END - ANM-SCRIPT-.
 
+
     window.addEventListener('resize', function(){
 
         // console.log('screen orientation resize: '+screenOrientation);
@@ -1149,7 +1150,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtName='Orby';
       iconBorder = '2px solid purple';
       src = './copyrightnetcinematics/img/orby1.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
+      var imgSize = (txtType==='hero')?'3em':'2.2em';
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero9'; }
     }else if(txtIcon==='zapbot'){
@@ -1157,7 +1159,9 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       lblLft = '1.2em'; 
       iconBorder = '2px solid black';
       src = './copyrightnetcinematics/img/zapbot2.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;
+
+      var imgSize = (txtType==='hero')?'3em':'2.2em';
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;
         align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0 0 12px darkred;"
       src="${src}" alt="logo" aria-label="logo">`
       // if(config && !config.txtClass){ txtClass = 'hero6' }
@@ -1174,18 +1178,20 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       lblRgt = '0.4em';lblBtm='-1.5em';
       iconBorder = '2px solid black';
       src = './copyrightnetcinematics/img/darkbot2.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;
+      var imgSize = (txtType==='hero')?'3em':'2.2em';
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;
         align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0px 0 5px steelblue;"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero4' }
     }else if(txtIcon==='dracozmo'){
       txtName='Dr.Acozmo';
-      iconBorder = '2px solid #001180';
+      iconBorder = '2px solid #024c04';
       src = './copyrightnetcinematics/img/dracozmo3.png'; 
       heroLogo = `<img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;
-        align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0px 0 12px steelblue;"
+        align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0px 0 12px 399c98;"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero2' }
+      if(txtAlign==='right'){txtClass+=' talkRGT_AC';}else{txtClass+=' talkLFT_AC';}
     }else if(txtIcon==='drbecky'){
       txtName='Dr.Becky';
       txtNameColor='#e69be8';
@@ -1194,6 +1200,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       heroLogo = `<img class="heroBubbleLogo" style="height:2.2em;width:2.2em;display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero7' }
+      if(txtAlign==='right'){txtClass+=' talkRGT_DB';}else{txtClass+=' talkLFT_DB';}
     }else if(txtIcon==='azod'){
       txtName='Azod';
       iconBorder = '2px solid purple';
@@ -1204,9 +1211,17 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
     }
   }
 
+
+
+  // txtClass += ' talkLFT_AC';
+  // txtClass += ' talkLFT_DB';
   // txtClass += ' talkTXT20_DB';
-  txtClass += ' thinkTXT20_DB';
+  // txtClass += ' thinkTXT20_DB';
+  // txtClass += ' talkLFT_AC';
+  // txtClass += ' talkRGT_DB';
+  // txtClass += ' talkRGT_AC';
   // txtClass += ' bubble thought';
+
 
   if (txtType){
     txtAlign='center';
@@ -1291,8 +1306,10 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       `<span class='frameSpan ${txtClass}' style="">
         ${(heroLogo && txtAlign==='left')?heroLogo:''}
         <span class='mainSpan' style="${(txtAlign==='center')?'display:flex;align-items:center;':''};
-          ${(txtAlign==='right')?'margin-right:0em;padding-right:0em':(stateIcon)?'':(config.align==='center')?'':'margin-left:0'};justify-content:center;">
-            ${(stateIcon)?stateIcon:''}<span style="${(stateIcon)?'margin-left:0.5em;':''}">${config.txt}</span></span>
+          ${(txtAlign==='right')?'margin-right:0em; padding-right:0em':(stateIcon)?'':(config.align==='center')?'':'margin-left:0'};
+          justify-content:center;">
+            ${(stateIcon)?stateIcon:''}
+          <span style="${(stateIcon)?'margin-left:0.5em;':''} ${(txtType==='hero')?'font-size:1.8em':''}">${config.txt}</span></span>
         ${(heroLogo && txtAlign==='right')?heroLogo:''}
         ${(txtName && !stateIcon)?`<div class='heroName' style='position:absolute;bottom:${lblBtm};${(txtAlign==='right')?`right:${lblRgt}`:`left:${lblLft}`};
           color:${txtNameColor};font-size:0.5em;text-shadow:2px 2px 2px black,-2px 2px 2px black;font-weight:bold;'>${txtName}</div>`:''}
@@ -2823,8 +2840,7 @@ nx.ui.toggleMinMax = function(maximize){
           if(nx.engine){ nx.engine.resize(); }
 
         }, complete:function(){
-  
-          // nx.ui.viewRow3.css({'flex':3});
+          nx.ui.viewRow3.css({'max-height':'2.2em'}); //fix end height
           // nx.ui.viewRow2.css({'flex':3});
   
           if(nx.engine){    nx.engine.resize(); }
@@ -3706,6 +3722,80 @@ nx.ui.movieModeScrollToBottom = function(){
     // });
 
 /*******************************************-AUTO-COLORS-****************************************************/
+
+/*********************************************MAIN-DLG-**********************************************/
+
+    // function anmMultiTitleSizer(){
+    //     //SIZING-DEPENDS on BOTH Width and Height and Orientation-.
+    //     var winWidth = $(window).width();
+    //     var winHeight = $(window).height();
+    //     var mainTitle = $('#mainTitle');
+    //     var subTitle = $('#subTitle')
+    //     var subTitleCSS = {};  
+    //     var mainTitleCSS  = {};
+    //     var superTitleCSS = {"font-size":"1em","opacity":1,"color":"#444"};  
+
+    //     //10-VIEW: RESPONSIVE-FUNNEL SETTINGS-.
+    //     //------------------------------------------TITLE-SIZER-.
+    //     if(screenOrientation==='portrait'){ //------------------------------------------------------PORTRAIT
+    //         if(winWidth > 800){mainTitleCSS = {'font-size':'8.8em','margin-top':'-20px'}; 
+    //         }else if(winWidth > 550){mainTitleCSS = {'font-size':'7.5em','margin-top':'-18px'}; 
+    //         }else if(winWidth > 350){mainTitleCSS = {'font-size':'5.5em',  'margin-top':'-6px'};  
+    //         }else /*winWidth < 350*/{mainTitleCSS = {'font-size':'4.5em','margin-top':'1px'};  
+    //         }
+    //     } else { //---------------------------------------------------------------------------------LANDSCAPE-.
+    //         if(winWidth > 800){
+    //             if(winHeight > 550) {mainTitleCSS = {'font-size':'8.5em',  'margin-top':'-20px'};     //LAPTOP
+    //             }else/*phonesmall*/ {mainTitleCSS = {'font-size':'3.6em', 'margin-top':'-20px'};   } //PHONE
+    //         }else if(winWidth > 550){mainTitleCSS = {'font-size':'3.6em','margin-top':'-20px'};  
+    //         }else if(winWidth > 350){mainTitleCSS = {'font-size':'3.6em','margin-top':'-20px'}; 
+    //         }else /*winWidth < 350*/{mainTitleCSS = {'font-size':'3.6em','margin-top':'-20px'};  }        
+    //     }
+    //     //------------------------------------------TITLE-SIZER-.
+
+    //     //--------------------------------------------SUBTITLE-SIZER
+    //     if(screenOrientation==='portrait'){          //------------------------------------------------PORTRAIT
+    //         if(winWidth > 800)      {subTitleCSS =  {'font-size':'1.2em','margin-top':'6em'}; 
+    //         }else if(winWidth > 550){subTitleCSS =  {'font-size':'1.2em','margin-top':'5.5em'}; 
+    //         }else if(winWidth > 350){subTitleCSS =  {'font-size':'1.2em','margin-top':'5em'};  
+    //         }else /*winWidth < 350*/{subTitleCSS =  {'font-size':'1.2em','margin-top':'5em'}; }
+    //     } else { //---------------------------------------------------------------------------------Landscape-.
+    //         if(winWidth > 800){
+    //             if(winHeight > 550) {subTitleCSS =  {'font-size':'1.2em','margin-top':'6.2em'};     //LAPTOP
+    //             }else/*PhoneSMALL*/{ subTitleCSS =  {'font-size':'1.2em','margin-top':'2.4em'}; } //PHONE
+    //         }else if(winWidth > 550){subTitleCSS =  {'font-size':'1.2em','margin-top':'2.4em'};  
+    //         }else if(winWidth > 350){subTitleCSS =  {'font-size':'1.2em','margin-top':'2.4em'};  
+    //         }else /*winWidth < 350*/{subTitleCSS =  {'font-size':'1.2em','margin-top':'2.4em'};    }        
+    //     }
+        
+    //     if(!initialLoad){ //RE-SIZING-.
+    //         mainTitle.css(mainTitleCSS)
+    //         subTitle.css(subTitleCSS)
+    //         //--------------------------------------------SUBTITLE-SIZER
+    //     } else {  //INITIAL-LOAD-AMN-.
+    //         var subTitle = $('#subTitle');
+    //         var superTitle = $('#superTitle');
+    //         // mainTitle.css({'font-size':'15em','opacity':0})//anm defaultstate todo better to have here than in css?
+    //         mainTitleCSS['opacity']=1;
+    //         subTitleCSS['opacity']=1;
+    //         subTitleCSS['font-size']="1.4em";
+
+    //         mainTitle.animate(mainTitleCSS ,{duration:3000,complete:function(e){}}); 
+    //         superTitle.animate(superTitleCSS,{duration:3000,complete:function(e){
+    //             subTitle.animate(subTitleCSS,{duration:3000,complete:function(e){
+    //                 subTitle.animate({"font-size": "1.2em"},{duration:1000,complete:function(e){ 
+    //                     // superTitle.animate({opacity:0},{duration:1000,complete:function(e){
+    //                         // superTitle.html('~original~');
+    //                         // superTitle.animate({opacity:1},{duration:1000,complete:function(e){ }}); 
+    //                     // }}); 
+    //                 }}); 
+    //             }}); 
+    //         }}); 
+    //     }
+    // }
+
+// </script>
+
 
 
 // });

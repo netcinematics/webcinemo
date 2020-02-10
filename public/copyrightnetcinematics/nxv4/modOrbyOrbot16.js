@@ -54,7 +54,8 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 700, 708, false, 0.33);  //look back
 /*******************************-ANMZ-************************************/
 nx.loadOrbyAssets = function() {
     if(!nx.scene){return;}
-    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot24b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot25d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+    // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot24b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22e.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot22c.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
@@ -93,7 +94,8 @@ nx.loadOrbyAssets = function() {
         nx.lazerbox = nx.scene.getMeshByName('lazerbox') ; //lazerbox
         nx.lazerbox.attachToBone(nx.orbySkeleton[0].bones[35], nx.orbyMesh); //left-index-tip-.
         // nx.lazerbox.attachToBone(nx.orbySkeleton[0].bones[47], nx.orbyMesh); //right-index-tip-.
-        nx.lazerbox.position.y = 0.17
+        // nx.lazerbox.position.y = 0.17
+        nx.lazerbox.position.y = 0.05
         // nx.lazerbox.position.x = 0.1
         nx.lazerbox.visibility = 1;
 

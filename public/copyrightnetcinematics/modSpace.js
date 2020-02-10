@@ -351,6 +351,7 @@ nx.removeGalaxy1 = function(){
 }
 
 nx.createPurpleNebula1 = function(){
+    // return;
 
 // //CAM POS on bottom vortex.
 // nx.TSTSPHERE2 = BABYLON.Mesh.CreateSphere("editNode", 20, 20, nx.scene);
@@ -518,6 +519,23 @@ nx.createPurpleNebula1 = function(){
     nx.nebula9.visibility = 1;
     nx.nebula9.material = nx.gMat9;
     nx.nebula9.parent = nx.nebulaMaster1;
+
+
+// setTimeout(function(){
+// //Todo need a better promise:
+// // - from light start or
+// // - from nebula create
+// // - if the other exists 
+// // - then exclude nebula from character lights-. 
+//     if(nx.light0){ 
+//         light0.excludedMeshes.push(nx.nebula1,nx.nebula2,nx.nebula3,nx.nebula4,nx.nebula5,nx.nebula6,nx.nebula7,nx.nebula8,nx.nebula9);   
+//         light1.excludedMeshes.push(nx.nebula1,nx.nebula2,nx.nebula3,nx.nebula4,nx.nebula5,nx.nebula6,nx.nebula7,nx.nebula8,nx.nebula9);   
+//         light2.excludedMeshes.push(nx.nebula1,nx.nebula2,nx.nebula3,nx.nebula4,nx.nebula5,nx.nebula6,nx.nebula7,nx.nebula8,nx.nebula9);   
+//     }
+
+// },2000)
+
+
 }
 
 nx.removePurpleNebula1 = function(){

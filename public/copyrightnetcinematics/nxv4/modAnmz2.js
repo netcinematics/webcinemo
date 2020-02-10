@@ -1233,3 +1233,200 @@ nx.anm.darBOTZoomCAM= function(){
 
 
 // });
+
+
+
+nx.anm.seriesTitleClear = function(){
+	$('#txtMSG1').hide(3000);
+	$('#txtMSG2').hide(3000);
+	$('#txtMSG3').hide(3000);
+	$('#txtMSG4').hide(3000);
+	$('#goBtnFrame1').hide(3000);
+	nx.anm.seriesTitleSmall();
+	nx.anm.seriesSuperTitleSmall();
+}
+
+nx.anm.seriesTitleSmall = function(){
+	// return;
+// debugger;
+	var currTXTSize = parseInt(nx.ui.seriesTitleTxt.css('font-size'))/16; //convert-to-ems-.
+	var currTOPPad = '0.399998'; // parseInt(nx.ui.seriesTitleTxt.css('padding-top'))/16; //convert-to-ems-.
+    $({size:currTXTSize,pad:currTOPPad}) //SIZE-TITLE-TXT-down-. with top padding-.
+    .animate({size:1.888,pad:1}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+        step:function(now) { //CAM POS
+           if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+           nx.ui.seriesTitleTxt.css({'font-size':this.size+'em','padding-top':this.pad+'em'})
+        },complete:function(){
+    }});
+}
+
+nx.anm.seriesSuperTitleSmall = function(){
+	var currTXTSize = parseInt(nx.ui.seriesSuperTitleTxt.css('font-size'))/16; //convert-to-ems-.
+	var currTOPPad = parseInt(nx.ui.seriesSuperTitleTxt.css('padding-top'))/16; //convert-to-ems-.
+    $({size:currTXTSize,pad:currTOPPad}) //SIZE-TITLE-TXT-down-. with top padding-.
+    .animate({size:0.777,pad:0.7}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+        step:function(now) { //CAM POS
+           if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+           nx.ui.seriesSuperTitleTxt.css({'font-size':this.size+'em','padding-top':this.pad+'em'})
+        },complete:function(){
+    }});
+}
+
+
+nx.anm.seriesTitleBig = function(){
+
+    $({size:1.6,pad:0}) //SIZE-TITLE-TXT-UP-.
+    .animate({size:mainTitleCSS['font-size'],pad:mainTitleCSS['padding-top']}
+    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+        step:function(now) { //CAM POS
+           if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+           nx.ui.seriesTitleTxt.css({'font-size':this.size+'em', 'padding-top':this.pad+'em'})
+        },complete:function(){
+    }});
+	
+}
+
+nx.anm.runTitleScreenANM = function(endFn){
+
+
+    // nx.ui.flashCanvasMSG({txt:"ORBY~ORBOT!",persist:0, txtType:'hero',txtIcon:'orby',dur:4000,
+    // txtEnd:function(){
+
+        //CAM - good RESPONSIVE Portrait POS
+        // nx.scene.activeCamera.position
+        // Vector3 {x: -2395.6405343105043, y: 3667.6757881890944, z: -1823.4084631958392}
+
+//camzoom
+//Acozmospace!
+//Introducing OrbyOrBot in
+//his 1st Space~Quest.
+//Zapbotz on AlphaMoon?!?
+//Will Orby find Zeon?
+
+
+
+
+
+        var mainTitleCSS = '';
+        // var ttlTXT = $('#seriesTitleTxt');
+        //10-VIEW: RESPONSIVE-FUNNEL SETTINGS-.
+        //------------------------------------------TITLE-SIZER-.
+        if(nx.ui.screenOrientation==='portrait'){ //------------------------------------------------------PORTRAIT
+            if(nx.ui.winWidth > 800){mainTitleCSS =       {'font-size':'4','padding-top':'1.3'}; 
+            }else if(nx.ui.winWidth > 550){mainTitleCSS = {'font-size':'3','padding-top':'1'}; 
+            }else if(nx.ui.winWidth > 350){mainTitleCSS = {'font-size':'2','padding-top':'1.8'};  
+            }else /*winWidth < 350*/{mainTitleCSS = {'font-size':'1.8','padding-top':'2.2'};  
+            }
+        } else { //---------------------------------------------------------------------------------LANDSCAPE-.
+            if(nx.ui.winWidth > 800){
+                if(nx.ui.winHeight > 550) {mainTitleCSS = {'font-size':'3.2','padding-top':'1'};     //LAPTOP
+                }else/*phonesmall*/ {mainTitleCSS = {'font-size':'3','padding-top':'0.3'};   } //PHONE
+            }else if(nx.ui.winWidth > 550){mainTitleCSS = {'font-size':'2.9','padding-top':'0.1'};  
+            }else if(nx.ui.winWidth > 350){mainTitleCSS = {'font-size':'1.8','padding-top':'0.8'}; 
+            }else /*winWidth < 350*/{mainTitleCSS = {'font-size':'2.6','padding-top':'0.4'};  }        
+        }
+
+
+        $({size:1.6,pad:0}) //SIZE-TITLE-TXT-UP-.
+        .animate({size:mainTitleCSS['font-size'],pad:mainTitleCSS['padding-top']}
+        ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+            step:function(now) { //CAM POS
+               if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+               nx.ui.seriesTitleTxt.css({'font-size':this.size+'em', 'padding-top':this.pad+'em'})
+            },complete:function(){
+
+
+
+            	// setTimeout(function(){ //SIZE-TXT-DOWN-.
+		           //  $({size:mainTitleCSS['font-size'],pad:mainTitleCSS['padding-top']})
+		           //  .animate({size:1.6,pad:0}
+		           //  ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+		           //      step:function(now) { //CAM POS
+		           //         if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+		           //         nx.seriesTitleTxt.css({'font-size':this.size+'em', 'padding-top':this.pad+'em'})
+		           //      },complete:function(){
+		           //          nx.seriesTitleTxt.css({'font-size':'1.6em','padding-top':0});
+		           //          nx.ui.flashCanvasMSG({txt:"ZAPBOTZ on ALPHAMOON?!?",dur:3000,
+		           //          txtEnd:function(){
+		           //              nx.spaceSeqIdx[4] = {on:1}
+		           //          }});      //on orby freeze
+		           //      }
+		           //  });
+
+            	// },3000)
+
+            }
+        });
+
+
+
+
+
+
+        //ZOOM-CAM: orby face-.
+        $({cx:nx.scene.activeCamera.position.x,cy:nx.scene.activeCamera.position.y,cz:nx.scene.activeCamera.position.z})
+        .animate({cx:-2395.64,cy:3667.67,cz:-1823.408}
+        ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+            step:function(now) { //CAM POS
+               if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+                nx.scene.activeCamera.position.x = this.cx;
+                nx.scene.activeCamera.position.y = this.cy;
+                nx.scene.activeCamera.position.z = this.cz;
+                // nx.scene.activeCamera.setTarget(nx.BV32({x: 26.37003155613175, y: 262.9172267029071, z: -26.639292811740987})) //CAMTGT: 
+            },complete:function(){
+                // nx.ui.flashCanvasMSG({txt:"In his FIRST SPACE~QUEST!",dur:3000,
+                // txtEnd:function(){
+
+
+
+// debugger;
+
+				nx.ui.txtMSG1.show(3000,function(){
+					setTimeout(function(){
+						
+					    $({lftSlide:-33}).animate({lftSlide:13} //show MSG 2
+					    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+					        step:function(now) { if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+					        	nx.ui.txtMSG2.css("left",this.lftSlide+'%');
+					        },complete:function(){
+						// nx.ui.txtMSG2.show(3000,function(){
+							setTimeout(function(){
+								// nx.ui.txtMSG3.show(3000,function(){
+							    $({rgtSlide:-44}).animate({rgtSlide:2} //show MSG 3
+							    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+							        step:function(now) { if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
+							        	nx.ui.txtMSG3.css("right",this.rgtSlide+'%');
+							        },complete:function(){
+
+
+									//TODO zapbots move in.
+										setTimeout(function(){
+											nx.ui.txtMSG4.show(3000,function(){
+												//TODO show DARKBOT
+												nx.ui.goBtn1.unbind( "click" );
+												nx.ui.goBtnFrame1.show(3000);
+												nx.ui.goBtn1.click(function(){
+													// nx.anm.seriesTitleClear();
+													endFn();
+												});
+											});
+										},500)
+		    					}}); //end txt slide in
+								// });
+							},500)
+						// });
+		    			}}); //end txt slide in
+					},500)
+				});
+
+
+                // }});      //end TXT 1st space quest
+            }
+        });  //end anm zoom cam
+
+    // }});  //end TXT - orby orbot.
+
+
+}
