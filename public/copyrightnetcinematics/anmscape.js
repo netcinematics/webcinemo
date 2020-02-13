@@ -157,11 +157,19 @@ var createLights = function() {
     // light3.diffuse = new BABYLON.Color3(0.8, 0.5, 1);
     nx.lightDefaultBlue.diffuse = new BABYLON.Color3(0.444, 0.444, 1);
     nx.lightDefaultBlue.specular = new BABYLON.Color3(0, 0, 1);
-    nx.lightDefaultBlue.intensity = 0.44; //80
+    // nx.lightDefaultBlue.intensity = 0.44; //80
+    nx.lightDefaultBlue.intensity = 0.88; //80
+
+    // nx.lightDefaultRed = new BABYLON.PointLight("pl", new BABYLON.Vector3(0, 200, 0), nx.scene);
+    // // light3.diffuse = new BABYLON.Color3(0.8, 0.5, 1);
+    // nx.lightDefaultRed.diffuse = new BABYLON.Color3(1, 0.444, 0.444);
+    // nx.lightDefaultRed.specular = new BABYLON.Color3(0, 0, 1);
+    // // nx.lightDefaultRed.intensity = 0.44; //80
+    // nx.lightDefaultRed.intensity = 0.22; //80
 
 
 
-    nx.editorLIGHTBOXMATRIX();
+    nx.editorLIGHTBOXMATRIX(); //breaks shadow
 
 
 
@@ -179,6 +187,11 @@ var createLights = function() {
 //Orby... "ExtraOrdinary" Robot!
 //That's it! 
 
+nx.stopLIGHTBOXMATRIX = function(/*tgt*/){
+    nx.light0.intensity = 0;
+    nx.light1.intensity = 0;
+    nx.light2.intensity = 0;
+}
 nx.editorLIGHTBOXMATRIX = function(/*tgt*/){
     //USAGE: 3 lights orbit TGT. 
     //toggle each individual light on off to set angle. with nx.LightMOVE = 0 || 1;
@@ -241,7 +254,7 @@ nx.editorLIGHTBOXMATRIX = function(/*tgt*/){
             },complete:function(){ recursiveSOLARStrobe(end,start)  }
             });
         }
-        recursiveSOLARStrobe(0.444,1.222)
+        // recursiveSOLARStrobe(0.444,1.222)
 
     },4000)
 
@@ -301,6 +314,9 @@ nx.editorLIGHTBOXMATRIX = function(/*tgt*/){
     lightSphere1.parent = nx.light1;
     lightSphere2.parent = nx.light2;
     
+    lightSphere0.visibility = 0;
+    lightSphere1.visibility = 0;
+    lightSphere2.visibility = 0;
     
     // =====================================================================================
     // =====================================================================================

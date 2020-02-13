@@ -1130,6 +1130,7 @@ nx.ui.flashMSGQueue = [];
 
 //todo rename to txtFactory, and do USAGE:
 nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
+// debugger;
   // console.log('FLASHSTART',config.txt)
   if(nx.cinemaStop){ nx.ui.flashMSGPlaying = 0; nx.ui.flashMSGQueue = []; return; } //pause functionality-.
   //METHODOLOGY: object-config-defaults-pattern-.
@@ -1137,21 +1138,30 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
   var txtAlign=(config && config.txtAlign)?config.txtAlign:'left'; //center, right-.
   var txtClass=(config && config.txtClass)?config.txtClass:'hero10'; //narrator color
   var txtType=(config && config.txtType)?config.txtType:0;
-  var imgSize = (config && config.imgSize)?config.imgSize:(txtType==='intro')?'3em':'2.2em';
+  var imgSize = (config && config.imgSize)?config.imgSize+'em':'2.2em';
+  var imgBtm = (config && config.imgBtm)?config.imgBtm+'em':'0em';
+  // var imgSize = (config && config.imgSize)?config.imgSize:(txtType==='intro')?'3em':'2.2em';
   // var txtLong = (config & config.txtLong)?'.txtLong':'';
   var txtName = '', txtNameColor='#e69be8';
   var iconBorder = '';
   var heroLogo=``; 
   var stateIcon='';
-  var lblLft='0.5em', lblBtm='-1.5em', lblRgt='0.5em'; //used to align the hero name under the logo
+  var lblLft='0.5em', lblBtm='-1.5em', lblRgt='0.5em', lblSize='0.5em'; //used to align the hero name under the logo. DEFAULTs
+  if(config && config.lbl){ //override-factory anmethodology
+    if(config.lbl.lblLft){lblLft = config.lbl.lblLft+'em'} 
+    if(config.lbl.lblBtm){lblBtm = config.lbl.lblBtm+'em'} 
+    if(config.lbl.lblRgt){lblRgt = config.lbl.lblRgt+'em';} //overrides
+    if(config.lbl.lblSize){lblSize = config.lbl.lblSize+'em';} //overrides
+  }
   // debugger;
   if(txtIcon){
     //TODO: anyway to combine all this into a metaHero lookup object? the png path is being reused.
     if(txtIcon==='orby'){
+      // debugger;
       txtName='Orby';
       iconBorder = '2px solid purple';
       src = './copyrightnetcinematics/img/orby1.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};margin-bottom:${imgBtm};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero9'; }
     }else if(txtIcon==='zapbot'){
@@ -1161,7 +1171,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       src = './copyrightnetcinematics/img/zapbot2.png'; 
 
       // var imgSize = (txtType==='intro')?'3em':'2.2em';
-      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};margin-bottom:${imgBtm};display:flex;
         align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0 0 12px darkred;"
       src="${src}" alt="logo" aria-label="logo">`
       // if(config && !config.txtClass){ txtClass = 'hero6' }
@@ -1170,7 +1180,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtName='Jaxa';
       iconBorder = '2px solid purple';
       src = './copyrightnetcinematics/img/jaxxLogo1.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};margin-bottom:${imgBtm};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero8' }
     }else if(txtIcon==='darkbot'){
@@ -1179,15 +1189,15 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       iconBorder = '2px solid black';
       src = './copyrightnetcinematics/img/darkbot2.png'; 
       // var imgSize = (txtType==='intro')?'3em':'2.2em';
-      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};margin-bottom:${imgBtm};display:flex;
         align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0px 0 5px steelblue;"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero4' }
     }else if(txtIcon==='dracozmo'){
       txtName='Dr.Acozmo';
       iconBorder = '2px solid #024c04';
-      src = './copyrightnetcinematics/img/dracozmo3.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;
+      src = './copyrightnetcinematics/img/dracozmo4.png'; 
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};margin-bottom:${imgBtm};display:flex;
         align-self:center;cursor:pointer;border:${iconBorder};box-shadow: 0px 0 12px 399c98;"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero2' }
@@ -1197,15 +1207,18 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtNameColor='#e69be8';
       iconBorder = '2px solid purple';
       src = './copyrightnetcinematics/img/drbecky3.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};margin-bottom:${imgBtm};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero7' }
       if(txtAlign==='right'){txtClass+=' talkRGT_DB';}else{txtClass+=' talkLFT_DB';}
-    }else if(txtIcon==='azod'){
-      txtName='Azod';
-      iconBorder = '2px solid purple';
-      src = './copyrightnetcinematics/img/azod1.png'; 
-      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
+    }else if(txtIcon==='AEON'){
+      txtName='AEON';
+      // debugger;
+      lblRgt = (config && config.lbl && config.lbl.lblRgt)? config.lbl.lblRgt+'em' : '1.222em';
+      lblLft = (config && config.lbl && config.lbl.lblLft)? config.lbl.lblLft+'em' : '1.222em';
+      iconBorder = '2px solid darkslateblue';
+      src = './copyrightnetcinematics/img/aeon1.png'; 
+      heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};margin-bottom:${imgBtm};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
       if(config && !config.txtClass){ txtClass = 'hero8' }
     }
@@ -1229,8 +1242,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       txtClass='hero10';
       // src = ''; 
       // if(config && !config.txtClass){ txtClass = 'hero10'; }
-    }else if(txtType==='intro'){
-      stateIcon = (heroLogo)?heroLogo:'<i class="fa fa-user" style=""></i>';
+    // }else if(txtType==='intro'){
+      // stateIcon = (heroLogo)?heroLogo:'<i class="fa fa-user" style=""></i>';
       // src = './img/hero/orby1.png'; 
       // if(config && !config.txtClass){ txtClass = 'hero1'; }
     }else if(txtType==='villian'){
@@ -1309,10 +1322,10 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
           ${(txtAlign==='right')?'margin-right:0em; padding-right:0em':(stateIcon)?'':(config.align==='center')?'':'margin-left:0'};
           justify-content:center;">
             ${(stateIcon)?stateIcon:''}
-          <span style="${(stateIcon)?'margin-left:0.5em;':''} ${(txtType==='intro')?'font-size:1.8em':''}">${config.txt}</span></span>
+          <span style="${(stateIcon)?'margin-left:0.5em;':''}">${config.txt}</span></span>
         ${(heroLogo && txtAlign==='right')?heroLogo:''}
         ${(txtName && !stateIcon)?`<div class='heroName' style='position:absolute;bottom:${lblBtm};${(txtAlign==='right')?`right:${lblRgt}`:`left:${lblLft}`};
-          color:${txtNameColor};font-size:0.5em;text-shadow:2px 2px 2px black,-2px 2px 2px black;font-weight:bold;'>${txtName}</div>`:''}
+          color:${txtNameColor};font-size:${lblSize};text-shadow:2px 2px 2px black,-2px 2px 2px black;font-weight:bold;'>${txtName}</div>`:''}
         </span>
         `;
     // var aTXTBitz =
@@ -3328,7 +3341,7 @@ $('#movieModeHeader').fadeIn(3000);$('#movieModeFooter').fadeIn(3000)
       // if(config && !config.txtClass){ txtClass = 'hero1'; }
     }else if(type==='chapter'){ //todo change mission to quest
     }else if(type==='quest'){ //todo change mission to quest
-    }else if(type==='intro'){ //todo change mission to quest
+    }else if(type==='intro'){ //todo change mission to HERO~BIO
       // src = './img/hero/orby1.png'; 
       // if(config && !config.txtClass){ txtClass = 'hero1'; }
     }else if(type==='orby'){
@@ -3348,15 +3361,15 @@ $('#movieModeHeader').fadeIn(3000);$('#movieModeFooter').fadeIn(3000)
       heroLogo = `<img class="heroBubbleLogo" src="${src}" alt="logo" aria-label="logo" style="">`
       if(config && !config.txtClass){ txtClass = 'hero5' }
     }else if(type==='dracozmo'){
-      src = './copyrightnetcinematics/img/dracozmo3.png'; 
+      src = './copyrightnetcinematics/img/dracozmo4.png'; 
       heroLogo = `<img class="heroBubbleLogo" src="${src}" alt="logo" aria-label="logo" style="height:2em">`
       if(config && !config.txtClass){ txtClass = 'hero6' }
     }else if(type==='drbecky'){
       src = './copyrightnetcinematics/img/drbecky3.png'; 
       heroLogo = `<img class="heroBubbleLogo" src="${src}" alt="logo" aria-label="logo" style="">`
       if(config && !config.txtClass){ txtClass = 'hero7' }
-    }else if(type==='azod'){
-      src = './copyrightnetcinematics/img/azod1.png'; 
+    }else if(type==='AEON'){
+      src = './copyrightnetcinematics/img/aeon1.png'; 
       heroLogo = `<img class="heroBubbleLogo" src="${src}" alt="logo" aria-label="logo" style="">`
       if(config && !config.txtClass){ txtClass = 'hero8' }
     }

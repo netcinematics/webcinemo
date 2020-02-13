@@ -354,7 +354,8 @@ var nx = {}; //NetcinematiX NameSpace-.
         .fancy{text-shadow: 2px 3px 1px #57025f, 2px 0px 2px #b10606, 0px -2px 2px #0dd411, 4px 4px 4px blue;}
         .elegant{font-family:cursive;text-shadow: 1px 1px 2px blue;}
     </style>
-    <a id="mainTitle" class="centerTitle fancy" href="#">~ACOZMOBOTZ!~</a>
+    <a id="mainTitle" style="font-size:1.5em;" class="centerTitle fancy" href="#">~NET~CINEMO!~</a>
+    <!-- <a id="mainTitle" class="centerTitle fancy" href="#">~ACOZMOBOTZ!~</a> -->
     <!-- <a id="subTitle1" class="centerTitle elegant" href="#">~acosmozaga - a cosmic saga in Z-Dimension cyber-space!</a> -->
     <!-- <a id="subTitle1" class="centerTitle elegant" href="#">~a cosmic saga in cyber-space!</a> -->
     <!-- <a id="subTitle1" class="centerTitle elegant" href="#">~acosmic! Like never before...</a> -->
@@ -445,19 +446,130 @@ var nx = {}; //NetcinematiX NameSpace-.
     #mainTitleViewFrame{ height:100%; width:100%; background:black; z-index:1000; font-family:verdana; }
     #mainTitleViewFrame{display:flex;color:yellow;align-items:center;justify-content:center;}
     .lblItem{max-width:50%; background:steelblue; opacity: 0.2}
-    .enterBtn{position:absolute;bottom:18%;width:100%;z-index:100; }
+/*    .enterBtn{position:absolute;bottom:18%;width:100%;z-index:100; }
     .enterBtn section{ width:100px; margin:0 auto; }
-    .enterBtn button{ width:100px;height: 50px; box-shadow: 0px -1px 13px steelblue; cursor:hand; }
+    .enterBtn button{ width:100px;height: 50px; box-shadow: 0px -1px 13px steelblue; cursor:pointer; }*/
 
 </style>
 
 <!-- <section id=mainTitleViewFrame class="scrollColor1" style="overflow-y:scroll;overflow-x:hidden;"> -->
-<section id='mainTitleViewFrame' >
-  <article class="enterBtn">
+<section id='mainTitleViewFrame'>
+
+
+<style>
+.seriesItemFrame {
+}
+
+.seriesItemRow {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-box-orient: horizontal; 
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    flex-direction: row;
+
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+    justify-content: center;
+
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;  
+    align-items: center;
+
+}
+
+.seriesItem {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto; 
+    padding: 10px;
+    margin: 10px;
+    /*text-align: center;*/
+    border: 1px solid #900303;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+}
+
+.seriesItem:hover{
+      border: 2px solid lime;
+      /*border: 2px solid steelblue;*/
+
+}
+.seriesItemRow img {max-width:100%; max-height:100%; cursor:pointer;}
+
+</style>
+<section class="seriesItemFrame" style="
+    /* height: 85%; */
+    margin: 18% 1% 8% 1%;
+    border: solid 1px steelblue;
+    border-radius: 6px;
+    padding: 1em;
+    /* max-height: 100%; */
+    /* min-height: 100%; */
+">
+  <section class="seriesItemRow" style="
+    /* overflow-x: scroll; */
+    height: 100%;
+    border: solid 1px darkorchid;
+    border-radius: 4px;
+"> 
+    <article id="seriesAcozmoBotz1" class="seriesItem">
+      <img src="./copyrightnetcinematics/img/acozmobotz4a.png">
+    </article>
+  <!--   <div class="seriesItem">
+      <img src="./copyrightnetcinematics/img/acozmobotz4a.png">
+    </div>
+    <div class="seriesItem">
+      <img src="./copyrightnetcinematics/img/acozmobotz4a.png">
+    </div> -->
+  </section>
+</section>
+
+
+
+
+
+<!--section id="seriesItems" style="
+    width: 100%;
+    margin: 0 10%;
+    border: solid 1px steelblue;
+    border-radius: 6px;
+    padding: 1em;
+">
+    <article id="seriesItem1" style="
+    border: 1px solid darkorchid;
+    border-radius: 1.111px;
+    padding: 0.8em;
+    font-variant: all-small-caps;
+">
+      <span style="
+    font-size: 1.5em;
+    margin: 0 0 1em 1em;
+    display: flex;
+                   "><span style="
+    color: forestgreen;
+">#s1.e1.a1:</span><span>zapbotz on alphamoon?!?</span></span>
+      <img src="./copyrightnetcinematics/img/acozmobotz4a.png" style="
+    display: flex;
+">
+    </article>
+  </section -->
+  <!-- <article class="enterBtn">
       <section>
           <button id=beginBtn aria-label="begin" class="steelBlueBtnDlg onBtnHaloYellow"><span class=anmBtn>~ENTER~</span></button>
       </section>
-  </article>
+  </article> -->
   <!--********************************-->
   <section id='mainTitleView' style='display:none;'>
     <article id='centeredSuperTitle'>
@@ -604,7 +716,8 @@ var nx = {}; //NetcinematiX NameSpace-.
         nx.ui.nav1 = $('#nav1');
         nx.ui.leftCmp = $('#leftCmp');
         nx.ui.rightCmp = $('#rightCmp');
-        nx.ui.beginBtn = $('#beginBtn');
+        // nx.ui.beginBtn = $('#beginBtn');
+        nx.ui.seriesAcozmoBotz1 = $('#seriesAcozmoBotz1');
         nx.ui.nextBtn = $('#nextBtn')
         // nx.ui.nextCamBtn = $('#nextCamBtn')
         // nx.ui.camTxt = $('#camTxt')
@@ -619,14 +732,16 @@ var nx = {}; //NetcinematiX NameSpace-.
 
 
 
-        nx.ui.beginBtn.on("click" , function(e){ 
+        // nx.ui.beginBtn.on("click" , function(e){ 
+        nx.ui.seriesAcozmoBotz1.on("click" , function(e){ 
             loadAnmscape(); 
             setTimeout(function(){
                 // sonicBtn.show(1000)
                 nx.ui.nav1.hide(1000)
                 nx.ui.leftCmp.hide(1000)
                 nx.ui.rightCmp.hide(1000)
-                nx.ui.beginBtn.fadeOut(1000)
+                // nx.ui.beginBtn.fadeOut(1000)
+                nx.ui.seriesAcozmoBotz1.fadeOut(1000)
                 nx.ui.nextBtn.hide(1000) //hidden
                 nx.ui.navBar.show(1000);
 
@@ -962,7 +1077,7 @@ text-shadow: 1px 1px 10px #a20358;
 <span id='anmTxtM13' style="transform-origin:0 0;transform:rotate(20deg);">!</span>
       </section>
  -->
-<section id="seriesTitleTxt" style="display: flex;justify-content: center;font-size: 6em;text-shadow: yellow 1px 1px 4px, rgb(236, 137, 243) -1px -1px 4px;font-family: fantasy;padding-top: 0.399998em;max-height: 50%;flex: 1 1 0%;min-height: 20%;line-height: 1em;height: 1em;">
+<section id="seriesTitleTxt" style="display: flex;justify-content: center;font-size: 6em;text-shadow: yellow 1px 1px 4px, rgb(236, 137, 243) -1px -1px 4px, 3px 4px 0px purple;font-family: fantasy;padding-top: 0.399998em;max-height: 50%;flex: 1 1 0%;min-height: 20%;line-height: 1em;height: 1em;">
 <style>
     #seriesTitleTxt span{ margin-left:0.0444em; margin-right:0.0444em;}
 </style>
@@ -1147,7 +1262,7 @@ text-shadow: 1px 1px 10px #a20358;
     text-shadow: 1px 1px 3px blue, 2px 2px 4px darkviolet;
     margin-left: -0.2em;
 ">Orby~Orbot</span></section>
-<section id="txtMSG2" style="display:flex;left:-33%;bottom: 10%;color: orange;border: 1px solid orange;padding: 0.2em 0.8em;border-radius: 4px 13px;box-shadow: 1px 1px 5px 0px yellow, -1px -1px 6px 0px #ddcaca;font-size: 1.2em;opacity:95%;flex-wrap: wrap;max-width: 7em;bottom: 13%;"><span style="font-variant: all-small-caps;letter-spacing: 0;font-size: 1.1em;text-shadow: 1px 1px 3px #eef19c;margin-top: 0.2em;">In his</span> <span style="
+<section id="txtMSG2" style="display:flex;left:-100%;bottom: 10%;color: orange;border: 1px solid orange;padding: 0.2em 0.8em;border-radius: 4px 13px;box-shadow: 1px 1px 5px 0px yellow, -1px -1px 6px 0px #ddcaca;font-size: 1.2em;opacity:95%;flex-wrap: wrap;max-width: 7em;bottom: 13%;"><span style="font-variant: all-small-caps;letter-spacing: 0;font-size: 1.1em;text-shadow: 1px 1px 3px #eef19c;margin-top: 0.2em;">In his</span> <span style="
     font-size: 1.8em;
     padding-left: 0.4em;
     line-height: 1.2em;
@@ -1166,7 +1281,7 @@ text-shadow: 1px 1px 10px #a20358;
     margin-left: -0.3em;
     text-shadow: -1px -1px 3px darkorchid, 1px 1px 3px darkorchid;
 ">Space~Quest!</span></section>
-     <section id="txtMSG3" style="display: flex;color: yellow;font-size: 2em;padding: 0.1em 0.2em;border-radius: 13px 8px;font-family: verdana;box-shadow: yellow 1px 1px 10px 0px, rgb(151, 45, 164) -10px -4px 10px 0px;opacity: 0.95;text-shadow: darkviolet 1px 1px 3px;bottom: 16%;max-width:8em;right:-44%;min-width: 7.8em;font-style:italic;">
+     <section id="txtMSG3" style="display: flex;color: yellow;font-size: 2em;padding: 0.1em 0.2em;border-radius: 13px 8px;font-family: verdana;box-shadow: yellow 1px 1px 10px 0px, rgb(151, 45, 164) -10px -4px 10px 0px;opacity: 0.95;text-shadow: darkviolet 1px 1px 3px;bottom: 16%;max-width:8em;right:-100%;min-width: 7.8em;font-style:italic;">
         <section style="
     width: 10em;
 "><span style="
@@ -1212,7 +1327,7 @@ text-shadow: 1px 1px 10px #a20358;
 <style>
     #goBtnFrame1{position:absolute;bottom:18%;width:100%;z-index:1112;display:none; }
     #goBtnFrame1 section{ width:100px; margin:0 auto; }
-    #goBtnFrame1 button{ width:100px;height: 50px; box-shadow: 0px -1px 13px steelblue;cursor:hand;font-size:1.2em; }
+    #goBtnFrame1 button{ width:100px;height: 50px; box-shadow: 0px -1px 13px steelblue;cursor:pointer;font-size:1.2em; }
 </style>
 
   <article id="goBtnFrame1">
@@ -1446,13 +1561,13 @@ window.addEventListener('DOMContentLoaded', function(){
 
 <style>
 #copyTXT1{font-size:0.555em;color:#7677f0;text-shadow: 1px 1px 3px #CCC;display:flex;position:absolute;top:10em;left:1em;}
-#copyTXT2{font-size:0.555em;color:#7677f0;text-shadow: 1px 1px 3px #CCC;display:flex;position:absolute;bottom:0.01em;width:100%;}
+#copyTXT2{font-size:0.555em;color:#7677f0;text-shadow: 1px 1px 3px #CCC;display:flex;position:absolute;bottom:1em;width:100%;}
 </style>
 <copyright id="copyTXT1">
 <span>&copy; NX 2020 &copy;</span>
 </copyright>
-<copyright id="copyTXT2" style="margin:0 auto;">
-<span>&copy; NX 2020 &copy;</span>
+<copyright id="copyTXT2">
+<span style="margin:0 auto;">&copy; NX 2020 &copy;</span>
 </copyright>
 
           <!-- <footer id='canvasFooter' style='background:#252425;width:60%;margin:0 auto;border:1px solid orange;color: orange;border-radius: 13px;padding: 0.5em;padding-left: 1em; margin-top: -2.5em; z-index: 100; text-align: center;height: 1.4em; line-height: 1.4em;'><span>Dr~Acozmo!</span></footer> -->
@@ -2108,7 +2223,7 @@ margin-right: 0.5em;
                     <p>Orby is busted for free-surfing inner-space.</p><p> During trial, in an catacysmic emergency, he is asked by Judge-Zawd, to investigate a tragic spacetrain crash. In preparation for the death of his brother, and the soon to be Emperor~Zawd.
                     </p>
                     <p><img class='txtPicture' src='./copyrightnetcinematics/img/hero/orbywish2.png'/>Orby makes a wish to fly~free,<br>...like his dad.</p>
-                    <p><img class='txtPicture' src='./copyrightnetcinematics/img/dracozmo3.png' style="height: 18em;"/>Dr.Acozmo invents ways to see far off exo-planets by entangled photons, and then renders them to his AcozmoSpace as Video, Game, or Book, Apps.<br></p>
+                    <p><img class='txtPicture' src='./copyrightnetcinematics/img/dracozmo4.png' style="height: 18em;"/>Dr.Acozmo invents ways to see far off exo-planets by entangled photons, and then renders them to his AcozmoSpace as Video, Game, or Book, Apps.<br></p>
                     <p><img class='txtPicture' src='./copyrightnetcinematics/img/drbecky3.png'/>Dr.Becky assists Dr.Acozmo in exploring distant exo-planets.<br>Her precision in recording entangled electrons is a gift and a great benefit to the entertainment of all humanity.</p>
                 </section>
       </div>
@@ -2211,11 +2326,11 @@ margin-right: 0.5em;
 
             <i class='typeSubTxt'>Follow online in ~ZetaOortCloud!</i>
             <p class='typeAction'><span>EPIC:</span><span class='txtItem'>ACOZMO.net!</span></p>
-            <p class='typeAction'><span>SERIES:</span><span class='txtItem'>ACOZMOBOTZ!</span></p>
+            <p class='typeAction'><span>SEASON:</span><span class='txtItem'>ACOZMOBOTZ!</span></p>
             <p class='typeAction'><span>AGE:</span><span class='txtItem'>Age of Zawd.</span></p>
             <p class='typeAction'><span>EPISODE:</span><span class='txtItem'>SAVE~BETA~MOON!</span></p>
             <p class='typeMission'><span>MISSION:</span><span class='txtItem'>...save BetaMoon</span></p>
-            <p class='typeAction'><span>ACTION:</span><span class='txtItem'>...land on BetaMoon</span></p>
+            <p class='typeAction'><span>ACT:</span><span class='txtItem'>...land on BetaMoon</span></p>
             <p class='typeCinemo'><span>STORY:</span><span class='txtItem'>BetaMoon Landing!</span></p>
             <p class='typeAction'><span>QUEST:</span><span class='txtItem'>Find the lost ENERGEM!</span></p>
             <p class='typeAction'><span>SCENE:</span><span class='txtItem'>Land on BETA~MOON!</span></p>

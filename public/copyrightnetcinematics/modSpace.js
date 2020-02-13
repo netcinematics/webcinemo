@@ -15,15 +15,23 @@ nx.createAcozmoScope1 = function(){
     nx.state.acozmoScope1 = 1;
         //top of track
         nx.scopeMat = new BABYLON.StandardMaterial("gMat", nx.scene);
-        var txtur1 = new BABYLON.Texture("./copyrightnetcinematics/img/space/acozmoscope4.png", nx.scene);
-        nx.scopeMat.diffuseTexture = txtur1;
+        nx.txtur1 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope1.png", nx.scene);
+        nx.txtur2 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope2.png", nx.scene);
+        nx.txtur3 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope3.png", nx.scene);
+        nx.txtur4 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope4.png", nx.scene);
+        nx.txtur5 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope5.png", nx.scene);
+        // var txtur1 = new BABYLON.Texture("./copyrightnetcinematics/img/space/acozmoscope4.png", nx.scene);
+        nx.scopeMat.diffuseTexture = nx.txtur1;
+        // nx.scopeMat.diffuseTexture = nx.txtur5;
         nx.scopeMat.diffuseTexture.hasAlpha = false;
         nx.scopeMat.emissiveColor = new BABYLON.Color3(1,1,1);
         nx.scopeMat.backFaceCulling = true;
-        nx.aScope1 = BABYLON.Mesh.CreatePlane("plane",1500, nx.scene);
+        // nx.aScope1 = BABYLON.Mesh.CreatePlane("plane",1500, nx.scene);
+        // nx.aScope1 = BABYLON.Mesh.CreatePlane("plane",2000, nx.scene);
+        nx.aScope1 = BABYLON.MeshBuilder.CreatePlane("plane", {width: 2000, height: 1505.88}, nx.scene);
         nx.aScope1.position.copyFrom({x: 1200, y: 3892, z: -3489})
         nx.aScope1.rotation.x = 0.8;
-        nx.aScope1.rotation.y = -1;
+        nx.aScope1.rotation.y = -1.0444;
         nx.aScope1.rotation.z = 0.03;
         nx.aScope1.visibility = 1;
         nx.aScope1.material = nx.scopeMat;

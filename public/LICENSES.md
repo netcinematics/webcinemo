@@ -156,6 +156,9 @@ GREENWORKS - MIT: https://github.com/greenheartgames/greenworks/blob/master/LICE
 
 RequestAnimationFrame - MIT: https://gist.github.com/paulirish/1579671
 
+//BOXPACK CSS3 FLEXBOX: http://jsfiddle.net/89dtxt6s/
+
+
 BABYLON - CSG: - https://github.com/CraigFeldspar/BabylonCSG/blob/master/LICENSE.md
 Copyright (c) 2011 Evan Wallace (http://madebyevan.com/) Adapted to BABYLON.js by Benjamin Guignabert (https://github.com/CraigFeldspar)
 

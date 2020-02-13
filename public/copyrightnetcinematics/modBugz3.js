@@ -225,7 +225,7 @@ var createInfinityLoop1 = function(){
     }
     pointsPath1.push(pointsPath1[0]);
     var path1 = BABYLON.MeshBuilder.CreateLines('path1', {points: pointsPath1}, nx.scene);
-    path1.visibility = 1;
+    path1.visibility = 0;
     /******************************RECURSIVE-MOTIONPATHANM****************************************/
     nx.hero.spaceBug1.motionPathIndex = 1;
     nx.hero.spaceBug1.speedGovernor = 200; //bigger is slower. time between vertices. this needs to be balanced with path-subdivisions - to get a smooth and fast speed!
@@ -258,7 +258,7 @@ var createInfinityLoop2 = function(){
     }
     pointsPath2.push(pointsPath2[0]);
     var path2 = BABYLON.MeshBuilder.CreateLines('path2', {points: pointsPath2}, nx.scene);
-    path2.visibility = 1;
+    path2.visibility = 0;
     /******************************RECURSIVE-MOTIONPATHANM****************************************/
     nx.hero.spaceBug2.motionPathIndex = 1;
     nx.hero.spaceBug2.speedGovernor = 150; //bigger is slower. time between vertices. this needs to be balanced with path-subdivisions - to get a smooth and fast speed!
@@ -291,7 +291,7 @@ var createInfinityLoop3 = function(){
     }
     pointsPath3.push(pointsPath3[0]);
     var path3 = BABYLON.MeshBuilder.CreateLines('path3', {points: pointsPath3}, nx.scene);
-    path3.visibility = 1;
+    path3.visibility = 0;
     /******************************RECURSIVE-MOTIONPATHANM****************************************/
     nx.hero.spaceBug3.motionPathIndex = 1;
     nx.hero.spaceBug3.speedGovernor = 350; //bigger is slower. time between vertices. this needs to be balanced with path-subdivisions - to get a smooth and fast speed!

@@ -1464,7 +1464,7 @@ nx.anm.runTitleScreenMSGs = function(endFn){
 		    // $({lftSlide:-333}).animate({lftSlide:13} //show MSG 2
 		    nx.ui.txtMSG2.css("bottom",tgtPOS.msg2h+'%');
 		    $({lftSlide:-333}).animate({lftSlide:tgtPOS.msg2w} //show MSG 2
-		    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+		    ,{queue:false,duration:2000*nx.RUNTIME,easing:'swing',
 		        step:function(now) { if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
 		        	nx.ui.txtMSG2.css("left",this.lftSlide+'%');
 		        },complete:function(){
@@ -1474,7 +1474,7 @@ nx.anm.runTitleScreenMSGs = function(endFn){
 				    // $({rgtSlide:-444}).animate({rgtSlide:2} //show MSG 3
 		    		nx.ui.txtMSG3.css("bottom",tgtPOS.msg3h+'%');
 				    $({rgtSlide:-444}).animate({rgtSlide:tgtPOS.msg3w} //show MSG 3
-				    ,{queue:false,duration:3000*nx.RUNTIME,easing:'swing',
+				    ,{queue:false,duration:2000*nx.RUNTIME,easing:'swing',
 				        step:function(now) { if(nx.cinemaStop){ $(this).stop(); console.log('stopped'); nx.spaceSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
 				        	nx.ui.txtMSG3.css("right",this.rgtSlide+'%');
 				        },complete:function(){

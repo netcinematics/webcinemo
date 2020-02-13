@@ -158,7 +158,7 @@ nx.sonics.initLoopz = function(){
   nx.sonics.breakBeatTheme1.initLoopz = function(){
     if(nx.sonics && nx.sonics.on && nx.sonics.breakBeatTheme1){ nx.sonics.breakBeatTheme1.play(); }  //BREAKBEAT THEME-.
     nx.sonics.breakBeatTheme1.loopDamper=0;
-    nx.scene.registerBeforeRender(function () { 
+    nx.scene.registerBeforeRender(function breakBeatSoundEndLoopz() { 
       if(++nx.sonics.breakBeatTheme1.loopDamper%2!=0){return} //frame-damper-.
       if(nx.sonics.breakBeatTheme1.isPlaying&&!nx.sonics.breakBeatTheme1.endSound){ nx.sonics.breakBeatTheme1.endSound=1; } //init
       else if(!nx.sonics.breakBeatTheme1.isPlaying&&nx.sonics.breakBeatTheme1.endSound){ //done
@@ -171,11 +171,11 @@ nx.sonics.initLoopz = function(){
   nx.sonics.fightScene1.initLoopz = function(){
     if(nx.sonics && nx.sonics.on && nx.sonics.fightScene1){ nx.sonics.fightScene1.play(); }  //fightScene1 THEME-.
     nx.sonics.fightScene1.loopDamper=0;
-    nx.scene.registerBeforeRender(function () { 
+    nx.scene.registerBeforeRender(function soundLOOPZ() { 
       if(++nx.sonics.fightScene1.loopDamper%2!=0){return} //frame-damper-.
       if(nx.sonics.fightScene1.isPlaying&&!nx.sonics.fightScene1.endSound){ nx.sonics.fightScene1.endSound=1; } //init
       else if(!nx.sonics.fightScene1.isPlaying&&nx.sonics.fightScene1.endSound){ //done
-        nx.sonics.fightScene1.endSound=0; nx.scene.unregisterBeforeRender(breakBeatSoundEndLoopz); /*self-removing-.*/
+        nx.sonics.fightScene1.endSound=0; nx.scene.unregisterBeforeRender(soundLOOPZ); /*self-removing-.*/
         if(nx.sonics){nx.sonics.stopAllSonics()}
         // nx.sonics.fightScene2.initLoopz();
         nx.sonics.exploreLoop1.initLoopz();
@@ -185,11 +185,11 @@ nx.sonics.initLoopz = function(){
   nx.sonics.fightScene2.initLoopz = function(){
     if(nx.sonics && nx.sonics.on && nx.sonics.fightScene2){ nx.sonics.fightScene2.play(); }  //fightScene2 THEME-.
     nx.sonics.fightScene2.loopDamper=0;
-    nx.scene.registerBeforeRender(function () { 
+    nx.scene.registerBeforeRender(function soundLOOPZ() { 
       if(++nx.sonics.fightScene2.loopDamper%2!=0){return} //frame-damper-.
       if(nx.sonics.fightScene2.isPlaying&&!nx.sonics.fightScene2.endSound){ nx.sonics.fightScene2.endSound=1; } //init
       else if(!nx.sonics.fightScene2.isPlaying&&nx.sonics.fightScene2.endSound){ //done
-        nx.sonics.fightScene2.endSound=0; nx.scene.unregisterBeforeRender(breakBeatSoundEndLoopz); /*self-removing-.*/
+        nx.sonics.fightScene2.endSound=0; nx.scene.unregisterBeforeRender(soundLOOPZ); /*self-removing-.*/
         if(nx.sonics){nx.sonics.stopAllSonics()}
         // nx.sonics.exploreLoop1.initLoopz();
         nx.sonics.goodTimes2.initLoopz();
@@ -199,11 +199,11 @@ nx.sonics.initLoopz = function(){
   nx.sonics.exploreLoop1.initLoopz = function(){
     if(nx.sonics && nx.sonics.on && nx.sonics.exploreLoop1){ nx.sonics.exploreLoop1.play(); }  //exploreLoop1 THEME-.
     nx.sonics.exploreLoop1.loopDamper=0;
-    nx.scene.registerBeforeRender(function () { 
+    nx.scene.registerBeforeRender(function soundLOOPZ() { 
       if(++nx.sonics.exploreLoop1.loopDamper%2!=0){return} //frame-damper-.
       if(nx.sonics.exploreLoop1.isPlaying&&!nx.sonics.exploreLoop1.endSound){ nx.sonics.exploreLoop1.endSound=1; } //init
       else if(!nx.sonics.exploreLoop1.isPlaying&&nx.sonics.exploreLoop1.endSound){ //done
-        nx.sonics.exploreLoop1.endSound=0; nx.scene.unregisterBeforeRender(breakBeatSoundEndLoopz); /*self-removing-.*/
+        nx.sonics.exploreLoop1.endSound=0; nx.scene.unregisterBeforeRender(soundLOOPZ); /*self-removing-.*/
         if(nx.sonics){nx.sonics.stopAllSonics()}
         nx.sonics.fightScene2.initLoopz();
         // nx.sonics.goodTimes2.initLoopz();
@@ -213,11 +213,11 @@ nx.sonics.initLoopz = function(){
   nx.sonics.goodTimes2.initLoopz = function(){
     if(nx.sonics && nx.sonics.on && nx.sonics.goodTimes2){ nx.sonics.goodTimes2.play(); }  //goodTimes2 THEME-.
     nx.sonics.goodTimes2.loopDamper=0;
-    nx.scene.registerBeforeRender(function () { 
+    nx.scene.registerBeforeRender(function soundLOOPZ() { 
       if(++nx.sonics.goodTimes2.loopDamper%2!=0){return} //frame-damper-.
       if(nx.sonics.goodTimes2.isPlaying&&!nx.sonics.goodTimes2.endSound){ nx.sonics.goodTimes2.endSound=1; } //init
       else if(!nx.sonics.goodTimes2.isPlaying&&nx.sonics.goodTimes2.endSound){ //done
-        nx.sonics.goodTimes2.endSound=0; nx.scene.unregisterBeforeRender(breakBeatSoundEndLoopz); /*self-removing-.*/
+        nx.sonics.goodTimes2.endSound=0; nx.scene.unregisterBeforeRender(soundLOOPZ); /*self-removing-.*/
         if(nx.sonics){nx.sonics.stopAllSonics()}
         nx.sonics.themeTrack1.initLoopz();
       } //done
@@ -226,11 +226,11 @@ nx.sonics.initLoopz = function(){
   nx.sonics.themeTrack1.initLoopz = function(){
     if(nx.sonics && nx.sonics.on && nx.sonics.themeTrack1){ nx.sonics.themeTrack1.play(); }  //themeTrack1 THEME-.
     nx.sonics.themeTrack1.loopDamper=0;
-    nx.scene.registerBeforeRender(function () { 
+    nx.scene.registerBeforeRender(function soundLOOPZ() { 
       if(++nx.sonics.themeTrack1.loopDamper%2!=0){return} //frame-damper-.
       if(nx.sonics.themeTrack1.isPlaying&&!nx.sonics.themeTrack1.endSound){ nx.sonics.themeTrack1.endSound=1; } //init
       else if(!nx.sonics.themeTrack1.isPlaying&&nx.sonics.themeTrack1.endSound){ //done
-        nx.sonics.themeTrack1.endSound=0; nx.scene.unregisterBeforeRender(breakBeatSoundEndLoopz); /*self-removing-.*/
+        nx.sonics.themeTrack1.endSound=0; nx.scene.unregisterBeforeRender(soundLOOPZ); /*self-removing-.*/
         if(nx.sonics){nx.sonics.stopAllSonics()}
         nx.sonics.spaceTrack2.initLoopz();
       } //done
@@ -239,11 +239,11 @@ nx.sonics.initLoopz = function(){
   nx.sonics.spaceTrack2.initLoopz = function(){
     if(nx.sonics && nx.sonics.on && nx.sonics.spaceTrack2){ nx.sonics.spaceTrack2.play(); }  //spaceTrack2 THEME-.
     nx.sonics.spaceTrack2.loopDamper=0;
-    nx.scene.registerBeforeRender(function () { 
+    nx.scene.registerBeforeRender(function soundLOOPZ() { 
       if(++nx.sonics.spaceTrack2.loopDamper%2!=0){return} //frame-damper-.
       if(nx.sonics.spaceTrack2.isPlaying&&!nx.sonics.spaceTrack2.endSound){ nx.sonics.spaceTrack2.endSound=1; } //init
       else if(!nx.sonics.spaceTrack2.isPlaying&&nx.sonics.spaceTrack2.endSound){ //done
-        nx.sonics.spaceTrack2.endSound=0; nx.scene.unregisterBeforeRender(breakBeatSoundEndLoopz); /*self-removing-.*/
+        nx.sonics.spaceTrack2.endSound=0; nx.scene.unregisterBeforeRender(soundLOOPZ); /*self-removing-.*/
         if(nx.sonics){nx.sonics.stopAllSonics()}
         nx.sonics.breakBeatTheme1.initLoopz();
       } //done

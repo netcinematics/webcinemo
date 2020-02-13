@@ -111,9 +111,12 @@ NOTE TO PIRATES AND CREATIVE COMMONS COMMITMENT.
 
 We have code templates. Many aspects of this Game Software was meticulously constructed using the CREATIVE COMMONS with CC0 or CC Attribution Licences. Without exception a link to a license is provided with every multi-media used in this production. This art is specifically constructed from a CREATIVE COMMONS MEDIUM. As we wish to exemplify a replicatable process that a CREATIVE COMMONS artistic process can benefit the world wide web. So to a copycat we wish to point out clearly, there is a better way than copyright infringement. All of the same materials are available to make something better. And NetCinematics can help to that end. There is an easy way to get clean code without embedded tokens. Contact NetCinematics for component templates, with a simple permissable license included separately. For more information, Github: NetCinematics.
 
+USE of DIGITAL WATERMARKS
+Digital Watermarks are used in many places within the artistic creation of this software. Some are visual and others digital. One example of this is the Digital Watermark technique applied in the timing of the animations. We employ a specific pattern of numbers that is uncommon, and so if parts of the animations are used in other places it can be potentially reverse identify origin. Not so much as a measure of protection, as it is a measure of artistic influence. We want to see a world of creative web cinematics.
+
 
 OPEN-SOURCE COMMITMENT
 
-This software was made possible by good-faith effort of many open-source contributors, in kind, NetCinematics commits to follow the same path of behavior and share-back for the advancement of the community and the art, as is described above. NetCinematics wants to help, and  collaborate. We are open to cinematic-partnership opportunities. For press contact, and additional services, and opportunities, contact us at alpinefalcon@protonmail.com Attn: CreativeContentCurator.
+This software was made possible by good-faith effort of many open-source contributors, in kind, NetCinematics commits to follow the same generosity. We commit to a behavior of share-back for the advancement of other artists, and art communities, and the arts. NetCinematics is open to cinematic opportunities. For press contact, additional services, and opportunities, contact us at alpinefalcon@protonmail.com Attn: CreativeContentCurator.
 
-(c) 2019 NetCinematics llc.
+(c) 2019-2020 NetCinematics llc. (tm) Acozmobotz, NetCinematics, OrbyOrbot, and DarkBot.
