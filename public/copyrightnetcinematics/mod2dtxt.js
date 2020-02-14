@@ -1234,6 +1234,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
   // txtClass += ' talkRGT_DB';
   // txtClass += ' talkRGT_AC';
   // txtClass += ' bubble thought';
+  txtClass += ' thinkTXTLft_KA';
+  
 
 
   if (txtType){

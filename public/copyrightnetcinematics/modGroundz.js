@@ -69,7 +69,9 @@ function createTrainBurm(){
     //--CREATE-TGT-------------RESET: POS, ROT, SIZ, MAT, HIT-.
     // nx.trainBurm1 = BABYLON.Mesh.CreateRibbon("trainBurm", STACKVECTORS, false, false, 0, nx.scene, true, BABYLON.Mesh.FRONTSIDE); //FIXED-.
     nx.trainBurm1 = BABYLON.Mesh.CreateRibbon("trainBurm", STACKVECTORS, false, false, 0, nx.scene, true, BABYLON.Mesh.BACKSIDE); //FIXED-.
+    nx.trainBurm1.parent = nx.plateMaster1;
     nx.trainBurm1.position = polyPOS || new BABYLON.Vector3.Zero();
+    nx.trainBurm1.position.y = 823;
     nx.trainBurm1.rotation = polyROT || new BABYLON.Vector3.Zero();
     if(nx.anmz && nx.anmz.orby){nx.anmz.orby.collisionItems.push(nx.trainBurm1);} //TODO turn off when under zone
     //TODO: nx.trainBurm1.material = nx.getMat("sand"); //anmethodology
@@ -81,6 +83,7 @@ function createTrainBurm(){
 
     nx.trainBurm1.polyRow = STACKPATHS.length; //META-DATA-REQUIRED-TO REHYDRATE AFTER EDIT-.
     nx.trainBurm1.polyCol = STACKPATHS[0].length;
+
 
     // var mat = new BABYLON.StandardMaterial("mat1", nx.scene); //MAT------------------------------------------------.
     // mat.alpha = 0.22; 
@@ -138,6 +141,8 @@ function createburm1(){
     //--CREATE-TGT-------------RESET: POS, ROT, SIZ, MAT, HIT-.
     nx.sandBurm1 = BABYLON.Mesh.CreateRibbon("topConnector", STACKVECTORS, false, false, 0, nx.scene, true, BABYLON.Mesh.BACKSIDE);
     nx.sandBurm1.position = polyPOS || new BABYLON.Vector3.Zero();
+    nx.sandBurm1.parent = nx.plateMaster1;
+    nx.sandBurm1.position = new BABYLON.Vector3(-425,815,300);
     nx.sandBurm1.rotation = polyROT || new BABYLON.Vector3.Zero();
     if(nx.anmz && nx.anmz.orby){nx.anmz.orby.collisionItems.push(nx.sandBurm1);} //TODO turn off when under zone
     //TODO: nx.sandBurm1.material = nx.getMat("sand"); //anmethodology
@@ -154,6 +159,7 @@ function createburm1(){
     mat.diffuseTexture = texture;
     nx.sandBurm1.material = mat;
     nx.sandBurm1.receiveShadows = true;
+
     // nx.sandBurm1.parent = nx.landPad; //PARENT-TO-LANDPAD
     // mat.wireframe = true;
     //---------------------------------------------
@@ -183,6 +189,8 @@ function createburm2(){
     //--CREATE-TGT-------------RESET: POS, ROT, SIZ, MAT, HIT-.
     nx.sandBurm2 = BABYLON.Mesh.CreateRibbon("topConnector", STACKVECTORS, false, false, 0, nx.scene, true, BABYLON.Mesh.BACKSIDE);
     nx.sandBurm2.position = polyPOS || new BABYLON.Vector3.Zero();
+    nx.sandBurm2.parent = nx.plateMaster1;
+    nx.sandBurm2.position = new BABYLON.Vector3(-425,815,300)
     nx.sandBurm2.rotation = polyROT || new BABYLON.Vector3.Zero();
     if(nx.anmz && nx.anmz.orby){nx.anmz.orby.collisionItems.push(nx.sandBurm2);} //TODO turn off when under zone
     //TODO: nx.sandBurm2.material = nx.getMat("sand"); //anmethodology
@@ -198,6 +206,7 @@ function createburm2(){
     texture.uScale = 30.0; //Lots of images squashed and stretched makes an interesting effect-.
     mat.diffuseTexture = texture;
     nx.sandBurm2.material = mat;
+
     // nx.sandBurm2.parent = nx.landPad; //PARENT-TO-LANDPAD
     // mat.wireframe = true;
     //---------------------------------------------

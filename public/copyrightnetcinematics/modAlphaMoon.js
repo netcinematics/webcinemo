@@ -841,6 +841,49 @@ nx.alphaMoon1.orbitPlanetoid = function(){
 }//end orbit planetoid
 
 
+
+nx.createSpaceTrain = function() {
+    var assetsManager = new BABYLON.AssetsManager(nx.scene); //INIT-ASSETS-MANAGER-.
+
+    var meshTask = assetsManager.addMeshTask("task5", "", "./copyrightnetcinematics/3d/", "spacetrain1.babylon");
+    meshTask.onSuccess = function (task) {
+        // debugger;
+        nx.spacecaboose1 = task.loadedMeshes[0];
+        nx.spacecaboose1.parent = nx.plateMaster1;
+        nx.spacecaboose1.position.copyFrom({x: -300, y: 822.5, z: 284.5999999999988});
+        // nx.spacecaboose1.position.copyFrom({"x":-300,"y":6.700000000000001,"z":284.5999999999988});// = new BABYLON.Vector3(-300,18,300);
+        nx.spacecaboose1.rotation.copyFrom({"x":0.10000000000000003,"y":2.500000000000001,"z":-0.5799999999999998});
+        nx.spacecaboose1.scaling = new nx.BV3(4,4,4);
+        // nx.editz.createMasterEditor(nx.spacecaboose1);
+
+
+        nx.spacecrate1 = task.loadedMeshes[1];
+        nx.spacecrate1.parent = nx.plateMaster1;
+        nx.spacecrate1.position.copyFrom({"x":-291.90000000000066,"y":816,"z":238.89999999999984}); // = new BABYLON.Vector3(-270,18,300);
+        // nx.spacecrate1.position.copyFrom({"x":-291.90000000000066,"y":0.09999999999999998,"z":238.89999999999984}); // = new BABYLON.Vector3(-270,18,300);
+        nx.spacecrate1.rotation.copyFrom({"x":-0.1,"y":4.000000000000002,"z":-1.7000000000000002});
+        nx.spacecrate1.scaling = new nx.BV3(1.5,1.5,1.5)
+        // nx.editz.createMasterEditor(nx.spacecrate1);
+
+        nx.spaceball1 = task.loadedMeshes[3];
+        nx.spaceball1.parent = nx.plateMaster1;
+        nx.spaceball1.position.copyFrom({x: -268, y: 815.5, z: 206}); // = new BABYLON.Vector3(-240,18,300);
+        // nx.spaceball1.position.copyFrom({x: -268, y: -0.09999999999999995, z: 206}); // = new BABYLON.Vector3(-240,18,300);
+        nx.spaceball1.rotation.copyFrom({x: -0.4200000000000002, y: 2.3000000000000007, z: -0.5});
+        nx.spaceball1.scaling = new nx.BV3(1.5,1.5,1.5)
+        // nx.editz.createMasterEditor(nx.spaceball1);
+
+        nx.spaceball2 = task.loadedMeshes[2];
+        nx.spaceball2.parent = nx.plateMaster1;
+        nx.spaceball2.position.copyFrom({x: -269, y:815.5, z: 223});// = new BABYLON.Vector3(-200,18,300);
+        // nx.spaceball2.position.copyFrom({x: -269, y: -0.10000000000000064, z: 223});// = new BABYLON.Vector3(-200,18,300);
+        nx.spaceball2.rotation.copyFrom({x: 5.399999999999997, y: -3.100000000000002, z: 5.399999999999997});
+        nx.spaceball2.scaling = new nx.BV3(1.5,1.5,1.5);
+    }
+
+    assetsManager.load();  // IMPORTANT-.
+}
+
 nx.orbyOrbitPOS = function(){
         
         // console.log(planetROTCNT);
@@ -1040,7 +1083,7 @@ nx.orbyOrbitPOS = function(){
         nx.plateMaster1.setPivotPoint(new BABYLON.Vector3(0, WORLDHEIGHT, 0)); //spacewaverider pivot
         
 
-
+        nx.createSpaceTrain();
         // groundTop = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "./copyrightnetcinematics/3d/heightMap_marz5a.png", 185, 185, 250, 0, 10, nx.scene, true);   
         // groundTop.setPivotMatrix(BABYLON.Matrix.Translation(0, 0, 0)); //set pivot
         // var groundTopMaterial = new BABYLON.StandardMaterial("groundMat", nx.scene);
@@ -1055,26 +1098,33 @@ nx.orbyOrbitPOS = function(){
         
         // if(nx.anmz && nx.anmz.orby){nx.anmz.orby.collisionItems.push(groundTop);} //TODO turn off when under zone
 
+// debugger;
+       //FlatIrons
+        // var mtTaskFLI = assetsManager.addMeshTask("mttaskfli", "", "../anyms/scapes/", "flatirons4.babylon");
+        var mtTaskFLI = assetsManager.addMeshTask("mttaskfli", "", "./copyrightnetcinematics/3d/grounds/", "flatirons4.babylon");
+            mtTaskFLI.onSuccess = function (task) {
+            groundSouth = task.loadedMeshes[0];
+            groundSouth.setPivotMatrix(BABYLON.Matrix.Translation(0, 0, 0)); //set pivot
+            groundSouth.rotation.x=-1.63;
+            // groundSouth.position = new BABYLON.Vector3(-60,-490,-40);
+            // groundSouth.scaling = new BABYLON.Vector3(1.5,1.5,1.5);
+            groundSouth.checkCollisions = true;
 
-    //    //FlatIrons
-    //     // var mtTaskFLI = assetsManager.addMeshTask("mttaskfli", "", "../anyms/scapes/", "flatirons4.babylon");
-    //     var mtTaskFLI = assetsManager.addMeshTask("mttaskfli", "", "./copyrightnetcinematics/3d/", "flatirons4.babylon");
-    //         mtTaskFLI.onSuccess = function (task) {
-    //         groundSouth = task.loadedMeshes[0];
-    //         groundSouth.setPivotMatrix(BABYLON.Matrix.Translation(0, 0, 0)); //set pivot
-    //         groundSouth.rotation.x=-1.63;
-    //         groundSouth.position = new BABYLON.Vector3(-60,-90,-40);
-    //         groundSouth.checkCollisions = true;
-    //         groundSouth.scaling.x  = 1.5;
-    //         groundSouth.scaling.y  = 1.5;
-    //         groundSouth.scaling.z  = 1.5;
-    //         groundSouth.parent = nx.alphaMoonMaster1;
-    //         // task.loadedMeshes[0].position = new BABYLON.Vector3(-100,-75,-300);
-    //         // task.loadedMeshes[0].checkCollisions = true;
-    //         // task.loadedMeshes[0].scaling.x  = 1;
-    //         // task.loadedMeshes[0].scaling.y  = 1;
-    //         // task.loadedMeshes[0].scaling.z  = 1;
-    //     }
+groundSouth.position = new BABYLON.Vector3(-555,-444,-333);
+groundSouth.scaling = new BABYLON.Vector3(10,10,10);
+
+            groundSouth.parent = nx.plateMaster1;
+            // groundSouth.parent = nx.alphaMoonMaster1;
+
+            // groundSouth.scaling.x  = 1.5;
+            // groundSouth.scaling.y  = 1.5;
+            // groundSouth.scaling.z  = 1.5;
+            // task.loadedMeshes[0].position = new BABYLON.Vector3(-100,-75,-300);
+            // task.loadedMeshes[0].checkCollisions = true;
+            // task.loadedMeshes[0].scaling.x  = 1;
+            // task.loadedMeshes[0].scaling.y  = 1;
+            // task.loadedMeshes[0].scaling.z  = 1;
+        }
     //    //MT. Evans
     //     // var mtTask = assetsManager.addMeshTask("mttask1", "", "../anyms/scapes/", "mtevans7.babylon");
     //     var mtTask = assetsManager.addMeshTask("mttask1", "", "./copyrightnetcinematics/3d/", "mtevans7.babylon");
@@ -1095,21 +1145,25 @@ nx.orbyOrbitPOS = function(){
     //         // task.loadedMeshes[0].scaling.z  = 1;
     //     }
 
-
-    //     //LongsPeak
-    //     // var mtTask = assetsManager.addMeshTask("mttask2", "", "../anyms/scapes/", "longspeak7.babylon");
-    //     var mtTask = assetsManager.addMeshTask("mttask2", "", "./copyrightnetcinematics/3d/", "longspeak7.babylon");
-    //     mtTask.onSuccess = function (task) {
-    //         groundWest = task.loadedMeshes[0];
-    //         groundWest.position = new BABYLON.Vector3(-22,-30,-80);
-    //         groundWest.checkCollisions = true; //todo removable?
-    //         groundWest.rotation.z= 1.7;
-    //         groundWest.scaling.x  = 1.3;
-    //         groundWest.scaling.y  = 1.3;
-    //         groundWest.scaling.z  = 1.3;
-    //         groundWest.parent = nx.alphaMoonMaster1;
-    //         groundWest.setPivotMatrix(BABYLON.Matrix.Translation(0, 0, 0)); //set pivot
-    //     }
+// debugger;
+        //LongsPeak
+        // var mtTask = assetsManager.addMeshTask("mttask2", "", "../anyms/scapes/", "longspeak7.babylon");
+        var mtTask = assetsManager.addMeshTask("mttask2", "", "./copyrightnetcinematics/3d/grounds/", "longspeak7.babylon");
+        mtTask.onSuccess = function (task) {
+            groundWest = task.loadedMeshes[0];
+            // groundWest.position = new BABYLON.Vector3(-22,-30,-80);
+            groundWest.checkCollisions = true; //todo removable?
+            groundWest.rotation.z= 1.7;
+            // groundWest.position = new BABYLON.Vector3(-555,-444,333);
+            // groundWest.scaling = new BABYLON.Vector3(10,10,10);
+            groundWest.scaling.copyFrom({x: 9, y: 9, z: 9})
+            groundWest.position.copyFrom({x: -88, y: -177, z: -555})
+            // groundWest.scaling.x  = 1.3;
+            // groundWest.scaling.y  = 1.3;
+            // groundWest.scaling.z  = 1.3;
+            groundWest.parent = nx.plateMaster1;
+            groundWest.setPivotMatrix(BABYLON.Matrix.Translation(0, 0, 0)); //set pivot
+        }
     }
     /*******************************************CONTROLS************************************/
     // nx.hyperVectorPrev = function(){
@@ -1411,6 +1465,8 @@ var orbitRate = 0;             // calculation of orbit, based on direction.
 
 // }
 //*****************************END-PLANETOID-ANIMATIONS****************************
+
+
 
     }); //schedule in manifest for ready callback-.
     nx.setMasterManifest(); //signal success and await-.

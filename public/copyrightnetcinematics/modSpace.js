@@ -215,7 +215,7 @@ nx.createGalaxy1 = function(){
     nx.galaxyMaster1.scaling = new BABYLON.Vector3(1.4,1.4,1.4)
     nx.galaxyMaster1.position.copyFrom( {x: -2800, y: 6300, z: -1000})
     nx.galaxyMaster1.rotation.copyFrom({x: -1.8, y: 1.8, z: -1.4})
-    nx.galaxyMaster1.visibility = 1;
+    nx.galaxyMaster1.visibility = 0;
     nx.gMatsga1 = new BABYLON.StandardMaterial("gMat", nx.scene);
     //todo put these inline so that no var creation necessary
     var txtursga1 = new BABYLON.Texture("./copyrightnetcinematics/img/space/g2/twistedGalaxy1.png", nx.scene);
@@ -389,7 +389,7 @@ nx.createPurpleNebula1 = function(){
     nx.nebulaMaster1.material = nx.masterMat1;
     nx.nebulaMaster1.position.copyFrom({x:-2500,y:4450,z:-1780}); //good pos 1
     nx.nebulaMaster1.rotation.copyFrom({x: -0.7, y: -0.3, z: 0}) //good rot 1
-    nx.nebulaMaster1.visibility = 1;
+    nx.nebulaMaster1.visibility = 0;
 
     nx.gMat1 = new BABYLON.StandardMaterial("gMat", nx.scene);
     var txtur1 = new BABYLON.Texture("./copyrightnetcinematics/img/space/g1/g5.png", nx.scene);

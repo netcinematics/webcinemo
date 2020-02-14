@@ -402,64 +402,68 @@ var createDefaultCamera = function(cam) {
     // }
 }
 /*********************************-CREATE-ASSETS-******************************/
-var createAssets = function() {
-    // debugger; //deprecated?
-    nx.assetsManager = new BABYLON.AssetsManager(nx.scene); //INIT-ASSETS-MANAGER-.
-    // nx.engine.loadingUIText = "Welcome..."; //----ASSETS-MANAGER--------------Loading Indicator
-    // assetsManager.addMeshTask("asset2", "", "./3d/assets/", "skull.babylon").onSuccess = function (task){
-    //     task.loadedMeshes.forEach(function(e,i){
-    //             task.loadedMeshes[0].position = new BABYLON.Vector3(0,30,150);
-    //     });
-    // };   
+// var createAssets = function() {
+//     // debugger; //deprecated?
+//     nx.assetsManager = new BABYLON.AssetsManager(nx.scene); //INIT-ASSETS-MANAGER-.
+//     // nx.engine.loadingUIText = "Welcome..."; //----ASSETS-MANAGER--------------Loading Indicator
+//     // assetsManager.addMeshTask("asset2", "", "./3d/assets/", "skull.babylon").onSuccess = function (task){
+//     //     task.loadedMeshes.forEach(function(e,i){
+//     //             task.loadedMeshes[0].position = new BABYLON.Vector3(0,30,150);
+//     //     });
+//     // };   
 
 
-    var meshTask = nx.assetsManager.addMeshTask("task5", "", "./copyrightnetcinematics/3d/", "spacetrain1.babylon");
-    meshTask.onSuccess = function (task) {
-        
-        nx.spacecaboose1 = task.loadedMeshes[0];
-        nx.spacecaboose1.position.copyFrom({"x":-300,"y":6.700000000000001,"z":284.5999999999988});// = new BABYLON.Vector3(-300,18,300);
-        nx.spacecaboose1.rotation.copyFrom({"x":0.10000000000000003,"y":2.500000000000001,"z":-0.5799999999999998});
-        nx.spacecaboose1.scaling = new nx.BV3(4,4,4);
-        // nx.editz.createMasterEditor(nx.spacecaboose1);
+//     var meshTask = nx.assetsManager.addMeshTask("task5", "", "./copyrightnetcinematics/3d/", "spacetrain1.babylon");
+//     meshTask.onSuccess = function (task) {
+//         debugger;
+//         nx.spacecaboose1 = task.loadedMeshes[0];
+//         nx.spacecaboose1.parent = nx.plateMaster1;
+//         nx.spacecaboose1.position.copyFrom({"x":-300,"y":6.700000000000001,"z":284.5999999999988});// = new BABYLON.Vector3(-300,18,300);
+//         nx.spacecaboose1.rotation.copyFrom({"x":0.10000000000000003,"y":2.500000000000001,"z":-0.5799999999999998});
+//         nx.spacecaboose1.scaling = new nx.BV3(4,4,4);
+//         // nx.editz.createMasterEditor(nx.spacecaboose1);
 
 
-        nx.spacecrate1 = task.loadedMeshes[1];
-        nx.spacecrate1.position.copyFrom({"x":-291.90000000000066,"y":0.09999999999999998,"z":238.89999999999984}); // = new BABYLON.Vector3(-270,18,300);
-        nx.spacecrate1.rotation.copyFrom({"x":-0.1,"y":4.000000000000002,"z":-1.7000000000000002});
-        nx.spacecrate1.scaling = new nx.BV3(1.5,1.5,1.5)
-        // nx.editz.createMasterEditor(nx.spacecrate1);
+//         nx.spacecrate1 = task.loadedMeshes[1];
+//         nx.spacecrate1.parent = nx.plateMaster1;
+//         nx.spacecrate1.position.copyFrom({"x":-291.90000000000066,"y":0.09999999999999998,"z":238.89999999999984}); // = new BABYLON.Vector3(-270,18,300);
+//         nx.spacecrate1.rotation.copyFrom({"x":-0.1,"y":4.000000000000002,"z":-1.7000000000000002});
+//         nx.spacecrate1.scaling = new nx.BV3(1.5,1.5,1.5)
+//         // nx.editz.createMasterEditor(nx.spacecrate1);
 
-        nx.spaceball1 = task.loadedMeshes[3];
-        nx.spaceball1.position.copyFrom({x: -268, y: -0.09999999999999995, z: 206}); // = new BABYLON.Vector3(-240,18,300);
-        nx.spaceball1.rotation.copyFrom({x: -0.4200000000000002, y: 2.3000000000000007, z: -0.5});
-        nx.spaceball1.scaling = new nx.BV3(1.5,1.5,1.5)
-        // nx.editz.createMasterEditor(nx.spaceball1);
+//         nx.spaceball1 = task.loadedMeshes[3];
+//         nx.spaceball1.parent = nx.plateMaster1;
+//         nx.spaceball1.position.copyFrom({x: -268, y: -0.09999999999999995, z: 206}); // = new BABYLON.Vector3(-240,18,300);
+//         nx.spaceball1.rotation.copyFrom({x: -0.4200000000000002, y: 2.3000000000000007, z: -0.5});
+//         nx.spaceball1.scaling = new nx.BV3(1.5,1.5,1.5)
+//         // nx.editz.createMasterEditor(nx.spaceball1);
 
-        nx.spaceball2 = task.loadedMeshes[2];
-        nx.spaceball2.position.copyFrom({x: -269, y: -0.10000000000000064, z: 223});// = new BABYLON.Vector3(-200,18,300);
-        nx.spaceball2.rotation.copyFrom({x: 5.399999999999997, y: -3.100000000000002, z: 5.399999999999997});
-        nx.spaceball2.scaling = new nx.BV3(1.5,1.5,1.5);
-        // nx.editz.createMasterEditor(nx.spaceball2);
-        // task.loadedMeshes[0].position = new BABYLON.Vector3(-300,18,300);
-        // task.loadedMeshes[1].position = new BABYLON.Vector3(-270,18,300);
-        // task.loadedMeshes[2].position = new BABYLON.Vector3(-240,18,300);
-        // task.loadedMeshes[3].position = new BABYLON.Vector3(-200,18,300);
+//         nx.spaceball2 = task.loadedMeshes[2];
+//         nx.spaceball2.parent = nx.plateMaster1;
+//         nx.spaceball2.position.copyFrom({x: -269, y: -0.10000000000000064, z: 223});// = new BABYLON.Vector3(-200,18,300);
+//         nx.spaceball2.rotation.copyFrom({x: 5.399999999999997, y: -3.100000000000002, z: 5.399999999999997});
+//         nx.spaceball2.scaling = new nx.BV3(1.5,1.5,1.5);
+//         // nx.editz.createMasterEditor(nx.spaceball2);
+//         // task.loadedMeshes[0].position = new BABYLON.Vector3(-300,18,300);
+//         // task.loadedMeshes[1].position = new BABYLON.Vector3(-270,18,300);
+//         // task.loadedMeshes[2].position = new BABYLON.Vector3(-240,18,300);
+//         // task.loadedMeshes[3].position = new BABYLON.Vector3(-200,18,300);
 
-        // task.loadedMeshes[0].showBoundingBox();
-    }
-
-
-
+//         // task.loadedMeshes[0].showBoundingBox();
+//     }
 
 
-    // nx.assetsManager.addMeshTask("asset3", "", "./copyrightnetcinematics/3d/assets/", "worldbox2.babylon").onSuccess = function (task){};
-    // nx.assetsManager.onFinish = function(tasks) {
-        // nx.engine.runRenderLoop(function() {
-        //     nx.scene.render();
-        // });
-    // };
-    nx.assetsManager.load();  // IMPORTANT-.
-}
+
+
+
+//     // nx.assetsManager.addMeshTask("asset3", "", "./copyrightnetcinematics/3d/assets/", "worldbox2.babylon").onSuccess = function (task){};
+//     // nx.assetsManager.onFinish = function(tasks) {
+//         // nx.engine.runRenderLoop(function() {
+//         //     nx.scene.render();
+//         // });
+//     // };
+//     nx.assetsManager.load();  // IMPORTANT-.
+// }
 /*********************************-CREATE-SOUNDS-******************************/
 // var createSounds = function( ){ //
 //     nx.sonic.loaded=1;
@@ -558,7 +562,7 @@ var createWorld = function(){ //APPSHELL- createEpic is World
         // createStage(); //called by loader-.
         // createLights(); //todo turn back on
         createDefaultCamera();
-        createAssets();
+        // createAssets();//moved to grounds
         // createSounds(); //op: create sound after user gesture.
         // createBoxes();
         // createCentroid();

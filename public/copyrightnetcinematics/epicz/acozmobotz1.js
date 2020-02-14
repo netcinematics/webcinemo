@@ -1245,7 +1245,7 @@ setTimeout(function(){
                 
            
         setTimeout(function(){
-                    nx.ui.flashCanvasMSG({txt:'FIND my MESSAGE in SPACE!',txtIcon:'AEON',txtAlign:'right',persist:0,dur:5000,dur:4222,imgSize:5,imgBtm:2.888,lbl:{lblRgt:2,lblBtm:-0.777,lblSize:0.777}});                 //on first frame   //TODO add with another space zooom anm-.
+                    nx.ui.flashCanvasMSG({txt:'FIND my MESSAGE in SPACE!',txtIcon:'AEON',txtAlign:'right',persist:1,dur:5000,dur:4222,imgSize:5,imgBtm:2.888,lbl:{lblRgt:2,lblBtm:-0.777,lblSize:0.777}});                 //on first frame   //TODO add with another space zooom anm-.
                 },2000) 
 
 
@@ -1286,6 +1286,9 @@ setTimeout(function(){
                     //     nx.orbyMesh.position.x += jitterVal 
                 //     // nx.orbyMesh.position.y += jitterVal 
                 // }
+
+
+
                 nx.spaceSeqIdx[1]={on:1} //ONE-TIME-RUNTIME-INIT-.
                 
             }/*use for sequence config*/
@@ -1877,10 +1880,10 @@ nx.ui.flashCanvasMSG({txt:'Orby: take this LAZER~BOX.',txtIcon:'AEON',persist:0,
     // debugger;
     if(nx.sonics && nx.sonics.blip2){ nx.sonics.blip2.play();}
 }});         //on cut back 2    
-nx.ui.flashCanvasMSG({txt:"Find a COSMO~CAR~CRASH.",txtIcon:'AEON',txtAlign:'right'});         //on cut back 2    
-nx.ui.flashCanvasMSG({txt:'SCAN the CRASH and CALL ME.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
+nx.ui.flashCanvasMSG({txt:"Find COSMO~CAR~CRASH.",txtIcon:'AEON',txtAlign:'right'});         //on cut back 2    
+nx.ui.flashCanvasMSG({txt:'SCAN the CRASH and CALL ME back.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
 nx.ui.flashCanvasMSG({txt:'If CAPTAIN~ZEON is ALIVE...',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
-nx.ui.flashCanvasMSG({txt:'GIVE him THIS MESSAGE.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
+nx.ui.flashCanvasMSG({txt:'GIVE him my MESSAGE.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
 nx.ui.flashCanvasMSG({txt:'OK.',txtIcon:'orby',imgSize:5,imgBtm:2.888,lbl:{lblLft:2,lblBtm:-0.777,lblSize:0.777}});    
 
 
@@ -2040,7 +2043,7 @@ console.log('ANM 9 - rotz 3');
 
                 }, complete:function(){                     // } //NEXT-SUB-SEQUENCE-. 
                     // debugger;
-
+return;
                     nx.spacepadTop.visibility = 1;
                     nx.spaceSeqIdx[7] = {on:1}
                     }
@@ -2074,7 +2077,7 @@ console.log('ANM 9 - rotz 3');
 //TODO change 'txtIcon' to voice
 // nx.ui.flashCanvasMSG({txt:'Orby help Azod.',txtIcon:'orby'});         //on cut back 2    
 // nx.ui.flashCanvasMSG({txt:'GO Orby!',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
-nx.ui.flashCanvasMSG({txt:'Land on that SPACE~PAD, of AlphaMoon.',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
+nx.ui.flashCanvasMSG({txt:'Take the SPACE~PAD down to AlphaMoon.',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
     nx.initGAME({gameID:"SpaceIonz"});
 }});         //on cut back 2   
                     
