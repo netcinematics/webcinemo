@@ -64,7 +64,7 @@ nx.GAMEZ = {
             // meta:{lvlNUM:1,lvlTXT:'COLLECT~SPACEIONZ!',lvlSubTXT:'Land on SpacePad.',
 		    meta:{lvlMode:'ACT~1',lvlNUM:0,lvlTXT:'ORBY vs ZAPBOTZ!',lvlSubTXT:'on ALPHA~MOON',lvlIMGSize:'10em',
 			// lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`<ul>
-            lvlIMG:'./copyrightnetcinematics/img/alphamoontop1.png',lvlTIPS:`
+            lvlIMG:'./copyrightnetcinematics/img/alphamoontop4.png',lvlTIPS:`
             <ul class='scrollColor1' style="list-style:none;height:80%;font-size:1em;overflow-y:scroll;overflow-x:wrap;
                 border:1px solid steelblue;border-radius:13px;padding:1em;
                 box-shadow: 0 0 6px 0px darkviolet, inset 2px 1px 6px 0px steelblue;line-height:2em;">
@@ -337,7 +337,7 @@ nx.GAMEZ = {
     }},
     'Showdown':{gameID:'Showdown',name:'ZapBot Showdown!',initfn:function(){
 
-				debugger; //broke wurld?
+				// debugger; //broke wurld?
 
      //TODO: replace with ADDQUESTMSG!!!
 
@@ -380,7 +380,7 @@ nx.GAMEZ = {
 				},2000);
 			},
 		    btn2fn:function(){
-                debugger; //is this wrong?
+                // debugger; //is this wrong?
 				nx.initSEQ({seqID:'sneakSEQ'}); //softload sneakSeq!
 				// nx.initSEQ({seqID:'landingSequence'}); //softload Landing Seq!
 			},

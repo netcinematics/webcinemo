@@ -107,29 +107,36 @@ nx.pyramid.createSpaceTower = function(){
     // nx.towertop = aLookoutTop3.toMesh("csg3", nx.pyramid.mat, nx.scene);
     nx.towertop = aLookoutTop2.toMesh("csg3", nx.pyramid.mat, nx.scene);
     // nx.towertop.parent = nx.ground;
-    nx.towertop.parent = nx.plateMaster1;
+    // nx.towertop.parent = nx.plateMaster1;
     //////////////////
     nx.towercompassTop = BABYLON.MeshBuilder.CreateCylinder("zp1", {diameterTop: 70, diameterBottom: 60, tessellation: 8, height: 10}, nx.scene);
-    // nx.towercompassTop.position.copyFrom({x: 0, y: 255.5, z: 0})
-    nx.towercompassTop.position.copyFrom({x: 0, y: 1074.555, z: 0})
+    nx.towercompassTop.position.copyFrom({x: 0, y: 255.5, z: 0})
+    // nx.towercompassTop.position.copyFrom({x: 0, y: 1074.555, z: 0})
     nx.towercompassTop.receiveShadows = true;
     nx.towercompassTop.material = nx.pyramid.mat;
-    nx.towercompassTop.parent = nx.plateMaster1;
+    // nx.towercompassTop.parent = nx.plateMaster1;
 
     //TODO: this line had a random orby undefined error
     nx.anmz.orby.collisionItems.push(nx.towercompassTop);
 
     nx.towercompassMid = BABYLON.MeshBuilder.CreateCylinder("zp1", {diameterTop: 60, diameterBottom: 70, tessellation: 8, height: 4}, nx.scene);
-    nx.towercompassMid.position.copyFrom({x: 0, y: 1077, z: 0})
-    // nx.towercompassMid.position.copyFrom({x: 0, y: 258, z: 0})
+    // nx.towercompassMid.position.copyFrom({x: 0, y: 1077, z: 0})
+    nx.towercompassMid.position.copyFrom({x: 0, y: 258, z: 0})
     nx.towercompassMid.material = nx.pyramid.mat;
-    nx.towercompassMid.parent = nx.plateMaster1;
+    // nx.towercompassMid.parent = nx.plateMaster1;
 
     nx.towercompassBtm = BABYLON.MeshBuilder.CreateCylinder("zp1", {diameterTop: 70, diameterBottom: 60, tessellation: 8, height: 5}, nx.scene);
-    nx.towercompassBtm.position.copyFrom({x: 0, y: 1072.555, z: 0})
-    // nx.towercompassBtm.position.copyFrom({x: 0, y: 253.5, z: 0})
+    // nx.towercompassBtm.position.copyFrom({x: 0, y: 1072.555, z: 0})
+    nx.towercompassBtm.position.copyFrom({x: 0, y: 253.5, z: 0})
     nx.towercompassBtm.material = nx.pyramid.mat;
-    nx.towercompassBtm.parent = nx.plateMaster1;
+    // nx.towercompassBtm.parent = nx.plateMaster1;
+
+
+//CAM-ADJUSTED
+// nx.towercompassTop.position.copyFrom({x: 0, y: 1072.888, z: 0})
+// nx.towercompassMid.position.copyFrom({x: 0, y: 1075, z: 0})
+// nx.towercompassBtm.position.copyFrom({x: 0, y: 1070.5, z: 0})
+
 
     // nx.towercompass3 = BABYLON.MeshBuilder.CreateCylinder("zp1", {diameterTop: 60, diameterBottom: 70, tessellation: 8, height: 5}, nx.scene);
     // nx.towercompass3.position.copyFrom({x: -350, y: 3, z: 330})

@@ -195,18 +195,19 @@ border: #748696 solid 1px;
 <style>
 /*TXTBUBBLES*/
 /*.talkTXT80_DB {}*/
-.talkTXT20_DB:after { 
+/*.talkTXT20_DB:after { 
   content:'';position:absolute;top:0;left:20%;width:0;height:0;border:1.111em solid rgba(44, 44, 44, 0);
     border-bottom-color:#6d00bb;border-top:0;margin-left:-0.444em;margin-top:-1.111em;}
 .talkTXT80_DB:after { 
   content:'';position:absolute;top:0;left:80%;width:0;height:0;border:1.111em solid rgba(44, 44, 44, 0);
-    border-bottom-color:#6d00bb;border-top:0;margin-left:-0.444em;margin-top:-1.111em;}
-.thinkTXTLft_KA:before { 
-  content:'';position:absolute;top:-0.222em;left:22%;width:0.444em;height:0.444em;margin-top:-2.222em;
-  border: 1px solid steelblue;border-radius: 100%;background-color: #6d00bb;}
-.thinkTXTLft_KA:after { 
-  content:'';position:absolute;top:-0.222em;left:20%;width:0.888em;height:0.888em;margin-top:-1.111em;
-  border: 1px solid steelblue;border-radius: 100%;background-color: #6d00bb;}
+    border-bottom-color:#6d00bb;border-top:0;margin-left:-0.444em;margin-top:-1.111em;}*/
+.thinkTXTLft_KA:before {content: '';position:absolute;top:0.880em;left:-0.700em;width:0.444em;height:0.444em;
+    border: 1px solid rebeccapurple;border-radius: 100%;background-color: darkorange;box-shadow: -1px -1px 15px 0px rebeccapurple;
+  }
+.thinkTXTLft_KA:after {content: '';position:absolute;top:0.888em;left:-1.444em;width:0.888em;height:0.888em;
+    margin-top: -1.111em;border: 1px solid rebeccapurple;border-radius: 100%;background-color: darkorange;
+    box-shadow: -1px -1px 15px 0px rebeccapurple;
+  }
 .thinkTXT20_DB:before { 
   content:'';position:absolute;top:-0.222em;left:22%;width:0.444em;height:0.444em;margin-top:-2.222em;
   border: 1px solid steelblue;border-radius: 100%;background-color: #6d00bb;}
@@ -230,11 +231,30 @@ border: #748696 solid 1px;
 }
 .talkLFT_AC:after{content:"";position:absolute;top:39px;left:6px;width:20px;height:24px;z-index:11;background:#02020a; border-top-left-radius: 44px 22px; -webkit-transform: translate(-28px, 0px); transform: translate(-28px, 0px);
   }
-/*.talkLFT_DB:before{content:"";position:absolute;top:5px;left:-19px;height: 30px;z-index: 10;background: #9a06a1;border-right: 17px solid #590351;border-bottom-left-radius: 55px 56px; -webkit-transform: translate(0, -4px); transform: translate(0, -4px);
+.talkLFT_ORB:before{content: "";
+    position: absolute;
+    top: 15px;
+    right: -19px;
+    height: 30px;
+    z-index: 10;
+    background: darkslateblue;
+    border-left: 17px solid darkslateblue;
+    border-bottom-right-radius: 55px 56px;
+    -webkit-transform: translate(0, -4px);
+    transform: translate(0, -8px);
 }
-.talkLFT_DB:after{content:"";position:absolute;top:-10px;left:6px;width: 20px;height: 24px;z-index: 11;background: #02020a;border-bottom-left-radius: 44px 22px; -webkit-transform: translate(-28px, 0px); transform: translate(-28px, 0px);
+.talkLFT_ORB:after{content: "";
+    position: absolute;
+    top: -7px;
+    right: -51px;
+    width: 20px;
+    height: 24px;
+    z-index: 11;
+    background: #02020a;
+    border-bottom-right-radius: 44px 22px;
+    -webkit-transform: translate(-28px, 0px);
   }
-.talkRGT_DB:before{content:"";position:absolute;top:5px;right:-20px;height:30px;z-index:10;background:#9a06a1; border-right: 17px solid #590351;border-bottom-right-radius: 55px 56px; -webkit-transform: translate(0, -4px); transform: translate(0, -4px);
+/*.talkRGT_DB:before{content:"";position:absolute;top:5px;right:-20px;height:30px;z-index:10;background:#9a06a1; border-right: 17px solid #590351;border-bottom-right-radius: 55px 56px; -webkit-transform: translate(0, -4px); transform: translate(0, -4px);
 }
 .talkRGT_DB:after{content:"";position:absolute;top:-10px;right:-50px;width:20px;height:24px;z-index:11;background:#02020a; border-bottom-right-radius: 44px 22px; -webkit-transform: translate(-28px, 0px); transform: translate(-28px, 0px);
   }
@@ -242,10 +262,12 @@ border: #748696 solid 1px;
 }
 .talkRGT_AC:after{content:"";position:absolute;top:-10px;right:-50px;width:20px;height:24px;z-index:11;background:#02020a; border-bottom-right-radius: 44px 22px; -webkit-transform: translate(-28px, 0px); transform: translate(-28px, 0px);
   }
-.talkLFT_AC:before{content:"";position:absolute;top:5px;left:-19px;height:30px;z-index:10;background:#155402; border-right: 17px solid #155402;border-bottom-left-radius: 55px 56px; -webkit-transform: translate(0, -4px); transform: translate(0, -4px);
+  
+.talkLFT_ORB:before{content:"";position:absolute;top:5px;left:-19px;height:30px;z-index:10;background:#155402; border-right: 17px solid #155402;border-bottom-left-radius: 55px 56px; -webkit-transform: translate(0, -4px); transform: translate(0, -4px);
 }
-.talkLFT_AC:after{content:"";position:absolute;top:-10px;left:6px;width:20px;height:24px;z-index:11;background:#02020a; border-bottom-left-radius: 44px 22px; -webkit-transform: translate(-28px, 0px); transform: translate(-28px, 0px);
+.talkLFT_ORB:after{content:"";position:absolute;top:-10px;left:6px;width:20px;height:24px;z-index:11;background:#02020a; border-bottom-left-radius: 44px 22px; -webkit-transform: translate(-28px, 0px); transform: translate(-28px, 0px);
   }
+*/
 </style>
 
 <style> /*----------------------------------------------------------Mobile-FIRST-RWD--*/
@@ -463,8 +485,6 @@ var nx = {}; //NetcinematiX NameSpace-.
 
 
 <style>
-.seriesItemFrame {
-}
 
 .seriesItemRow {
     display: -webkit-box;
@@ -517,7 +537,7 @@ var nx = {}; //NetcinematiX NameSpace-.
 </style>
 <section class="seriesItemFrame" style="
     /* height: 85%; */
-    margin: 18% 1% 8% 1%;
+    margin: 5% 1% 8% 1%;
     border: solid 1px steelblue;
     border-radius: 6px;
     padding: 1em;
@@ -1465,7 +1485,8 @@ window.addEventListener('DOMContentLoaded', function(){
     @media screen and (min-width: 850px){ #lvlActionBTNS button span {font-size:1.2em !important; }
     </style>
     <article id='lvlActionBTNS' style='margin-top:3%;display:flex;margin-bottom:3%;width:70%;justify-content:space-evenly;color: darkviolet;line-height: 3em;'>
-        <button id='lvlMovieBtn2' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px yellow;' aria-label="skip" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-video" style="padding-right:0.2em;color:#082b44;text-shadow:1px 1px #4169e1;"></i><span class=anmBtn style=''>MOVIE</span></button>
+        <button id='lvlMovieBtn2' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px yellow;' aria-label="skip" class=" actionBtnLock steelBlueBtnDlg"><i class="fa fa-lock" style="padding-right:0.2em;color:#24053f;text-shadow:1px 1px #9400D3;"></i><span class=anmBtn style=''>MOVIE</span></button>
+        <!--button id='lvlMovieBtn2' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px yellow;' aria-label="skip" class="steelBlueBtnDlg onBtnHaloYellow"><i class="fa fa-video" style="padding-right:0.2em;color:#082b44;text-shadow:1px 1px #4169e1;"></i><span class=anmBtn style=''>MOVIE</span></button-->
         &nbsp;OR&nbsp;
         <button id='lvlGameBtn1' class='actionBtnLock steelBlueBtnDlg' style='flex:1;max-width:5.55em;min-width:5.55em;box-shadow: 0px 0px 6px 0px red;' aria-label="play"><i class="fa fa-lock" style="padding-right:0.2em;color:#24053f;text-shadow:1px 1px #9400D3;"></i><span class=anmBtn style=''>GAME</span></button>
         &nbsp;OR&nbsp;
@@ -1508,7 +1529,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
 <aside class="lvlMarquee">
-  <span class="lvlMarqueeTXT">~ subscribe at acozmo.io ~ </span>
+  <span class="lvlMarqueeTXT">~ COMING SOON ~ </span>
+  <!-- span class="lvlMarqueeTXT">~ subscribe at acozmo.io ~ </span -->
 </aside>
 
 <script type="text/javascript">
@@ -1517,11 +1539,15 @@ window.addEventListener('DOMContentLoaded', function(){
       /*debugger;*/
 
       nx.ui.lvlMarquee = $('.lvlMarquee');
+      nx.ui.lvlMarquee.click(function(){
+        location.reload(true);
+      })
       nx.ui.lvlMarqueeTXT = $('.lvlMarqueeTXT');
       var marqueeStop = 0;
       var marqueeLimit = 5;
       var msg = '';
-      var marqueeMSG = ['~ subscribe @ acozmo.io ~','for new episodes']
+      /*var marqueeMSG = ['~ subscribe @ acozmo.io ~','for new episodes']*/
+      var marqueeMSG = ['~ COMING SOON ~','for new episodes']
       function moveMarquee(movement){
         if(movement){
           marqueeStop++;

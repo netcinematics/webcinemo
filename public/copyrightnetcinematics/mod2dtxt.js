@@ -839,6 +839,8 @@ nx.ui.showTitleScreen = function( config ){
   nx.lvlMovieBtn2.unbind('click');//must do for singular handler-.
   nx.lvlMovieBtn2.click(function(){
     // debugger;
+    location.reload(true);
+      return; 
       //HIDE-TITLE-SCREEN-.
       $('#titleViewFrame').fadeOut(1000)
       // $('#mainTitleViewFrame').fadeOut(1000)
@@ -1216,7 +1218,7 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
       // debugger;
       lblRgt = (config && config.lbl && config.lbl.lblRgt)? config.lbl.lblRgt+'em' : '1.222em';
       lblLft = (config && config.lbl && config.lbl.lblLft)? config.lbl.lblLft+'em' : '1.222em';
-      iconBorder = '2px solid darkslateblue';
+      iconBorder = '2px solid rebeccapurple';
       src = './copyrightnetcinematics/img/aeon1.png'; 
       heroLogo = `<img class="heroBubbleLogo" style="height:${imgSize};width:${imgSize};margin-bottom:${imgBtm};display:flex;align-self:center;cursor:pointer;border:${iconBorder};"
       src="${src}" alt="logo" aria-label="logo">`
@@ -1234,8 +1236,8 @@ nx.ui.flashCanvasMSG = function(config){ //USAGE: {txt:'',btn,fn,txtfh,}
   // txtClass += ' talkRGT_DB';
   // txtClass += ' talkRGT_AC';
   // txtClass += ' bubble thought';
-  txtClass += ' thinkTXTLft_KA';
-  
+  if(config && config.bblTxt){    txtClass += ' '+config.bblTxt;}
+
 
 
   if (txtType){

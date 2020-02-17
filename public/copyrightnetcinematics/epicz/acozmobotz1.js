@@ -638,8 +638,8 @@ nx.runCinematicSequence = function(seqName){ //LOOPZ
 
   
                               //on first frame   //TODO add with another space zooom anm-.
-                nx.ui.flashCanvasMSG({txt:"Dr.ACOZMO!",txtIcon:'drbecky',persist:0,dur:3444,imgSize:5,imgBtm:2.888,lbl:{lblLft:1.111,lblBtm:-0.777,lblSize:0.777}});                 //on first frame   //TODO add with another space zooom anm-.
-                nx.ui.flashCanvasMSG({txt:'Yes, Dr.BECKY?',txtIcon:'dracozmo',imgSize:5, persist:0,dur:3444,txtAlign:'right',imgBtm:2.888,lbl:{lblRgt:0.555,lblBtm:-0.777,lblSize:0.777}});                 //on first frame   //TODO add with another space zooom anm-.
+                nx.ui.flashCanvasMSG({txt:"Dr.ACOZMO!",txtIcon:'drbecky',persist:0,dur:3444,imgSize:5,imgBtm:1.888,lbl:{lblLft:1.111,lblBtm:-0.777,lblSize:0.777}});                 //on first frame   //TODO add with another space zooom anm-.
+                nx.ui.flashCanvasMSG({txt:'Yes, Dr.BECKY?',txtIcon:'dracozmo',imgSize:5, persist:0,dur:3444,txtAlign:'right',imgBtm:1.888,lbl:{lblRgt:0.555,lblBtm:-0.777,lblSize:0.777}});                 //on first frame   //TODO add with another space zooom anm-.
                 nx.ui.flashCanvasMSG({txt:'A MESSAGE in SPACE!!',txtIcon:'drbecky',dur:3444});                 //on first frame   //TODO add with another space zooom anm-.
                 nx.ui.flashCanvasMSG({txt:"Let's DECODE it!",txtIcon:'dracozmo',dur:3000,txtAlign:'right'});                 //on first frame   //TODO add with another space zooom anm-.
                 nx.ui.flashCanvasMSG({txt:'SPACE~BYTES on!',txtIcon:'drbecky',dur:3000,//});                 //on first frame   //TODO add with another space zooom anm-.
@@ -709,7 +709,7 @@ setTimeout(function(){
                 }});                 //on first frame   //TODO add with another space zooom anm-.
 
 
-nx.ui.flashCanvasMSG({txt:"LOOK! The ACOZMOSCOPE!",txtIcon:'dracozmo',dur:3444,txtAlign:'right',
+nx.ui.flashCanvasMSG({txt:"LOOK in the ACOZMOSCOPE!",txtIcon:'dracozmo',dur:3444,txtAlign:'right',
 txtEnd:function(){
     nx.introSEQ[2] = {on:1}
 }});
@@ -1245,7 +1245,8 @@ setTimeout(function(){
                 
            
         setTimeout(function(){
-                    nx.ui.flashCanvasMSG({txt:'FIND my MESSAGE in SPACE!',txtIcon:'AEON',txtAlign:'right',persist:1,dur:5000,dur:4222,imgSize:5,imgBtm:2.888,lbl:{lblRgt:2,lblBtm:-0.777,lblSize:0.777}});                 //on first frame   //TODO add with another space zooom anm-.
+                    nx.ui.flashCanvasMSG({txt:'FIND my MESSAGE in SPACE!',txtIcon:'AEON',txtAlign:'right',persist:0,
+                        bblTxt:'thinkTXTLft_KA',dur:4222,imgSize:5,imgBtm:1.888,lbl:{lblRgt:2,lblBtm:-0.777,lblSize:0.777}});                 //on first frame   //TODO add with another space zooom anm-.
                 },2000) 
 
 
@@ -1809,6 +1810,8 @@ setTimeout(function(){
                         }
                     },1000*nx.RUNTIME);
 
+
+
 //SETLIGHTS-.
 nx.light0.position.z = 10
 nx.light1.position.x = -20
@@ -1817,6 +1820,9 @@ nx.light1.intensity = 0.08
 nx.light2.position.copyFrom({x: -33, y: 44, z: 44})
 nx.light2.intensity = 1.111
 nx.lightStrobe=0; //Stop Red Strobe.
+
+
+
 
 
                     //SPARKS-SYSTEMZ-.
@@ -1880,11 +1886,11 @@ nx.ui.flashCanvasMSG({txt:'Orby: take this LAZER~BOX.',txtIcon:'AEON',persist:0,
     // debugger;
     if(nx.sonics && nx.sonics.blip2){ nx.sonics.blip2.play();}
 }});         //on cut back 2    
-nx.ui.flashCanvasMSG({txt:"Find COSMO~CAR~CRASH.",txtIcon:'AEON',txtAlign:'right'});         //on cut back 2    
-nx.ui.flashCanvasMSG({txt:'SCAN the CRASH and CALL ME back.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
-nx.ui.flashCanvasMSG({txt:'If CAPTAIN~ZEON is ALIVE...',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
-nx.ui.flashCanvasMSG({txt:'GIVE him my MESSAGE.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
-nx.ui.flashCanvasMSG({txt:'OK.',txtIcon:'orby',imgSize:5,imgBtm:2.888,lbl:{lblLft:2,lblBtm:-0.777,lblSize:0.777}});    
+nx.ui.flashCanvasMSG({txt:"Find a COSMO~CAR~CRASH on AlphaMoon.",txtIcon:'AEON',txtAlign:'right'});         //on cut back 2    
+// nx.ui.flashCanvasMSG({txt:'SCAN the CRASH and CALL ME back.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
+// // nx.ui.flashCanvasMSG({txt:'If CAPTAIN~ZEON is ALIVE...',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
+// // nx.ui.flashCanvasMSG({txt:'GIVE him my MESSAGE.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
+// nx.ui.flashCanvasMSG({txt:'OK.',txtIcon:'orby',imgSize:5,imgBtm:1.888,persist:0,bblTxt:'talkLFT_ORB',lbl:{lblLft:2,lblBtm:-0.777,lblSize:0.777}});    
 
 
 //TODO
@@ -2043,7 +2049,16 @@ console.log('ANM 9 - rotz 3');
 
                 }, complete:function(){                     // } //NEXT-SUB-SEQUENCE-. 
                     // debugger;
-return;
+// return;
+
+nx.ui.flashCanvasMSG({txt:'SCAN the CRASH and CALL ME back.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
+// nx.ui.flashCanvasMSG({txt:'If CAPTAIN~ZEON is ALIVE...',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
+// nx.ui.flashCanvasMSG({txt:'GIVE him my MESSAGE.',txtIcon:'AEON',txtAlign:'right'});         //on cut back 2  
+nx.ui.flashCanvasMSG({txt:'OK.',txtIcon:'orby',imgSize:5,imgBtm:1.888,persist:0,bblTxt:'talkLFT_ORB',lbl:{lblLft:2,lblBtm:-0.777,lblSize:0.777}});    
+
+
+
+
                     nx.spacepadTop.visibility = 1;
                     nx.spaceSeqIdx[7] = {on:1}
                     }
@@ -2054,11 +2069,11 @@ return;
                 if(nx.cinemaStop){nx.spaceSeqIdx[7]={on:1};return;}//CINEMA-STOP-.
 
                 //- FROZEN -INTERMISSION - BEGINNING OF GAME-.
+// debugger;
 
                 nx.removeGalaxy1();
 
                 // nx.ui.flashCanvasMSG({txt:'Chapter 1: Land on AlphaMoon!',dur:2000,txtInit:function(){  }}); 
-// debugger;
                 // if(nx.cinemaPlayAll){ //PLAY ALL BUTTON-. Go to next Movie-.
                 //     debugger; //should this be runSCENE?
                 //     nx.initSEQ({seqID:'landingSequence'}); /*landingseq*/ 
@@ -2077,7 +2092,8 @@ return;
 //TODO change 'txtIcon' to voice
 // nx.ui.flashCanvasMSG({txt:'Orby help Azod.',txtIcon:'orby'});         //on cut back 2    
 // nx.ui.flashCanvasMSG({txt:'GO Orby!',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
-nx.ui.flashCanvasMSG({txt:'Take the SPACE~PAD down to AlphaMoon.',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
+// nx.ui.flashCanvasMSG({txt:'Land on that SPACE~PAD!',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
+nx.ui.flashCanvasMSG({txt:'Ride the HALFPIPE to AlphaMoon!',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
     nx.initGAME({gameID:"SpaceIonz"});
 }});         //on cut back 2   
                     
@@ -2208,7 +2224,10 @@ nx.ui.flashCanvasMSG({txt:'Take the SPACE~PAD down to AlphaMoon.',txtIcon:'AEON'
                 // nx.spacebox.position.x = 0
                 // nx.spacebox.position.y = 0
                 // nx.spacebox.position.z = 0
-                nx.landingPadSeqIdx[1] = {on:1} 
+
+                //CAMADJUSTED
+                // nx.towercompassTop.position.y = 257;
+                // nx.landingPadSeqIdx[1] = {on:1} 
 
 
             }/*use for sequence config*/
@@ -3322,6 +3341,13 @@ debugger; //unused todo, cut for zapbot introductions
 
                 // },3000)
 
+
+//CAM-ADJUSTED
+// nx.towercompassTop.position.copyFrom({x: 0, y: 1072.888, z: 0})
+// nx.towercompassMid.position.copyFrom({x: 0, y: 1075, z: 0})
+// nx.towercompassBtm.position.copyFrom({x: 0, y: 1070.5, z: 0})
+
+
                 nx.kiloBotMesh1.rotation.copyFrom({x: 0, y: 0, z: 0});
                 nx.kiloBotMesh1.rotationQuaternion = null;
                 // nx.kiloBotMesh1.clearLaser = 0
@@ -3330,7 +3356,9 @@ debugger; //unused todo, cut for zapbot introductions
                     nx.darkBot.rotation.y = -0.7;
 
 
-        
+//CAMADJUSTED
+nx.towercompassTop.position.y = 255.555
+
                     nx.initFreeCam(); //top of pipe
                     // nx.scene.activeCamera.position.copyFrom({x: 355, y: 353, z: -430.5})
                     // nx.scene.activeCamera.setTarget(nx.darkBot.position)
@@ -5892,7 +5920,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                     //SHOW-TITLE-SCREEN-.
                     nx.ui.showTitleScreen({
                         // meta:{lvlNUM:1,lvlTXT:'COLLECT~SPACEIONZ!',lvlSubTXT:'Land on SpacePad.',
-                        meta:{lvlMode:'ACT~2',lvlNUM:0,lvlTXT:'COSMO~CAR~CRASH!',lvlSubTXT:'COLLECT 100 Ionz.',lvlIMGSize:'4.444em',
+                        meta:{lvlMode:'EPISODE1~ACT2',lvlNUM:0,lvlTXT:'COSMO~CAR~CRASH!',lvlSubTXT:'COLLECT 100 Ionz.',lvlIMGSize:'4.444em',
                         // lvlIMG:'./copyrightnetcinematics/img/energem2.png',lvlTIPS:`<ul>
                         // <ul style="list-style:none;height:79%;overflow:scroll;border:1px solid steelblue;border-radius: 13px;padding-left:0.444em;padding-right:0.444em;
                         // box-shadow: 0 0 6px 0px darkviolet;">
@@ -6429,7 +6457,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
 // debugger;
 
                 if(nx.cinemaPlayAll){ //auto call the movie.
-                    nx.ui.flashCanvasMSG({txt:'ACT~3: QUESTION~DARKBOT!',dur:2000,txtInit:function(){
+                    nx.ui.flashCanvasMSG({txt:'EPISODE1~ACT3: QUESTION~DARKBOT!',dur:2000,txtInit:function(){
                     }}); 
 
                     // nx.initSEQ({seqID:7}); /* affirmation seq todo orby skip game scane sequence*/
