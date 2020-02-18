@@ -1814,14 +1814,14 @@ setTimeout(function(){
 
 
 
-//SETLIGHTS-.
-nx.light0.position.z = 10
-nx.light1.position.x = -20
-nx.light1.position.z = -10
-nx.light1.intensity = 0.08
-nx.light2.position.copyFrom({x: -33, y: 44, z: 44})
-nx.light2.intensity = 1.111
-nx.lightStrobe=0; //Stop Red Strobe.
+//SETLIGHTS-. //TURN LIGHTS ON AND OFF UNTIL SHADOWFIX-.
+// nx.light0.position.z = 10
+// nx.light1.position.x = -20
+// nx.light1.position.z = -10
+// nx.light1.intensity = 0.08
+// nx.light2.position.copyFrom({x: -33, y: 44, z: 44})
+// nx.light2.intensity = 1.111
+// nx.lightStrobe=0; //Stop Red Strobe.
 
 
 
