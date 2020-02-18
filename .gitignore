@@ -18,7 +18,7 @@ lib-cov
 coverage
 
 # backups
-
+bak/
 .bak
 
 # nyc test coverage

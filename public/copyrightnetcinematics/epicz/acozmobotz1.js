@@ -448,6 +448,8 @@ nx.runCinematicSequence = function(seqName){ //LOOPZ
 
                 //NEW STARTING POINT
                 nx.initFreeCam();
+                // nx.scene.activeCamera.position.copyFrom({x: 200, y: 200, z: 200});
+                // return
                 // nx.scene.activeCamera.position = new BABYLON.Vector3(2227.33, 4906.14, -4110.71); //START CAM POS
                 nx.scene.activeCamera.position.copyFrom({x: 2213.1406150717266, y: 4860.237554592314, z: -4024.522084874132});
                 nx.camz.freeCam.setTarget(new BABYLON.Vector3(2212.471992697192,4859.581937593642,-4024.1712137880113));
@@ -1206,7 +1208,7 @@ setTimeout(function(){
                 nx.plateMaster1.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);  //shrink-wurld-.
 
 
-                nx.spacepadTop.visibility = 0;
+                // nx.spacepadTop.visibility = 0; //FIX
 
                 //3D-WEB-ANMETHODOLOGY-.  WEBANMZ
                 // nx.orbyMesh.position = new BABYLON.Vector3(-2000,3400,-2300); //ANM: INIORBYPOS 
@@ -2151,6 +2153,7 @@ nx.ui.flashCanvasMSG({txt:'Ride the HALFPIPE to AlphaMoon!',txtIcon:'AEON',txtAl
             if(nx.landingPadSeqIdx[0] && nx.landingPadSeqIdx[0].on){ nx.landingPadSeqIdx[0].on=0; 
                     if(nx.cinemaStop){nx.landingPadSeqIdx[0]={on:1}; return;}//CINEMA-STOP-.
 
+
                     //PLACE ZAPBOT 1
                         nx.spacepadTop.visibility = 1;
 
@@ -2225,9 +2228,13 @@ nx.ui.flashCanvasMSG({txt:'Ride the HALFPIPE to AlphaMoon!',txtIcon:'AEON',txtAl
                 // nx.spacebox.position.y = 0
                 // nx.spacebox.position.z = 0
 
-                //CAMADJUSTED
+                //CAMADJUSTED - landing pad seq
+                // debugger;
                 // nx.towercompassTop.position.y = 257;
-                // nx.landingPadSeqIdx[1] = {on:1} 
+
+
+
+                nx.landingPadSeqIdx[1] = {on:1} 
 
 
             }/*use for sequence config*/
@@ -3342,7 +3349,7 @@ debugger; //unused todo, cut for zapbot introductions
                 // },3000)
 
 
-//CAM-ADJUSTED
+//CAM-ADJUSTED - door sequence
 // nx.towercompassTop.position.copyFrom({x: 0, y: 1072.888, z: 0})
 // nx.towercompassMid.position.copyFrom({x: 0, y: 1075, z: 0})
 // nx.towercompassBtm.position.copyFrom({x: 0, y: 1070.5, z: 0})
@@ -3355,9 +3362,12 @@ debugger; //unused todo, cut for zapbot introductions
                     nx.darkBot.position.copyFrom({x: 23, y: 260.5, z: -23});
                     nx.darkBot.rotation.y = -0.7;
 
+//CAMADJUSTED - door sequence
+// debugger;
+// nx.towercompassTop.position.y = 255.555
 
-//CAMADJUSTED
-nx.towercompassTop.position.y = 255.555
+nx.towercompassTop.position.copyFrom({x: 0, y: 255.55, z: 0}) //correct for doorsequence
+// nx.towercompassTop.position.copyFrom({x: 0, y: 1071, z: 0}) //correct for doorsequence
 
                     nx.initFreeCam(); //top of pipe
                     // nx.scene.activeCamera.position.copyFrom({x: 355, y: 353, z: -430.5})
@@ -6446,6 +6456,8 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                 nx.darkBot.position.copyFrom({x: 23, y: 260.5, z: -23});
                 nx.darkBot.rotation.y = -0.7;
 
+
+                nx.towercompassTop.position.copyFrom({x: 0, y: 1071, z: 0}) //correct for climax
 
                 nx.climaxSeqIdx[NUM].on = 0;
                 // nx.climaxSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 

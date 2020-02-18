@@ -169,7 +169,7 @@ var createLights = function() {
 
 
 
-    nx.editorLIGHTBOXMATRIX(); //breaks shadow
+    // nx.editorLIGHTBOXMATRIX(); //breaks shadow
 
 
 

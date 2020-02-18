@@ -839,8 +839,8 @@ nx.ui.showTitleScreen = function( config ){
   nx.lvlMovieBtn2.unbind('click');//must do for singular handler-.
   nx.lvlMovieBtn2.click(function(){
     // debugger;
-    location.reload(true);
-      return; 
+    // location.reload(true);
+      // return; 
       //HIDE-TITLE-SCREEN-.
       $('#titleViewFrame').fadeOut(1000)
       // $('#mainTitleViewFrame').fadeOut(1000)
