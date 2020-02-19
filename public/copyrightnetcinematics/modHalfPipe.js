@@ -453,6 +453,7 @@ var createLandingPadMaster = function(){
             nx.spacepadTop.position = new BABYLON.Vector3.Zero();
             nx.spacepadTop.position.copyFrom({x: -759, y: 2131.2, z: -1507})
             nx.spacepadTop.parent = nx.plateMaster1;
+        if(!nx.plateMaster1){console.log('PARENTNULL',12)}
             nx.spacepadTop.visibility = 1; //FIX parent
 
             nx.spacepadTop.polyRow = POLYSTACKPATH.length; //META-DATA-REQUIRED-TO REHYDRATE AFTER EDIT-.

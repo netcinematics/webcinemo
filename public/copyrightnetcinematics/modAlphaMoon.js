@@ -850,6 +850,7 @@ nx.createSpaceTrain = function() {
         // debugger;
         nx.spacecaboose1 = task.loadedMeshes[0];
         nx.spacecaboose1.parent = nx.plateMaster1;
+        if(!nx.plateMaster1){console.log('PARENTNULL',1)}
         nx.spacecaboose1.position.copyFrom({x: -300, y: 822.5, z: 284.5999999999988});
         // nx.spacecaboose1.position.copyFrom({"x":-300,"y":6.700000000000001,"z":284.5999999999988});// = new BABYLON.Vector3(-300,18,300);
         nx.spacecaboose1.rotation.copyFrom({"x":0.10000000000000003,"y":2.500000000000001,"z":-0.5799999999999998});
@@ -859,6 +860,7 @@ nx.createSpaceTrain = function() {
 
         nx.spacecrate1 = task.loadedMeshes[1];
         nx.spacecrate1.parent = nx.plateMaster1;
+        if(!nx.plateMaster1){console.log('PARENTNULL',2)}
         nx.spacecrate1.position.copyFrom({"x":-291.90000000000066,"y":816,"z":238.89999999999984}); // = new BABYLON.Vector3(-270,18,300);
         // nx.spacecrate1.position.copyFrom({"x":-291.90000000000066,"y":0.09999999999999998,"z":238.89999999999984}); // = new BABYLON.Vector3(-270,18,300);
         nx.spacecrate1.rotation.copyFrom({"x":-0.1,"y":4.000000000000002,"z":-1.7000000000000002});
@@ -867,6 +869,7 @@ nx.createSpaceTrain = function() {
 
         nx.spaceball1 = task.loadedMeshes[3];
         nx.spaceball1.parent = nx.plateMaster1;
+        if(!nx.plateMaster1){console.log('PARENTNULL',3)}
         nx.spaceball1.position.copyFrom({x: -268, y: 815.5, z: 206}); // = new BABYLON.Vector3(-240,18,300);
         // nx.spaceball1.position.copyFrom({x: -268, y: -0.09999999999999995, z: 206}); // = new BABYLON.Vector3(-240,18,300);
         nx.spaceball1.rotation.copyFrom({x: -0.4200000000000002, y: 2.3000000000000007, z: -0.5});
@@ -875,6 +878,7 @@ nx.createSpaceTrain = function() {
 
         nx.spaceball2 = task.loadedMeshes[2];
         nx.spaceball2.parent = nx.plateMaster1;
+        if(!nx.plateMaster1){console.log('PARENTNULL',4)}
         nx.spaceball2.position.copyFrom({x: -269, y:815.5, z: 223});// = new BABYLON.Vector3(-200,18,300);
         // nx.spaceball2.position.copyFrom({x: -269, y: -0.10000000000000064, z: 223});// = new BABYLON.Vector3(-200,18,300);
         nx.spaceball2.rotation.copyFrom({x: 5.399999999999997, y: -3.100000000000002, z: 5.399999999999997});
@@ -978,6 +982,7 @@ nx.orbyOrbitPOS = function(){
                 e.scaling = new BABYLON.Vector3(98,98,98)
                 // e.parent = nx.alphaMoonMaster1;
                 e.parent = nx.plateMaster1;
+        if(!nx.plateMaster1){console.log('PARENTNULL',5)}
                 e.position = new BABYLON.Vector3(0,0,0);
                 // e.position = new BABYLON.Vector3(0,-812,0);
                 // e.position = new BABYLON.Vector3(0,-830,0);
@@ -1003,7 +1008,7 @@ nx.orbyOrbitPOS = function(){
                     nx.alphaMoon1.top.material = gmat;
                     
                     if(nx.ground){
-                        console.log('PARENT1');
+                        // console.log('PARENT1');
                         // nx.ground.parent = nx.plateMaster1;
                         nx.ground.parent = nx.alphaMoon1.top;
                         nx.ground.position = new BABYLON.Vector3(0,8.32,0);
@@ -1114,6 +1119,7 @@ groundSouth.position = new BABYLON.Vector3(-555,-444,-333);
 groundSouth.scaling = new BABYLON.Vector3(10,10,10);
 
             groundSouth.parent = nx.plateMaster1;
+        if(!nx.plateMaster1){console.log('PARENTNULL',7)}
             // groundSouth.parent = nx.alphaMoonMaster1;
 
             // groundSouth.scaling.x  = 1.5;
@@ -1162,6 +1168,7 @@ groundSouth.scaling = new BABYLON.Vector3(10,10,10);
             // groundWest.scaling.y  = 1.3;
             // groundWest.scaling.z  = 1.3;
             groundWest.parent = nx.plateMaster1;
+        if(!nx.plateMaster1){console.log('PARENTNULL',8)}
             groundWest.setPivotMatrix(BABYLON.Matrix.Translation(0, 0, 0)); //set pivot
         }
     }

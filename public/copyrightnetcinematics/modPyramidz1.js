@@ -111,6 +111,7 @@ nx.pyramid.createSpaceTower = function(){
     //////////////////
     nx.towercompassTop = BABYLON.MeshBuilder.CreateCylinder("zp1", {diameterTop: 70, diameterBottom: 60, tessellation: 8, height: 10}, nx.scene);
     nx.towercompassTop.parent = nx.plateMaster1;
+        if(!nx.plateMaster1){console.log('PARENTNULL',13)}
     nx.towercompassTop.position.copyFrom({x: 0, y: 1072.777, z: 0}) //correct for door seq
     // nx.towercompassTop.position.copyFrom({x: 0, y: 1071, z: 0}) //correct for climax
     // nx.towercompassTop.position.copyFrom({x: 0, y: 255.5, z: 0})

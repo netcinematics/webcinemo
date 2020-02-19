@@ -10,9 +10,10 @@
     // if(!nx.sub){nx.sub={}}
     // nx.sub = {num0:0,num1:0} 
     /******************************-MODULE-**********************************/
-nx.createAcozmoScope1 = function(){
+nx.createAcozmoScope1 = function(doneFn){
     if(nx.state.acozmoScope1){return}
     nx.state.acozmoScope1 = 1;
+
         //top of track
         nx.scopeMat = new BABYLON.StandardMaterial("gMat", nx.scene);
         nx.txtur1 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope1.png", nx.scene);
@@ -20,6 +21,30 @@ nx.createAcozmoScope1 = function(){
         nx.txtur3 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope3.png", nx.scene);
         nx.txtur4 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope4.png", nx.scene);
         nx.txtur5 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope5.png", nx.scene);
+
+
+
+
+        //ACOZMOSCOPE-READY-RENDERER-MECHANISMO-.
+       //  nx.getMasterManifest(function readyRender (){ //Ready-Renderer-.
+       //  //local create call here-.
+       //  }); //schedule in manifest for ready callback-.
+
+            // debugger; //texture ready to show-.
+            nx.txtur1._texture.onLoadedCallbacks.push(function(){
+
+            // debugger; //texture ready to show-.
+                // setTimeout(function(){
+                    doneFn();
+                // },13000)
+            })
+       // BABYLON.BaseTexture.WhenAllReady([nx.txtur1], () => {
+       //      // nx.setMasterManifest(); //signal success and await-.
+       //  })
+
+
+
+
         // var txtur1 = new BABYLON.Texture("./copyrightnetcinematics/img/space/acozmoscope4.png", nx.scene);
         nx.scopeMat.diffuseTexture = nx.txtur1;
         // nx.scopeMat.diffuseTexture = nx.txtur5;

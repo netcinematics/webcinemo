@@ -66,33 +66,39 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
     "IntroSEQ":{seqID:1,name:'A Space Signal!',initfn:function(){
         nx.endSEQ(nx.activeSEQ); //end previous epic-.
         
-        nx.spacebox.rotation.y = 0.5;  //adjusted BOX-.
-        nx.spacebox.position.z = -1500;
-        nx.spacebox.position.y = 1500
-
-        nx.createAcozmoScope1();
-
 // debugger;
- // nx.spacepadTop.visibility = 0;
+        nx.createAcozmoScope1(function(){ //callback to wait until show-.
+
+// return;
+
+            nx.spacebox.rotation.y = 0.5;  //adjusted BOX-.
+            nx.spacebox.position.z = -1500;
+            nx.spacebox.position.y = 1500
+
+            // nx.createAcozmoScope1();
+
+    // debugger;
+     // nx.spacepadTop.visibility = 0;
 
 
-        nx.camz.freeCam.maxZ = 15000; //todo perf reduce this later
-        nx.plateMaster1.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);  //shrink-wurld-.
-        //FROM-ORBY-LOAD*************************
-        nx.orbyMesh.position.copyFrom(nx.anmz.orby.rig.originBox.position);
-        nx.orbyMesh.rotationQuaternion = null;
-        nx.orbyMesh.rotation = new BABYLON.Vector3(0,Math.PI,0); //align-initial-rotation-.
-        // nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0); //ANIMATED-SURFBOARD-.
-        // debugger;
-        // //SparkSystemz
-        // if(!nx.orby.easyBakeSparks){nx.orby.createEasyBakeSparks();nx.orby.easyBakeSparks.start()}
-        // else{nx.orby.easyBakeSparks.start()}
-        nx.anmz.orby.jump.fallMode = 0; //FIX: falling before GO
-        nx.anmz.orby.move.autofwdSpace = 0; //FIX: falling before GO
-        //FROM-ORBY-LOAD*************************
-        // nx.spacepadmaterial.alpha = 0;
-        nx.runCinematicSequence("IntroSEQ") //very beginning todo runEpic then runEpic and initEpic and endEpic
-        // nx.runCinematicSequence("VortexSequence") //very beginning todo runEpic then runEpic and initEpic and endEpic
+            nx.camz.freeCam.maxZ = 15000; //todo perf reduce this later
+            nx.plateMaster1.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);  //shrink-wurld-.
+            //FROM-ORBY-LOAD*************************
+            nx.orbyMesh.position.copyFrom(nx.anmz.orby.rig.originBox.position);
+            nx.orbyMesh.rotationQuaternion = null;
+            nx.orbyMesh.rotation = new BABYLON.Vector3(0,Math.PI,0); //align-initial-rotation-.
+            // nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0); //ANIMATED-SURFBOARD-.
+            // debugger;
+            // //SparkSystemz
+            // if(!nx.orby.easyBakeSparks){nx.orby.createEasyBakeSparks();nx.orby.easyBakeSparks.start()}
+            // else{nx.orby.easyBakeSparks.start()}
+            nx.anmz.orby.jump.fallMode = 0; //FIX: falling before GO
+            nx.anmz.orby.move.autofwdSpace = 0; //FIX: falling before GO
+            //FROM-ORBY-LOAD*************************
+            // nx.spacepadmaterial.alpha = 0;
+            nx.runCinematicSequence("IntroSEQ") //very beginning todo runEpic then runEpic and initEpic and endEpic
+            // nx.runCinematicSequence("VortexSequence") //very beginning todo runEpic then runEpic and initEpic and endEpic
+        }); //create acozmoscope
 
     }},
     "VortexSEQ":{seqID:1,name:"Orion's Nebula!",initfn:function(){
@@ -1815,13 +1821,15 @@ setTimeout(function(){
 
 
 //SETLIGHTS-. //TURN LIGHTS ON AND OFF UNTIL SHADOWFIX-.
-// nx.light0.position.z = 10
-// nx.light1.position.x = -20
-// nx.light1.position.z = -10
-// nx.light1.intensity = 0.08
-// nx.light2.position.copyFrom({x: -33, y: 44, z: 44})
-// nx.light2.intensity = 1.111
-// nx.lightStrobe=0; //Stop Red Strobe.
+if(nx.light0 && nx.light1 && nx.light2){
+    nx.light0.position.z = 10
+    nx.light1.position.x = -20
+    nx.light1.position.z = -10
+    nx.light1.intensity = 0.08
+    nx.light2.position.copyFrom({x: -33, y: 44, z: 44})
+    nx.light2.intensity = 1.111
+    nx.lightStrobe=0; //Stop Red Strobe.
+}
 
 
 
