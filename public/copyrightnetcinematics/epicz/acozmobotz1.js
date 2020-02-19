@@ -110,7 +110,7 @@ nx.SEQZ = { //todo rename all to SEQZ Epic moves up above SCENEZ - has a SEQ, GA
         nx.spacebox.position.z = -1500;
         nx.spacebox.position.y = 1500
 
-        nx.createAcozmoScope1();
+        nx.createAcozmoScope1(); //todo should this be removed?
         // nx.removeAcozmoScope1();
         // nx.createStarBurst1();
         // nx.removeStarBurst1();
@@ -2042,6 +2042,17 @@ console.log('ANM 9 - rotz 3');
                     // console.log('space6...')
                 // nx.initFollowCam();
 
+
+
+//FIX - set parents. //todo need delay load? //maybe setPlanetParent('top')
+if(nx.sandBurm1.parent){ nx.sandBurm1.parent = nx.plateMaster1; }
+if(nx.sandBurm2.parent){ nx.sandBurm2.parent = nx.plateMaster1; }
+if(nx.trainBurm1.parent){ nx.trainBurm1.parent = nx.plateMaster1; }
+if(nx.spacepadTop.parent){ nx.spacepadTop.parent = nx.plateMaster1; }
+if(nx.towercompassTop.parent){ nx.towercompassTop.parent = nx.plateMaster1; }
+
+
+
                 // nx.RUNTIME=1; //FFWD-SLOMO-handle-.
 // console.log('ANM 12 - world scaling - simultaneous');
 // nx.ground.scaling.copyFrom({x: 0.01023, y: 0.01023, z: 0.01023}) //good scale in space
@@ -3374,7 +3385,8 @@ debugger; //unused todo, cut for zapbot introductions
 // debugger;
 // nx.towercompassTop.position.y = 255.555
 
-nx.towercompassTop.position.copyFrom({x: 0, y: 255.55, z: 0}) //correct for doorsequence
+nx.towercompassTop.position.y = 1071.222; //correct for door sequence
+// nx.towercompassTop.position.copyFrom({x: 0, y: 255.55, z: 0}) //correct for doorsequence when parent broke-.
 // nx.towercompassTop.position.copyFrom({x: 0, y: 1071, z: 0}) //correct for doorsequence
 
                     nx.initFreeCam(); //top of pipe
@@ -4089,7 +4101,8 @@ nx.doorSeqIdx[NUM].descentPath2 =  [{"pos":{"x":168.083,"y":243.369,"z":-195.18}
                     }, complete:function(){ 
 
 
-                        nx.ui.flashCanvasMSG({txt:'SPACE~TRAIN!',txtIcon:'orby',dur:3000,txtInit:function(){ //sonic ding
+                        // nx.ui.flashCanvasMSG({txt:'SPACE~TRAIN!',txtIcon:'orby',dur:3000,txtInit:function(){ //sonic ding
+                        nx.ui.flashCanvasMSG({txt:'COSMO~CARS!',txtIcon:'orby',dur:3000,txtInit:function(){ //sonic ding
                             if(nx.sonics && nx.sonics.blip2){ nx.sonics.blip2.play();}
                         },txtEnd:function(){
                                 nx.doorSeqIdx[5] = {on:1};
@@ -6465,7 +6478,7 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                 nx.darkBot.rotation.y = -0.7;
 
 
-                nx.towercompassTop.position.copyFrom({x: 0, y: 1071, z: 0}) //correct for climax
+                nx.towercompassTop.position.copyFrom({x: 0, y: 1071.222, z: 0}) //correct for climax
 
                 nx.climaxSeqIdx[NUM].on = 0;
                 // nx.climaxSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
@@ -6940,13 +6953,20 @@ nx.scene.activeCamera.setTarget(nx.BV32({x: 17.62534290345204, y: 265.9246020133
                 },txtEnd:function(){} }); 
                 nx.ui.flashCanvasMSG({txt:"~MegaBot!!",txtIcon:'',dur:2000,txtInit:function(){
         nx.zapbotMega.position.copyFrom({x: -20.519167819340684, y: 266, z: 19.320231975620192})
-        nx.zapbotMega.rotation.y = -0.8
+        // nx.zapbotMega.rotation.y = -0.8
+nx.zapbotMega.rotationQuaternion = null
+nx.zapbotMega.rotation.copyFrom({x: 0, y: -0.888, z: 0})
+
+
         nx.scene.activeCamera.position.copyFrom({x: 0, y: 262.5, z: 0})
         nx.scene.activeCamera.setTarget(nx.zapbotMega.position) //CAMTGT: 
                 },txtEnd:function(){} }); 
                 nx.ui.flashCanvasMSG({txt:"~GigaBot!!!",txtIcon:'',dur:2000,txtInit:function(){
             nx.zapbotTerra2.position.copyFrom( {x: 26.014782132909403, y: 266, z: 18.889698881576113})
-            nx.zapbotTerra2.rotation.y = 1;
+            // nx.zapbotTerra2.rotation.y = 1;
+            nx.zapbotTerra2.rotation.y = 0.888;
+            nx.zapbotTerra2.rotationQuaternion = null
+
             nx.scene.activeCamera.position.copyFrom({x: 0, y: 266, z: 0})
             nx.scene.activeCamera.setTarget(nx.zapbotTerra2.position) //CAMTGT:      
                 },txtEnd:function(){} }); 
@@ -8818,10 +8838,10 @@ lookfwd.onAnimationEnd = function(){
 
 
                 //ANM: past the spacetrain and toward the edge
-                nx.ui.flashCanvasMSG({txt:"~THE~END~",dur:8000,persist:0,
-                    txtInit:function(){ },
-                    txtEnd:function(){ }
-                }); 
+                // nx.ui.flashCanvasMSG({txt:"~THE~END~",dur:8000,persist:0,
+                //     txtInit:function(){ },
+                //     txtEnd:function(){ }
+                // }); 
             }//end frame
         });//end cinematic loop
             
@@ -8920,7 +8940,14 @@ step: function(now) {
                     setTimeout(function(){
 
                         nx.ui.flashCanvasMSG({txt:'Wow, what a STORY!',txtIcon:'dracozmo',dur:5000});                 //on first frame   //TODO add with another space zooom anm-.
-                        nx.ui.flashCanvasMSG({txt:'Yeah, tell me about it!',txtIcon:'drbecky',txtAlign:'right',dur:4000});  
+                        // nx.ui.flashCanvasMSG({txt:'Yeah, tell me about it!',txtIcon:'drbecky',txtAlign:'right',dur:4000});  
+                        nx.ui.flashCanvasMSG({txt:'We need to tell the world!',txtIcon:'drbecky',txtAlign:'right',dur:4000});  
+
+                nx.ui.flashCanvasMSG({txt:"~THE~END~",dur:8000,persist:0,
+                    txtInit:function(){ },
+                    txtEnd:function(){ }
+                }); 
+
 
                     },3000)
 
@@ -9087,7 +9114,7 @@ nx.createCinematicLoop = function(){
          // if(nx.anmDEBUG){debugger;} //TODO if nx.anmSLOWMO then onrly call function every 10th frame.
 
         // if(nx.cinemaPause){console.log('cinema paused'); return;}//CINEMAPause-.
-        if(nx.cinemaStop){console.log('cinema stop'); return;}//CINEMAStop-.
+        // if(nx.cinemaStop){console.log('cinema stop'); return;}//CINEMAStop-.
         if(nx.anmfn) { nx.anmfn(); } // todo perf op - run function when we have it, but while animating - need not run - and stop when done.
         if(nx.cinematicMode<0){ console.log('PLAYBACK DONE.'); nx.scene.unregisterBeforeRender(sequenceLoop); } //-1 to UNLOAD-MASTER-SEQUENCE-LOOP!
         // nx.anmfn(); if(!nx.cinematicMode){ console.log('PLAYBACK DONE.'); nx.scene.unregisterBeforeRender(sequenceLoop); }

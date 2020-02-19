@@ -423,7 +423,7 @@ nx.botz.botScanSEQ = function(aBot){ //anm is called on every frame!
             aBot.chasing = 1;
         },aBot.delayOnTargeting)    
     } else if( aBot.chasing > 0){
-        console.log('chasing')
+        // console.log('chasing')
         // nx.botz.routeKiloBot();
         // nx.botz.routeZapBot(config);
     } else if( aBot.catch===1 ){
