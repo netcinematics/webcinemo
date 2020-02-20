@@ -8954,7 +8954,7 @@ step: function(now) {
                         // nx.ui.flashCanvasMSG({txt:'Yeah, tell me about it!',txtIcon:'drbecky',txtAlign:'right',dur:4000});  
                         nx.ui.flashCanvasMSG({txt:'We gotta tell everyone!',txtIcon:'drbecky',txtAlign:'right',dur:4000});  
 
-                nx.ui.flashCanvasMSG({txt:"~THE~END~",dur:8000,persist:0,
+                nx.ui.flashCanvasMSG({txt:"~THE~END~",dur:8000,persist:1,
                     txtInit:function(){ },
                     txtEnd:function(){ }
                 }); 
