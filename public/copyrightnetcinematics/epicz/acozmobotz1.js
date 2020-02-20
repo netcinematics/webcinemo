@@ -2114,7 +2114,7 @@ nx.ui.flashCanvasMSG({txt:'OK.',txtIcon:'orby',imgSize:5,imgBtm:1.888,persist:0,
 // nx.ui.flashCanvasMSG({txt:'Orby help Azod.',txtIcon:'orby'});         //on cut back 2    
 // nx.ui.flashCanvasMSG({txt:'GO Orby!',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
 // nx.ui.flashCanvasMSG({txt:'Land on that SPACE~PAD!',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
-nx.ui.flashCanvasMSG({txt:'Ride the HALFPIPE to AlphaMoon!',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
+nx.ui.flashCanvasMSG({txt:'Land on that SPACE~PAD!',txtIcon:'AEON',txtAlign:'right',txtEnd:function(){
     nx.initGAME({gameID:"SpaceIonz"});
 }});         //on cut back 2   
                     

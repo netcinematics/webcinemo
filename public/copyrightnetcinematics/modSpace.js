@@ -14,6 +14,9 @@ nx.createAcozmoScope1 = function(doneFn){
     if(nx.state.acozmoScope1){return}
     nx.state.acozmoScope1 = 1; //todo a better way to do this is with nx.aScope1 instance
 
+        if(nx.txtur1){ //already loaded-.
+            setTimeout(function(){ doneFn() },1000); //FIX for not calling back because already loaded
+        }
         //top of track
         nx.scopeMat = new BABYLON.StandardMaterial("gMat", nx.scene);
         nx.txtur1 = new BABYLON.Texture("./copyrightnetcinematics/img/ascopegif/ascope1.png", nx.scene);
