@@ -903,7 +903,7 @@ nx.createMasterStart = function(){
         // debugger;
         
         //---------------------------------MASTER~SCRIPT------------------------------------------------
-        nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
+        // nx.runSCENE({id:"IntroSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
         // nx.runSCENE({id:"VortexSEQ",frame:0,type:'SEQ'}); //SCENEZFactory-.
 
         // nx.spaceSeqIdx[0] = {on:1}; 
@@ -924,7 +924,7 @@ nx.createMasterStart = function(){
         // debugger;
         // nx.initSEQ({seqID:'aClimaxSequence'})// ACT~3
         // nx.initSEQ({seqID:'aBoomSequence'})
-        // nx.initSEQ({seqID:'aSunsetSequence'})
+        nx.initSEQ({seqID:'aSunsetSequence'})
         // nx.initSEQ({seqID:'aZoomOutSequence'})
         // nx.initSEQ({seqID:'aCreditRollSequence'})
         //---------------------------------------------------------------------------------

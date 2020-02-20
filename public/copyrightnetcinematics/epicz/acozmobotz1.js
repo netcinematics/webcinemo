@@ -8186,7 +8186,7 @@ setTimeout(function(){
 
 nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //idle orby
 
-
+nx.zonez.removeZone(-1); //remove all zones black FIX
 
 
 nx.sunsetSeqIdx[NUM+1] = {on:1}; 
@@ -8905,10 +8905,15 @@ step: function(now) {
     //     nx.camz.freeCam.setTarget( nx.orbyMesh.position ); //CAM:
 
         // setTimeout(function(){ //full alphamoon view zoom through lens
-            nx.createAcozmoScope1();
-            nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
-            nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.7, z: -0.3})
-            nx.aScope1.visibility = 1;
+            nx.createAcozmoScope1(function(){
+                nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
+                nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.7, z: -0.3})
+                nx.aScope1.visibility = 1;
+            });
+            // nx.createAcozmoScope1();
+            // nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
+            // nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.7, z: -0.3})
+            // nx.aScope1.visibility = 1;
 
             ////mediumpos - jump cut, zoom back to lens
             // nx.scene.activeCamera.position.copyFrom({x: 123.39060268024382, y: 4395.293025882205, z: -2936.9227163180426})
@@ -8947,7 +8952,7 @@ step: function(now) {
 
                         nx.ui.flashCanvasMSG({txt:'Wow, what a STORY!',txtIcon:'dracozmo',dur:5000});                 //on first frame   //TODO add with another space zooom anm-.
                         // nx.ui.flashCanvasMSG({txt:'Yeah, tell me about it!',txtIcon:'drbecky',txtAlign:'right',dur:4000});  
-                        nx.ui.flashCanvasMSG({txt:'We need to tell the world!',txtIcon:'drbecky',txtAlign:'right',dur:4000});  
+                        nx.ui.flashCanvasMSG({txt:'We gotta tell everyone!',txtIcon:'drbecky',txtAlign:'right',dur:4000});  
 
                 nx.ui.flashCanvasMSG({txt:"~THE~END~",dur:8000,persist:0,
                     txtInit:function(){ },

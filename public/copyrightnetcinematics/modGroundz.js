@@ -70,7 +70,9 @@ function createTrainBurm(){
     // nx.trainBurm1 = BABYLON.Mesh.CreateRibbon("trainBurm", STACKVECTORS, false, false, 0, nx.scene, true, BABYLON.Mesh.FRONTSIDE); //FIXED-.
     nx.trainBurm1 = BABYLON.Mesh.CreateRibbon("trainBurm", STACKVECTORS, false, false, 0, nx.scene, true, BABYLON.Mesh.BACKSIDE); //FIXED-.
     nx.trainBurm1.parent = nx.plateMaster1;
-        if(!nx.plateMaster1){console.log('PARENTNULL',11)}
+    if(!nx.plateMaster1){console.log('PARENTNULL',11)
+        setTimeout(function(){if(!nx.plateMaster1){console.log('DOUBLENULL',11);}else{nx.trainBurm1.parent=nx.plateMaster1;} },3000);
+    }
     nx.trainBurm1.position = polyPOS || new BABYLON.Vector3.Zero();
     nx.trainBurm1.position.y = 823;
     nx.trainBurm1.rotation = polyROT || new BABYLON.Vector3.Zero();
@@ -143,7 +145,9 @@ function createburm1(){
     nx.sandBurm1 = BABYLON.Mesh.CreateRibbon("topConnector", STACKVECTORS, false, false, 0, nx.scene, true, BABYLON.Mesh.BACKSIDE);
     nx.sandBurm1.position = polyPOS || new BABYLON.Vector3.Zero();
     nx.sandBurm1.parent = nx.plateMaster1;
-        if(!nx.plateMaster1){console.log('PARENTNULL',9)}
+    if(!nx.plateMaster1){console.log('PARENTNULL',9)
+        setTimeout(function(){if(!nx.plateMaster1){console.log('DOUBLENULL',9);}else{nx.sandBurm1.parent=nx.plateMaster1;} },3000);
+    }
     nx.sandBurm1.position = new BABYLON.Vector3(-425,815,300);
     nx.sandBurm1.rotation = polyROT || new BABYLON.Vector3.Zero();
     if(nx.anmz && nx.anmz.orby){nx.anmz.orby.collisionItems.push(nx.sandBurm1);} //TODO turn off when under zone
@@ -192,7 +196,9 @@ function createburm2(){
     nx.sandBurm2 = BABYLON.Mesh.CreateRibbon("topConnector", STACKVECTORS, false, false, 0, nx.scene, true, BABYLON.Mesh.BACKSIDE);
     nx.sandBurm2.position = polyPOS || new BABYLON.Vector3.Zero();
     nx.sandBurm2.parent = nx.plateMaster1;
-        if(!nx.plateMaster1){console.log('PARENTNULL',10)}
+    if(!nx.plateMaster1){console.log('PARENTNULL',10)
+        setTimeout(function(){if(!nx.plateMaster1){console.log('DOUBLENULL',10);}else{nx.sandBurm2.parent=nx.plateMaster1;} },3000);
+    }
     nx.sandBurm2.position = new BABYLON.Vector3(-425,815,300)
     nx.sandBurm2.rotation = polyROT || new BABYLON.Vector3.Zero();
     if(nx.anmz && nx.anmz.orby){nx.anmz.orby.collisionItems.push(nx.sandBurm2);} //TODO turn off when under zone

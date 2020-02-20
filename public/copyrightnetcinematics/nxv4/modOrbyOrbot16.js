@@ -2483,13 +2483,14 @@ nx.orby.loadOrbyMouth = function(endfn){
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot19b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot18d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyorbot17d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) {
+// debugger;
     //    nx.orbyMesh = newMeshes[0]; //spacewaverider
         // nx.orbyMeshBody = newMeshes[1]; //orbymesh
         nx.orbyMeshM = nx.scene.getMeshByName('spacewaveriderM') 
-        nx.orbyMeshM.visibility = 0;
         // nx.orbyMesh.convertToFlatShadedMesh();
         nx.orbyMeshBodyM = nx.scene.getMeshByName('orbymeshM') ; //orbymesh
         nx.orbySkeletonM = skeletons;
+
         // nx.orbyMeshM.position.copyFrom(nx.anmz.orby.rig.originBox.position);
         
         //SCENE SPECIFIC
@@ -2517,6 +2518,17 @@ nx.orby.loadOrbyMouth = function(endfn){
         nx.orbyMouthM = nx.scene.getMeshByName('orbyMouthCoverM') ; //orbyMouth
         if(nx.orbyMouthM) nx.orbyMouthM.parent = nx.orbyMeshM
 
+
+
+        nx.orbyEYEMouth = newMeshes[26];//nx.scene.getMeshByName('separatedEYE') 
+        nx.orbyIRISMouth = newMeshes[27]; //nx.scene.getMeshByName('separatedIRIS') 
+        nx.orbyIRISMouth.visibility = 0;
+        nx.orbyEYEMouth.visibility = 0;
+        nx.orbyMouthM.visibility = 0; //FIX: hide impostor both separate meshes.
+        nx.orbyMeshM.visibility = 0; //FIX: hide impostor both separate meshes.
+        nx.orbyMeshBodyM.visibility = 0; //ALl separate meshes
+
+
         // nx.orbyM.mouthCover = nx.scene.getMeshByName('orbyMouthCover');
         
           //TODO DELETE lazerboxM
@@ -2539,7 +2551,7 @@ nx.orby.loadOrbyMouth = function(endfn){
 nx.orby.loadOrbyStep = function(){
     BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep4b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbyStep1a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
-
+// debugger;
   // nx.anm.tipStep.aMesh = {};
   // nx.anm.tipStep.aSkel = {};
 
@@ -2568,7 +2580,7 @@ nx.orby.loadOrbyStep = function(){
     // }
 }
 
-nx.orby.loadSpaceWaveRider = function(){
+nx.orby.loadSpaceWaveRider = function(){ //todo call at zero frame hide and show
   BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "spaceWaveRider3a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { 
   // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "spaceWaveRider1b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { 
 // debugger
@@ -2588,8 +2600,7 @@ nx.anm.waveRiderTip.aSkel = skeletons[0];
   });
 }
 
-nx.orby.loadOrbySitUp = function(endfn){
-
+nx.orby.loadOrbySitUp = function(endfn){//todo do not call this during explosion.
     BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp6b.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp4d.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //still working?
     // BABYLON.SceneLoader.ImportMesh("", "./copyrightnetcinematics/3d/", "orbySitUp5a.babylon", nx.scene, function (newMeshes, particleSystems, skeletons) { //broke free armature

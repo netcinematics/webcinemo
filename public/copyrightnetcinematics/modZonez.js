@@ -57,10 +57,10 @@ nx.zonez.camZoneFactory = function( config  ){ //CUSAGE:{pos:{},dim{h:0,w:0,d:0}
 }
 
 
-nx.zonez.removeZone = function(tgt){
+nx.zonez.removeZone = function(tgt){ //-1 remove all zones
 
 	for(var i=0; i<nx.activeZonez.length;i++){ 
-	    if(nx.activeZonez[i]===tgt){
+	    if(nx.activeZonez[i]===tgt || tgt===-1){
 	        //TODO: send count to 2DUI-.
 
 

@@ -264,6 +264,11 @@ nx.anm.orbyShockGem = function(endfn){
 	// nx.orby.loadOrbyMouth(function(){
 		nx.orbyMesh.position.y = 0; //HIDE THE REAL ORBY-.
 		nx.orbyMeshM.visibility = 1; //show mouth orby
+		nx.orbyMeshBodyM.visibility = 1; //show mouth orby and board
+        nx.orbyIRISMouth.visibility = 1;
+        nx.orbyEYEMouth.visibility = 1;
+        nx.orbyMouthM.visibility = 1;
+
 		// endfn();
 	// });
  //    $({rx:nx.darkBot.rotation.x, ry:nx.darkBot.rotation.y,rz:nx.darkBot.rotation.z})
