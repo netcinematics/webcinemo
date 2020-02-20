@@ -3385,7 +3385,7 @@ debugger; //unused todo, cut for zapbot introductions
 // debugger;
 // nx.towercompassTop.position.y = 255.555
 
-nx.towercompassTop.position.y = 1071.222; //correct for door sequence
+if(nx.towercompassTop){ nx.towercompassTop.position.y = 1071.222; } //correct for door sequence
 // nx.towercompassTop.position.copyFrom({x: 0, y: 255.55, z: 0}) //correct for doorsequence when parent broke-.
 // nx.towercompassTop.position.copyFrom({x: 0, y: 1071, z: 0}) //correct for doorsequence
 
