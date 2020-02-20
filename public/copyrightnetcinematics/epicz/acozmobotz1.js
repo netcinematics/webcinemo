@@ -8906,15 +8906,16 @@ step: function(now) {
 
         // setTimeout(function(){ //full alphamoon view zoom through lens
 
-        if(!nx.state.acozmoScope1){
+        // if(!nx.state.acozmoScope1){
+        if(!nx.aScope1){
             nx.createAcozmoScope1(function(){
                 nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
-                nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.7, z: -0.3})
+                nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.6888, z: -0.3})
                 nx.aScope1.visibility = 1;
             });
         } else {
                 nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
-                nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.7, z: -0.3})
+                nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.6888, z: -0.3})
                 nx.aScope1.visibility = 1;       
         }
             // nx.createAcozmoScope1();
