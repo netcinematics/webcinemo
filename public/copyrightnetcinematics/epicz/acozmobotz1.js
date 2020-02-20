@@ -8908,12 +8908,14 @@ step: function(now) {
 
         // if(!nx.state.acozmoScope1){
         if(!nx.aScope1){
+            console.log('SCOPEPOS1')
             nx.createAcozmoScope1(function(){
                 nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
                 nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.6888, z: -0.3})
                 nx.aScope1.visibility = 1;
             });
         } else {
+            console.log('SCOPEPOS2')
                 nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
                 nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.6888, z: -0.3})
                 nx.aScope1.visibility = 1;       
