@@ -6483,8 +6483,11 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                 nx.climaxSeqIdx[NUM].on = 0;
                 // nx.climaxSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
 
-
-
+    //anmethodology: put impostor loads in 0 frame so that 
+    nx.orby.loadOrbyMouth(function(){
+        nx.orbyMesh.position.y = 0; //HIDE THE REAL ORBY-.
+        endfn();
+    });
 
 
 // debugger;
@@ -7063,6 +7066,9 @@ nx.dBot.mezmoRaySystem2.position.copyFrom({x: 3.1, y: 2.888, z: -0.6})
                             //TODO zoom CAM here-.
                         } }); 
 
+
+
+                //STRANGEFREEZE-.
                 var lookCam1 = nx.scene.beginAnimation(nx.orbySkeletonM[0], 3, 10, false, 0.888);
                 lookCam1.onAnimationEnd = function(){
                     // setTimeout(function(){
@@ -7284,7 +7290,7 @@ nx.dBot.mezmoRaySystem2.position.copyFrom({x: 3.1, y: 2.888, z: -0.6})
 
 
 
-//anmethodology: ANMImpostors-.
+//anmethodology: ANMImpostors load in zero frame-.
 nx.orby.loadOrbySitUp(function(){
     setTimeout(function(){
         nx.orbyMeshSitUp.position.copyFrom({x:0,y:262,z:0}) //show sitUp Impostor
