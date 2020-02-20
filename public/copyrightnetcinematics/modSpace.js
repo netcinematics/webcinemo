@@ -12,7 +12,7 @@
     /******************************-MODULE-**********************************/
 nx.createAcozmoScope1 = function(doneFn){
     if(nx.state.acozmoScope1){return}
-    nx.state.acozmoScope1 = 1;
+    nx.state.acozmoScope1 = 1; //todo a better way to do this is with nx.aScope1 instance
 
         //top of track
         nx.scopeMat = new BABYLON.StandardMaterial("gMat", nx.scene);

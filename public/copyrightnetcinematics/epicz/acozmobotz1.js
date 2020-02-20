@@ -8856,6 +8856,14 @@ lookfwd.onAnimationEnd = function(){
             if(nx.zoomOutSeqIdx[0] && nx.zoomOutSeqIdx[0].on){ var NUM = 0; nx.zoomOutSeqIdx[NUM].on=0;
                 // debugger;
 
+            nx.state.acozmoScope1 = 0; //redundant
+            nx.createAcozmoScope1(function(){ //wasnt firing from bjs
+                console.log('SCOPEPOS1')
+                nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
+                nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.6888, z: -0.3})
+                nx.aScope1.visibility = 1;
+            });
+
 
 //orby sunset
 nx.orbyMesh.position.copyFrom({x: -413.9, y: 2, z: 485.764});
@@ -8907,14 +8915,15 @@ step: function(now) {
         // setTimeout(function(){ //full alphamoon view zoom through lens
 
         // if(!nx.state.acozmoScope1){
-        if(!nx.aScope1){
-            console.log('SCOPEPOS1')
-            nx.createAcozmoScope1(function(){
-                nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
-                nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.6888, z: -0.3})
-                nx.aScope1.visibility = 1;
-            });
-        } else {
+        // if(!nx.aScope1){
+        //     console.log('SCOPEPOS1')
+        //     nx.createAcozmoScope1(function(){
+        //         nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
+        //         nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.6888, z: -0.3})
+        //         nx.aScope1.visibility = 1;
+        //     });
+        // } else {
+        if(nx.aScope1){
             console.log('SCOPEPOS2')
                 nx.aScope1.position.copyFrom({x: 364, y: 4833, z: -3100})
                 nx.aScope1.rotation.copyFrom({x: 0.999, y: -0.6888, z: -0.3})
