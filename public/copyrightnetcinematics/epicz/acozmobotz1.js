@@ -6483,9 +6483,9 @@ nx.scene.beginAnimation(nx.orbySkeleton[0], 80, 140, true, 1.0);  //inIdle-.
                 nx.climaxSeqIdx[NUM].on = 0;
                 // nx.climaxSeqIdx[NUM+1] = {on:1}; //NEXT-ANM-. 
 
-    //anmethodology: put impostor loads in 0 frame so that 
+    //anmethodology FIX: put impostor loads in 0 frame so that 
     nx.orby.loadOrbyMouth(function(){
-        nx.orbyMesh.position.y = 0; //HIDE THE REAL ORBY-.
+        // nx.orbyMesh.position.y = 0; //HIDE THE REAL ORBY-.
         endfn();
     });
 

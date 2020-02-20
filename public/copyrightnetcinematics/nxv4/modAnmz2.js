@@ -262,8 +262,8 @@ nx.anm.zapBotConvergence = function(){
 nx.anm.orbyShockGem = function(endfn){
 
 	// nx.orby.loadOrbyMouth(function(){
-	// 	nx.orbyMesh.position.y = 0; //HIDE THE REAL ORBY-.
-	// 	endfn();
+		nx.orbyMesh.position.y = 0; //HIDE THE REAL ORBY-.
+		// endfn();
 	// });
  //    $({rx:nx.darkBot.rotation.x, ry:nx.darkBot.rotation.y,rz:nx.darkBot.rotation.z})
  //    .animate({rx:-0.88,ry:-1.75,rz:0.4}

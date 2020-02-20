@@ -2531,7 +2531,7 @@ nx.orby.loadOrbyMouth = function(endfn){
         
         // nx.orbyM.noMouth = nx.scene.getMeshByName('orbymeshNoMouth')
         
-        endfn(); //important
+        // endfn(); //important
     }); //end orby mouth
 }//end orby mouth
 
