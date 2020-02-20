@@ -2486,6 +2486,7 @@ nx.orby.loadOrbyMouth = function(endfn){
     //    nx.orbyMesh = newMeshes[0]; //spacewaverider
         // nx.orbyMeshBody = newMeshes[1]; //orbymesh
         nx.orbyMeshM = nx.scene.getMeshByName('spacewaveriderM') 
+        nx.orbyMeshM.visibility = 0;
         // nx.orbyMesh.convertToFlatShadedMesh();
         nx.orbyMeshBodyM = nx.scene.getMeshByName('orbymeshM') ; //orbymesh
         nx.orbySkeletonM = skeletons;
